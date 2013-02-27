@@ -3,7 +3,7 @@
 
 class UploadNameChangeActsRequestMapper
   include XmlSchemaMapper
-  schema 'vendor/ezags-protocols/eZAGS/public/UploadService.xsd'
+  schema File.expand_path('../../vendor/ezags-protocols/eZAGS/public/UploadService.xsd', File.dirname(__FILE__))
   type 'UploadNameChangeActsRequest'
 
   # Служебный блок атрибутов СМЭВ
@@ -16,7 +16,7 @@ class UploadNameChangeActsRequestMapper
 
   class MessageData
     include XmlSchemaMapper
-    schema 'vendor/ezags-protocols/eZAGS/public/UploadService.xsd'
+    schema File.expand_path('../../vendor/ezags-protocols/eZAGS/public/UploadService.xsd', File.dirname(__FILE__))
     annonymus_type 'UploadNameChangeActsRequest::MessageData'
 
     # @return [AppDataMapper]
@@ -30,7 +30,7 @@ class UploadNameChangeActsRequestMapper
 
   class MessageData::AppData
     include XmlSchemaMapper
-    schema 'vendor/ezags-protocols/eZAGS/public/UploadService.xsd'
+    schema File.expand_path('../../vendor/ezags-protocols/eZAGS/public/UploadService.xsd', File.dirname(__FILE__))
     annonymus_type 'UploadNameChangeActsRequest::MessageData::AppData'
 
     # @return [UploadNameChangeActsObjMapper]

@@ -3,7 +3,7 @@
 
 class UploadBirthActsRequestMapper
   include XmlSchemaMapper
-  schema 'vendor/ezags-protocols/eZAGS/public/UploadService.xsd'
+  schema File.expand_path('../../vendor/ezags-protocols/eZAGS/public/UploadService.xsd', File.dirname(__FILE__))
   type 'UploadBirthActsRequest'
 
   # Служебный блок атрибутов СМЭВ
@@ -16,7 +16,7 @@ class UploadBirthActsRequestMapper
 
   class MessageData
     include XmlSchemaMapper
-    schema 'vendor/ezags-protocols/eZAGS/public/UploadService.xsd'
+    schema File.expand_path('../../vendor/ezags-protocols/eZAGS/public/UploadService.xsd', File.dirname(__FILE__))
     annonymus_type 'UploadBirthActsRequest::MessageData'
 
     # @return [AppDataMapper]
@@ -30,7 +30,7 @@ class UploadBirthActsRequestMapper
 
   class MessageData::AppData
     include XmlSchemaMapper
-    schema 'vendor/ezags-protocols/eZAGS/public/UploadService.xsd'
+    schema File.expand_path('../../vendor/ezags-protocols/eZAGS/public/UploadService.xsd', File.dirname(__FILE__))
     annonymus_type 'UploadBirthActsRequest::MessageData::AppData'
 
     # @return [UploadBirthActsObjMapper]

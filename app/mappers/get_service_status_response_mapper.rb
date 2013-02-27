@@ -2,7 +2,7 @@
 
 class GetServiceStatusResponseMapper
   include XmlSchemaMapper
-  schema 'vendor/ezags-protocols/eZAGS/public/OrderService.xsd'
+  schema File.expand_path('../../vendor/ezags-protocols/eZAGS/public/OrderService.xsd', File.dirname(__FILE__))
   type 'GetServiceStatusResponse'
 
   # Служебный блок атрибутов СМЭВ
@@ -15,7 +15,7 @@ class GetServiceStatusResponseMapper
 
   class MessageData
     include XmlSchemaMapper
-    schema 'vendor/ezags-protocols/eZAGS/public/OrderService.xsd'
+    schema File.expand_path('../../vendor/ezags-protocols/eZAGS/public/OrderService.xsd', File.dirname(__FILE__))
     annonymus_type 'GetServiceStatusResponse::MessageData'
 
     # @return [AppDataMapper]
@@ -29,7 +29,7 @@ class GetServiceStatusResponseMapper
 
   class MessageData::AppData
     include XmlSchemaMapper
-    schema 'vendor/ezags-protocols/eZAGS/public/OrderService.xsd'
+    schema File.expand_path('../../vendor/ezags-protocols/eZAGS/public/OrderService.xsd', File.dirname(__FILE__))
     annonymus_type 'GetServiceStatusResponse::MessageData::AppData'
 
     # @return [GetServiceStatusResponseObjMapper]

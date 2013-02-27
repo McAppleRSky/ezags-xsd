@@ -3,7 +3,7 @@
 
 class StatementContentOfAdoptionMapper
   include XmlSchemaMapper
-  schema 'vendor/ezags-protocols/eZAGS/public/UploadService.xsd'
+  schema File.expand_path('../../vendor/ezags-protocols/eZAGS/public/UploadService.xsd', File.dirname(__FILE__))
   type 'StatementContentOfAdoption'
 
   # Признак того, что усыновители (усыновитель) записаны родителями (родителем) ребенка

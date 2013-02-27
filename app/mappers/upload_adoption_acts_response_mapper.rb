@@ -2,7 +2,7 @@
 
 class UploadAdoptionActsResponseMapper
   include XmlSchemaMapper
-  schema 'vendor/ezags-protocols/eZAGS/public/UploadService.xsd'
+  schema File.expand_path('../../vendor/ezags-protocols/eZAGS/public/UploadService.xsd', File.dirname(__FILE__))
   type 'UploadAdoptionActsResponse'
 
   # Служебный блок атрибутов СМЭВ
@@ -15,7 +15,7 @@ class UploadAdoptionActsResponseMapper
 
   class MessageData
     include XmlSchemaMapper
-    schema 'vendor/ezags-protocols/eZAGS/public/UploadService.xsd'
+    schema File.expand_path('../../vendor/ezags-protocols/eZAGS/public/UploadService.xsd', File.dirname(__FILE__))
     annonymus_type 'UploadAdoptionActsResponse::MessageData'
 
     # @return [AppDataMapper]
@@ -29,7 +29,7 @@ class UploadAdoptionActsResponseMapper
 
   class MessageData::AppData
     include XmlSchemaMapper
-    schema 'vendor/ezags-protocols/eZAGS/public/UploadService.xsd'
+    schema File.expand_path('../../vendor/ezags-protocols/eZAGS/public/UploadService.xsd', File.dirname(__FILE__))
     annonymus_type 'UploadAdoptionActsResponse::MessageData::AppData'
 
     # @return [UploadAdoptionActsResponseObjMapper]

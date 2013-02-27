@@ -3,7 +3,7 @@
 
 class ChangeOrderInfoMapper
   include XmlSchemaMapper
-  schema 'vendor/ezags-protocols/ePGU/order-info.xsd'
+  schema File.expand_path('../../vendor/ezags-protocols/ePGU/order-info.xsd', File.dirname(__FILE__))
   type 'ChangeOrderInfo'
 
   # Информация об услуги
@@ -33,7 +33,7 @@ class ChangeOrderInfoMapper
 
   class ServiceInfo
     include XmlSchemaMapper
-    schema 'vendor/ezags-protocols/ePGU/order-info.xsd'
+    schema File.expand_path('../../vendor/ezags-protocols/ePGU/order-info.xsd', File.dirname(__FILE__))
     annonymus_type 'ChangeOrderInfo::serviceInfo'
 
     # Код ведомства в ПГУ
@@ -52,7 +52,7 @@ class ChangeOrderInfoMapper
 
   class OrderId
     include XmlSchemaMapper
-    schema 'vendor/ezags-protocols/ePGU/order-info.xsd'
+    schema File.expand_path('../../vendor/ezags-protocols/ePGU/order-info.xsd', File.dirname(__FILE__))
     annonymus_type 'ChangeOrderInfo::orderId'
 
     # Id заявки на портале
@@ -67,7 +67,7 @@ class ChangeOrderInfoMapper
 
   class StatusCode
     include XmlSchemaMapper
-    schema 'vendor/ezags-protocols/ePGU/order-info.xsd'
+    schema File.expand_path('../../vendor/ezags-protocols/ePGU/order-info.xsd', File.dirname(__FILE__))
     annonymus_type 'ChangeOrderInfo::statusCode'
 
     # Код статуса в ведомстве

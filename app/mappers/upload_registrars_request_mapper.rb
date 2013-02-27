@@ -3,7 +3,7 @@
 
 class UploadRegistrarsRequestMapper
   include XmlSchemaMapper
-  schema 'vendor/ezags-protocols/eZAGS/public/UploadService.xsd'
+  schema File.expand_path('../../vendor/ezags-protocols/eZAGS/public/UploadService.xsd', File.dirname(__FILE__))
   type 'UploadRegistrarsRequest'
 
   # Служебный блок атрибутов СМЭВ
@@ -16,7 +16,7 @@ class UploadRegistrarsRequestMapper
 
   class MessageData
     include XmlSchemaMapper
-    schema 'vendor/ezags-protocols/eZAGS/public/UploadService.xsd'
+    schema File.expand_path('../../vendor/ezags-protocols/eZAGS/public/UploadService.xsd', File.dirname(__FILE__))
     annonymus_type 'UploadRegistrarsRequest::MessageData'
 
     # @return [AppDataMapper]
@@ -30,7 +30,7 @@ class UploadRegistrarsRequestMapper
 
   class MessageData::AppData
     include XmlSchemaMapper
-    schema 'vendor/ezags-protocols/eZAGS/public/UploadService.xsd'
+    schema File.expand_path('../../vendor/ezags-protocols/eZAGS/public/UploadService.xsd', File.dirname(__FILE__))
     annonymus_type 'UploadRegistrarsRequest::MessageData::AppData'
 
     # @return [UploadRegistrarsObjMapper]

@@ -2,7 +2,7 @@
 
 class GetFreeTimeRequestObjMapper
   include XmlSchemaMapper
-  schema 'vendor/ezags-protocols/eZAGS/public/OrderService.xsd'
+  schema File.expand_path('../../vendor/ezags-protocols/eZAGS/public/OrderService.xsd', File.dirname(__FILE__))
   type 'GetFreeTimeRequestObj'
 
   # Код органа ЗАГС, составившего документ (из внешнего справочника на ЕНСИ)

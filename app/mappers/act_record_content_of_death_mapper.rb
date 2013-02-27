@@ -3,7 +3,7 @@
 
 class ActRecordContentOfDeathMapper
   include XmlSchemaMapper
-  schema 'vendor/ezags-protocols/eZAGS/public/UploadService.xsd'
+  schema File.expand_path('../../vendor/ezags-protocols/eZAGS/public/UploadService.xsd', File.dirname(__FILE__))
   type 'ActRecordContentOfDeath'
 
   # Возможные причины смерти (по медицинскому свидетельству о смерти или о перинатальной смерти)

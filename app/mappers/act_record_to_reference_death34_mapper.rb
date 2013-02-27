@@ -3,7 +3,7 @@
 
 class ActRecordToReferenceDeath34Mapper
   include XmlSchemaMapper
-  schema 'vendor/ezags-protocols/eZAGS/public/UploadService.xsd'
+  schema File.expand_path('../../vendor/ezags-protocols/eZAGS/public/UploadService.xsd', File.dirname(__FILE__))
   type 'ActRecordToReferenceDeath34'
 
   # Код органа ЗАГС, составившего документ (из внешнего справочника на ЕНСИ)

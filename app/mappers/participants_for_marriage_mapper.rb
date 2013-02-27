@@ -3,7 +3,7 @@
 
 class ParticipantsForMarriageMapper
   include XmlSchemaMapper
-  schema 'vendor/ezags-protocols/eZAGS/public/UploadService.xsd'
+  schema File.expand_path('../../vendor/ezags-protocols/eZAGS/public/UploadService.xsd', File.dirname(__FILE__))
   type 'ParticipantsForMarriage'
 
   # Сведения о НЕМ (до заключения брака)

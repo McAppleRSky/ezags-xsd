@@ -3,7 +3,7 @@
 
 class UploadDivorceActsRequestMapper
   include XmlSchemaMapper
-  schema 'vendor/ezags-protocols/eZAGS/public/UploadService.xsd'
+  schema File.expand_path('../../vendor/ezags-protocols/eZAGS/public/UploadService.xsd', File.dirname(__FILE__))
   type 'UploadDivorceActsRequest'
 
   # Служебный блок атрибутов СМЭВ
@@ -16,7 +16,7 @@ class UploadDivorceActsRequestMapper
 
   class MessageData
     include XmlSchemaMapper
-    schema 'vendor/ezags-protocols/eZAGS/public/UploadService.xsd'
+    schema File.expand_path('../../vendor/ezags-protocols/eZAGS/public/UploadService.xsd', File.dirname(__FILE__))
     annonymus_type 'UploadDivorceActsRequest::MessageData'
 
     # @return [AppDataMapper]
@@ -30,7 +30,7 @@ class UploadDivorceActsRequestMapper
 
   class MessageData::AppData
     include XmlSchemaMapper
-    schema 'vendor/ezags-protocols/eZAGS/public/UploadService.xsd'
+    schema File.expand_path('../../vendor/ezags-protocols/eZAGS/public/UploadService.xsd', File.dirname(__FILE__))
     annonymus_type 'UploadDivorceActsRequest::MessageData::AppData'
 
     # @return [UploadDivorceActsObjMapper]

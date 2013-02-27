@@ -3,7 +3,7 @@
 
 class ActRecordToReferenceBirth26Mapper
   include XmlSchemaMapper
-  schema 'vendor/ezags-protocols/eZAGS/public/UploadService.xsd'
+  schema File.expand_path('../../vendor/ezags-protocols/eZAGS/public/UploadService.xsd', File.dirname(__FILE__))
   type 'ActRecordToReferenceBirth26'
 
   # Код органа ЗАГС, составившего документ (из внешнего справочника на ЕНСИ)

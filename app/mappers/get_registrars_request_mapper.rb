@@ -2,7 +2,7 @@
 
 class GetRegistrarsRequestMapper
   include XmlSchemaMapper
-  schema 'vendor/ezags-protocols/eZAGS/public/OrderService.xsd'
+  schema File.expand_path('../../vendor/ezags-protocols/eZAGS/public/OrderService.xsd', File.dirname(__FILE__))
   type 'GetRegistrarsRequest'
 
   # Служебный блок атрибутов СМЭВ
@@ -15,7 +15,7 @@ class GetRegistrarsRequestMapper
 
   class MessageData
     include XmlSchemaMapper
-    schema 'vendor/ezags-protocols/eZAGS/public/OrderService.xsd'
+    schema File.expand_path('../../vendor/ezags-protocols/eZAGS/public/OrderService.xsd', File.dirname(__FILE__))
     annonymus_type 'GetRegistrarsRequest::MessageData'
 
     # @return [AppDataMapper]
@@ -29,7 +29,7 @@ class GetRegistrarsRequestMapper
 
   class MessageData::AppData
     include XmlSchemaMapper
-    schema 'vendor/ezags-protocols/eZAGS/public/OrderService.xsd'
+    schema File.expand_path('../../vendor/ezags-protocols/eZAGS/public/OrderService.xsd', File.dirname(__FILE__))
     annonymus_type 'GetRegistrarsRequest::MessageData::AppData'
 
     # @return [GetRegistrarsRequestObjMapper]

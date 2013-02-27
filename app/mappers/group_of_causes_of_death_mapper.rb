@@ -3,7 +3,7 @@
 
 class GroupOfCausesOfDeathMapper
   include XmlSchemaMapper
-  schema 'vendor/ezags-protocols/eZAGS/public/UploadService.xsd'
+  schema File.expand_path('../../vendor/ezags-protocols/eZAGS/public/UploadService.xsd', File.dirname(__FILE__))
   type 'GroupOfCausesOfDeath'
 
   # Причина смерти согласно графе «а» медицинского свидетельства о смерти или о перинатальной смерти

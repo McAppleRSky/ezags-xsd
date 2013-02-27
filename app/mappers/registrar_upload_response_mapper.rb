@@ -3,7 +3,7 @@
 
 class RegistrarUploadResponseMapper
   include XmlSchemaMapper
-  schema 'vendor/ezags-protocols/eZAGS/public/UploadService.xsd'
+  schema File.expand_path('../../vendor/ezags-protocols/eZAGS/public/UploadService.xsd', File.dirname(__FILE__))
   type 'RegistrarUploadResponse'
 
   # Идентификационные данные места государственной регистрации. Внешний ключ

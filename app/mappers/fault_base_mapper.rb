@@ -2,7 +2,7 @@
 
 class FaultBaseMapper
   include XmlSchemaMapper
-  schema 'vendor/ezags-protocols/eZAGS/public/UploadService.xsd'
+  schema File.expand_path('../../vendor/ezags-protocols/eZAGS/public/UploadService.xsd', File.dirname(__FILE__))
   type 'FaultBase'
 
   # Служебный блок атрибутов СМЭВ
@@ -15,7 +15,7 @@ class FaultBaseMapper
 
   class MessageData
     include XmlSchemaMapper
-    schema 'vendor/ezags-protocols/eZAGS/public/UploadService.xsd'
+    schema File.expand_path('../../vendor/ezags-protocols/eZAGS/public/UploadService.xsd', File.dirname(__FILE__))
     annonymus_type 'FaultBase::MessageData'
 
     # @return [AppDataMapper]
@@ -29,7 +29,7 @@ class FaultBaseMapper
 
   class MessageData::AppData
     include XmlSchemaMapper
-    schema 'vendor/ezags-protocols/eZAGS/public/UploadService.xsd'
+    schema File.expand_path('../../vendor/ezags-protocols/eZAGS/public/UploadService.xsd', File.dirname(__FILE__))
     annonymus_type 'FaultBase::MessageData::AppData'
 
     # Параметры сообщения об ошибке

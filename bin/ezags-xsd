@@ -3,12 +3,12 @@ $:.unshift File.expand_path('../../lib', __FILE__)
 
 require 'bundler'
 Bundler.setup
-
 require 'ezags-xsd'
 require 'thor/xsd_mappers'
 
 
 class CLI < Thor
+  include Thor::Actions
 
   def initialize(*)
     super
@@ -20,21 +20,36 @@ class CLI < Thor
     update_order
     update_upload
     update_order_info
+    replace_paths
   end
 
-  desc 'update_upload', 'update UploadService mappers'
-  def update_upload
-    @script.generate('vendor/ezags-protocols/eZAGS/public/UploadService.xsd')
-  end
+  no_tasks do
+    def replace_paths
+      path = File.join File.expand_path('../../app/mappers', __FILE__), '*'
+      Dir[path].each do |f|
+        gsub_file f, %r(schema '(vendor/ezags-protocols/.*.xsd)'$), 'schema File.expand_path(\'../../\1\', File.dirname(__FILE__))'
+      end
+    end
 
-  desc 'update_order', 'update OrderService mappers'
-  def update_order
-    @script.generate('vendor/ezags-protocols/eZAGS/public/OrderService.xsd')
-  end
+    def update_upload
+      @script.generate(xsd_path 'eZAGS/public/UploadService.xsd')
+    end
 
-  desc 'update_order_info', 'update ePGU/order-info mappers'
-  def update_order_info
-    @script.generate('vendor/ezags-protocols/ePGU/order-info.xsd')
+    def update_order
+      @script.generate(xsd_path 'eZAGS/public/OrderService.xsd')
+    end
+
+    def update_order_info
+      @script.generate(xsd_path 'ePGU/order-info.xsd')
+    end
+
+    def full_path
+      File.expand_path('../../vendor/ezags-protocols/', __FILE__)
+    end
+
+    def xsd_path(xsd)
+      File.join 'vendor/ezags-protocols/', xsd
+    end
   end
 
 end

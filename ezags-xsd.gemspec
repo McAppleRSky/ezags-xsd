@@ -8,8 +8,8 @@ Gem::Specification.new do |gem|
   gem.version       = Ezags::Xsd::VERSION
   gem.authors       = ["Anton Sozontov"]
   gem.email         = ["a.sozontov@gmail.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.description   = %q{mappers for ezags-protocols}
+  gem.summary       = %q{generated mappers for use ezags-protocols in ruby projects}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($/)

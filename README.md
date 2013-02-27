@@ -18,7 +18,7 @@ Or install it yourself as:
 
 ## Usage
 
-see `ezags-xsd help`
+    $ ezags-xsd help
 
 ## Contributing
 

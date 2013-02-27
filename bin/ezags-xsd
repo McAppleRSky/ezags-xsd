@@ -1,0 +1,42 @@
+#!/usr/bin/env ruby
+$:.unshift File.expand_path('../../lib', __FILE__)
+
+require 'bundler'
+Bundler.setup
+
+require 'ezags-xsd'
+require 'thor/xsd_mappers'
+
+
+class CLI < Thor
+
+  def initialize(*)
+    super
+    @script = XsdMappers::CLI.new
+  end
+
+  desc 'update_all', 'update ezags xsd mappers'
+  def update_all
+    update_order
+    update_upload
+    update_order_info
+  end
+
+  desc 'update_upload', 'update UploadService mappers'
+  def update_upload
+    @script.generate('vendor/ezags-protocols/eZAGS/public/UploadService.xsd')
+  end
+
+  desc 'update_order', 'update OrderService mappers'
+  def update_order
+    @script.generate('vendor/ezags-protocols/eZAGS/public/OrderService.xsd')
+  end
+
+  desc 'update_order_info', 'update ePGU/order-info mappers'
+  def update_order_info
+    @script.generate('vendor/ezags-protocols/ePGU/order-info.xsd')
+  end
+
+end
+
+CLI.start

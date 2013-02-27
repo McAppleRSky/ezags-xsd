@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+		   xmlns:tns="http://ezags.rt.ru/fzags/UploadService/type/local/"
+		   xmlns:doc="http://ezags.rt.ru/type/document/"
+		   xmlns:cm="http://ezags.rt.ru/type/common/"
+		   xmlns:exdoc="http://ezags.rt.ru/type/externaldocuments/"
+		   xmlns:ps="http://ezags.rt.ru/type/actor/"
+		   targetNamespace="http://ezags.rt.ru/fzags/UploadService/type/local/"
+		   elementFormDefault="qualified">
+	<xs:import namespace="http://ezags.rt.ru/type/actor/" schemaLocation="../actor.xsd"/>
+	<xs:import namespace="http://ezags.rt.ru/type/common/" schemaLocation="../common.xsd"/>
+	<xs:import namespace="http://ezags.rt.ru/type/document/" schemaLocation="../documents.xsd"/>
+	<xs:import namespace="http://ezags.rt.ru/type/externaldocuments/" schemaLocation="../externaldocuments.xsd"/>
+	<xs:element name="baseFaultObj" type="cm:FaultBaseObj"/>
+	<xs:element name="uploadBirthActsObj" type="tns:UploadBirthActsObj"/>
+	<xs:element name="uploadBirthActsResponseObj" type="tns:UploadBirthActsResponseObj"/>
+	<xs:element name="uploadDeathActsObj" type="tns:UploadDeathActsObj"/>
+	<xs:element name="uploadDeathActsResponseObj" type="tns:UploadDeathActsResponseObj"/>
+	<xs:element name="uploadMarriageActsObj" type="tns:UploadMarriageActsObj"/>
+	<xs:element name="uploadMarriageActsResponseObj" type="tns:UploadMarriageActsResponseObj"/>
+	<xs:element name="uploadAdoptionActsObj" type="tns:UploadAdoptionActsObj"/>
+	<xs:element name="uploadAdoptionActsResponseObj" type="tns:UploadAdoptionActsResponseObj"/>
+	<xs:element name="uploadDivorceActsObj" type="tns:UploadDivorceActsObj"/>
+	<xs:element name="uploadDivorceActsResponseObj" type="tns:UploadDivorceActsResponseObj"/>
+	<xs:element name="uploadFiliationActsObj" type="tns:UploadFiliationActsObj"/>
+	<xs:element name="uploadFiliationActsResponseObj" type="tns:UploadFiliationActsResponseObj"/>
+	<xs:element name="uploadNameChangeActsObj" type="tns:UploadNameChangeActsObj"/>
+	<xs:element name="uploadNameChangeActsResponseObj" type="tns:UploadNameChangeActsResponseObj"/>
+	<xs:element name="uploadRegistrarsObj" type="tns:UploadRegistrarsObj"/>
+	<xs:element name="uploadRegistrarsResponseObj" type="tns:UploadRegistrarsResponseObj"/>
+	<xs:element name="uploadCertificatesObj" type="tns:UploadCertificatesObj"/>
+	<xs:element name="uploadCertificatesResponseObj" type="tns:UploadCertificatesResponseObj"/>
+	<xs:complexType name="ActRecordUploadResponse">
+		<xs:annotation>
+			<xs:documentation>Ответ сервиса ЕЗАГС при загрузке записи акта</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="actRecordRequsites" type="doc:ActRecordRequisites">
+				<xs:annotation>
+					<xs:documentation>внешний ключ акта (его реквизиты) и его UID, который был присвоен Федеральным еЗАГСом</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="tns:baseFaultObj"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="RegistrarUploadResponse">
+        <xs:annotation>
+            <xs:documentation>Ответ сервиса ЕЗАГС при загрузке сведений о месте гос. регистрации</xs:documentation>
+        </xs:annotation>
+        <xs:choice>
+            <xs:sequence minOccurs="1">
+                <xs:element ref="ps:foreignId"/>
+                <xs:element name="registrarNameIdentity" type="cm:RegistrarIdentity" minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation>Идентификатор наименования органа ЗАГС</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="eZagsRecordID" type="cm:NOT_EMPTY_STRING" minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation>Ответный UUID, присвоенный в ЕЗАГС в результате сохранения записи
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+            </xs:sequence>
+            <xs:element ref="tns:baseFaultObj"/>
+        </xs:choice>
+    </xs:complexType>
+	<xs:complexType name="UploadAdoptionActsObj">
+		<xs:annotation>
+			<xs:documentation>Загрузка записей акта об усыновлении</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="doc:signedActRecordAdoption" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UploadAdoptionActsResponseObj">
+		<xs:sequence minOccurs="1">
+			<xs:element name="item" type="tns:ActRecordUploadResponse" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Ответ по каждой выгружаемой записи акта</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UploadBirthActsObj">
+		<xs:annotation>
+			<xs:documentation>Загрузка записей акта о рождении</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="doc:signedActRecordBirth" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UploadBirthActsResponseObj">
+		<xs:sequence minOccurs="1">
+			<xs:element name="item" type="tns:ActRecordUploadResponse" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Ответ по каждой выгружаемой записи акта</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UploadDeathActsObj">
+		<xs:annotation>
+			<xs:documentation>Загрузка записей акта о смерти</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="doc:signedActRecordDeath" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UploadDeathActsResponseObj">
+		<xs:sequence minOccurs="1">
+			<xs:element name="item" type="tns:ActRecordUploadResponse" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Ответ по каждой выгружаемой записи акта</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UploadDivorceActsObj">
+		<xs:annotation>
+			<xs:documentation>Загрузка записей акта о расторжении брака</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="doc:signedActRecordDivorce" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UploadDivorceActsResponseObj">
+		<xs:sequence minOccurs="1">
+			<xs:element name="item" type="tns:ActRecordUploadResponse" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Ответ по каждой выгружаемой записи акта</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UploadFiliationActsObj">
+		<xs:annotation>
+			<xs:documentation>Загрузка записей акта об установлении отцовства</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="doc:signedActRecordFiliation" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UploadFiliationActsResponseObj">
+		<xs:sequence minOccurs="1">
+			<xs:element name="item" type="tns:ActRecordUploadResponse" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Ответ по каждой выгружаемой записи акта</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UploadMarriageActsObj">
+		<xs:annotation>
+			<xs:documentation>Загрузка записей акта о заключении брака</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="doc:signedActRecordMarriage" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UploadMarriageActsResponseObj">
+		<xs:sequence minOccurs="1">
+			<xs:element name="item" type="tns:ActRecordUploadResponse" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Ответ по каждой выгружаемой записи акта</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UploadNameChangeActsObj">
+		<xs:annotation>
+			<xs:documentation>Загрузка записей акта о перемене имени</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="doc:signedActRecordNameChange" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UploadNameChangeActsResponseObj">
+		<xs:sequence minOccurs="1">
+			<xs:element name="item" type="tns:ActRecordUploadResponse" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Ответ по каждой выгружаемой записи акта</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UploadRegistrarsObj">
+		<xs:annotation>
+			<xs:documentation>Загрузка сведений об органах ЗАГС</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element name="item" type="ps:Registrar" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Выгружаемые записи о местах государственной регистрации</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UploadRegistrarsResponseObj">
+		<xs:sequence minOccurs="1">
+			<xs:element name="item" type="tns:RegistrarUploadResponse" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Ответ по каждой выгруженной записи</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="KeyPaperCertificate">
+		<xs:annotation>
+			<xs:documentation>Внешний ключ сертификата (свидетельства)</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:restriction base="doc:RequisitesPaperCertificate">
+				<xs:sequence minOccurs="1">
+					<xs:sequence minOccurs="1">
+						<xs:element ref="cm:registrarId"/>
+						<xs:element ref="cm:documentUID"/>
+						<xs:element ref="cm:documentNumber"/>
+						<xs:element ref="cm:documentDate"/>
+					</xs:sequence>
+					<xs:sequence minOccurs="1">
+						<xs:element ref="cm:certSeries"/>
+					</xs:sequence>
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+    <xs:complexType name="RequisitesPaperCertificateWithActRecUID">
+   		<xs:annotation>
+   			<xs:documentation>Внешний ключ сертификата (свидетельства)</xs:documentation>
+   		</xs:annotation>
+   		<xs:complexContent>
+   			<xs:extension base="doc:RequisitesPaperCertificate">
+   				<xs:sequence minOccurs="1">
+                       <xs:element ref="cm:actRecordUID" minOccurs="1"/>
+   				</xs:sequence>
+   			</xs:extension>
+   		</xs:complexContent>
+   	</xs:complexType>
+	<xs:complexType name="CertificateUploadResponse">
+		<xs:annotation>
+			<xs:documentation>Ответ сервиса ЕЗАГС при получении сведений о сертификате (свидетельстве)</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="certificateKey" type="tns:KeyPaperCertificate">
+				<xs:annotation>
+					<xs:documentation>Внешний ключ свидетельства и его UID из еЗАГС                    </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="tns:baseFaultObj"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="UploadCertificatesObj">
+		<xs:annotation>
+			<xs:documentation>Обновление или добавление записи свидетельства</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element name="item" type="tns:RequisitesPaperCertificateWithActRecUID" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UploadCertificatesResponseObj">
+		<xs:sequence minOccurs="1">
+			<xs:element name="item" type="tns:CertificateUploadResponse" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Список ответов по каждой выгруженной записи</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

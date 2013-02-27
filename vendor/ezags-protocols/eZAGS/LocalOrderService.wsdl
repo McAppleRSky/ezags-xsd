@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://ezags.rt.ru/fzags/LocalOrderService/" xmlns:t="http://ezags.rt.ru/fzags/OrderService/type/local/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="LocalOrderServiceService" targetNamespace="http://ezags.rt.ru/fzags/LocalOrderService/">
+	<types>
+		<xsd:schema>
+			<xsd:import namespace="http://ezags.rt.ru/type/common/" schemaLocation="../common.xsd"/>
+		</xsd:schema>
+		<xsd:schema>
+			<xsd:import namespace="http://ezags.rt.ru/type/actor/" schemaLocation="../actor.xsd"/>
+		</xsd:schema>
+		<xsd:schema>
+			<xsd:import namespace="http://ezags.rt.ru/type/document/" schemaLocation="../documents.xsd"/>
+		</xsd:schema>
+		<xsd:schema>
+			<xsd:import namespace="http://ezags.rt.ru/type/externaldocuments/" schemaLocation="../externaldocuments.xsd"/>
+		</xsd:schema>
+		<xsd:schema>
+			<xsd:import namespace="http://ezags.rt.ru/fzags/OrderService/type/local/" schemaLocation="LocalOrderService.xsd"/>
+		</xsd:schema>
+	</types>
+	<message name="GetRegistrars">
+		<part name="parameters" element="t:getRegistrarsRequestObj"/>
+	</message>
+	<message name="GetRegistrarsResponse">
+		<part name="parameters" element="t:getRegistrarsResponseObj"/>
+	</message>
+	<message name="GetFreeTime">
+		<part name="parameters" element="t:getFreeTimeRequestObj"/>
+	</message>
+	<message name="GetFreeTimeResponse">
+		<part name="parameters" element="t:getFreeTimeResponseObj"/>
+	</message>
+	<message name="sendServiceOfBirth">
+		<part name="parameters" element="t:sendServiceOfBirthRequestObj"/>
+	</message>
+	<message name="sendServiceOfBirthResponse">
+		<part name="parameters" element="t:voidResponseObj"/>
+	</message>
+	<message name="sendServiceOfDeath">
+		<part name="parameters" element="t:sendServiceOfDeathRequestObj"/>
+	</message>
+	<message name="sendServiceOfDeathResponse">
+		<part name="parameters" element="t:voidResponseObj"/>
+	</message>
+	<message name="sendServiceOfMarriage">
+		<part name="parameters" element="t:sendServiceOfMarriageRequestObj"/>
+	</message>
+	<message name="sendServiceOfMarriageResponse">
+		<part name="parameters" element="t:voidResponseObj"/>
+	</message>
+	<message name="sendServiceOfDivorce">
+		<part name="parameters" element="t:sendServiceOfDivorceRequestObj"/>
+	</message>
+	<message name="sendServiceOfDivorceResponse">
+		<part name="parameters" element="t:voidResponseObj"/>
+	</message>
+	<message name="getServiceStatus">
+		<part name="parameters" element="t:getServiceStatusRequestObj"/>
+	</message>
+	<message name="getServiceStatusResponse">
+		<part name="parameters" element="t:getServiceStatusResponseObj"/>
+	</message>
+	<message name="updateStatus">
+		<part name="parameters" element="t:updateStatusRequestObj"/>
+	</message>
+	<message name="updateStatusResponse">
+		<part name="parameters" element="t:voidResponseObj"/>
+	</message>
+    <message name="updatePaymentStatus">
+   		<part name="parameters" element="t:updatePaymentStatusRequestObj"/>
+   	</message>
+   	<message name="updatePaymentStatusResponse">
+   		<part name="parameters" element="t:voidResponseObj"/>
+   	</message>
+	<message name="updateTimeReservationStatus">
+		<part name="parameters" element="t:updateTimeReservationStatusRequestObj"/>
+	</message>
+	<message name="updateTimeReservationStatusResponse">
+		<part name="parameters" element="t:updateTimeReservationStatusResponseObj"/>
+	</message>
+	<message name="Fault">
+		<part name="parameters" element="t:baseFaultObj"/>
+	</message>
+	<portType name="LocalOrderService">
+		<operation name="getRegistrars">
+			<input message="tns:GetRegistrars"/>
+			<output message="tns:GetRegistrarsResponse"/>
+			<fault name="Fault" message="tns:Fault"/>
+		</operation>
+		<operation name="getFreeTime">
+			<input message="tns:GetFreeTime"/>
+			<output message="tns:GetFreeTimeResponse"/>
+			<fault name="Fault" message="tns:Fault"/>
+		</operation>
+		<operation name="sendServiceOfBirth">
+			<input message="tns:sendServiceOfBirth"/>
+			<output message="tns:sendServiceOfBirthResponse"/>
+			<fault name="Fault" message="tns:Fault"/>
+		</operation>
+		<operation name="sendServiceOfDeath">
+			<input message="tns:sendServiceOfDeath"/>
+			<output message="tns:sendServiceOfDeathResponse"/>
+			<fault name="Fault" message="tns:Fault"/>
+		</operation>
+		<operation name="sendServiceOfMarriage">
+			<input message="tns:sendServiceOfMarriage"/>
+			<output message="tns:sendServiceOfMarriageResponse"/>
+			<fault name="Fault" message="tns:Fault"/>
+		</operation>
+		<operation name="sendServiceOfDivorce">
+			<input message="tns:sendServiceOfDivorce"/>
+			<output message="tns:sendServiceOfDivorceResponse"/>
+			<fault name="Fault" message="tns:Fault"/>
+		</operation>
+		<operation name="getServiceStatus">
+			<input message="tns:getServiceStatus"/>
+			<output message="tns:getServiceStatusResponse"/>
+			<fault name="Fault" message="tns:Fault"/>
+		</operation>
+		<operation name="updateStatus">
+			<input message="tns:updateStatus"/>
+			<output message="tns:updateStatusResponse"/>
+			<fault name="Fault" message="tns:Fault"/>
+		</operation>
+        <operation name="updatePaymentStatus">
+      		<input message="tns:updatePaymentStatus"/>
+      		<output message="tns:updatePaymentStatusResponse"/>
+      		<fault name="Fault" message="tns:Fault"/>
+        </operation>
+		<operation name="updateTimeReservationStatus">
+			<input message="tns:updateTimeReservationStatus"/>
+			<output message="tns:updateTimeReservationStatusResponse"/>
+			<fault name="Fault" message="tns:Fault"/>
+		</operation>
+	</portType>
+	<binding name="LocalOrderServicePortBinding" type="tns:LocalOrderService">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="getRegistrars">
+			<soap:operation soapAction=""/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="Fault">
+				<soap:fault name="Fault" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="getFreeTime">
+			<soap:operation soapAction=""/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="Fault">
+				<soap:fault name="Fault" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="sendServiceOfBirth">
+			<soap:operation soapAction=""/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="Fault">
+				<soap:fault name="Fault" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="sendServiceOfDeath">
+			<soap:operation soapAction=""/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="Fault">
+				<soap:fault name="Fault" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="sendServiceOfMarriage">
+			<soap:operation soapAction=""/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="Fault">
+				<soap:fault name="Fault" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="sendServiceOfDivorce">
+			<soap:operation soapAction=""/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="Fault">
+				<soap:fault name="Fault" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="getServiceStatus">
+			<soap:operation soapAction=""/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="Fault">
+				<soap:fault name="Fault" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="updateStatus">
+			<soap:operation soapAction=""/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="Fault">
+				<soap:fault name="Fault" use="literal"/>
+			</fault>
+		</operation>
+        <operation name="updatePaymentStatus">
+            <soap:operation soapAction=""/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+            <fault name="Fault">
+                <soap:fault name="Fault" use="literal"/>
+            </fault>
+        </operation>
+		<operation name="updateTimeReservationStatus">
+			<soap:operation soapAction=""/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="Fault">
+				<soap:fault name="Fault" use="literal"/>
+			</fault>
+		</operation>
+	</binding>
+	<service name="LocalOrderService">
+		<port name="LocalOrderServicePort" binding="tns:LocalOrderServicePortBinding">
+			<soap:address location="REPLACE_WITH_ACTUAL_URL"/>
+		</port>
+	</service>
+</definitions>

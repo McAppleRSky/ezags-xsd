@@ -1,0 +1,83 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified"
+           targetNamespace="http://ensi.gosuslugi.ru/rev111111/okato" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="okato">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="okatoId">
+                    <xs:annotation>
+                        <xs:documentation>Идентификатор элемента ОКАТО</xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="code" type="xs:string">
+                                <xs:annotation>
+                                    <xs:documentation>Код ОКАТО</xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="ter" type="xs:string">
+                    <xs:annotation>
+                        <xs:documentation>Территория</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="code1" type="xs:string">
+                    <xs:annotation>
+                        <xs:documentation>Код 1</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="code2" type="xs:string">
+                    <xs:annotation>
+                        <xs:documentation>Код 2</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="code3" type="xs:string">
+                    <xs:annotation>
+                        <xs:documentation>Код 3</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="part" type="xs:string">
+                    <xs:annotation>
+                        <xs:documentation>Раздел</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="name" type="xs:string">
+                    <xs:annotation>
+                        <xs:documentation>Наименование</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element minOccurs="0" name="extData" type="xs:string">
+                    <xs:annotation>
+                        <xs:documentation>Центр</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element minOccurs="0" name="description" type="xs:string">
+                    <xs:annotation>
+                        <xs:documentation>Пояснение</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="revNo" type="xs:string">
+                    <xs:annotation>
+                        <xs:documentation>Нормативный акт</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="status" type="xs:string">
+                    <xs:annotation>
+                        <xs:documentation>Статус</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="dateAppr" type="xs:string">
+                    <xs:annotation>
+                        <xs:documentation>Дата утверждения</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="dateStart" type="xs:string">
+                    <xs:annotation>
+                        <xs:documentation>Дата введения</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2011 rel. 2 (http://www.altova.com) by TeaM DJiNN (TeaM DJiNN) -->
+<xs:schema xmlns:cm="http://ezags.rt.ru/type/common/" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:nsi="http://nsi.gosuslugi.ru/rev111111" targetNamespace="http://nsi.gosuslugi.ru/rev111111"
+           xmlns:okato="http://ensi.gosuslugi.ru/rev111111/okato"
+           xmlns:oktmo="http://esnsi.gosuslugi.ru/oktmo"
+           elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <xs:import namespace="http://ezags.rt.ru/type/common/" schemaLocation="../common.xsd"/>
+    <xs:import schemaLocation="../NSI/NSIDictionary.xsd"/>
+    <xs:import namespace="http://ensi.gosuslugi.ru/rev111111/okato" schemaLocation="../NSI/NSIokato3.xsd"/>
+    <xs:import namespace="http://esnsi.gosuslugi.ru/oktmo" schemaLocation="../NSI/NSIoktmo.xsd"/>
+    <xs:element name="getLastUpdates" type="nsi:getLastUpdates"/>
+    <xs:element name="response" type="nsi:response"/>
+    <xs:element name="componentChanged" type="nsi:componentChanged"/>
+    <xs:element name="elementRevision" type="nsi:elementRevision"/>
+    <xs:element name="lastUpdates" type="nsi:lastUpdates"/>
+
+    <xs:element name="annulElement" type="nsi:annulElement"/>
+    <xs:element name="component" type="nsi:component"/>
+    <xs:element name="componentRevision" type="nsi:componentRevision"/>
+    <xs:element name="createComponent" type="nsi:createComponent"/>
+    <xs:element name="createComponentRevision" type="nsi:createComponentRevision"/>
+    <xs:element name="findComponent" type="nsi:findComponent"/>
+    <xs:element name="findComponentRevision" type="nsi:findComponentRevision"/>
+    <xs:element name="findElementRevision" type="nsi:findElementRevision"/>
+    <xs:element name="getExpiredElements" type="nsi:getExpiredElements"/>
+    <xs:element name="getNewEvents" type="nsi:getNewEvents"/>
+    <xs:element name="getSnapshot" type="nsi:getSnapshot"/>
+    <xs:element name="publishElementRevision" type="nsi:publishElementRevision"/>
+
+    <xs:complexType name="getLastUpdates">
+        <xs:sequence minOccurs="1">
+            <xs:element name="componentCode" type="cm:NOT_EMPTY_STRING"/>
+            <xs:element name="lastSsn" type="xs:long"/>
+            <xs:element name="versioned" type="xs:boolean" minOccurs="0"/>
+            <xs:element minOccurs="0" name="date" type="xs:dateTime"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="lastUpdates">
+        <xs:sequence minOccurs="1">
+            <xs:element name="remainder" type="xs:long" minOccurs="1"/>
+            <xs:element name="elementRevision" type="nsi:elementRevision" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="componentChanged">
+        <xs:sequence minOccurs="1">
+            <xs:element name="componentCode" type="cm:NOT_EMPTY_STRING"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="elementRevision">
+        <xs:complexContent>
+            <xs:extension base="nsi:persistent">
+                <xs:sequence minOccurs="1">
+                    <xs:element name="code" type="cm:NOT_EMPTY_STRING" minOccurs="0"/>
+                    <xs:element name="startDate" type="xs:date" minOccurs="0"/>
+                    <xs:element name="endDate" type="xs:date" minOccurs="0"/>
+                    <xs:element name="ssn" type="xs:long" minOccurs="0"/>
+                    <xs:choice>
+                        <xs:element ref="cm:nsiRegistrar" minOccurs="0"/>
+                        <xs:element ref="cm:nsiCommonReference" minOccurs="0"/>
+                        <xs:element ref="Object" minOccurs="0"/>
+                        <xs:element ref="MKB10" minOccurs="0"/>
+                        <xs:element ref="okinNazi" minOccurs="0"/>
+                        <xs:element ref="okato:okato" minOccurs="0"/>
+                        <xs:element ref="oktmo:OKTMO" minOccurs="0"/>
+                    </xs:choice>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="persistent">
+        <xs:sequence minOccurs="1">
+            <xs:element name="created" type="xs:dateTime" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="response">
+        <xs:sequence minOccurs="1">
+            <xs:element name="status" type="cm:NOT_EMPTY_STRING"/>
+            <xs:element name="errorMessage" type="cm:NOT_EMPTY_STRING" minOccurs="0"/>
+            <xs:element name="lastUpdates" type="nsi:lastUpdates" minOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+
+     <!-- asdfasdf -->
+
+    <xs:complexType abstract="true" name="request">
+        <xs:sequence/>
+    </xs:complexType>
+    <xs:complexType name="createComponent">
+        <xs:complexContent>
+            <xs:extension base="nsi:request">
+                <xs:sequence minOccurs="1">
+                    <xs:element name="componentCode" type="cm:NOT_EMPTY_STRING"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="createComponentRevision">
+        <xs:complexContent>
+            <xs:extension base="nsi:request">
+                <xs:sequence minOccurs="1">
+                    <xs:element name="name" type="cm:NOT_EMPTY_STRING"/>
+                    <xs:element minOccurs="0" name="description" type="cm:NOT_EMPTY_STRING"/>
+                    <xs:element name="startDate" type="xs:dateTime"/>
+                    <xs:element name="componentCode" type="cm:NOT_EMPTY_STRING"/>
+                    <xs:any namespace="##other" processContents="skip"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="findComponent">
+        <xs:complexContent>
+            <xs:extension base="nsi:request">
+                <xs:sequence minOccurs="1">
+                    <xs:element minOccurs="0" name="componentCode" type="cm:NOT_EMPTY_STRING"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="publishElementRevision">
+        <xs:complexContent>
+            <xs:extension base="nsi:request">
+                <xs:sequence minOccurs="1">
+                    <xs:element name="code" type="cm:NOT_EMPTY_STRING"/>
+                    <xs:element name="startDate" type="xs:dateTime"/>
+                    <xs:element name="componentCode" type="cm:NOT_EMPTY_STRING"/>
+                    <xs:any namespace="##other" processContents="skip"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="findElementRevision">
+        <xs:complexContent>
+            <xs:extension base="nsi:request">
+                <xs:sequence minOccurs="1">
+                    <xs:element name="code" type="cm:NOT_EMPTY_STRING"/>
+                    <xs:element name="date" type="xs:dateTime"/>
+                    <xs:element name="componentCode" type="cm:NOT_EMPTY_STRING"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="findComponentRevision">
+        <xs:complexContent>
+            <xs:extension base="nsi:request">
+                <xs:sequence minOccurs="1">
+                    <xs:element minOccurs="0" name="date" type="xs:dateTime"/>
+                    <xs:element name="componentCode" type="cm:NOT_EMPTY_STRING"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="annulElement">
+        <xs:complexContent>
+            <xs:extension base="nsi:request">
+                <xs:sequence minOccurs="1">
+                    <xs:element name="code" type="cm:NOT_EMPTY_STRING"/>
+                    <xs:element name="endDate" type="xs:dateTime"/>
+                    <xs:element name="componentCode" type="cm:NOT_EMPTY_STRING"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="component">
+        <xs:complexContent>
+            <xs:extension base="nsi:persistent">
+                <xs:sequence minOccurs="1">
+                    <xs:element minOccurs="0" name="code" type="cm:NOT_EMPTY_STRING"/>
+                    <xs:element minOccurs="0" name="revisions">
+                        <xs:complexType>
+                            <xs:sequence minOccurs="1">
+                                <xs:element maxOccurs="unbounded" minOccurs="0" name="revision" type="nsi:componentRevision"/>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="componentRevision">
+        <xs:complexContent>
+            <xs:extension base="nsi:persistent">
+                <xs:sequence minOccurs="1">
+                    <xs:element minOccurs="0" name="name" type="cm:NOT_EMPTY_STRING"/>
+                    <xs:element minOccurs="0" name="description" type="cm:NOT_EMPTY_STRING"/>
+                    <xs:element minOccurs="0" name="startDate" type="xs:date"/>
+                    <xs:element minOccurs="0" name="endDate" type="xs:date"/>
+                    <xs:any namespace="##other" processContents="skip"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="getExpiredElements">
+        <xs:complexContent>
+            <xs:extension base="nsi:request">
+                <xs:sequence minOccurs="1">
+                    <xs:element name="componentCode" type="cm:NOT_EMPTY_STRING"/>
+                    <xs:element name="lastSsn" type="xs:long"/>
+                    <xs:element name="pageSize" type="xs:int"/>
+                    <xs:element name="fromDate" type="xs:dateTime"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="getSnapshot">
+        <xs:complexContent>
+            <xs:extension base="nsi:request">
+                <xs:sequence minOccurs="1">
+                    <xs:element name="componentCode" type="cm:NOT_EMPTY_STRING"/>
+                    <xs:element name="lastSsn" type="xs:long"/>
+                    <xs:element name="pageSize" type="xs:int"/>
+                    <xs:element name="actualDate" type="xs:dateTime"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="getNewEvents">
+        <xs:complexContent>
+            <xs:extension base="nsi:request">
+                <xs:sequence minOccurs="1">
+                    <xs:element name="componentCode" type="cm:NOT_EMPTY_STRING"/>
+                    <xs:element name="lastSsn" type="xs:long"/>
+                    <xs:element name="pageSize" type="xs:int"/>
+                    <xs:element name="fromDate" type="xs:dateTime"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+</xs:schema>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://ezags.rt.ru/fzags/ReservationService/type/local/"
+           xmlns:tns="http://ezags.rt.ru/fzags/ReservationService/type/local/"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:cm="http://ezags.rt.ru/type/common/"
+           elementFormDefault="qualified">
+    <xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="../xmldsig-core-schema.xsd"/>
+    <xs:import namespace="http://ezags.rt.ru/type/common/" schemaLocation="../common.xsd"/>
+    <xs:import namespace="http://ezags.rt.ru/type/document/" schemaLocation="../documents.xsd"/>
+    <xs:import namespace="http://ezags.rt.ru/type/actor/" schemaLocation="../actor.xsd"/>
+    <xs:element name="baseFaultObj" type="cm:FaultBaseObj"/>
+    <xs:element name="voidResponseObj" type="cm:VoidResponseObj"/>
+    <xs:element name="getFreeDaysOfReceiptRequestObj" type="tns:GetFreeDaysOfReceiptRequestObj"/>
+    <xs:element name="getFreeDaysOfReceiptResponseObj" type="tns:GetFreeDaysOfReceiptResponseObj"/>
+    <xs:element name="getFreeTimesOfReceiptRequestObj" type="tns:GetFreeTimesOfReceiptRequestObj"/>
+    <xs:element name="getFreeTimesOfReceiptResponseObj" type="tns:GetFreeTimesOfReceiptResponseObj"/>
+    <xs:element name="sendTimeOfReceiptRequestObj" type="tns:SendTimeOfReceiptRequestObj"/>
+    <xs:complexType name="GetFreeDaysOfReceiptRequestObj">
+        <xs:sequence minOccurs="1">
+            <xs:element name="registrarId" type="xs:int"/>
+            <xs:element name="serviceType" type="xs:int" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="GetFreeDaysOfReceiptResponseObj">
+        <xs:sequence minOccurs="1">
+            <xs:element name="result" type="tns:ListOfDates" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="GetFreeTimesOfReceiptRequestObj">
+        <xs:sequence minOccurs="1">
+            <xs:element name="registrarId" type="xs:int"/>
+            <xs:element name="dateOn" type="xs:date" minOccurs="0"/>
+            <xs:element name="serviceType" type="xs:int" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="GetFreeTimesOfReceiptResponseObj">
+        <xs:sequence minOccurs="1">
+            <xs:element name="result" type="tns:ListOfTimesOfReceipt" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="SendTimeOfReceiptRequestObj">
+        <xs:sequence minOccurs="1">
+            <xs:element name="timeOfReceipt" type="tns:TimeOfReceipt"/>
+            <xs:element name="serviceIdentity" type="cm:ServiceIdentity"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ListOfDates">
+        <xs:annotation>
+            <xs:documentation>Список дат</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="1">
+            <xs:element name="item" type="xs:date"   minOccurs="0"
+                        maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ListOfTimesOfReceipt">
+        <xs:annotation>
+            <xs:documentation>Список свободного времени для записи на приём</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="1">
+            <xs:element name="item" type="tns:TimeOfReceipt"   minOccurs="0"
+                        maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TimeOfReceipt">
+        <xs:annotation>
+            <xs:documentation>Сведения о времени приёма по записи через Интернет</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="1">
+            <xs:element name="serviceType" type="xs:int">
+                <xs:annotation>
+                    <xs:documentation>Вид оказываемой услуги (справочник ServiceType)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="receiptDate" type="xs:date">
+                <xs:annotation>
+                    <xs:documentation>Дата приёма</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="timeHour" type="xs:int">
+                <xs:annotation>
+                    <xs:documentation>Часы времени приёма</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="timeMinute" type="xs:int">
+                <xs:annotation>
+                    <xs:documentation>Минуты времени приёма</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="cabinetName" type="cm:NOT_EMPTY_STRING">
+                <xs:annotation>
+                    <xs:documentation>Наименование кабинета</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="reissuedDocType">
+        <xs:annotation>
+            <xs:documentation>Тип запрашиваемого повторного документа</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="cm:NOT_EMPTY_STRING">
+            <xs:enumeration value="undefined">
+                <xs:annotation>
+                    <xs:documentation>Значение не определено</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="certificate">
+                <xs:annotation>
+                    <xs:documentation>Свидетельство</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="reference">
+                <xs:annotation>
+                    <xs:documentation>Справка</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

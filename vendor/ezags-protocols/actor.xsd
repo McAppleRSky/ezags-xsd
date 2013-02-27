@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2011 rel. 2 (http://www.altova.com) by Andrey (Uncommercial) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cm="http://ezags.rt.ru/type/common/" xmlns:ac="http://ezags.rt.ru/type/actor/" targetNamespace="http://ezags.rt.ru/type/actor/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://ezags.rt.ru/type/common/" schemaLocation="common.xsd"/>
+	<xs:complexType name="FullPerson">
+		<xs:annotation>
+			<xs:documentation>Сведения о человеке (максимальный набор)</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+            <xs:element ref="cm:isPrivateOfficeOwner" minOccurs="0"/>
+            <xs:element ref="cm:isApplicant" minOccurs="0"/>
+			<xs:element ref="cm:surname" minOccurs="0"/>
+			<xs:element ref="cm:firstName" minOccurs="0"/>
+			<xs:element ref="cm:patronymic" minOccurs="0"/>
+			<xs:element ref="cm:gender" minOccurs="0"/>
+			<xs:element ref="cm:birthDate" minOccurs="0"/>
+			<xs:element ref="cm:birthPlace" minOccurs="0"/>
+			<xs:element ref="cm:citizenship" minOccurs="0"/>
+			<xs:element ref="cm:citizenshipString" minOccurs="0"/>
+			<xs:element ref="cm:nationality" minOccurs="0"/>
+			<xs:element ref="cm:nationalityString" minOccurs="0"/>
+			<xs:element ref="cm:residencePlace" minOccurs="0"/>
+			<xs:element ref="cm:postalAddress" minOccurs="0"/>
+			<xs:element ref="cm:maritalStatus" minOccurs="0"/>
+			<xs:element ref="cm:snils" minOccurs="0"/>
+			<xs:element ref="cm:alive" minOccurs="0"/>
+			<xs:element ref="cm:deathDate" minOccurs="0"/>
+			<xs:element ref="cm:deathPlace" minOccurs="0"/>
+			<xs:element ref="cm:phoneNumber" minOccurs="0"/>
+			<xs:element ref="cm:workPhoneNumber" minOccurs="0"/>
+			<!-- Надо сделать списковыми сущностями с обязательностью заполнения хотя бы одного -->
+			<xs:element ref="cm:identityDocument" minOccurs="0"/>
+            <xs:choice minOccurs="0">
+                <xs:element ref="cm:powerOfAttorney"/>
+                <xs:element ref="cm:powerOfAttorneyLegal"/>
+            </xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Employee">
+		<xs:annotation>
+			<xs:documentation>Сотрудник</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:restriction base="ac:FullPerson">
+				<xs:sequence minOccurs="1">
+					<xs:element ref="cm:surname"/>
+					<xs:element ref="cm:firstName"/>
+					<xs:element ref="cm:patronymic" minOccurs="0"/>
+					<xs:element ref="cm:workPhoneNumber" minOccurs="0"/>
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="FullCitizen">
+		<xs:annotation>
+			<xs:documentation>Сведения о человеке в объеме "Гражданин с датой, местом рождения и местом жительства"
+				Сведения о человеке (№ - услуга, * - роль в услуге):
+				1) Перемена имени:
+				* меняющий имя;
+				2) Внесение изменений:
+				* заинтересованное лицо;
+				3) Рождение:
+				* отец для услуги в типах 1,2;
+				* мать для устуги в типах 1,2;
+				* ребенок для услуги в типе 6.
+				4) Установление отцовства:
+				* отец для услуги в типах 1,2,3;
+				* мать для услуги в типе 1;
+				5) Заключение брака:
+				* новобрачный для услуги в типе 1;
+				6) Усыновление:
+				* усынавливающий;
+				7) Расторжение брака:
+				* разводящийся в типах 1,2,3.
+				8) Повторная выдача:
+				* заинтересованное лицо для услуги в типе рождение;
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:restriction base="ac:FullPerson">
+				<xs:sequence minOccurs="1">
+                    <xs:element ref="cm:isPrivateOfficeOwner" minOccurs="0"/>
+					<xs:element ref="cm:isApplicant" minOccurs="0"/>
+					<xs:element ref="cm:surname"/>
+					<xs:element ref="cm:firstName"/>
+					<xs:element ref="cm:patronymic" minOccurs="0"/>
+					<xs:element ref="cm:gender" minOccurs="0"/>
+					<xs:element ref="cm:birthDate" minOccurs="0"/>
+					<xs:element ref="cm:birthPlace" minOccurs="0"/>
+					<xs:element ref="cm:citizenship" minOccurs="0"/>
+					<xs:element ref="cm:citizenshipString" minOccurs="0"/>
+					<xs:element ref="cm:nationality" minOccurs="0"/>
+					<xs:element ref="cm:nationalityString" minOccurs="0"/>
+					<xs:element ref="cm:residencePlace" minOccurs="0"/>
+					<xs:element ref="cm:maritalStatus" minOccurs="0"/>
+					<xs:element ref="cm:snils" minOccurs="0"/>
+					<xs:element ref="cm:phoneNumber" minOccurs="0"/>
+					<xs:element ref="cm:workPhoneNumber" minOccurs="0"/>
+					<xs:element ref="cm:identityDocument" minOccurs="0"/>
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="CitizenWithoutIdentDoc">
+		<xs:annotation>
+			<xs:documentation>Сведения о человеке в объеме "Гражданин с датой и местом рождения"
+				Сведения о человеке (№ - услуга, * - роль в услуге):
+				1) Рождение:
+				* отец для услуги в типе 6;
+				* мать для устуги в типе 5,6;
+				2) Установление отцовства:
+				* мать для услуги в типе 3.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:restriction base="ac:FullCitizen">
+				<xs:sequence minOccurs="1">
+                    <xs:element ref="cm:isPrivateOfficeOwner" minOccurs="0"/>
+					<xs:element ref="cm:isApplicant" minOccurs="0"/>
+					<xs:element ref="cm:surname"/>
+					<xs:element ref="cm:firstName"/>
+					<xs:element ref="cm:patronymic" minOccurs="0"/>
+                    <xs:element ref="cm:gender" minOccurs="0"/>
+					<xs:element ref="cm:birthDate" minOccurs="0"/>
+					<xs:element ref="cm:birthPlace" minOccurs="0"/>
+					<xs:element ref="cm:citizenship" minOccurs="0"/>
+					<xs:element ref="cm:citizenshipString" minOccurs="0"/>
+					<xs:element ref="cm:nationality" minOccurs="0"/>
+					<xs:element ref="cm:nationalityString" minOccurs="0"/>
+					<xs:element ref="cm:residencePlace" minOccurs="0"/>
+                    <xs:element ref="cm:snils" minOccurs="0"/>
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Citizen">
+		<xs:annotation>
+			<xs:documentation>Сведения о человеке в объеме "Гражданин"
+				Сведения о человеке (№ - услуга, * - роль в услуге):
+				1) Усыновление:
+				* мать;
+				* отец.
+				2) Перемена имени:
+				* мать;
+				* отец;
+				* усынавитель;
+				* усыновительница.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:restriction base="ac:CitizenWithoutIdentDoc">
+				<xs:sequence minOccurs="1">
+                    <xs:element ref="cm:isPrivateOfficeOwner" minOccurs="0"/>
+					<xs:element ref="cm:isApplicant" minOccurs="0"/>
+					<xs:element ref="cm:surname"/>
+					<xs:element ref="cm:firstName"/>
+					<xs:element ref="cm:patronymic" minOccurs="0"/>
+					<xs:element ref="cm:birthDate" minOccurs="0"/>
+					<xs:element ref="cm:citizenship" minOccurs="0"/>
+					<xs:element ref="cm:citizenshipString" minOccurs="0"/>
+					<xs:element ref="cm:nationality" minOccurs="0"/>
+					<xs:element ref="cm:nationalityString" minOccurs="0"/>
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="JuridicalAuthorisedRepresentative">
+		<xs:annotation>
+			<xs:documentation>Уполномоченный представитель ЮЛ
+				Сведения о человеке (№ - услуга, * - роль в услуге):
+				1) Перемена имени:
+				* УПФЛ;
+				* УПЮЛ;
+				2) Внесение изменений:
+				* УПЮЛ;
+				3) Рождение:
+				* УПЮЛ для устуги в типах 3,4,5;
+				4) Смерть:
+				* УПЮЛ;
+				5) Усыновление:
+				* УПФЛ;
+				6) Расторжение брака:
+				* УПФЛ 1,3;
+				7) Повторная выдача:
+				* УПЮЛ.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:restriction base="ac:FullPerson">
+				<xs:sequence minOccurs="1">
+                    <xs:element ref="cm:isPrivateOfficeOwner" minOccurs="0"/>
+					<xs:element ref="cm:isApplicant"/>
+					<xs:element ref="cm:surname"/>
+					<xs:element ref="cm:firstName"/>
+					<xs:element ref="cm:patronymic" minOccurs="0"/>
+					<xs:element ref="cm:identityDocument"/>
+					<xs:element ref="cm:powerOfAttorneyLegal"/>
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ApplicantPerson">
+		<xs:annotation>
+			<xs:documentation>Сведения о человеке в объеме "Заявитель ФЛ"
+				Сведения о заявителе - представителе физического лица
+				Сведения о человеке (№ - услуга, * - роль в услуге):
+				1) Расторжение брака:
+				* УПФЛ в типах 2.
+				2) Смерть:
+				* УПФЛ;
+				3) Внесение изменений:
+				* УПФЛ;
+				4) Рождение:
+				* УПФЛ для устуги в типах 1,2,5,6;
+				* свидетель рождения для устуги в типах 1,2,4,5.
+				5) Повторная выдача:
+				* УПФЛ;
+				6) Установление отцовства:
+				* УПФЛ для услуги в типе 3.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:restriction base="ac:FullPerson">
+				<xs:sequence minOccurs="1">
+                    <xs:element ref="cm:isPrivateOfficeOwner" minOccurs="0"/>
+					<xs:element ref="cm:isApplicant" minOccurs="0"/>
+					<xs:element ref="cm:surname"/>
+					<xs:element ref="cm:firstName"/>
+					<xs:element ref="cm:patronymic" minOccurs="0"/>
+					<xs:element ref="cm:gender" minOccurs="0"/>
+					<xs:element ref="cm:birthDate" minOccurs="0"/>
+					<xs:element ref="cm:residencePlace" minOccurs="0"/>
+					<xs:element ref="cm:postalAddress" minOccurs="0"/>
+					<xs:element ref="cm:snils" minOccurs="0"/>
+					<xs:element ref="cm:phoneNumber" minOccurs="0"/>
+					<xs:element ref="cm:workPhoneNumber" minOccurs="0"/>
+					<xs:element ref="cm:identityDocument" minOccurs="0"/>
+                    <xs:choice minOccurs="0">
+                        <xs:element ref="cm:powerOfAttorney"/>
+                        <xs:element ref="cm:powerOfAttorneyLegal"/>
+                    </xs:choice>
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="DeadPersonUnknown">
+		<xs:annotation>
+			<xs:documentation>Сведения о неизвестном умершем
+				Сведения о человеке (№ - услуга, * - роль в услуге):
+				1) Смерть:
+				* умерший неизвестный.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:restriction base="ac:FullPerson">
+				<xs:sequence minOccurs="1">
+					<xs:element ref="cm:birthDate" minOccurs="0"/>
+					<xs:element ref="cm:deathDate"/>
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="DeadPerson">
+		<xs:annotation>
+			<xs:documentation>Сведения о человеке (№ - услуга, * - роль в услуге):
+				1) Смерть:
+				* умерший известный.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:restriction base="ac:FullPerson">
+				<xs:sequence minOccurs="1">
+					<xs:element ref="cm:surname"/>
+					<xs:element ref="cm:firstName" minOccurs="0"/>
+					<xs:element ref="cm:patronymic" minOccurs="0"/>
+					<xs:element ref="cm:gender"/>
+					<xs:element ref="cm:birthDate"/>
+					<xs:element ref="cm:birthPlace" minOccurs="0"/>
+					<xs:element ref="cm:citizenship" minOccurs="0"/>
+					<xs:element ref="cm:citizenshipString" minOccurs="0"/>
+					<xs:element ref="cm:nationality" minOccurs="0"/>
+					<xs:element ref="cm:nationalityString" minOccurs="0"/>
+					<xs:element ref="cm:residencePlace" minOccurs="0"/>
+                    <xs:element ref="cm:snils" minOccurs="0"/>
+					<xs:element ref="cm:deathDate"/>
+					<xs:element ref="cm:deathPlace"/>
+					<xs:element ref="cm:identityDocument" minOccurs="0"/>
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Child">
+		<xs:annotation>
+			<xs:documentation>Сведения о ребёнке (№ - услуга, * - роль в услуге):
+				1) Рождение:
+				* ребенок для устуги в типах 1,2,3,4,5;
+				2) Установление отцовства:
+				* ребенок для услуги в типах 1,2,3;
+				3) Усыновление:
+				* ребенок.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:restriction base="ac:FullPerson">
+				<xs:sequence minOccurs="1">
+                    <xs:element ref="cm:isPrivateOfficeOwner" minOccurs="0"/>
+					<xs:element ref="cm:isApplicant" minOccurs="0"/>
+					<xs:element ref="cm:surname"/>
+					<xs:element ref="cm:firstName" minOccurs="0"/>
+					<xs:element ref="cm:patronymic" minOccurs="0"/>
+					<xs:element ref="cm:gender" minOccurs="0"/>
+					<xs:element ref="cm:birthDate"/>
+					<xs:element ref="cm:birthPlace"/>
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ApplicantOrganization">
+		<xs:annotation>
+			<xs:documentation>Сведения о Юридическом лице</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="cm:organizationName"/>
+			<xs:element ref="cm:legalAddress"/>
+			<xs:element ref="cm:position"/>
+			<xs:element ref="cm:postalAddress" minOccurs="0"/>
+			<xs:element ref="ac:juridicalAuthorisedRepresentative"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RegistrarEmployee">
+		<xs:annotation>
+			<xs:documentation>Сведения о сотруднике органа ЗАГС</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="ac:employee"/>
+			<xs:element ref="cm:position"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ListOfRegistrarEmployees">
+		<xs:annotation>
+			<xs:documentation>Список сотрудников органа ЗАГС</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element name="item" type="ac:RegistrarEmployee" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Registrar">
+		<xs:annotation>
+			<xs:documentation>Сведения о месте государственной регистрации</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="cm:registrarId" minOccurs="0"/>
+			<xs:element ref="ac:foreignId"/>
+			<xs:element ref="cm:fullName"/>
+			<xs:element ref="cm:shortName" minOccurs="0"/>
+			<xs:element ref="cm:legalAddress" minOccurs="0"/>
+			<xs:element ref="ac:employees" minOccurs="0"/>
+			<xs:element ref="ac:headOfZAGS" minOccurs="0"/>
+			<xs:element ref="cm:oktmo" />
+			<xs:element ref="cm:dateBegin"/>
+			<xs:element ref="cm:dateClose" minOccurs="0"/>
+			<xs:element name="registrarArchUID" type="cm:registrarUID" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Место хранения актовых аписей после закрытия ЗАГСа</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="cm:serviceTypes" minOccurs="0"/>
+            <xs:element ref="cm:version"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="foreignId" type="cm:RegistrarIdentity">
+		<xs:annotation>
+			<xs:documentation>Идентификационные данные места государственной регистрации. Внешний ключ</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="MissingPersonAssetsManager">
+		<xs:annotation>
+			<xs:documentation>Лицо управляющее имущество безвестно пропавшего</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:restriction base="ac:FullPerson">
+				<xs:sequence minOccurs="1">
+					<xs:element ref="cm:surname" minOccurs="0"/>
+					<xs:element ref="cm:firstName" minOccurs="0"/>
+					<xs:element ref="cm:patronymic" minOccurs="0"/>
+					<xs:element ref="cm:postalAddress" minOccurs="0"/>
+					<!-- Надо сделать списковыми сущностями с обязательностью заполнения хотя бы одного -->
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="headOfZAGS" type="ac:RegistrarEmployee">
+		<xs:annotation>
+			<xs:documentation>Руководитель органа ЗАГС, удостоверяющий своей подписью сведения</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="specialist" type="ac:RegistrarEmployee">
+		<xs:annotation>
+			<xs:documentation>Сотрудник органа ЗАГС, зарегистрировавший акт</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="employee" type="ac:Employee"/>
+	<xs:element name="juridicalAuthorisedRepresentative" type="ac:JuridicalAuthorisedRepresentative"/>
+	<xs:element name="applicantOrganization" type="ac:ApplicantOrganization"/>
+	<xs:element name="employees" type="ac:ListOfRegistrarEmployees">
+		<xs:annotation>
+			<xs:documentation>Список сотрудников</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+</xs:schema>

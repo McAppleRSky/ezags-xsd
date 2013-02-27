@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2011 rel. 2 (http://www.altova.com) by TeaM DJiNN (TeaM DJiNN) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:exdoc="http://ezags.rt.ru/type/externaldocuments/" xmlns:cm="http://ezags.rt.ru/type/common/" xmlns:ac="http://ezags.rt.ru/type/actor/" targetNamespace="http://ezags.rt.ru/type/externaldocuments/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://ezags.rt.ru/type/common/" schemaLocation="common.xsd"/>
+	<xs:import namespace="http://ezags.rt.ru/type/actor/" schemaLocation="actor.xsd"/>
+	<!-- Medical documents Start -->
+	<xs:complexType name="MedicalCertificateBase" abstract="true">
+		<xs:annotation>
+			<xs:documentation>Документ установленной формы</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="cm:documentNumber" minOccurs="0"/>
+			<xs:element ref="cm:documentSeries" minOccurs="0"/>
+			<xs:element ref="cm:documentDate" minOccurs="0"/>
+			<xs:element ref="cm:documentTypeName" minOccurs="0"/>
+			<xs:element ref="cm:organizationName" minOccurs="0"/>
+			<xs:element ref="cm:organizationAddress" minOccurs="0"/>
+			<xs:element ref="cm:okpo" minOccurs="0"/>
+			<xs:element ref="cm:surname" minOccurs="0"/>
+			<xs:element ref="cm:firstName" minOccurs="0"/>
+			<xs:element ref="cm:patronymic" minOccurs="0"/>
+            <xs:element ref="cm:fio" minOccurs="0"/>
+			<xs:element ref="cm:postalAddress" minOccurs="0"/>
+			<xs:element ref="cm:licenseNumber" minOccurs="0"/>
+			<xs:element ref="cm:duplicate" minOccurs="0"/>
+			<xs:element ref="cm:verificationStatus" minOccurs="0"/>
+			<xs:element ref="cm:medCertOfDeathType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MedicalCertificateByOrganization">
+		<xs:annotation>
+			<xs:documentation>Документ установленной формы о рождении, выданный медицинской организацией
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:restriction base="exdoc:MedicalCertificateBase">
+				<xs:sequence minOccurs="1">
+					<xs:element ref="cm:documentNumber"/>
+					<xs:element ref="cm:documentSeries"/>
+					<xs:element ref="cm:documentDate"/>
+					<xs:element ref="cm:organizationName" minOccurs="0"/>
+					<xs:element ref="cm:organizationAddress" minOccurs="0"/>
+					<xs:element ref="cm:okpo" minOccurs="0"/>
+					<xs:element ref="cm:duplicate" minOccurs="0"/>
+					<xs:element ref="cm:verificationStatus" minOccurs="0"/>
+					<xs:element ref="cm:medCertOfDeathType" minOccurs="0"/>
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="MedicalCertificateOfSurrogateMotherAgree">
+		<xs:annotation>
+			<xs:documentation>Документ, подтверждающий согласие суррогатной матери на запись супругов родителями ребенка
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:restriction base="exdoc:MedicalCertificateBase">
+				<xs:sequence minOccurs="1">
+					<xs:element ref="cm:documentNumber" minOccurs="0"/>
+					<xs:element ref="cm:documentSeries" minOccurs="0"/>
+					<xs:element ref="cm:documentDate" minOccurs="0"/>
+					<xs:element ref="cm:documentTypeName" minOccurs="0"/>
+					<xs:element ref="cm:organizationName" minOccurs="0"/>
+					<xs:element ref="cm:organizationAddress" minOccurs="0"/>
+                    <xs:element ref="cm:verificationStatus" minOccurs="0"/>
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="MedicalCertificateByPrivatePractitioner">
+		<xs:annotation>
+			<xs:documentation>Документ установленной формы о рождении, выданный частнопрактикующим врачем
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:restriction base="exdoc:MedicalCertificateBase">
+				<xs:sequence minOccurs="1">
+					<xs:element ref="cm:documentNumber"/>
+					<xs:element ref="cm:documentSeries"/>
+					<xs:element ref="cm:documentDate"/>
+					<xs:element ref="cm:fio"/>
+					<xs:element ref="cm:postalAddress" minOccurs="0"/>
+					<xs:element ref="cm:licenseNumber" minOccurs="0"/>
+					<xs:element ref="cm:duplicate" minOccurs="0"/>
+					<xs:element ref="cm:verificationStatus" minOccurs="0"/>
+					<xs:element ref="cm:medCertOfDeathType" minOccurs="0"/>
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="MedicalCertificateOfDeathByOrganization">
+		<xs:annotation>
+			<xs:documentation>Документ установленной формы о смерти, выданный мед. организацией</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:restriction base="exdoc:MedicalCertificateByOrganization">
+				<xs:sequence minOccurs="1">
+					<xs:element ref="cm:documentNumber"/>
+					<xs:element ref="cm:documentSeries"/>
+					<xs:element ref="cm:documentDate"/>
+					<xs:element ref="cm:organizationName" minOccurs="0"/>
+					<xs:element ref="cm:organizationAddress" minOccurs="0"/>
+					<xs:element ref="cm:okpo" minOccurs="0"/>
+					<xs:element ref="cm:duplicate" minOccurs="0"/>
+					<xs:element ref="cm:verificationStatus" minOccurs="0"/>
+					<xs:element ref="cm:medCertOfDeathType" minOccurs="0"/>
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="MedicalCertificateOfDeathByPrivatePractitioner">
+		<xs:annotation>
+			<xs:documentation>Документ установленной формы о смерти, выданный частнопрактикующим врачем
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:restriction base="exdoc:MedicalCertificateByPrivatePractitioner">
+				<xs:sequence minOccurs="1">
+					<xs:element ref="cm:documentNumber"/>
+					<xs:element ref="cm:documentSeries"/>
+					<xs:element ref="cm:documentDate"/>
+                    <xs:element ref="cm:fio"/>
+					<xs:element ref="cm:postalAddress" minOccurs="0"/>
+					<xs:element ref="cm:licenseNumber" minOccurs="0"/>
+					<xs:element ref="cm:duplicate" minOccurs="0"/>
+					<xs:element ref="cm:verificationStatus" minOccurs="0"/>
+					<xs:element ref="cm:medCertOfDeathType" minOccurs="0"/>
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="MedicalCertificateOfBirthByOrganization">
+		<xs:annotation>
+			<xs:documentation>Документ установленной формы о смерти, выданный мед. организацией</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:restriction base="exdoc:MedicalCertificateByOrganization">
+				<xs:sequence minOccurs="1">
+					<xs:element ref="cm:documentNumber"/>
+					<xs:element ref="cm:documentSeries"/>
+					<xs:element ref="cm:documentDate"/>
+					<xs:element ref="cm:organizationName" minOccurs="0"/>
+					<xs:element ref="cm:organizationAddress" minOccurs="0"/>
+					<xs:element ref="cm:okpo" minOccurs="0"/>
+					<xs:element ref="cm:duplicate" minOccurs="0"/>
+					<xs:element ref="cm:verificationStatus" minOccurs="0"/>
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="MedicalCertificateOfBirthByPrivatePractitioner">
+		<xs:annotation>
+			<xs:documentation>Документ установленной формы о смерти, выданный частнопрактикующим врачем
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:restriction base="exdoc:MedicalCertificateByPrivatePractitioner">
+				<xs:sequence minOccurs="1">
+					<xs:element ref="cm:documentNumber"/>
+					<xs:element ref="cm:documentSeries"/>
+					<xs:element ref="cm:documentDate"/>
+                    <xs:element ref="cm:fio"/>
+					<xs:element ref="cm:postalAddress" minOccurs="0"/>
+					<xs:element ref="cm:licenseNumber" minOccurs="0"/>
+					<xs:element ref="cm:duplicate" minOccurs="0"/>
+					<xs:element ref="cm:verificationStatus" minOccurs="0"/>
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<!-- Medical documents End -->
+    <xs:complexType name="RequisitesPaperDocumentSimple">
+   		<xs:sequence minOccurs="1">
+   			<xs:element ref="cm:documentNumber"/>
+   			<xs:element ref="cm:documentDate"/>
+   			<xs:element ref="cm:documentSeries" minOccurs="0"/>
+   			<xs:element ref="cm:organizationName"/>
+   			<xs:element ref="cm:organizationAddress" minOccurs="0"/>
+   		</xs:sequence>
+   	</xs:complexType>
+	<xs:complexType name="RequisitesPaperDocument">
+        <xs:complexContent>
+            <xs:restriction base="exdoc:RequisitesPaperDocumentSimple">
+                <xs:sequence minOccurs="1">
+                    <xs:element ref="cm:documentNumber"/>
+                    <xs:element ref="cm:documentDate"/>
+                    <xs:element ref="cm:documentSeries" minOccurs="0"/>
+                    <xs:element ref="cm:organizationName"/>
+                    <xs:element ref="cm:organizationAddress"/>
+                </xs:sequence>
+            </xs:restriction>
+        </xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="CourtAct" abstract="true">
+		<xs:annotation>
+			<xs:documentation>Базовый класс для реквизитов судебного акта</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="cm:courtName"/>
+			<xs:element ref="cm:documentNumber" minOccurs="0"/>
+			<xs:element ref="cm:documentDate" minOccurs="0"/>
+			<xs:element ref="cm:verificationStatus" minOccurs="0"/>
+			<xs:element ref="cm:courtPlace" minOccurs="0"/>
+			<xs:element ref="cm:courtActMeaningType" minOccurs="0"/>
+			<xs:element ref="cm:period" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CourtActVerdict">
+		<xs:annotation>
+			<xs:documentation>Реквизиты приговора суда</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:restriction base="exdoc:CourtAct">
+				<xs:sequence minOccurs="1">
+					<xs:element ref="cm:courtName"/>
+					<xs:element ref="cm:documentNumber" minOccurs="0"/>
+					<xs:element ref="cm:documentDate" minOccurs="0"/>
+					<xs:element ref="cm:verificationStatus" minOccurs="0"/>
+					<xs:element ref="cm:courtPlace" minOccurs="0"/>
+					<xs:element ref="cm:period"/>
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="CourtActDecision">
+		<xs:annotation>
+			<xs:documentation>Реквизиты решения суда</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:restriction base="exdoc:CourtAct">
+				<xs:sequence minOccurs="1">
+					<xs:element ref="cm:courtName"/>
+					<xs:element ref="cm:documentNumber" minOccurs="0"/>
+					<xs:element ref="cm:documentDate" minOccurs="0"/>
+					<xs:element ref="cm:verificationStatus" minOccurs="0"/>
+					<xs:element ref="cm:courtPlace" minOccurs="0"/>
+					<xs:element ref="cm:courtActMeaningType"/>
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="RequisitesReferenceFromOVD">
+		<xs:annotation>
+			<xs:documentation>Реквизиты справки ОВД в заявлении отца об установлении отцовства</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="cm:organizationName"/>
+			<xs:element ref="cm:documentDate"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RequisitesStatementOfPersonAttentedAtBirth">
+		<xs:annotation>
+			<xs:documentation>Сведения о заявлении лица, присутствовавшего во время родов, в записи акта о рождении
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="cm:statementDate" minOccurs="0"/>
+			<xs:element name="personAttentedAtBirth" type="ac:ApplicantPerson"/>
+			<xs:element ref="cm:organizationName" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Наименование организации, удостоверившей подпись заявителя</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="cm:organizationAddress" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Адрес организации, удостоверяющей подпись лица, присутствовавшего при родах
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="cm:authDate" minOccurs="0"/>
+			<xs:element ref="cm:proceedMethod" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="medicalCertificateOfBirthByOrganization" type="exdoc:MedicalCertificateOfBirthByOrganization"/>
+	<xs:element name="medicalCertificateOfBirthByPrivatePractitioner" type="exdoc:MedicalCertificateOfBirthByPrivatePractitioner"/>
+	<xs:element name="medicalCertificateOfSurrogateMotherAgree" type="exdoc:MedicalCertificateOfSurrogateMotherAgree"/>
+	<xs:element name="medicalCertificateOfPerinatalDeathByOrganization" type="exdoc:MedicalCertificateOfDeathByOrganization">
+		<xs:annotation>
+			<xs:documentation>Документ о перинатальной смерти, выданный мед. организацией</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="medicalCertificateOfPerinatalDeathByPrivatePractitioner" type="exdoc:MedicalCertificateOfDeathByPrivatePractitioner">
+		<xs:annotation>
+			<xs:documentation>Документ о перинатальной смерти, выданный частнопрактикующим врачем</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="medicalCertificateOfDeathByOrganization" type="exdoc:MedicalCertificateOfDeathByOrganization">
+		<xs:annotation>
+			<xs:documentation>Документ установленной формы о смерти, выданный мед. организацией</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="medicalCertificateOfDeathByPrivatePractitioner" type="exdoc:MedicalCertificateOfDeathByPrivatePractitioner">
+		<xs:annotation>
+			<xs:documentation>Документ установленной формы о смерти, выданный частнопрактикующим врачом</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="courtDecisionOfDeath" type="exdoc:CourtActDecision">
+		<xs:annotation>
+			<xs:documentation>Решение суда  (при регистрации смерти)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="courtDecisionOfBirth" type="exdoc:CourtActDecision"/>
+	<xs:element name="courtDecisionOfDivorce" type="exdoc:CourtActDecision">
+		<xs:annotation>
+			<xs:documentation>Решение суда (при регистрации расторжения брака)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="courtVerdictOfDivorce" type="exdoc:CourtActVerdict">
+		<xs:annotation>
+			<xs:documentation>Приговор суда (при регистрации расторжения брака)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="requisitesCourtDecisionActRecordRecovered" type="exdoc:CourtActDecision">
+		<xs:annotation>
+			<xs:documentation>Сведения о восстановлени записи акта</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="requisitesCourtDecisionActRecordCancel" type="exdoc:CourtActDecision">
+		<xs:annotation>
+			<xs:documentation>Сведения об аннулировании записи акта</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="documentDeathUnjustlyRepressed" type="exdoc:RequisitesPaperDocumentSimple">
+		<xs:annotation>
+			<xs:documentation>Документ о факте смерти необоснованно репрессированного лица</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="documentAboutFindingChild" type="exdoc:RequisitesPaperDocument">
+		<xs:annotation>
+			<xs:documentation>Документ об обнаружении ребенка</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="documentAboutRefusalChild" type="exdoc:RequisitesPaperDocument">
+		<xs:annotation>
+			<xs:documentation>Документ об остановлении ребенка в родильном доме (отделении) или ином лечебно-профилактическом учреждении</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="documentProofChildGenderAndAge" type="exdoc:RequisitesPaperDocument">
+		<xs:annotation>
+			<xs:documentation>Документ, подтверждающий пол и возраст ребенка </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="requisitesStatementOfPersonAttentedAtBirth" type="exdoc:RequisitesStatementOfPersonAttentedAtBirth"/>
+	<xs:element name="documentConfirmingBenefitForHer" type="exdoc:RequisitesPaperDocument">
+		<xs:annotation>
+			<xs:documentation>Удостоверение льготника установленного образца для НЕЕ</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="documentConfirmingBenefitForHim" type="exdoc:RequisitesPaperDocument">
+		<xs:annotation>
+			<xs:documentation>Удостоверение льготника установленного образца для НЕГО</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+</xs:schema>

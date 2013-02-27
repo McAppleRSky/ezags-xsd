@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions 
+	name="ReservationServiceService"
+	xmlns="http://schemas.xmlsoap.org/wsdl/" 
+	targetNamespace="http://ezags.rt.ru/fzags/ReservationService/"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+	xmlns:tns="http://ezags.rt.ru/fzags/ReservationService/" 
+	xmlns:t="http://smev.gosuslugi.ru/rev120315"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<types>
+		<xsd:schema>
+			<xsd:import namespace="http://smev.gosuslugi.ru/rev120315" schemaLocation="ReservationService.xsd"/>
+		</xsd:schema>
+	</types>
+	<message name="getFreeDaysOfReceipt">
+		<part name="parameters" element="t:getFreeDaysOfReceiptRequest"/>
+	</message>
+	<message name="getFreeDaysOfReceiptResponse">
+		<part name="parameters" element="t:getFreeDaysOfReceiptResponse"/>
+	</message>
+	<message name="getFreeTimesOfReceipt">
+		<part name="parameters" element="t:getFreeTimesOfReceiptRequest"/>
+	</message>
+	<message name="getFreeTimesOfReceiptResponse">
+		<part name="parameters" element="t:getFreeTimesOfReceiptResponse"/>
+	</message>
+	<message name="requestFault">
+		<part name="parameters" element="t:fault"/>
+	</message>
+	<message name="sendTimeOfReceiptRequest">
+		<part name="parameters" element="t:sendTimeOfReceiptRequest"/>
+	</message>
+	<message name="sendTimeOfReceiptResponse">
+		<part name="parameters" element="t:voidResponse"/>
+	</message>
+	<portType name="ReservationService">
+		<operation name="getFreeDaysOfReceipt">
+			<input message="tns:getFreeDaysOfReceipt"/>
+			<output message="tns:getFreeDaysOfReceiptResponse"/>
+			<fault name="requestFault" message="tns:requestFault"/>
+		</operation>
+		<operation name="getFreeTimesOfReceipt">
+			<input message="tns:getFreeTimesOfReceipt"/>
+			<output message="tns:getFreeTimesOfReceiptResponse"/>
+			<fault name="requestFault" message="tns:requestFault"/>
+		</operation>
+		<operation name="sendTimeOfReceipt">
+			<input message="tns:sendTimeOfReceiptRequest"/>
+			<output message="tns:sendTimeOfReceiptResponse"/>
+			<fault name="requestFault" message="tns:requestFault"/>
+		</operation>
+	</portType>
+	<binding name="ReservationServiceImplPortBinding" type="tns:ReservationService">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="getFreeDaysOfReceipt">
+			<soap:operation soapAction=""/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="requestFault">
+				<soap:fault name="requestFault" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="getFreeTimesOfReceipt">
+			<soap:operation soapAction=""/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="requestFault">
+				<soap:fault name="requestFault" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="sendTimeOfReceipt">
+			<soap:operation soapAction=""/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="requestFault">
+				<soap:fault name="requestFault" use="literal"/>
+			</fault>
+		</operation>
+	</binding>
+	<service name="ReservationService">
+		<port name="ReservationServiceImplPort" binding="tns:ReservationServiceImplPortBinding">
+			<soap:address location="http://localhost:8001/ReservationServiceImpl/ReservationService"/>
+		</port>
+	</service>
+</definitions>

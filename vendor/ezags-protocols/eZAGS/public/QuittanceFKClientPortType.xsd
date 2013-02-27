@@ -1,0 +1,562 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema  targetNamespace="http://ipsh.gosuslugi.ru/sisp/Quittance/"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+  xmlns:qt="http://ipsh.gosuslugi.ru/sisp/quittance_types"
+  xmlns:fk="http://ipsh.gosuslugi.ru/sisp/quittance/fk/"
+  xmlns:q="http://ipsh.gosuslugi.ru/sisp/Quittance/" 
+  elementFormDefault="unqualified" >
+  
+  <xsd:import schemaLocation="fk_types.xsd" namespace="http://ipsh.gosuslugi.ru/sisp/quittance/fk/"></xsd:import>
+  <xsd:import schemaLocation="quittance_types.xsd" namespace="http://ipsh.gosuslugi.ru/sisp/quittance_types"></xsd:import>
+
+  <!-- getBill -->
+  <xsd:complexType name="GetBillSyncRequestType" >
+    <xsd:complexContent>
+      <xsd:extension base="qt:SyncRequestType">
+        <xsd:sequence minOccurs="1">
+          <xsd:element name="params" type="fk:FKExportRequestParamsType">
+            <xsd:annotation>
+              <xsd:documentation>Параметры для получения данных из ФК
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="GetBillSyncResponseType" >
+    <xsd:complexContent>
+      <xsd:extension base="qt:SyncResponseType">
+        <xsd:sequence minOccurs="1">
+          <xsd:element name="bills" type="fk:BillsType" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>Начисления, наденные в ФК
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <xsd:complexType name="GetBillAsyncInitRequestType">
+    <xsd:complexContent>
+      <xsd:extension base="qt:AsyncInitRequestType">
+        <xsd:sequence minOccurs="1">
+          <xsd:element name="params" type="fk:FKExportRequestParamsType">
+            <xsd:annotation>
+              <xsd:documentation>Параметры для получения данных из ФК
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="GetBillAsyncInitResponseType" >
+    <xsd:complexContent>
+      <xsd:extension base="qt:AsyncInitResponseType">
+        <xsd:sequence minOccurs="1">
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="GetBillAsyncResultRequestType">
+    <xsd:complexContent>
+      <xsd:extension base="qt:AsyncResultRequestType">
+        <xsd:sequence minOccurs="1">
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="GetBillAsyncResultResponseType" >
+    <xsd:complexContent>
+      <xsd:extension base="qt:AsyncResultResponseType">
+        <xsd:sequence minOccurs="1">
+          <xsd:element name="bills" type="fk:BillsType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Начисления, наденные в ФК
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <!-- loadBill -->
+  <xsd:complexType name="LoadBillSyncRequestType" >
+    <xsd:complexContent>
+      <xsd:extension base="qt:SyncRequestType">
+        <xsd:sequence minOccurs="1">
+          <xsd:element name="bill" type="fk:BillType">
+            <xsd:annotation>
+              <xsd:documentation>Данные о начислении для загрузки в ФК
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="LoadBillSyncResponseType" >
+    <xsd:complexContent>
+      <xsd:extension base="qt:SyncResponseType">
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <xsd:complexType name="LoadBillAsyncInitRequestType">
+    <xsd:complexContent>
+      <xsd:extension base="qt:AsyncInitRequestType">
+        <xsd:sequence minOccurs="1">
+          <xsd:element name="bill" type="fk:BillType">
+            <xsd:annotation>
+              <xsd:documentation>Данные о начислении для загрузки в ФК
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="LoadBillAsyncInitResponseType" >
+    <xsd:complexContent>
+      <xsd:extension base="qt:AsyncInitResponseType">
+        <xsd:sequence minOccurs="1">
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="LoadBillAsyncResultRequestType">
+    <xsd:complexContent>
+      <xsd:extension base="qt:AsyncResultRequestType">
+        <xsd:sequence minOccurs="1">
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="LoadBillAsyncResultResponseType" >
+    <xsd:complexContent>
+      <xsd:extension base="qt:AsyncResultResponseType">
+        <xsd:sequence minOccurs="1">
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <!-- getPayment -->
+  <xsd:complexType name="GetPaymentSyncRequestType" >
+    <xsd:complexContent>
+      <xsd:extension base="qt:SyncRequestType">
+        <xsd:sequence minOccurs="1">
+          <xsd:element name="params" type="fk:FKExportRequestParamsType">
+            <xsd:annotation>
+              <xsd:documentation>Параметры для получения данных из ФК
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="GetPaymentSyncResponseType" >
+    <xsd:complexContent>
+      <xsd:extension base="qt:SyncResponseType">
+        <xsd:sequence minOccurs="1">
+          <xsd:element name="payments" type="fk:PaymentsType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Найденные по параметрам запроса платежи
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <xsd:complexType name="GetPaymentAsyncInitRequestType">
+    <xsd:complexContent>
+      <xsd:extension base="qt:AsyncInitRequestType">
+        <xsd:sequence minOccurs="1">
+          <xsd:element name="params" type="fk:FKExportRequestParamsType">
+            <xsd:annotation>
+              <xsd:documentation>Параметры для получения данных из ФК
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="GetPaymentAsyncInitResponseType" >
+    <xsd:complexContent>
+      <xsd:extension base="qt:AsyncInitResponseType">
+        <xsd:sequence minOccurs="1">
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="GetPaymentAsyncResultRequestType">
+    <xsd:complexContent>
+      <xsd:extension base="qt:AsyncResultRequestType">
+        <xsd:sequence minOccurs="1">
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="GetPaymentAsyncResultResponseType" >
+    <xsd:complexContent>
+      <xsd:extension base="qt:AsyncResultResponseType">
+        <xsd:sequence minOccurs="1">
+          <xsd:element name="payments" type="fk:PaymentsType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Найденные по параметрам запроса платежи
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <!-- loadPayment -->
+  <xsd:complexType name="LoadPaymentSyncRequestType" >
+    <xsd:complexContent>
+      <xsd:extension base="qt:SyncRequestType">
+        <xsd:sequence minOccurs="1">
+          <xsd:element name="payment" type="fk:PaymentType">
+            <xsd:annotation>
+              <xsd:documentation>Информация по платежу
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="LoadPaymentSyncResponseType" >
+    <xsd:complexContent>
+      <xsd:extension base="qt:SyncResponseType">
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <xsd:complexType name="LoadPaymentAsyncInitRequestType">
+    <xsd:complexContent>
+      <xsd:extension base="qt:AsyncInitRequestType">
+        <xsd:sequence minOccurs="1">
+          <xsd:element name="payment" type="fk:PaymentType">
+            <xsd:annotation>
+              <xsd:documentation>Информация по платежу
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="LoadPaymentAsyncInitResponseType" >
+    <xsd:complexContent>
+      <xsd:extension base="qt:AsyncInitResponseType">
+        <xsd:sequence minOccurs="1">
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="LoadPaymentAsyncResultRequestType">
+    <xsd:complexContent>
+      <xsd:extension base="qt:AsyncResultRequestType">
+        <xsd:sequence minOccurs="1">
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="LoadPaymentAsyncResultResponseType" >
+    <xsd:complexContent>
+      <xsd:extension base="qt:AsyncResultResponseType">
+        <xsd:sequence minOccurs="1">
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <!-- getIncome -->
+  <xsd:complexType name="GetIncomeSyncRequestType" >
+    <xsd:complexContent>
+      <xsd:extension base="qt:SyncRequestType">
+        <xsd:sequence minOccurs="1">
+          <xsd:element name="params" type="fk:FKExportRequestParamsType">
+            <xsd:annotation>
+              <xsd:documentation>Параметры для получения данных из ФК
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="GetIncomeSyncResponseType" >
+    <xsd:complexContent>
+      <xsd:extension base="qt:SyncResponseType">
+        <xsd:sequence minOccurs="1">
+          <xsd:element name="incomes" type="fk:IncomesType" minOccurs="0">
+            <xsd:annotation>  
+              <xsd:documentation>Найденные зачисления
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <xsd:complexType name="GetIncomeAsyncInitRequestType">
+    <xsd:complexContent>
+      <xsd:extension base="qt:AsyncInitRequestType">
+        <xsd:sequence minOccurs="1">
+          <xsd:element name="params" type="fk:FKExportRequestParamsType">
+            <xsd:annotation>
+              <xsd:documentation>Параметры для получения данных из ФК
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="GetIncomeAsyncInitResponseType" >
+    <xsd:complexContent>
+      <xsd:extension base="qt:AsyncInitResponseType">
+        <xsd:sequence minOccurs="1">
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="GetIncomeAsyncResultRequestType">
+    <xsd:complexContent>
+      <xsd:extension base="qt:AsyncResultRequestType">
+        <xsd:sequence minOccurs="1">
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="GetIncomeAsyncResultResponseType" >
+    <xsd:complexContent>
+      <xsd:extension base="qt:AsyncResultResponseType">
+        <xsd:sequence minOccurs="1">
+          <xsd:element name="incomes" type="fk:IncomesType" minOccurs="0">
+            <xsd:annotation>  
+              <xsd:documentation>Найденные зачисления
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <!-- loadIncome -->
+  <xsd:complexType name="LoadIncomeSyncRequestType" >
+    <xsd:complexContent>
+      <xsd:extension base="qt:SyncRequestType">
+        <xsd:sequence minOccurs="1">
+          <xsd:element name="income" type="fk:IncomeInfoType">
+            <xsd:annotation>
+              <xsd:documentation>Зачисление для передачи в ФК
+              </xsd:documentation>
+            </xsd:annotation>          
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="LoadIncomeSyncResponseType" >
+    <xsd:complexContent>
+      <xsd:extension base="qt:SyncResponseType">
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <xsd:complexType name="LoadIncomeAsyncInitRequestType">
+    <xsd:complexContent>
+      <xsd:extension base="qt:AsyncInitRequestType">
+        <xsd:sequence minOccurs="1">
+          <xsd:element name="income" type="fk:IncomeInfoType">
+            <xsd:annotation>
+              <xsd:documentation>Зачисление для передачи в ФК
+              </xsd:documentation>
+            </xsd:annotation>          
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="LoadIncomeAsyncInitResponseType" >
+    <xsd:complexContent>
+      <xsd:extension base="qt:AsyncInitResponseType">
+        <xsd:sequence minOccurs="1">
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="LoadIncomeAsyncResultRequestType">
+    <xsd:complexContent>
+      <xsd:extension base="qt:AsyncResultRequestType">
+        <xsd:sequence minOccurs="1">
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="LoadIncomeAsyncResultResponseType" >
+    <xsd:complexContent>
+      <xsd:extension base="qt:AsyncResultResponseType">
+        <xsd:sequence minOccurs="1">
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <!-- getQuittance -->
+  <xsd:complexType name="GetQuittanceSyncRequestType" >
+    <xsd:complexContent>
+      <xsd:extension base="qt:SyncRequestType">
+        <xsd:sequence minOccurs="1">
+          <xsd:element name="params" type="fk:FKExportRequestParamsType">
+            <xsd:annotation>
+              <xsd:documentation>Параметры для получения данных из ФК
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="GetQuittanceSyncResponseType" >
+    <xsd:complexContent>
+      <xsd:extension base="qt:SyncResponseType">
+        <xsd:sequence minOccurs="1">
+          <xsd:element name="quittances" type="fk:QuittancesType">
+            <xsd:annotation>
+              <xsd:documentation>Квитанции, найденные по запросу
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <xsd:complexType name="GetQuittanceAsyncInitRequestType">
+    <xsd:complexContent>
+      <xsd:extension base="qt:AsyncInitRequestType">
+        <xsd:sequence minOccurs="1">
+          <xsd:element name="params" type="fk:FKExportRequestParamsType">
+            <xsd:annotation>
+              <xsd:documentation>Параметры для получения данных из ФК
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="GetQuittanceAsyncInitResponseType" >
+    <xsd:complexContent>
+      <xsd:extension base="qt:AsyncInitResponseType">
+        <xsd:sequence minOccurs="1">
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="GetQuittanceAsyncResultRequestType">
+    <xsd:complexContent>
+      <xsd:extension base="qt:AsyncResultRequestType">
+        <xsd:sequence minOccurs="1">
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="GetQuittanceAsyncResultResponseType" >
+    <xsd:complexContent>
+      <xsd:extension base="qt:AsyncResultResponseType">
+        <xsd:sequence minOccurs="1">
+          <xsd:element name="quittances" type="fk:QuittancesType">
+            <xsd:annotation>
+              <xsd:documentation>Квитанции, найденные по запросу
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <!-- getBill -->
+  <xsd:element name="getBillSyncRequest" type="q:GetBillSyncRequestType" />
+  <xsd:element name="getBillSyncResponse" type="q:GetBillSyncResponseType" />
+
+  <xsd:element name="getBillAsyncInitRequest" type="q:GetBillAsyncInitRequestType"/>
+  <xsd:element name="getBillAsyncInitResponse" type="q:GetBillAsyncInitResponseType" />
+  <xsd:element name="getBillAsyncResultRequest" type="q:GetBillAsyncResultRequestType"/>
+  <xsd:element name="getBillAsyncResultResponse" type="q:GetBillAsyncResultResponseType" />
+
+  <!-- loadBill -->
+  <xsd:element name="loadBillSyncRequest" type="q:LoadBillSyncRequestType" />
+  <xsd:element name="loadBillSyncResponse" type="q:LoadBillSyncResponseType" />
+
+  <xsd:element name="loadBillAsyncInitRequest" type="q:LoadBillAsyncInitRequestType"/>
+  <xsd:element name="loadBillAsyncInitResponse" type="q:LoadBillAsyncInitResponseType" />
+  <xsd:element name="loadBillAsyncResultRequest" type="q:LoadBillAsyncResultRequestType"/>
+  <xsd:element name="loadBillAsyncResultResponse" type="q:LoadBillAsyncResultResponseType" />
+
+  <!-- getPayment -->
+  <xsd:element name="getPaymentSyncRequest" type="q:GetPaymentSyncRequestType" />
+  <xsd:element name="getPaymentSyncResponse" type="q:GetPaymentSyncResponseType" />
+
+  <xsd:element name="getPaymentAsyncInitRequest" type="q:GetPaymentAsyncInitRequestType"/>
+  <xsd:element name="getPaymentAsyncInitResponse" type="q:GetPaymentAsyncInitResponseType" />
+  <xsd:element name="getPaymentAsyncResultRequest" type="q:GetPaymentAsyncResultRequestType"/>
+  <xsd:element name="getPaymentAsyncResultResponse" type="q:GetPaymentAsyncResultResponseType" />
+
+  <!-- loadPayment -->
+  <xsd:element name="loadPaymentSyncRequest" type="q:LoadPaymentSyncRequestType" />
+  <xsd:element name="loadPaymentSyncResponse" type="q:LoadPaymentSyncResponseType" />
+
+  <xsd:element name="loadPaymentAsyncInitRequest" type="q:LoadPaymentAsyncInitRequestType"/>
+  <xsd:element name="loadPaymentAsyncInitResponse" type="q:LoadPaymentAsyncInitResponseType" />
+  <xsd:element name="loadPaymentAsyncResultRequest" type="q:LoadPaymentAsyncResultRequestType"/>
+  <xsd:element name="loadPaymentAsyncResultResponse" type="q:LoadPaymentAsyncResultResponseType" />
+
+  <!-- getIncome -->
+  <xsd:element name="getIncomeSyncRequest" type="q:GetIncomeSyncRequestType" />
+  <xsd:element name="getIncomeSyncResponse" type="q:GetIncomeSyncResponseType" />
+
+  <xsd:element name="getIncomeAsyncInitRequest" type="q:GetIncomeAsyncInitRequestType"/>
+  <xsd:element name="getIncomeAsyncInitResponse" type="q:GetIncomeAsyncInitResponseType" />
+  <xsd:element name="getIncomeAsyncResultRequest" type="q:GetIncomeAsyncResultRequestType"/>
+  <xsd:element name="getIncomeAsyncResultResponse" type="q:GetIncomeAsyncResultResponseType" />
+
+  <!-- loadIncome -->
+  <xsd:element name="loadIncomeSyncRequest" type="q:LoadIncomeSyncRequestType" />
+  <xsd:element name="loadIncomeSyncResponse" type="q:LoadIncomeSyncResponseType" />
+
+  <xsd:element name="loadIncomeAsyncInitRequest" type="q:LoadIncomeAsyncInitRequestType"/>
+  <xsd:element name="loadIncomeAsyncInitResponse" type="q:LoadIncomeAsyncInitResponseType" />
+  <xsd:element name="loadIncomeAsyncResultRequest" type="q:LoadIncomeAsyncResultRequestType"/>
+  <xsd:element name="loadIncomeAsyncResultResponse" type="q:LoadIncomeAsyncResultResponseType" />
+
+  <!-- getQuittance -->
+  <xsd:element name="getQuittanceSyncRequest" type="q:GetQuittanceSyncRequestType" />
+  <xsd:element name="getQuittanceSyncResponse" type="q:GetQuittanceSyncResponseType" />
+
+  <xsd:element name="getQuittanceAsyncInitRequest" type="q:GetQuittanceAsyncInitRequestType"/>
+  <xsd:element name="getQuittanceAsyncInitResponse" type="q:GetQuittanceAsyncInitResponseType" />
+  <xsd:element name="getQuittanceAsyncResultRequest" type="q:GetQuittanceAsyncResultRequestType"/>
+  <xsd:element name="getQuittanceAsyncResultResponse" type="q:GetQuittanceAsyncResultResponseType" />
+
+  <!-- asyncNotify -->
+  <xsd:element name="asyncNotifyRequest" type="qt:AsyncNotifyRequestType" />
+  <xsd:element name="asyncNotifyResponse" type="qt:AsyncNotifyResponseType" />
+  
+</xsd:schema>

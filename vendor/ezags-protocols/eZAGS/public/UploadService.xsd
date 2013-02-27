@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:smev="http://smev.gosuslugi.ru/rev120315"
+           xmlns:ns2="http://ezags.rt.ru/fzags/UploadService/type/local/"
+           xmlns:cm="http://ezags.rt.ru/type/common/"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+           targetNamespace="http://smev.gosuslugi.ru/rev120315"
+		   elementFormDefault="qualified">
+    <xs:import namespace="http://ezags.rt.ru/fzags/UploadService/type/local/" schemaLocation="../LocalUploadService.xsd"/>
+    <xs:import namespace="http://ezags.rt.ru/type/document/" schemaLocation="../../documents.xsd"/>
+    <xs:import namespace="http://ezags.rt.ru/type/externaldocuments/" schemaLocation="../../externaldocuments.xsd"/>
+    <xs:import namespace="http://ezags.rt.ru/type/actor/" schemaLocation="../../actor.xsd"/>
+    <xs:import namespace="http://ezags.rt.ru/type/common/" schemaLocation="../../common.xsd"/>
+	<xs:include schemaLocation="../../smev/smev.gosuslugi.ru.rev120315.xsd"/>
+    <xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="../../xmldsig-core-schema.xsd"/>
+    <xs:element name="fault" type="smev:FaultBase"/>
+    <xs:element name="voidResponse" type="smev:VoidResponse"/>
+	<xs:element name="uploadBirthActsRequest" type="smev:UploadBirthActsRequest"/>
+	<xs:element name="uploadBirthActsResponse" type="smev:UploadBirthActsResponse"/>
+	<xs:element name="uploadDeathActsRequest" type="smev:UploadDeathActsRequest"/>
+	<xs:element name="uploadDeathActsResponse" type="smev:UploadDeathActsResponse"/>
+	<xs:element name="uploadMarriageActsRequest" type="smev:UploadMarriageActsRequest"/>
+	<xs:element name="uploadMarriageActsResponse" type="smev:UploadMarriageActsResponse"/>
+	<xs:element name="uploadAdoptionActsRequest" type="smev:UploadAdoptionActsRequest"/>
+	<xs:element name="uploadAdoptionActsResponse" type="smev:UploadAdoptionActsResponse"/>
+	<xs:element name="uploadDivorceActsRequest" type="smev:UploadDivorceActsRequest"/>
+	<xs:element name="uploadDivorceActsResponse" type="smev:UploadDivorceActsResponse"/>
+	<xs:element name="uploadFiliationActsRequest" type="smev:UploadFiliationActsRequest"/>
+	<xs:element name="uploadFiliationActsResponse" type="smev:UploadFiliationActsResponse"/>
+	<xs:element name="uploadNameChangeActsRequest" type="smev:UploadNameChangeActsRequest"/>
+	<xs:element name="uploadNameChangeActsResponse" type="smev:UploadNameChangeActsResponse"/>
+	<xs:element name="uploadRegistrarsRequest" type="smev:UploadRegistrarsRequest"/>
+	<xs:element name="uploadRegistrarsResponse" type="smev:UploadRegistrarsResponse"/>
+	<xs:element name="uploadCertificatesRequest" type="smev:UploadCertificatesRequest"/>
+	<xs:element name="uploadCertificatesResponse" type="smev:UploadCertificatesResponse"/>
+	<xs:complexType name="UploadAdoptionActsRequest">
+		<xs:annotation>
+			<xs:documentation>Первоначальная загрузка записей акта об усыновлении</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:uploadAdoptionActsObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UploadAdoptionActsResponse">
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:uploadAdoptionActsResponseObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UploadBirthActsRequest">
+		<xs:annotation>
+			<xs:documentation>Первоначальная загрузка записей акта о рождении</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:uploadBirthActsObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UploadBirthActsResponse">
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:uploadBirthActsResponseObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UploadDeathActsRequest">
+		<xs:annotation>
+			<xs:documentation>Первоначальная загрузка записей акта о смерти</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:uploadDeathActsObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UploadDeathActsResponse">
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:uploadDeathActsResponseObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UploadDivorceActsRequest">
+		<xs:annotation>
+			<xs:documentation>Первоначальная загрузка записей акта о расторжении брака</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:uploadDivorceActsObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UploadDivorceActsResponse">
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:uploadDivorceActsResponseObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UploadFiliationActsRequest">
+		<xs:annotation>
+			<xs:documentation>Первоначальная загрузка записей акта об установлении отцовства</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:uploadFiliationActsObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UploadFiliationActsResponse">
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:uploadFiliationActsResponseObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UploadMarriageActsRequest">
+		<xs:annotation>
+			<xs:documentation>Первоначальная загрузка записей акта о заключении брака</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:uploadMarriageActsObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UploadMarriageActsResponse">
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:uploadMarriageActsResponseObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UploadNameChangeActsRequest">
+		<xs:annotation>
+			<xs:documentation>Первоначальная загрузка записей акта о перемене имени</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:uploadNameChangeActsObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UploadNameChangeActsResponse">
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:uploadNameChangeActsResponseObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UploadRegistrarsRequest">
+		<xs:annotation>
+			<xs:documentation>Первоначальная загрузка сведений об органах ЗАГС</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:uploadRegistrarsObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UploadRegistrarsResponse">
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:uploadRegistrarsResponseObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UploadCertificatesRequest">
+		<xs:annotation>
+			<xs:documentation>Обновление или добавление записи свидетельства о рождении</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:uploadCertificatesObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UploadCertificatesResponse">
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:uploadCertificatesResponseObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+    <xs:complexType name="FaultBase">
+   		<xs:sequence minOccurs="1">
+   			<xs:element ref="smev:Message"/>
+   			<xs:element name="MessageData">
+   				<xs:complexType>
+   					<xs:sequence minOccurs="1">
+   						<xs:element name="AppData">
+   							<xs:complexType>
+   								<xs:sequence minOccurs="1">
+   									<xs:element ref="cm:faultBaseObj"/>
+   									<xs:element ref="ds:Signature" minOccurs="0"/>
+   								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+   							</xs:complexType>
+   						</xs:element>
+   						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+   					</xs:sequence>
+   				</xs:complexType>
+   			</xs:element>
+   		</xs:sequence>
+   	</xs:complexType>
+    <xs:complexType name="VoidResponse">
+   		<xs:sequence minOccurs="1">
+   			<xs:element ref="smev:Message"/>
+   			<xs:element name="MessageData">
+   				<xs:complexType>
+   					<xs:sequence minOccurs="1">
+   						<xs:element name="AppData">
+   							<xs:complexType>
+   								<xs:sequence minOccurs="1">
+   									<xs:element ref="cm:voidResponseObj"/>
+   									<xs:element ref="ds:Signature" minOccurs="0"/>
+   								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+   							</xs:complexType>
+   						</xs:element>
+   						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+   					</xs:sequence>
+   				</xs:complexType>
+   			</xs:element>
+   		</xs:sequence>
+   	</xs:complexType>
+</xs:schema>

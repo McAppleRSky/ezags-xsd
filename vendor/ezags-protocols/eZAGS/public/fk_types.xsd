@@ -1,0 +1,908 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://ipsh.gosuslugi.ru/sisp/quittance/fk/"
+  xmlns:fk="http://ipsh.gosuslugi.ru/sisp/quittance/fk/" xmlns:qt="http://ipsh.gosuslugi.ru/sisp/quittance_types"
+  elementFormDefault="unqualified">
+  <xsd:annotation>
+    <xsd:documentation>Общие типы для операций взаимодействия с ФК
+    </xsd:documentation>
+  </xsd:annotation>
+  <xsd:import namespace="http://ipsh.gosuslugi.ru/sisp/quittance_types" schemaLocation="quittance_types.xsd">
+    <xsd:annotation>
+      <xsd:documentation>Общие типы данных
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:import>
+
+  <xsd:complexType name="FKExportRequestParamsType">
+    <xsd:annotation>
+      <xsd:documentation>Тип, определяющий входные параметры для операций получения данных из ФК
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:choice>
+      <xsd:element name="bills" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Идентификаторов начислений, по которым выполняется поиск</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+          <xsd:sequence minOccurs="1">
+            <xsd:element name="billId" type="fk:BillIdType" maxOccurs="unbounded" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="payers" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Список УИП, по которым запрашиваются начисления</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+          <xsd:sequence minOccurs="1">
+            <xsd:element name="payerId" type="xsd:string" maxOccurs="unbounded" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="applications" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Список заявок, по которым запрашиваются начисления</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+          <xsd:sequence minOccurs="1">
+            <xsd:element name="applicationId" type="xsd:string" maxOccurs="unbounded" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:choice>
+  </xsd:complexType>
+
+  <xsd:complexType name="DocumentType">
+    <xsd:annotation>
+      <xsd:documentation>Тип, определяющий вид документа и его параметры для генерации идентификатора начисления.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence minOccurs="1">
+      <xsd:element name="documentCode" type="qt:CodeType">
+        <xsd:annotation>
+          <xsd:documentation>Код документа для которого необходимо сгенерировать идентификатор начисления
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="params" type="qt:MapType">
+        <xsd:annotation>
+          <xsd:documentation>Параметры, специфичные для данного вида документа и используемые для вычисления
+            идентификатора начисления.
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="BillIdType">
+    <xsd:annotation>
+      <xsd:documentation>Тип, идентифицирующий начисление по номеру документа или идентификатору в ФК
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence minOccurs="1">
+      <xsd:element name="doc" type="fk:DocumentType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Идентификатор документа по его типу и параметрам
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="id" type="qt:String20Type" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Идентификатор документа в ФК
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="BillCommonType">
+    <xsd:annotation>
+      <xsd:documentation>Начисления</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence minOccurs="1">
+      <xsd:element name="billId" type="fk:BillIdType">
+        <xsd:annotation>
+          <xsd:documentation>Идентификатор начисления
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="billDate" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation>Дата выставления счёта</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="validUntil" type="xsd:date" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Дата, вплоть до которой актуален выставленный счёт</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="supplierOrgInfo" type="fk:OrganizationType">
+        <xsd:annotation>
+          <xsd:documentation>Данные поставщика, указанные в счёте</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="description" type="qt:String255Type" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Наименование начисления (За что выставлен счёт)</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="totalAmount" type="xsd:long">
+        <xsd:annotation>
+          <xsd:documentation>Полная сумма начисления (счёта) в копейках</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="url" type="xsd:anyURI" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>URL печатной формы счёта</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="additionalData" type="qt:MapType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Дополнительные данные счёта</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:simpleType name="ChangeStatusType">
+    <xsd:annotation>
+      <xsd:documentation>Статус счёта
+        1 - новый
+        2 - изменение
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:length value="1" />
+      <xsd:enumeration value="1" />
+      <xsd:enumeration value="2" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:complexType name="BillType">
+    <xsd:annotation>
+      <xsd:documentation>Начисления ведомств</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="fk:BillCommonType">
+        <xsd:sequence minOccurs="1">
+          <xsd:element name="changeStatus" type="fk:ChangeStatusType">
+            <xsd:annotation>
+              <xsd:documentation>Статус счёта
+                1 - новый
+                2 - изменение
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="fkBranch" type="qt:String255Type">
+            <xsd:annotation>
+              <xsd:documentation>Орган ФК, на счёт которого должны поступать средства плательщика</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="kbk" type="qt:String20Type">
+            <xsd:annotation>
+              <xsd:documentation>КБК, указанный в начислении</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="okato" type="qt:String11Type">
+            <xsd:annotation>
+              <xsd:documentation>Код ОКАТО, указанный в начислении</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="payRequsites" type="fk:PayRequsitesType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Реквизиты п/п на оплату гос. услуги</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="applicationId" type="qt:String20Type" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Уникальный идентификатор заявки</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="unifiedPayerId" type="qt:String25Type" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>единый идентификатор плательщика </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="altPayerId" type="qt:String25Type" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>альтернативный идентификатор плательщика </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <xsd:complexType name="BillsType">
+    <xsd:annotation>
+      <xsd:documentation>Массив начислений
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence minOccurs="1">
+      <xsd:element name="bill" type="fk:BillType" minOccurs="0" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>Отдельное начисление
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="OrganizationType">
+    <xsd:annotation>
+      <xsd:documentation>Данные об организации</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence minOccurs="1">
+      <xsd:element name="name" type="qt:String2000Type">
+        <xsd:annotation>
+          <xsd:documentation>Наименование поставщика либо его подразделения</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="inn" type="qt:String10Type">
+        <xsd:annotation>
+          <xsd:documentation>ИНН</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="kpp" type="qt:String9Type">
+        <xsd:annotation>
+          <xsd:documentation>КПП</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="ogrn" minOccurs="0" type="qt:String100Type">
+        <xsd:annotation>
+          <xsd:documentation>ОГРН</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="account" type="fk:AccountType" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>расчётные счета организации</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="addresses" type="fk:AddressesType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Адреса организации</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="contacts" type="fk:ContactsType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Контакты организации</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:simpleType name="AccountKindType">
+    <xsd:annotation>
+      <xsd:documentation>Тип счёта
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="1">
+        <xsd:annotation>
+          <xsd:documentation>расчётный счёт
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="2">
+        <xsd:annotation>
+          <xsd:documentation>текущий счёт
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="3">
+        <xsd:annotation>
+          <xsd:documentation>корреспондентский счёт</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:complexType name="AccountType">
+    <xsd:annotation>
+      <xsd:documentation>Описание счёта организации / банка</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence minOccurs="1">
+      <xsd:element name="account" type="qt:AccountNumType">
+        <xsd:annotation>
+          <xsd:documentation>Номер счёта</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="subAccount" type="qt:AccountNumType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Субсчет поставщика либо его подразделения</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="bank" type="fk:BankType">
+        <xsd:annotation>
+          <xsd:documentation>Данные Банка, в котором открыт счёт</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute default="1" name="kind" type="fk:AccountKindType">
+      <xsd:annotation>
+        <xsd:documentation>Тип счёта.
+          1 - расчётный
+          2 - текущий
+          3 - корреспондентский
+        </xsd:documentation>
+      </xsd:annotation>
+    </xsd:attribute>
+  </xsd:complexType>
+
+  <xsd:complexType name="BankType">
+    <xsd:annotation>
+      <xsd:documentation>Данные банка, в котором открыты счета организаций </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence minOccurs="1">
+      <xsd:element minOccurs="0" name="name" type="qt:String100Type">
+        <xsd:annotation>
+          <xsd:documentation>Наименование Банка, в котором открыт счёт</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="corrAccount" type="qt:AccountNumType">
+        <xsd:annotation>
+          <xsd:documentation>Корреспондентский счёт Банка в ЦБ (РКЦ)</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:choice>
+        <xsd:element name="bic" type="qt:String9Type">
+          <xsd:annotation>
+            <xsd:documentation>БИК Банка, в котором открыт счёт</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="swift" type="qt:String12Type">
+          <xsd:annotation>
+            <xsd:documentation>SWIFT -код Банка, в котором открыт счёт</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:choice>
+      <xsd:element minOccurs="0" name="address" type="fk:AddressType" />
+      <xsd:element name="contacts" type="fk:ContactsType" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:simpleType name="AddressKindType">
+    <xsd:annotation>
+      <xsd:documentation>Вид адреса
+        1 - юридический
+        2 - фактический
+        3 - почтовый
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="1">
+        <xsd:annotation>
+          <xsd:documentation>юридический адрес</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="2">
+        <xsd:annotation>
+          <xsd:documentation>фактический адрес</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="3">
+        <xsd:annotation>
+          <xsd:documentation>почтовый адрес</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+
+  <xsd:simpleType name="AddressElementKindType">
+    <xsd:annotation>
+      <xsd:documentation>Почтовый Адрес.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Zip" />
+      <xsd:enumeration value="Country" />
+      <xsd:enumeration value="Region" />
+      <xsd:enumeration value="State" />
+      <xsd:enumeration value="Town" />
+      <xsd:enumeration value="City" />
+      <xsd:enumeration value="Street" />
+      <xsd:enumeration value="House" />
+      <xsd:enumeration value="Building" />
+      <xsd:enumeration value="Flat" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:complexType name="AddressElementType">
+    <xsd:sequence minOccurs="1">
+      <xsd:element name="type" type="fk:AddressElementKindType">
+        <xsd:annotation>
+          <xsd:documentation>Возможные значения: Почтовый индекс, Страна, Регион, Район, Населенный пункт, Город, Улица,
+            Дом, Корпус, Квартира
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="value" type="qt:String255Type">
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+
+  <xsd:complexType name="AddressesType">
+    <xsd:annotation>
+      <xsd:documentation>Массив
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence minOccurs="1">
+      <xsd:element name="address" type="fk:AddressType" minOccurs="0" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>Отдельный элемент адреса
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="AddressType">
+    <xsd:annotation>
+      <xsd:documentation>Служит для представления адреса контрагента или любого другого участника бизнес-процесса
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence minOccurs="1">
+      <xsd:element name="view" type="qt:String255Type">
+        <xsd:annotation>
+          <xsd:documentation>Строковое представление адреса.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="comment" type="qt:String2000Type" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Произвольный комментарий. </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="addressField" type="fk:AddressElementType" minOccurs="0" maxOccurs="10">
+        <xsd:annotation>
+          <xsd:documentation>Структурированный адрес и затем, например, контрагента или любого другого участника
+            бизнес-процесса
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name="kind" type="fk:AddressKindType">
+      <xsd:annotation>
+        <xsd:documentation>Вид адреса
+          1 - юридический
+          2 - фактический
+          3 - почтовый
+        </xsd:documentation>
+      </xsd:annotation>
+    </xsd:attribute>
+  </xsd:complexType>
+
+  <xsd:simpleType name="ContactInfoKindType">
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="100" />
+      <xsd:enumeration value="Internal number" />
+      <xsd:enumeration value="Work phone" />
+      <xsd:enumeration value="Mobile phone" />
+      <xsd:enumeration value="Home phone" />
+      <xsd:enumeration value="Pager" />
+      <xsd:enumeration value="Fax" />
+      <xsd:enumeration value="Mail" />
+      <xsd:enumeration value="ICQ" />
+      <xsd:enumeration value="Web site" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:complexType name="ContactsType">
+    <xsd:annotation>
+      <xsd:documentation>Множество контактов ведомства</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence minOccurs="1">
+      <xsd:element name="contact" type="fk:ContactInfoType" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>Отдельный контакт</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="ContactInfoType">
+    <xsd:annotation>
+      <xsd:documentation>Содержит описание возможных способов связи</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence minOccurs="1">
+      <xsd:element name="kind" type="fk:ContactInfoKindType">
+        <xsd:annotation>
+          <xsd:documentation>Вид контакта</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="value" type="qt:String100Type">
+        <xsd:annotation>
+          <xsd:documentation>Значение</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="comment" type="qt:String2000Type">
+        <xsd:annotation>
+          <xsd:documentation>Комментарий</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <!-- Payment -->
+  <xsd:complexType name="PaymentCommonType">
+    <xsd:annotation>
+      <xsd:documentation>Базовый тип для платежа/зачисления</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence minOccurs="1">
+      <xsd:element name="paymentId" type="fk:PaymentIdType">
+        <xsd:annotation>
+          <xsd:documentation>Данные, необходимые для идентификации платежа</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="billId" type="fk:BillIdType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Уникальный идентификатор начисления</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="applicationID" type="qt:String20Type" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Уникальный идентификатор заявки</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="comment" type="qt:String255Type" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>назначение платежа</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="amount" type="xsd:long">
+        <xsd:annotation>
+          <xsd:documentation>Сумма оплаты по платежу/зачислению в копейках</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="paymentDate" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation>дата платежа/зачисления</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="payRequsites" type="fk:PayRequsitesType" minOccurs="0" />
+      <xsd:element name="PayerIdentifier" type="qt:String25Type" minOccurs="0">
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:simpleType name="PayRequsitesStatusType">
+    <xsd:annotation>
+      <xsd:documentation>Статус плательщика</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="2" />
+      <xsd:minLength value="1" />
+      <xsd:enumeration value="02" />
+      <xsd:enumeration value="08" />
+      <xsd:enumeration value="09" />
+      <xsd:enumeration value="10" />
+      <xsd:enumeration value="11" />
+      <xsd:enumeration value="12" />
+      <xsd:enumeration value="13" />
+      <xsd:enumeration value="14" />
+      <xsd:enumeration value="0" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+
+  <xsd:simpleType name="PayRequsitesTypeType">
+    <xsd:annotation>
+      <xsd:documentation>Тип платежа</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="2" />
+      <xsd:minLength value="1" />
+      <xsd:enumeration value="ПЕ" />
+      <xsd:enumeration value="ПЦ" />
+      <xsd:enumeration value="0" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="PayRequsitesPurposeType">
+    <xsd:annotation>
+      <xsd:documentation>Назначение платежа</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="2" />
+      <xsd:enumeration value="ТП" />
+      <xsd:enumeration value="ЗД" />
+      <xsd:enumeration value="ТР" />
+      <xsd:enumeration value="PC" />
+      <xsd:enumeration value="ОТ" />
+      <xsd:enumeration value="АП" />
+      <xsd:enumeration value="АР" />
+      <xsd:enumeration value="0" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:complexType name="PayRequsitesType">
+    <xsd:annotation>
+      <xsd:documentation>Реквизиты п/п на оплату гос. услуги</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence minOccurs="1">
+      <xsd:element name="status" type="fk:PayRequsitesStatusType" default="0">
+        <xsd:annotation>
+          <xsd:documentation>Статус плательщика (ФЛ)</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="paymentType" type="fk:PayRequsitesTypeType" default="0">
+        <xsd:annotation>
+          <xsd:documentation>Тип платежа</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="purpose" type="fk:PayRequsitesPurposeType" default="0">
+        <xsd:annotation>
+          <xsd:documentation>Основание платежа</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="taxPeriod" type="qt:String10Type" default="0">
+        <xsd:annotation>
+          <xsd:documentation>Налоговый период</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="taxDocNumber" type="qt:String20Type" default="0" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Показатель номера документа</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="taxDocDate" type="qt:String10Type" default="0" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Показатель даты документа</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="PaymentIdType">
+    <xsd:annotation>
+      <xsd:documentation>Данные для идентификации платежа</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence minOccurs="1">
+      <xsd:element name="bank" type="fk:BankType">
+        <xsd:annotation>
+          <xsd:documentation>БИК Банка плательщика</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="bankId" type="qt:String36Type">
+        <xsd:annotation>
+          <xsd:documentation>уникальный номер платежа в ИС Банка плательщика</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="PayeeRequisitesType">
+    <xsd:sequence minOccurs="1">
+      <xsd:element name="payeeInn" type="qt:String10Type" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>ИНН получателя</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="payeeKpp" type="qt:String9Type" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>КПП получателя</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="kbk" type="qt:String20Type" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Код КБК</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="okato" type="qt:String11Type" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Код ОКАТО</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="PaymentType">
+    <xsd:annotation>
+      <xsd:documentation>Информация по платежу</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="fk:PaymentCommonType">
+        <xsd:sequence minOccurs="1">
+          <xsd:element name="changeStatus" type="fk:ChangeStatusType">
+            <xsd:annotation>
+              <xsd:documentation>Статус платежа
+                1 - новый
+                2 - изменение
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="payeeRequisites" type="fk:PayeeRequisitesType">
+            <xsd:annotation>
+              <xsd:documentation>Реквизиты получателя
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <xsd:complexType name="PaymentsType">
+    <xsd:annotation>
+      <xsd:documentation>Массив платежей
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence minOccurs="1">
+      <xsd:element name="payment" type="fk:PaymentType" minOccurs="0" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>Отдельный платёж
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="IncomeInfoType">
+    <xsd:annotation>
+      <xsd:documentation>Информация по зачислению</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence minOccurs="1">
+      <xsd:element name="changeStatus" type="fk:ChangeStatusType">
+        <xsd:annotation>
+          <xsd:documentation>Статус зачисления
+            1 - новый
+            2 - изменение
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="consDocNumber" type="qt:String6Type">
+        <xsd:annotation>
+          <xsd:documentation>Порядковый номер электронного сообщения, содержащего сводное п/п</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="consDocDate" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation>дата электронного сообщения, содержащего сводное п/п</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="payeeRequisites" type="fk:PayeeRequisitesType">
+        <xsd:annotation>
+          <xsd:documentation>Реквизиты получателя
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="payments">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="1">
+            <xsd:element name="payment" type="fk:PaymentCommonType" maxOccurs="unbounded" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="IncomesType">
+    <xsd:annotation>
+      <xsd:documentation>Массив зачислений
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence minOccurs="1">
+      <xsd:element name="income" type="fk:IncomeInfoType" minOccurs="0" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>Отдельное зачисление
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+
+  <xsd:complexType name="QuittanceType">
+    <xsd:annotation>
+      <xsd:documentation>Квитанция</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence minOccurs="1">
+      <xsd:element name="billId" type="fk:BillIdType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Уникальный идентификатор счёта в ИСП. Не заполяется для несквитированных платежей и строк
+            зачислений</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="applicationId" type="qt:String20Type" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Уникальный идентификатор заявки</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="payeeRequisites" type="fk:PayeeRequisitesType">
+        <xsd:annotation>
+          <xsd:documentation>Реквизиты получателя
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="PayerIdentifier" type="qt:String25Type" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Уникальный идентификатор плательщика (единый или альтернативный)</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="balance" type="xsd:long" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Разница между суммой начисления и суммой сквитированных платежей/зачисление
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="creationDate" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation>Дата создания квитанции</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="billStatus" type="fk:BillQuitanceStatusType">
+        <xsd:annotation>
+          <xsd:documentation>Статус, присвоенный начислению при создании/изменении Квитанции
+            1 сквитировано
+            2 предварительно сквитировано
+            3 не сквитировано
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:choice>
+        <xsd:element name="incomeRowId" type="fk:FKPaymentIdType">
+          <xsd:annotation>
+            <xsd:documentation>Данные, необходимые для идентификации строки зачисления</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="paymentId" type="fk:FKPaymentIdType">
+          <xsd:annotation>
+            <xsd:documentation>Данные, необходимые для идентификации платежа</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:choice>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="QuittancesType">
+    <xsd:annotation>
+      <xsd:documentation>Массив квитанций
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence minOccurs="1">
+      <xsd:element name="quittance" type="fk:QuittanceType" minOccurs="0" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>Отдельная квитанция
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:simpleType name="BillQuitanceStatusType">
+    <xsd:annotation>
+      <xsd:documentation>Статус, присвоенный начислению при создании/изменении Квитанции
+        1 сквитировано
+        2 предварительно сквитировано
+        3 не сквитировано
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:length value="1" />
+      <xsd:enumeration value="1" />
+      <xsd:enumeration value="2" />
+      <xsd:enumeration value="3" />
+      <xsd:enumeration value="4" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:complexType name="FKPaymentIdType">
+    <xsd:annotation>
+      <xsd:documentation>Данные для идентификации платежа</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence minOccurs="1">
+      <xsd:element name="bank" type="fk:BankType">
+        <xsd:annotation>
+          <xsd:documentation>БИК Банка плательщика</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="systemId" type="qt:String36Type">
+        <xsd:annotation>
+          <xsd:documentation>уникальный номер платежа в ИС Банка плательщика</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+</xsd:schema>

@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schema
+    targetNamespace="http://smev.gosuslugi.ru/rev120315"
+    xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+    xmlns:trs="http://idecs.atc.ru/privateoffice/ws/common/UpdateTimeReservationStatus/xsd"
+    xmlns:smev="http://smev.gosuslugi.ru/rev120315">
+    <import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="../xmldsig-core-schema.xsd"/>
+    <import namespace="http://idecs.atc.ru/privateoffice/ws/common/UpdateTimeReservationStatus/xsd" schemaLocation="timeReservationStatus.xsd"/>
+    <include schemaLocation="../smev/smev.gosuslugi.ru.rev120315.xsd"/>
+    <complexType name="UpdateReservationStatusRequest">
+        <sequence>
+            <element ref="smev:Message"/>
+            <element name="MessageData" type="smev:UpdateReservationStatusRequestMessageDataType"/>
+        </sequence>
+    </complexType>
+    <complexType name="UpdateReservationStatusResponse">
+        <sequence>
+            <element ref="smev:Message"/>
+            <element name="MessageData" type="smev:UpdateReservationStatusResponseMessageDataType"/>
+        </sequence>
+    </complexType>
+
+
+    <complexType name="UpdateReservationStatusRequestMessageDataType">
+        <sequence>
+            <element name="AppData" type="smev:UpdateReservationStatusRequestAppDataType"/>
+            <element minOccurs="0" ref="smev:AppDocument"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="UpdateReservationStatusRequestAppDataType">
+        <complexContent>
+            <extension base="trs:UpdateReservationStatusRequestObj">
+                <sequence>
+                    <element ref="ds:Signature"/>
+                    <element minOccurs="1" ref="smev:error"/>
+                    <any maxOccurs="unbounded" minOccurs="0" namespace="##any" processContents="lax"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+
+    <complexType name="UpdateReservationStatusResponseMessageDataType">
+        <sequence>
+            <element name="AppData" type="smev:UpdateReservationStatusResponseAppDataType"/>
+            <element minOccurs="0" ref="smev:AppDocument"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="UpdateReservationStatusResponseAppDataType">
+        <sequence>
+            <element ref="ds:Signature"/>
+            <element minOccurs="1" ref="smev:error"/>
+            <any maxOccurs="unbounded" minOccurs="0" namespace="##any" processContents="lax"/>
+        </sequence>
+    </complexType>
+</schema>

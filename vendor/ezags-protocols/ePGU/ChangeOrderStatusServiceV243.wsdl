@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions name="ChangeOrderStatusServiceV243"
+    targetNamespace="http://idecs.atc.ru/privateoffice/ws/common/changeorderstatusV243/"
+    xmlns:smev="http://smev.gosuslugi.ru/rev111111"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:tns="http://idecs.atc.ru/privateoffice/ws/common/changeorderstatusV243/"
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:xsd1="http://idecs.atc.ru/privateoffice/ws/common/changeorderstatusV243/xsd/types">
+    <wsdl:types>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import
+                namespace="http://idecs.atc.ru/privateoffice/ws/common/changeorderstatusV243/xsd/types"
+                schemaLocation="change-order-status.xsd"/>
+            <xsd:import namespace="http://idecs.atc.ru/privateoffice/ws/changeorderinfo"
+                schemaLocation="order-info.xsd"/>
+            <xsd:import namespace="http://smev.gosuslugi.ru/rev111111"
+                schemaLocation="../smev/smev.gosuslugi.ru.rev111111.xsd"
+            />
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="changeOrderStatusV243Request">
+        <wsdl:part element="smev:Header" name="smevHeader"/>
+        <wsdl:part element="xsd1:ChangeOrderStatusV243Request" name="parameters"/>
+    </wsdl:message>
+    <wsdl:message name="changeOrderStatusV243Response">
+        <wsdl:part element="xsd1:ChangeOrderStatusV243Response" name="parameters"/>
+    </wsdl:message>
+    <wsdl:portType name="ChangeOrderStatusServiceV243">
+        <wsdl:operation name="changeOrderStatus">
+            <wsdl:input message="tns:changeOrderStatusV243Request"/>
+            <wsdl:output message="tns:changeOrderStatusV243Response"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="ChangeOrderStatusServiceV243Binding" type="tns:ChangeOrderStatusServiceV243">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="changeOrderStatus">
+            <soap:operation soapAction="changeOrderStatus" style="document"/>
+            <wsdl:input>
+                <soap:header message="tns:changeOrderStatusV243Request" part="smevHeader"
+                    use="literal" wsdl:required="false"/>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="changeOrderStatusServiceV243">
+        <wsdl:port binding="tns:ChangeOrderStatusServiceV243Binding"
+            name="ChangeOrderStatusServiceV243">
+            <soap:address
+                location="http://u00nlb03:80/privateoffice/common/ChangeOrderStatusServiceV243"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

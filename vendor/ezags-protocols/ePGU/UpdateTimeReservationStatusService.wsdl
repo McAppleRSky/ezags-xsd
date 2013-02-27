@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions name="UpdateTimeReservationStatusService"
+    targetNamespace="http://idecs.atc.ru/privateoffice/ws/common/UpdateTimeReservationStatus/"
+    xmlns:smev="http://smev.gosuslugi.ru/rev120315"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:tns="http://idecs.atc.ru/privateoffice/ws/common/UpdateTimeReservationStatus/"
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+    <wsdl:types>
+        <xsd:schema targetNamespace="http://idecs.atc.ru/privateoffice/ws/common/UpdateTimeReservationStatus/" xmlns:tns="http://idecs.atc.ru/privateoffice/ws/common/UpdateTimeReservationStatus/" xmlns:smev="http://smev.gosuslugi.ru/rev120315" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://smev.gosuslugi.ru/rev120315" schemaLocation="UpdateTimeReservationStatus.xsd"/>
+
+            <xsd:element name="updateReservationStatusRequest" type="smev:UpdateReservationStatusRequest"/>
+            <xsd:element name="updateReservationStatusResponse" type="smev:UpdateReservationStatusResponse"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="updateReservationStatusRequest">
+        <wsdl:part element="smev:Header" name="smevHeader"/>
+        <wsdl:part element="tns:updateReservationStatusRequest" name="parameters"/>
+    </wsdl:message>
+    <wsdl:message name="updateReservationStatusResponse">
+        <wsdl:part element="tns:updateReservationStatusResponse" name="parameters"/>
+    </wsdl:message>
+    <wsdl:portType name="UpdateTimeReservationStatusService">
+        <wsdl:operation name="updateTimeReservationStatus">
+            <wsdl:input message="tns:updateReservationStatusRequest"/>
+            <wsdl:output message="tns:updateReservationStatusResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="UpdateTimeReservationStatusServiceBinding" type="tns:UpdateTimeReservationStatusService">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="updateTimeReservationStatus">
+            <soap:operation soapAction="updateTimeReservationStatus" style="document"/>
+            <wsdl:input>
+                <soap:header message="tns:updateReservationStatusRequest" part="smevHeader"
+                    use="literal" wsdl:required="false"/>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="updateTimeReservationStatusService">
+        <wsdl:port binding="tns:UpdateTimeReservationStatusServiceBinding"
+            name="UpdateTimeReservationStatusService">
+            <soap:address
+                location="http://localhost:8001/privateoffice/common/UpdateTimeReservationStatusService"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

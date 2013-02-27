@@ -1,0 +1,31 @@
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" version="1.0"  xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://esnsi.gosuslugi.ru/oktmo" targetNamespace="http://esnsi.gosuslugi.ru/oktmo"> 
+  <xsd:element name="OKTMO">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="KOD" type="xsd:int"/>
+        <xsd:element name="KC" type="xsd:int"/>
+        <xsd:element name="NAME1" type="xsd:string"/>
+        <xsd:element name="NASPS">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="NASP" maxOccurs="unbounded">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="NAMEZK" type="xsd:string" minOccurs="0"/>
+                    <xsd:element name="INOKATO" type="xsd:string"  minOccurs="0"/>
+                    <xsd:element name="PRMAIN" type="xsd:int"/>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+        <xsd:element name="NOMKOMM" type="xsd:string" minOccurs="0"/>
+        <xsd:element name="NOMAKT" type="xsd:int"/>
+        <xsd:element name="STATUS" type="xsd:int"/>
+        <xsd:element name="DATA_UTV" type="xsd:string"/>
+        <xsd:element name="DATA_VVED" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

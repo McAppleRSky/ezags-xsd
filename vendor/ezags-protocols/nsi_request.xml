@@ -1,0 +1,117 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:rev="http://smev.gosuslugi.ru/rev111111" xmlns:rev1="http://nsi.gosuslugi.ru/rev111111" xmlns:xd="http://www.w3.org/2000/09/xmldsig#">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <rev:Request>
+         <rev:Message>
+            <rev:Sender>
+               <rev:Code>FMS001001</rev:Code>
+               <rev:Name>УФМС</rev:Name>
+            </rev:Sender>
+            <rev:Recipient>
+               <rev:Code>ZAGS01001</rev:Code>
+               <rev:Name>еЗАГС</rev:Name>
+            </rev:Recipient>
+            <rev:Originator>
+               <rev:Code>EPGU01001</rev:Code>
+               <rev:Name>ПГУ</rev:Name>
+            </rev:Originator>
+         <!--   <rev:ServiceName>1</rev:ServiceName>
+         -->   <rev:TypeCode>GSRV</rev:TypeCode>
+            <rev:Status>REQUEST</rev:Status>
+            <rev:Date>2012-04-03T00:00:00.000Z</rev:Date>
+            <rev:ExchangeType>1</rev:ExchangeType>
+            <rev:RequestIdRef>1</rev:RequestIdRef>
+            <rev:OriginRequestIdRef>7</rev:OriginRequestIdRef>
+         <!--   <rev:Ticket>?</rev:Ticket>
+         -->   <rev:ServiceCode>9</rev:ServiceCode>
+            <rev:CaseNumber>1234567</rev:CaseNumber>
+            <rev:TestMsg>1</rev:TestMsg>
+         </rev:Message>
+         <rev:MessageData>
+            <rev:AppData id="AppData">
+               <rev1:getLastUpdates>
+                  <rev1:componentCode>ЕЗАГС.ОРГЗАГС</rev1:componentCode>
+                  <rev1:lastSsn>0</rev1:lastSsn>
+                  <!--Optional:-->
+                  
+               </rev1:getLastUpdates>
+               <!--Optional:-->
+               <xd:Signature Id="name1">
+                  <xd:SignedInfo Id="name2">
+                     <xd:CanonicalizationMethod Algorithm="?">
+                        e
+                        <!--You may enter ANY elements at this point-->
+                        gero
+                     </xd:CanonicalizationMethod>
+                     <xd:SignatureMethod Algorithm="?">
+                        cum
+                        <!--Optional:-->
+                        <xd:HMACOutputLength>11</xd:HMACOutputLength>
+                        sonoras
+                        <!--You may enter ANY elements at this point-->
+                        aeoliam
+                     </xd:SignatureMethod>
+                     <!--1 or more repetitions:-->
+                     <xd:Reference Id="name3" URI="?" Type="?">
+                        <!--Optional:-->
+                        <xd:Transforms>
+                           <!--1 or more repetitions:-->
+                           <xd:Transform Algorithm="?">
+                              quae
+                              <!--You have a CHOICE of the next 2 items at this level-->
+                              <!--You may enter ANY elements at this point-->
+                              <xd:XPath>?</xd:XPath>
+                              ventos
+                           </xd:Transform>
+                        </xd:Transforms>
+                        <xd:DigestMethod Algorithm="?">
+                           verrantque
+                           <!--You may enter ANY elements at this point-->
+                           temperat
+                        </xd:DigestMethod>
+                        <xd:DigestValue>okgsuMYOHtF2p27Die/P9NHowzCYdD7PL4O8ThRHZFU=</xd:DigestValue>
+                     </xd:Reference>
+                  </xd:SignedInfo>
+                  <xd:SignatureValue Id="name4">okgsuMYOHtF2p27Die/P9NHowzCYdD7PL4O8ThRHZFU=</xd:SignatureValue>
+                  <!--Optional:-->
+                  <xd:KeyInfo Id="name5">
+                     per
+                     <!--You have a CHOICE of the next 8 items at this level-->
+                     <xd:KeyValue>
+                        turbine
+                        <!--You have a CHOICE of the next 3 items at this level-->
+                        <xd:DSAKeyValue>
+                           <xd:P>okgsuMYOHtF2p27Die/P9NHowzCYdD7PL4O8ThRHZFU=</xd:P>
+                           <xd:Q>okgsuMYOHtF2p27Die/P9NHowzCYdD7PL4O8ThRHZFU=</xd:Q>
+                           <!--Optional:-->
+                           <xd:G>okgsuMYOHtF2p27Die/P9NHowzCYdD7PL4O8ThRHZFU=</xd:G>
+                           <xd:Y>okgsuMYOHtF2p27Die/P9NHowzCYdD7PL4O8ThRHZFU=</xd:Y>
+                           <!--Optional:-->
+                           <xd:J>okgsuMYOHtF2p27Die/P9NHowzCYdD7PL4O8ThRHZFU=</xd:J>
+                           <xd:Seed>okgsuMYOHtF2p27Die/P9NHowzCYdD7PL4O8ThRHZFU=</xd:Seed>
+                           <xd:PgenCounter>okgsuMYOHtF2p27Die/P9NHowzCYdD7PL4O8ThRHZFU=</xd:PgenCounter>
+                        </xd:DSAKeyValue>
+                        <!--You may enter ANY elements at this point-->
+                        circum
+                     </xd:KeyValue>
+                     <!--You may enter ANY elements at this point-->
+                     fremunt
+                  </xd:KeyInfo>
+                  <!--Zero or more repetitions:-->
+                  <xd:Object Id="name6" MimeType="?" Encoding="?">
+                     foedere
+                     <!--You may enter ANY elements at this point-->
+                     ferant
+                  </xd:Object>
+               </xd:Signature>
+            </rev:AppData>
+            <!--Optional:-->
+            <rev:AppDocument>
+               <rev:RequestCode>?</rev:RequestCode>
+               <!--You have a CHOICE of the next 2 items at this level-->
+               <rev:BinaryData>okgsuMYOHtF2p27Die/P9NHowzCYdD7PL4O8ThRHZFU=</rev:BinaryData>
+            </rev:AppDocument>
+         </rev:MessageData>
+      </rev:Request>
+   </soapenv:Body>
+</soapenv:Envelope>

@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://ezags.rt.ru/fzags/OrderService/type/local/"
+    xmlns:cm="http://ezags.rt.ru/type/common/" xmlns:ac="http://ezags.rt.ru/type/actor/"
+    xmlns:doc="http://ezags.rt.ru/type/document/"
+    xmlns:exdoc="http://ezags.rt.ru/type/externaldocuments/"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://ezags.rt.ru/fzags/OrderService/type/local/"
+    elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <xs:import namespace="http://ezags.rt.ru/type/common/" schemaLocation="../common.xsd"/>
+    <xs:import namespace="http://ezags.rt.ru/type/document/" schemaLocation="../documents.xsd"/>
+    <xs:import namespace="http://ezags.rt.ru/type/externaldocuments/" schemaLocation="../externaldocuments.xsd"/>
+    <xs:import namespace="http://ezags.rt.ru/type/actor/" schemaLocation="../actor.xsd"/>
+    <xs:complexType name="GetRegistrarsRequestObj">
+        <xs:sequence minOccurs="1">
+            <xs:element ref="cm:regionCode" minOccurs="0"/>
+            <xs:element name="serviceType" type="xs:int" minOccurs="0"/>
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="subjectAddress" type="tns:SubjectAddress"/>
+            </xs:sequence>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="GetRegistrarsResponseObj">
+        <xs:sequence minOccurs="1">
+            <xs:element name="return" type="tns:ListOfRegistrars" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="GetFreeTimeRequestObj">
+        <xs:sequence minOccurs="1">
+            <xs:element ref="cm:registrarId"/>
+            <xs:element ref="cm:desiredRegistratonDate"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="GetFreeTimeResponseObj">
+        <xs:sequence minOccurs="1">
+            <xs:element name="return" type="tns:ListOfFreeDates"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="GetServiceStatusRequestObj">
+        <xs:sequence minOccurs="1">
+            <xs:element name="serviceIdentity" type="cm:ServiceIdentity"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="GetServiceStatusResponseObj">
+        <xs:sequence minOccurs="1">
+            <xs:element name="result" type="tns:ServiceStatus" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="SendServiceOfBirthRequestObj">
+        <xs:sequence minOccurs="1">
+            <xs:element name="statementOfBirth" type="tns:StatementOfBirth"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="StatementOfBirth">
+        <xs:annotation>
+            <xs:documentation>е-Заявление о рождении ребенка</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="1">
+            <xs:element ref="tns:statementRequisites"/>
+            <xs:element name="statementContent" type="doc:StatementContentOfBirth" minOccurs="0"/>
+            <xs:element name="participants" type="doc:ParticipantsForBirth"/>
+            <xs:element name="documentsConfirmingBirth" type="doc:DocumentsConfirmingBirth" minOccurs="0"/>
+            <xs:element name="documentsConfirmingParticipant" type="doc:DocumentsConfirmingFiliationForBirthStmt"/>
+            <xs:element name="otherApplicants" type="doc:OtherApplicants" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="SendServiceOfDeathRequestObj">
+        <xs:sequence minOccurs="1">
+            <xs:element name="statementOfDeath" type="tns:StatementOfDeath"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="StatementOfDeath">
+        <xs:annotation>
+            <xs:documentation>e-Заявление о смерти</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="1">
+            <xs:element ref="tns:statementRequisites"/>
+            <xs:element name="participants" type="doc:ParticipantsForDeath"/>
+            <xs:element name="statementContentOfDeath" type="doc:StatementContentOfDeath" minOccurs="0"/>
+            <xs:element name="documentsConfirmingDeath" type="doc:DocumentsConfirmingDeath" minOccurs="0"/>
+            <xs:element name="documentsConfirmingPerinatalDeath" type="doc:DocumentsConfirmingPerinatalDeath" minOccurs="0"/>
+            <xs:element name="otherApplicants" type="doc:OtherApplicants" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="SendServiceOfMarriageRequestObj">
+        <xs:sequence minOccurs="1">
+            <xs:element name="statementOfMarriage" type="tns:StatementOfMarriage"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="StatementOfMarriage">
+        <xs:annotation>
+            <xs:documentation>е-Заявление о заключении брака</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="1">
+            <xs:element ref="tns:statementRequisites">
+                <xs:annotation>
+                    <xs:documentation>Базовые реквизиты заявления</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="statementContent" type="doc:StatementContentOfMarriage">
+                <xs:annotation>
+                    <xs:documentation>Дополнительный контент в заявлении (любая доплнительная
+                        информация)
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="participants" type="doc:ParticipantsForMarriage">
+                <xs:annotation>
+                    <xs:documentation>Субъекты</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="documentsConfirmingGroom" type="doc:DocumentsConfirmingMarriage" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Документ, подтверждающий прекращение ЕГО предыдущего брака (развод или смерть
+                        супруги в предыдущем браке или прекращение брака по суду)
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="documentsConfirmingBride" type="doc:DocumentsConfirmingMarriage" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Документ, подтверждающий прекращение ЕЕ предыдущего брака (развод или смерть
+                        супруга в предыдущем браке или прекращение брака по суду)
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element ref="exdoc:documentConfirmingBenefitForHer" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Удостоверение льготника установленного образца для НЕГО</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element ref="exdoc:documentConfirmingBenefitForHim" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Удостоверение льготника установленного образца для НЕЕ</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="SendServiceOfDivorceRequestObj">
+        <xs:sequence minOccurs="1">
+            <xs:element name="statementOfDivorce" type="tns:StatementOfDivorce"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="StatementOfDivorce">
+        <xs:annotation>
+            <xs:documentation>е-Заявление о расторжении брака</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="1">
+            <xs:element ref="tns:statementRequisites">
+                <xs:annotation>
+                    <xs:documentation>Базовые реквизиты заявления</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="statementContent" type="doc:StatementContentOfDivorce">
+                <xs:annotation>
+                    <xs:documentation>Дополнительный контент в заявлении (любая доплнительная
+                        информация)
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="participants" type="doc:ParticipantsForDivorce">
+                <xs:annotation>
+                    <xs:documentation>Субъекты</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="documentsConfirmingMarriage" type="doc:ActRecAndCertMarriageRequisites">
+                <xs:annotation>
+                    <xs:documentation>Документ, подтверждающий заключение брака между супругами
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element ref="exdoc:courtVerdictOfDivorce" minOccurs="0"/>
+            <xs:element ref="exdoc:courtDecisionOfDivorce" minOccurs="0"/>
+            <xs:element ref="exdoc:documentConfirmingBenefitForHim" minOccurs="0"/>
+            <xs:element ref="exdoc:documentConfirmingBenefitForHer" minOccurs="0"/>
+            <xs:element name="otherApplicants" type="doc:OtherApplicantsForDivorce" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Сведения о прочих лицах, заявивших о необходимости расторжении
+                        брака (НИ ОН, НИ ОНА)
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="UpdateStatusRequestObj">
+        <xs:sequence minOccurs="1">
+            <xs:element name="newStatus" type="tns:ServiceStatus"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="UpdatePaymentStatusRequestObj">
+        <xs:sequence minOccurs="1">
+            <xs:choice>
+                <xs:element ref="cm:pguId"/>
+                <xs:element ref="cm:ezagsId"/>
+            </xs:choice>
+            <xs:element name="status" type="tns:Bill"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="UpdateTimeReservationStatusRequestObj">
+        <xs:sequence>
+            <xs:element ref="cm:pguId"/>
+            <xs:element ref="cm:registrarId"/>
+            <xs:element name="reservationStatus" type="cm:TIME_RESERVATION_STATUS">
+                <xs:annotation>
+                    <xs:documentation>Статусы процесса резервации времени посещения по услуге</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="timeslot" type="tns:TimeSlot">
+                <xs:annotation>
+                    <xs:documentation>Простое описание временного блока, который регистрируется для посещения в УЭО</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" ref="cm:comment">
+                <xs:annotation>
+                    <xs:documentation>Сообщение сотрудника рЗАГС о событии регистрации времени</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="UpdateTimeReservationStatusResponseObj">
+        <xs:sequence>
+            <xs:element ref="cm:pguId"/>
+            <xs:element name="resultStatus" type="cm:OPERATION_RESULT">
+                <xs:annotation>
+                    <xs:documentation>Результат процедуры смены статуса резервации времени приема</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" ref="cm:comment">
+                <xs:annotation>
+                    <xs:documentation>Комментарий к результату. Описание ошибки, в случае отрицательного ответа</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="StatementRequisites">
+        <xs:annotation>
+            <xs:documentation>Реквизиты заявлений в электронном виде</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="1">
+            <xs:element ref="cm:registrarId"/>
+            <xs:element ref="cm:pguId"/>
+            <xs:element ref="cm:ezagsId" minOccurs="0"/>
+            <xs:element ref="cm:statementDate"/>
+            <xs:element ref="tns:registrationNumberInRegistar" minOccurs="0"/>
+            <xs:element ref="cm:blank"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ListOfRegistrars">
+        <xs:sequence minOccurs="1">
+            <xs:element name="item" type="ac:Registrar" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ListOfFreeDates">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="item" type="xs:time"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ServiceStatus">
+        <xs:annotation>
+            <xs:documentation>Сообщение об изменении статуса обработки отправленного электронного
+                заявления
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="1">
+            <xs:element ref="cm:ezagsId"/>
+            <xs:element name="status" type="xs:int" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Статус обработки заявления (справочник
+                        ServiceStatus)
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="statusText" type="cm:NOT_EMPTY_STRING" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Текст статуса обработки заявления</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="statusDate" type="xs:date" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Дата изменения статуса заявления</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="resultActRecUIDs" type="cm:UID" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="resultDocumentUIDs" type="cm:UID" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Bill">
+        <xs:annotation>
+            <xs:documentation>Сообщение об изменении статуса обработки платежа</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="1">
+            <xs:element name="billId" type="cm:NOT_EMPTY_STRING">
+                <xs:annotation>
+                    <xs:documentation>uid начисления</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="status" type="cm:PAYMENT_STATUS" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Cтатус</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="totalAmount" type="xs:double">
+                <xs:annotation>
+                    <xs:documentation>сумма пошлины</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="amountToPay" type="xs:double">
+                <xs:annotation>
+                    <xs:documentation>сумма оставшейся оплаты</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="description" type="cm:NOT_EMPTY_STRING" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>описание пошлины</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="billDate" type="xs:date" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>дата создания начисления</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="validUntil" type="xs:date" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>дата актуальности начисления</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element ref="cm:okatoCode" minOccurs="0"/>
+            <xs:element name="kbk" type="cm:NOT_EMPTY_STRING" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>кбк</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="unifiedPayerId" type="cm:NOT_EMPTY_STRING">
+                <xs:annotation>
+                    <xs:documentation>uid платильщика по снилс</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="altPayerId" type="cm:NOT_EMPTY_STRING" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>uid платильщика по документу</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="revoked" type="xs:boolean" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>признак аннулированности</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TimeSlot">
+        <xs:annotation>
+            <xs:documentation>Простое описание временного блока, который регистрируется для посещения в УЭО</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="selectedDate" type="xs:date">
+                <xs:annotation>
+                    <xs:documentation>Выбранная дата</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="selectedTime" type="xs:time">
+                <xs:annotation>
+                    <xs:documentation>Выбранное время</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="SubjectAddress">
+        <xs:sequence minOccurs="1">
+            <xs:element name="address" type="cm:FullAddress"/>
+            <xs:element name="addressType" type="xs:int"/>
+            <!-- справочник AdressType -->
+            <xs:element name="subjectType" type="xs:int"/>
+            <!-- справочник SubjectRole -->
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="registrationNumberInRegistar" type="cm:NOT_EMPTY_STRING">
+        <xs:annotation>
+            <xs:documentation>Номер заявления, присвоенный в рЗАГС</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="previousActRecordId" type="cm:NOT_EMPTY_STRING">
+        <xs:annotation>
+            <xs:documentation>Id Асктовой записи до изменения</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="changedFields" type="cm:NOT_EMPTY_STRING">
+        <xs:annotation>
+            <xs:documentation>Список изменяемых полей</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="statementRequisites" type="tns:StatementRequisites"/>
+    <xs:element name="getRegistrarsRequestObj" type="tns:GetRegistrarsRequestObj"/>
+    <xs:element name="getRegistrarsResponseObj" type="tns:GetRegistrarsResponseObj"/>
+    <xs:element name="getFreeTimeRequestObj" type="tns:GetFreeTimeRequestObj"/>
+    <xs:element name="getFreeTimeResponseObj" type="tns:GetFreeTimeResponseObj"/>
+    <xs:element name="getServiceStatusRequestObj" type="tns:GetServiceStatusRequestObj"/>
+    <xs:element name="getServiceStatusResponseObj" type="tns:GetServiceStatusResponseObj"/>
+    <xs:element name="sendServiceOfBirthRequestObj" type="tns:SendServiceOfBirthRequestObj"/>
+    <xs:element name="sendServiceOfDeathRequestObj" type="tns:SendServiceOfDeathRequestObj"/>
+    <xs:element name="sendServiceOfMarriageRequestObj" type="tns:SendServiceOfMarriageRequestObj"/>
+    <xs:element name="sendServiceOfDivorceRequestObj" type="tns:SendServiceOfDivorceRequestObj"/>
+    <xs:element name="updateStatusRequestObj" type="tns:UpdateStatusRequestObj"/>
+    <xs:element name="updatePaymentStatusRequestObj" type="tns:UpdatePaymentStatusRequestObj"/>
+    <xs:element name="updateTimeReservationStatusRequestObj" type="tns:UpdateTimeReservationStatusRequestObj"/>
+
+    <xs:element name="updateTimeReservationStatusResponseObj" type="tns:UpdateTimeReservationStatusResponseObj"/>
+    <xs:element name="voidResponseObj" type="cm:VoidResponseObj"/>
+    <xs:element name="baseFaultObj" type="cm:FaultBaseObj"/>
+    <xs:simpleType name="reissuedDocType">
+        <xs:annotation>
+            <xs:documentation>Тип запрашиваемого повторного документа</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="cm:NOT_EMPTY_STRING">
+            <xs:enumeration value="undefined">
+                <xs:annotation>
+                    <xs:documentation>Значение не определено</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="certificate">
+                <xs:annotation>
+                    <xs:documentation>Свидетельство</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="reference">
+                <xs:annotation>
+                    <xs:documentation>Справка</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

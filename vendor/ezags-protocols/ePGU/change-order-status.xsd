@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schema
+    targetNamespace="http://idecs.atc.ru/privateoffice/ws/common/changeorderstatusV243/xsd/types"
+    xmlns="http://www.w3.org/2001/XMLSchema"
+    xmlns:msgtp="http://idecs.atc.ru/privateoffice/ws/common/changeorderstatusV243/xsd/types"
+    xmlns:smev="http://smev.gosuslugi.ru/rev111111">
+    <import namespace="http://smev.gosuslugi.ru/rev111111"
+        schemaLocation="../smev/smev.gosuslugi.ru.rev111111.xsd"/>
+    <element name="ChangeOrderStatusV243Request" type="msgtp:ChangeOrderStatusV243Request"/>
+    <element name="ChangeOrderStatusV243Response" type="msgtp:ChangeOrderStatusV243Response"/>
+    <complexType name="ChangeOrderStatusV243Request">
+        <sequence>
+            <element ref="smev:Message"/>
+            <element ref="smev:MessageData"/>
+        </sequence>
+    </complexType>
+    <complexType name="ChangeOrderStatusV243Response">
+        <sequence>
+            <element ref="smev:Message"/>
+            <element ref="smev:MessageData"/>
+        </sequence>
+    </complexType>
+</schema>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:tns="http://ezags.rt.ru/fzags/ReferenceService/" xmlns:t="http://smev.gosuslugi.ru/rev120315"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ReferenceService"
+             targetNamespace="http://ezags.rt.ru/fzags/ReferenceService/">
+    <types>
+        <xsd:schema>
+            <xsd:import namespace="http://smev.gosuslugi.ru/rev120315" schemaLocation="ReferenceService.xsd"/>
+        </xsd:schema>
+    </types>
+    <message name="GetReferences">
+        <part name="parameters" element="t:getReferencesRequest"/>
+    </message>
+    <message name="GetReferencesResponse">
+        <part name="parameters" element="t:getReferencesResponse"/>
+    </message>
+
+    <message name="requestFault">
+        <part name="parameters" element="t:fault"/>
+    </message>
+    <portType name="ReferenceService">
+        <operation name="getReferences">
+            <input message="tns:GetReferences"/>
+            <output message="tns:GetReferencesResponse"/>
+            <fault name="requestFault" message="tns:requestFault"/>
+        </operation>
+    </portType>
+    <binding name="ReferenceServiceImplPortBinding" type="tns:ReferenceService">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="getReferences">
+            <soap:operation soapAction=""/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+            <fault name="requestFault">
+                <soap:fault name="requestFault" use="literal"/>
+            </fault>
+        </operation>
+    </binding>
+    <service name="ReferenceService">
+        <port name="ReferenceServiceImplPort" binding="tns:ReferenceServiceImplPortBinding">
+            <soap:address location="http://localhost:8001/ReferenceServiceImpl/ReferenceService"/>
+        </port>
+    </service>
+</definitions>

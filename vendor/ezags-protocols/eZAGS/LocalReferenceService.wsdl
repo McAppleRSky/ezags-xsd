@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:tns="http://ezags.rt.ru/fzags/LocalReferenceService/"
+             xmlns:t="http://ezags.rt.ru/fzags/ReferenceService/type/local/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="LocalReferenceServiceService"
+             targetNamespace="http://ezags.rt.ru/fzags/LocalReferenceService/">
+    <types>
+        <xsd:schema>
+            <xsd:import namespace="http://ezags.rt.ru/type/common/" schemaLocation="../common.xsd"/>
+        </xsd:schema>
+        <xsd:schema>
+            <xsd:import namespace="http://ezags.rt.ru/type/actor/" schemaLocation="../actor.xsd"/>
+        </xsd:schema>
+        <xsd:schema>
+            <xsd:import namespace="http://ezags.rt.ru/type/document/" schemaLocation="../documents.xsd"/>
+        </xsd:schema>
+        <xsd:schema>
+            <xsd:import namespace="http://ezags.rt.ru/type/externaldocuments/"
+                        schemaLocation="../externaldocuments.xsd"/>
+        </xsd:schema>
+        <xsd:schema>
+            <xsd:import namespace="http://ezags.rt.ru/fzags/ReferenceService/type/local/"
+                        schemaLocation="LocalReferenceService.xsd"/>
+        </xsd:schema>
+    </types>
+    <message name="GetReferences">
+        <part name="parameters" element="t:getReferencesRequestObj"/>
+    </message>
+    <message name="GetReferencesResponse">
+        <part name="parameters" element="t:getReferencesResponseObj"/>
+    </message>
+
+    <message name="Fault">
+        <part name="parameters" element="t:baseFaultObj"/>
+    </message>
+    <portType name="LocalReferenceService">
+        <operation name="getReference">
+            <input message="tns:GetReferences"/>
+            <output message="tns:GetReferencesResponse"/>
+            <fault name="Fault" message="tns:Fault"/>
+        </operation>
+    </portType>
+    <binding name="LocalReferenceServicePortBinding" type="tns:LocalReferenceService">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="getReference">
+            <soap:operation soapAction=""/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+            <fault name="Fault">
+                <soap:fault name="Fault" use="literal"/>
+            </fault>
+        </operation>
+    </binding>
+    <service name="LocalReferenceService">
+        <port name="LocalReferencePort" binding="tns:LocalReferenceServicePortBinding">
+            <soap:address location="REPLACE_WITH_ACTUAL_URL"/>
+        </port>
+    </service>
+</definitions>

@@ -1,0 +1,1413 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:smev="http://smev.gosuslugi.ru/rev120315" xmlns:ns2="http://ezags.rt.ru/fzags/InterDepPersonalService/type/local/" xmlns:cm="http://ezags.rt.ru/type/common/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" targetNamespace="http://smev.gosuslugi.ru/rev120315" elementFormDefault="qualified">
+	<xs:import namespace="http://ezags.rt.ru/fzags/InterDepPersonalService/type/local/" schemaLocation="../LocalInterDepPersonalService.xsd"/>
+	<xs:import namespace="http://ezags.rt.ru/type/common/" schemaLocation="../../common.xsd"/>
+	<xs:include schemaLocation="../../smev/smev.gosuslugi.ru.rev120315.xsd"/>
+	<xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="../../xmldsig-core-schema.xsd"/>
+	<xs:element name="fault" type="smev:FaultBase">
+		<xs:annotation>
+			<xs:documentation>Ответ обработки любого запроса с сообщением об ошибке</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="voidResponse" type="smev:VoidResponse">
+		<xs:annotation>
+			<xs:documentation>Пустой ответ</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<!--1-я группа: Поиск актовой записи для получения Единичных сведений по этой записи (с учетом запрашиваемого объема сведений)-->
+	<!--на ВХОД-->
+	<xs:element name="actRecordBirthFilterRequest" type="smev:BirthFilterRequest">
+		<xs:annotation>
+			<xs:documentation>Запрос на поиск актовой записи о рождении</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="actRecordMarriageFilterRequest" type="smev:MarriageFilterRequest">
+		<xs:annotation>
+			<xs:documentation>Запрос на поиск актовой записи о заключении брака</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="actRecordDivorceFilterRequest" type="smev:DivorceFilterRequest">
+		<xs:annotation>
+			<xs:documentation>Запрос на поиск актовой записи о расторжении брака</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="actRecordAdoptionFilterRequest" type="smev:AdoptionFilterRequest">
+		<xs:annotation>
+			<xs:documentation>Запрос на поиск актовой записи об усыновлении (удочерении)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="actRecordFiliationFilterRequest" type="smev:FiliationFilterRequest">
+		<xs:annotation>
+			<xs:documentation>Запрос на поиск актовой записи об установлении отцовства</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="actRecordNameChangeFilterRequest" type="smev:NameChangeFilterRequest">
+		<xs:annotation>
+			<xs:documentation>Запрос на поиск актовой записи о перемене имени</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="actRecordDeathFilterRequest" type="smev:DeathFilterRequest">
+		<xs:annotation>
+			<xs:documentation>Запрос на поиск актовой записи о смерти</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<!--на ВЫХОД-->
+	<xs:element name="ticketNumberResponse" type="smev:TicketNumber">
+		<xs:annotation>
+			<xs:documentation>Ответ по принятому в обработку запросу на поиск</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<!--2-я группа: Запрос результата поиска и получение Единичных сведений по актовой записи в требуемом объеме-->
+	<!--на ВХОД-->
+	<xs:element name="ticketCheckExistenceOfActRecordRequest" type="smev:TicketNumber">
+		<xs:annotation>
+			<xs:documentation>Запрос результата проверки существования актовой записи</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<!--Объем сведений: СПРАВКА формы согласно типу АГС-->
+	<xs:element name="ticketSearchPersonalReferenceBirth24Request" type="smev:TicketNumber">
+		<xs:annotation>
+			<xs:documentation>Запрос на получение сведений по актовой записи о рождении в объеме справки формы 24</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ticketSearchPersonalReferenceBirth25Request" type="smev:TicketNumber">
+		<xs:annotation>
+			<xs:documentation>Запрос на получение сведений по актовой записи о рождении в объеме справки формы 25</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ticketSearchPersonalReferenceBirth26Request" type="smev:TicketNumber">
+		<xs:annotation>
+			<xs:documentation>Запрос на получение сведений по актовой записи о рождении в объеме справки формы 26</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ticketSearchPersonalReferenceMarriage27Request" type="smev:TicketNumber">
+		<xs:annotation>
+			<xs:documentation>Запрос на получение сведений по актовой записи о заключении брака в объеме справки формы 27</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ticketSearchPersonalReferenceMarriage28Request" type="smev:TicketNumber">
+		<xs:annotation>
+			<xs:documentation>Запрос на получение сведений по актовой записи о заключении брака в объеме справки формы 28</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ticketSearchPersonalReferenceDivorce29Request" type="smev:TicketNumber">
+		<xs:annotation>
+			<xs:documentation>Запрос на получение сведений по актовой записи о расторжении брака в объеме справки формы 29</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ticketSearchPersonalReferenceAdoption30Request" type="smev:TicketNumber">
+		<xs:annotation>
+			<xs:documentation>Запрос на получение сведений по актовой записи об усыновлении(удочерении) в объеме справки формы 30</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ticketSearchPersonalReferenceFiliation31Request" type="smev:TicketNumber">
+		<xs:annotation>
+			<xs:documentation>Запрос на получение сведений по актовой записи об установлении отцовства в объеме справки формы 31</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ticketSearchPersonalReferenceNameChange32Request" type="smev:TicketNumber">
+		<xs:annotation>
+			<xs:documentation>Запрос на получение сведений по актовой записи о перемене имени в объеме справки формы 32</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ticketSearchPersonalReferenceDeath33Request" type="smev:TicketNumber">
+		<xs:annotation>
+			<xs:documentation>Запрос на получение сведений по актовой записи о смерти в объеме справки формы 33</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ticketSearchPersonalReferenceDeath34Request" type="smev:TicketNumber">
+		<xs:annotation>
+			<xs:documentation>Запрос на получение сведений по актовой записи о смерти в объеме справки формы 34</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<!--Объем сведений: СВИДЕТЕЛЬСТВО о государственной регистрации АГС соответствующего типа-->
+	<xs:element name="ticketSearchPersonalCertificateBirthRequest" type="smev:TicketNumber">
+		<xs:annotation>
+			<xs:documentation>Запрос на получение сведений по актовой записи о рождении в объеме свидетельства о рождении</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ticketSearchPersonalCertificateMarriageRequest" type="smev:TicketNumber">
+		<xs:annotation>
+			<xs:documentation>Запрос на получение сведений по актовой записи о заключении брака в объеме свидетельства о заключении брака</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ticketSearchPersonalCertificateDivorceRequest" type="smev:TicketNumber">
+		<xs:annotation>
+			<xs:documentation>Запрос на получение сведений по актовой записи о расторжении брака в объеме свидетельства расторжении брака</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ticketSearchPersonalCertificateAdoptionRequest" type="smev:TicketNumber">
+		<xs:annotation>
+			<xs:documentation>Запрос на получение сведений по актовой записи об усыновлении(удочерении) в объеме свидетельства об усыновлении (удочерении)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ticketSearchPersonalCertificateFiliationRequest" type="smev:TicketNumber">
+		<xs:annotation>
+			<xs:documentation>Запрос на получение сведений по актовой записи об установлении отцовства в объеме свидетельства об установлении отцовства</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ticketSearchPersonalCertificateNameChangeRequest" type="smev:TicketNumber">
+		<xs:annotation>
+			<xs:documentation>Запрос на получение сведений по актовой записи о перемене имени в объеме свидетельства о перемене имени</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ticketSearchPersonalCertificateDeathRequest" type="smev:TicketNumber">
+		<xs:annotation>
+			<xs:documentation>Запрос на получение сведений по актовой записи о смерти в объеме свидетельства о смерти</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<!--Объем сведений: АЗ соответствующего типа-->
+	<xs:element name="ticketSearchPersonalActRecordBirthRequest" type="smev:TicketNumber">
+		<xs:annotation>
+			<xs:documentation>Запрос на получение сведений по актовой записи о рождении в объеме данной АЗ</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ticketSearchPersonalActRecordMarriageRequest" type="smev:TicketNumber">
+		<xs:annotation>
+			<xs:documentation>Запрос на получение сведений по актовой записи о заключении брака в объеме данной АЗ</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ticketSearchPersonalActRecordDivorceRequest" type="smev:TicketNumber">
+		<xs:annotation>
+			<xs:documentation>Запрос на получение сведений по актовой записи о расторжении брака в объеме данной АЗ</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ticketSearchPersonalActRecordAdoptionRequest" type="smev:TicketNumber">
+		<xs:annotation>
+			<xs:documentation>Запрос на получение сведений по актовой записи об усыновлении(удочерении) в объеме данной АЗ</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ticketSearchPersonalActRecordFiliationRequest" type="smev:TicketNumber">
+		<xs:annotation>
+			<xs:documentation>Запрос на получение сведений по актовой записи об установлении отцовства в объеме данной АЗ</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ticketSearchPersonalActRecordNameChangeRequest" type="smev:TicketNumber">
+		<xs:annotation>
+			<xs:documentation>Запрос на получение сведений по актовой записи о перемене имени в объеме данной АЗ</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ticketSearchPersonalActRecordDeathRequest" type="smev:TicketNumber">
+		<xs:annotation>
+			<xs:documentation>Запрос на получение сведений по актовой записи о смерти в объеме данной АЗ</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<!-- на ВЫХОД-->
+	<xs:element name="checkExistenceOfActRecordResponse" type="smev:CheckExistenceOfActRecordResponse">
+		<xs:annotation>
+			<xs:documentation>Ответ с результатом проверки существования актовой записи</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<!--Объем сведений: СПРАВКА формы согласно типу АГС-->
+	<xs:element name="referenceBirth24Response" type="smev:ReferenceBirth24Response">
+		<xs:annotation>
+			<xs:documentation>Ответ с итогом обработки запроса на поиск (рождение, справка формы 24)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="referenceBirth25Response" type="smev:ReferenceBirth25Response">
+		<xs:annotation>
+			<xs:documentation>Ответ с итогом обработки запроса на поиск (рождение, справка формы 25)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="referenceBirth26Response" type="smev:ReferenceBirth26Response">
+		<xs:annotation>
+			<xs:documentation>Ответ с итогом обработки запроса на поиск (рождение, справка формы 26)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="referenceMarriage27Response" type="smev:ReferenceMarriage27Response">
+		<xs:annotation>
+			<xs:documentation>Ответ с итогом обработки запроса на поиск (заключение брака, справка формы 27)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="referenceMarriage28Response" type="smev:ReferenceMarriage28Response">
+		<xs:annotation>
+			<xs:documentation>Ответ с итогом обработки запроса на поиск (заключение брака, справка формы 28)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="referenceDivorce29Response" type="smev:ReferenceDivorce29Response">
+		<xs:annotation>
+			<xs:documentation>Ответ с итогом обработки запроса на поиск (расторжение брака, справка формы 29)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="referenceAdoption30Response" type="smev:ReferenceAdoption30Response">
+		<xs:annotation>
+			<xs:documentation>Ответ с итогом обработки запроса на поиск (усыновление (удочерение), справка формы 30)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="referenceFiliation31Response" type="smev:ReferenceFiliation31Response">
+		<xs:annotation>
+			<xs:documentation>Ответ с итогом обработки запроса на поиск (установление отцовства, справка формы 31)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="referenceNameChange32Response" type="smev:ReferenceNameChange32Response">
+		<xs:annotation>
+			<xs:documentation>Ответ с итогом обработки запроса на поиск (перемена имени, справка формы 32)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="referenceDeath33Response" type="smev:ReferenceDeath33Response">
+		<xs:annotation>
+			<xs:documentation>Ответ с итогом обработки запроса на поиск (смерть, справка формы 33)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="referenceDeath34Response" type="smev:ReferenceDeath34Response">
+		<xs:annotation>
+			<xs:documentation>Ответ с итогом обработки запроса на поиск (смерть, справка формы 34)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<!--Объем сведений: СВИДЕТЕЛЬСТВО о государственной регистрации АГС соответствующего типа-->
+	<xs:element name="certificateBirthResponse" type="smev:CertificateBirthResponse">
+		<xs:annotation>
+			<xs:documentation>Ответ с итогом обработки запроса на поиск (рождение, свидетельство)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="certificateMarriageResponse" type="smev:CertificateMarriageResponse">
+		<xs:annotation>
+			<xs:documentation>Ответ с итогом обработки запроса на поиск (заключение брака, свидетельство)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="certificateDivorceResponse" type="smev:CertificateDivorceResponse">
+		<xs:annotation>
+			<xs:documentation>Ответ с итогом обработки запроса на поиск (расторжение брака, свидетельство)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="certificateAdoptionResponse" type="smev:CertificateAdoptionResponse">
+		<xs:annotation>
+			<xs:documentation>Ответ с итогом обработки запроса на поиск (усыновление (удочерение), свидетельство)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="certificateFiliationResponse" type="smev:CertificateFiliationResponse">
+		<xs:annotation>
+			<xs:documentation>Ответ с итогом обработки запроса на поиск (установление отцовства, свидетельство)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="certificateNameChangeResponse" type="smev:CertificateNameChangeResponse">
+		<xs:annotation>
+			<xs:documentation>Ответ с итогом обработки запроса на поиск (перемена имени, свидетельство)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="certificateDeathResponse" type="smev:CertificateDeathResponse">
+		<xs:annotation>
+			<xs:documentation>Ответ с итогом обработки запроса на поиск (смерть, свидетельство)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<!--Объем сведений: АЗ соответствующего типа-->
+	<xs:element name="actRecordBirthResponse" type="smev:ActRecordBirthResponse">
+		<xs:annotation>
+			<xs:documentation>Ответ с итогом обработки запроса на поиск (рождение, АЗ)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="actRecordMarriageResponse" type="smev:ActRecordMarriageResponse">
+		<xs:annotation>
+			<xs:documentation>Ответ с итогом обработки запроса на поиск (заключение брака, АЗ)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="actRecordDivorceResponse" type="smev:ActRecordDivorceResponse">
+		<xs:annotation>
+			<xs:documentation>Ответ с итогом обработки запроса на поиск (расторжение брака, АЗ)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="actRecordAdoptionResponse" type="smev:ActRecordAdoptionResponse">
+		<xs:annotation>
+			<xs:documentation>Ответ с итогом обработки запроса на поиск (усыновление (удочерение), АЗ)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="actRecordFiliationResponse" type="smev:ActRecordFiliationResponse">
+		<xs:annotation>
+			<xs:documentation>Ответ с итогом обработки запроса на поиск (установление отцовства, АЗ)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="actRecordNameChangeResponse" type="smev:ActRecordNameChangeResponse">
+		<xs:annotation>
+			<xs:documentation>Ответ с итогом обработки запроса на поиск (перемена имени, АЗ)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="actRecordDeathResponse" type="smev:ActRecordDeathResponse">
+		<xs:annotation>
+			<xs:documentation>Ответ с итогом обработки запроса на поиск (смерть, АЗ) </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<!--Используемые типы данных-->
+	<!-- Фильтры-->
+	<xs:complexType name="BirthFilterRequest">
+		<xs:annotation>
+			<xs:documentation>Фильтр для поиска актовой записи о рождении</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:annotation>
+					<xs:documentation>Служебный блок-обертка данных сообщения в СМЭВ</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:annotation>
+								<xs:documentation>Блок структурированных сведений</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:birthFilterRequestObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MarriageFilterRequest">
+		<xs:annotation>
+			<xs:documentation>Фильтр для поиска актовой записи о заключении брака</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:annotation>
+					<xs:documentation>Служебный блок-обертка данных сообщения в СМЭВ</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:annotation>
+								<xs:documentation>Блок структурированных сведений</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:marriageFilterRequestObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DivorceFilterRequest">
+		<xs:annotation>
+			<xs:documentation>Фильтр для поиска актовой записи о расторжении брака</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:annotation>
+					<xs:documentation>Служебный блок-обертка данных сообщения в СМЭВ</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:annotation>
+								<xs:documentation>Блок структурированных сведений</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:divorceFilterRequestObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AdoptionFilterRequest">
+		<xs:annotation>
+			<xs:documentation>Фильтр для поиска актовой записи об усыновлении (удочерении)</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:annotation>
+					<xs:documentation>Служебный блок-обертка данных сообщения в СМЭВ</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:annotation>
+								<xs:documentation>Блок структурированных сведений</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:adoptionFilterRequestObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="FiliationFilterRequest">
+		<xs:annotation>
+			<xs:documentation>Фильтр для поиска актовой записи об установлении отцовства</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:annotation>
+					<xs:documentation>Служебный блок-обертка данных сообщения в СМЭВ</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:annotation>
+								<xs:documentation>Блок структурированных сведений</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:filiationFilterRequestObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NameChangeFilterRequest">
+		<xs:annotation>
+			<xs:documentation>Фильтр для поиска актовой записи о перемене имени</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:annotation>
+					<xs:documentation>Служебный блок-обертка данных сообщения в СМЭВ</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:annotation>
+								<xs:documentation>Блок структурированных сведений</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:nameChangeFilterRequestObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DeathFilterRequest">
+		<xs:annotation>
+			<xs:documentation>Фильтр для поиска актовой записи о смерти</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:annotation>
+					<xs:documentation>Служебный блок-обертка данных сообщения в СМЭВ</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:annotation>
+								<xs:documentation>Блок структурированных сведений</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:deathFilterRequestObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<!--Параметры ответа по запросу на поиск-->
+	<xs:complexType name="TicketNumber">
+		<xs:annotation>
+			<xs:documentation>Идентификатор поступившего запроса, присвоенный ему в ИС Обладателя информации</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:annotation>
+					<xs:documentation>Служебный блок-обертка данных сообщения в СМЭВ</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:annotation>
+								<xs:documentation>Блок структурированных сведений</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:ticketNumberObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<!--Параметры ответа по запросу результата поиска-->
+	<xs:complexType name="CheckExistenceOfActRecordResponse">
+		<xs:annotation>
+			<xs:documentation>Получение результата проверки существования актовой записи</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:annotation>
+					<xs:documentation>Служебный блок-обертка данных сообщения в СМЭВ</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:annotation>
+								<xs:documentation>Блок структурированных сведений</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:checkExistenceOfActRecordResponseObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ReferenceBirth24Response">
+		<xs:annotation>
+			<xs:documentation>Получение итога обработки запроса на поиск (рождение, справка формы 24)</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:annotation>
+					<xs:documentation>Служебный блок-обертка данных сообщения в СМЭВ</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:annotation>
+								<xs:documentation>Блок структурированных сведений</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:referenceBirth24ResponseObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ReferenceBirth25Response">
+		<xs:annotation>
+			<xs:documentation>Получение итога обработки запроса на поиск (рождение, справка формы 25)</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:annotation>
+					<xs:documentation>Служебный блок-обертка данных сообщения в СМЭВ</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:annotation>
+								<xs:documentation>Блок структурированных сведений</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:referenceBirth25ResponseObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ReferenceBirth26Response">
+		<xs:annotation>
+			<xs:documentation>Получение итога обработки запроса на поиск (рождение, справка формы 26)</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:annotation>
+					<xs:documentation>Служебный блок-обертка данных сообщения в СМЭВ</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:annotation>
+								<xs:documentation>Блок структурированных сведений</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:referenceBirth26ResponseObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ReferenceMarriage27Response">
+		<xs:annotation>
+			<xs:documentation>Получение итога обработки запроса на поиск (заключение брака, справка формы 27)</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:annotation>
+					<xs:documentation>Служебный блок-обертка данных сообщения в СМЭВ</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:annotation>
+								<xs:documentation>Блок структурированных сведений</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:referenceMarriage27ResponseObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ReferenceMarriage28Response">
+		<xs:annotation>
+			<xs:documentation>Получение итога обработки запроса на поиск (заключение брака, справка формы 28)</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:annotation>
+					<xs:documentation>Служебный блок-обертка данных сообщения в СМЭВ</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:annotation>
+								<xs:documentation>Блок структурированных сведений</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:referenceMarriage28ResponseObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ReferenceDivorce29Response">
+		<xs:annotation>
+			<xs:documentation>Получение итога обработки запроса на поиск (расторжение брака, справка формы 29)</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:annotation>
+					<xs:documentation>Служебный блок-обертка данных сообщения в СМЭВ</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:annotation>
+								<xs:documentation>Блок структурированных сведений</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:referenceDivorce29ResponseObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ReferenceAdoption30Response">
+		<xs:annotation>
+			<xs:documentation>Получение итога обработки запроса на поиск (усыновление (удочерение), справка формы 30)</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:annotation>
+					<xs:documentation>Служебный блок-обертка данных сообщения в СМЭВ</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:annotation>
+								<xs:documentation>Блок структурированных сведений</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:referenceAdoption30ResponseObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ReferenceFiliation31Response">
+		<xs:annotation>
+			<xs:documentation>Получение итога обработки запроса на поиск (установление отцовства, справка формы 31)</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:annotation>
+					<xs:documentation>Служебный блок-обертка данных сообщения в СМЭВ</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:annotation>
+								<xs:documentation>Блок структурированных сведений</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:referenceFiliation31ResponseObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ReferenceNameChange32Response">
+		<xs:annotation>
+			<xs:documentation>Получение итога обработки запроса на поиск (перемена имени, справка формы 32)</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:annotation>
+					<xs:documentation>Служебный блок-обертка данных сообщения в СМЭВ</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:annotation>
+								<xs:documentation>Блок структурированных сведений</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:referenceNameChange32ResponseObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ReferenceDeath33Response">
+		<xs:annotation>
+			<xs:documentation>Получение итога обработки запроса на поиск (смерть, справка формы 33)</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:annotation>
+					<xs:documentation>Служебный блок-обертка данных сообщения в СМЭВ</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:annotation>
+								<xs:documentation>Блок структурированных сведений</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:referenceDeath33ResponseObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ReferenceDeath34Response">
+		<xs:annotation>
+			<xs:documentation>Получение итога обработки запроса на поиск (смерть, справка формы 34)</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:annotation>
+					<xs:documentation>Служебный блок-обертка данных сообщения в СМЭВ</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:annotation>
+								<xs:documentation>Блок структурированных сведений</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:referenceDeath34ResponseObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CertificateBirthResponse">
+		<xs:annotation>
+			<xs:documentation>Получение итога обработки запроса на поиск (рождение, свидетельство)</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:annotation>
+					<xs:documentation>Служебный блок-обертка данных сообщения в СМЭВ</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:annotation>
+								<xs:documentation>Блок структурированных сведений</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:certificateBirthResponseObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CertificateMarriageResponse">
+		<xs:annotation>
+			<xs:documentation>Получение итога обработки запроса на поиск (заключение брака, свидетельство)</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:annotation>
+					<xs:documentation>Служебный блок-обертка данных сообщения в СМЭВ</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:annotation>
+								<xs:documentation>Блок структурированных сведений</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:certificateMarriageResponseObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CertificateDivorceResponse">
+		<xs:annotation>
+			<xs:documentation>Получение итога обработки запроса на поиск (расторжение брака, свидетельство)</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:annotation>
+					<xs:documentation>Служебный блок-обертка данных сообщения в СМЭВ</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:annotation>
+								<xs:documentation>Блок структурированных сведений</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:certificateDivorceResponseObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CertificateAdoptionResponse">
+		<xs:annotation>
+			<xs:documentation>Получение итога обработки запроса на поиск (усыновление (удочерение), свидетельство)</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:annotation>
+					<xs:documentation>Служебный блок-обертка данных сообщения в СМЭВ</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:annotation>
+								<xs:documentation>Блок структурированных сведений</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:certificateAdoptionResponseObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CertificateFiliationResponse">
+		<xs:annotation>
+			<xs:documentation>Получение итога обработки запроса на поиск (установление отцовства, свидетельство)</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:annotation>
+					<xs:documentation>Служебный блок-обертка данных сообщения в СМЭВ</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:annotation>
+								<xs:documentation>Блок структурированных сведений</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:certificateFiliationResponseObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CertificateNameChangeResponse">
+		<xs:annotation>
+			<xs:documentation>Получение итога обработки запроса на поиск (перемена имени, свидетельство)</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:annotation>
+					<xs:documentation>Служебный блок-обертка данных сообщения в СМЭВ</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:annotation>
+								<xs:documentation>Блок структурированных сведений</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:certificateNameChangeResponseObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CertificateDeathResponse">
+		<xs:annotation>
+			<xs:documentation>Получение итога обработки запроса на поиск (смерть, свидетельство)</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:annotation>
+					<xs:documentation>Служебный блок-обертка данных сообщения в СМЭВ</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:annotation>
+								<xs:documentation>Блок структурированных сведений</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:certificateDeathResponseObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ActRecordBirthResponse">
+		<xs:annotation>
+			<xs:documentation>Получение итога обработки запроса на поиск (рождение, АЗ)</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:annotation>
+					<xs:documentation>Служебный блок-обертка данных сообщения в СМЭВ</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:annotation>
+								<xs:documentation>Блок структурированных сведений</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:actRecordBirthResponseObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ActRecordMarriageResponse">
+		<xs:annotation>
+			<xs:documentation>Получение итога обработки запроса на поиск (заключение брака, АЗ)</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:annotation>
+					<xs:documentation>Служебный блок-обертка данных сообщения в СМЭВ</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:annotation>
+								<xs:documentation>Блок структурированных сведений</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:actRecordMarriageResponseObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ActRecordDivorceResponse">
+		<xs:annotation>
+			<xs:documentation>Получение итога обработки запроса на поиск (расторжение брака, АЗ)</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:annotation>
+					<xs:documentation>Служебный блок-обертка данных сообщения в СМЭВ</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:annotation>
+								<xs:documentation>Блок структурированных сведений</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:actRecordDivorceResponseObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ActRecordAdoptionResponse">
+		<xs:annotation>
+			<xs:documentation>Получение итога обработки запроса на поиск (усыновление (удочерение), АЗ)</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:annotation>
+					<xs:documentation>Служебный блок-обертка данных сообщения в СМЭВ</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:annotation>
+								<xs:documentation>Блок структурированных сведений</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:actRecordAdoptionResponseObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ActRecordFiliationResponse">
+		<xs:annotation>
+			<xs:documentation>Получение итога обработки запроса на поиск (установление отцовства, АЗ)</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:annotation>
+					<xs:documentation>Служебный блок-обертка данных сообщения в СМЭВ</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:annotation>
+								<xs:documentation>Блок структурированных сведений</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:actRecordFiliationResponseObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ActRecordNameChangeResponse">
+		<xs:annotation>
+			<xs:documentation>Получение итога обработки запроса на поиск (перемена имени, АЗ)</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:annotation>
+					<xs:documentation>Служебный блок-обертка данных сообщения в СМЭВ</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:annotation>
+								<xs:documentation>Блок структурированных сведений</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:actRecordNameChangeResponseObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ActRecordDeathResponse">
+		<xs:annotation>
+			<xs:documentation>Получение итога обработки запроса на поиск (смерть, АЗ)</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:annotation>
+					<xs:documentation>Служебный блок-обертка данных сообщения в СМЭВ</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:annotation>
+								<xs:documentation>Блок структурированных сведений</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:actRecordDeathResponseObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="FaultBase">
+		<xs:annotation>
+			<xs:documentation>Получение итога обработки любого запроса с сообщением об ошибке</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:annotation>
+					<xs:documentation>Служебный блок-обертка данных сообщения в СМЭВ</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:annotation>
+								<xs:documentation>Блок структурированных сведений</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="cm:faultBaseObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="VoidResponse">
+		<xs:annotation>
+			<xs:documentation>Пустой ответ</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:annotation>
+					<xs:documentation>Служебный блок-обертка данных сообщения в СМЭВ</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:annotation>
+								<xs:documentation>Блок структурированных сведений</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="cm:voidResponseObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

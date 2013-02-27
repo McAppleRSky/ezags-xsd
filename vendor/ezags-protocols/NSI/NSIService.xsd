@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:smev="http://smev.gosuslugi.ru/rev111111"
+    xmlns:nsi="http://nsi.gosuslugi.ru/rev111111" xmlns:cm="http://ezags.rt.ru/type/common/"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+    targetNamespace="http://smev.gosuslugi.ru/rev111111" elementFormDefault="qualified">
+
+    <xs:import namespace="http://nsi.gosuslugi.ru/rev111111" schemaLocation="../eZAGS/LocalGetLastUpdatesService.xsd"/>
+    <xs:redefine schemaLocation="../smev/smev.gosuslugi.ru.rev111111.xsd"/>
+    <xs:import namespace="http://www.w3.org/2000/09/xmldsig#"
+        schemaLocation="../xmldsig-core-schema.xsd"/>
+    <xs:element name="Request" nillable="true" type="smev:BaseRequestType"/>
+    <xs:element name="Response" nillable="true" type="smev:BaseRequestType"/>
+    <xs:complexType name="BaseRequestType">
+        <xs:annotation>
+            <xs:documentation>Запрос от ЕСНСИ</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="smev:Message"/>
+            <xs:element name="MessageData">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="AppData">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:sequence>
+                                        <xs:choice>
+                                            <xs:element ref="nsi:createComponent"/>
+                                            <xs:element ref="nsi:createComponentRevision"/>
+                                            <xs:element ref="nsi:findComponent"/>
+                                            <xs:element ref="nsi:publishElementRevision"/>
+                                            <xs:element ref="nsi:findElementRevision"/>
+                                            <xs:element ref="nsi:findComponentRevision"/>
+                                            <xs:element ref="nsi:annulElement"/>
+                                            <xs:element ref="nsi:getLastUpdates"/>
+                                            <xs:element ref="nsi:componentChanged"/>
+                                            <xs:element ref="nsi:getExpiredElements"/>
+                                            <xs:element ref="nsi:getSnapshot"/>
+                                            <xs:element ref="nsi:getNewEvents"/>
+                                        </xs:choice>
+                                        <xs:element ref="nsi:response"/>
+                                    </xs:sequence>
+                                    <xs:element ref="ds:Signature" minOccurs="0"/>
+                                </xs:sequence>
+                                <xs:attribute name="id" type="xs:string" fixed="AppData"/>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element ref="smev:AppDocument" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

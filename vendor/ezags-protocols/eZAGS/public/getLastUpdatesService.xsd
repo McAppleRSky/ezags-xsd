@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:smev="http://smev.gosuslugi.ru/rev111111"
+    xmlns:nsi="http://nsi.gosuslugi.ru/rev111111"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+    targetNamespace="http://smev.gosuslugi.ru/rev111111" elementFormDefault="qualified">
+
+    <xs:import namespace="http://nsi.gosuslugi.ru/rev111111" schemaLocation="../LocalGetLastUpdatesService.xsd"/>
+    <xs:include schemaLocation="../../smev/smev.gosuslugi.ru.rev111111.xsd"/>
+    <xs:import namespace="http://www.w3.org/2000/09/xmldsig#"
+        schemaLocation="../../xmldsig-core-schema.xsd"/>
+
+    <xs:element name="Request" type="smev:Request"/>
+    <xs:element name="Response" type="smev:Response"/>
+    <xs:complexType name="Request">
+        <xs:annotation>
+            <xs:documentation>Запрос от ЕСНСИ</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="1">
+            <xs:element ref="smev:Message"/>
+            <xs:element name="MessageData">
+                <xs:complexType>
+                    <xs:sequence minOccurs="1">
+                        <xs:element name="AppData">
+                            <xs:complexType>
+                                <xs:sequence minOccurs="1">
+                                    <xs:choice>
+                                        <xs:element ref="nsi:getLastUpdates"/>
+                                        <xs:element ref="nsi:componentChanged"/>
+                                    </xs:choice>
+                                    <xs:element ref="ds:Signature" minOccurs="0"/>
+                                </xs:sequence>
+                                <xs:attribute name="id" type="xs:string" fixed="AppData"/>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element ref="smev:AppDocument" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Response">
+        <xs:annotation>
+            <xs:documentation>????? ?? ?????? ?????</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="1">
+            <xs:element ref="smev:Message"/>
+            <xs:element name="MessageData">
+                <xs:complexType>
+                    <xs:sequence minOccurs="1">
+                        <xs:element name="AppData">
+                            <xs:complexType>
+                                <xs:sequence minOccurs="1">
+                                    <xs:element ref="nsi:response"/>
+                                    <xs:element ref="ds:Signature" minOccurs="0"/>
+                                </xs:sequence>
+                                <xs:attribute name="id" type="xs:string" fixed="AppData"/>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element ref="smev:AppDocument" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

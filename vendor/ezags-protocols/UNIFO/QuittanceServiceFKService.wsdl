@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions
+    xmlns:q="http://ipsh.gosuslugi.ru/sisp/Quittance/" 
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+    name="QuittanceService" 
+    targetNamespace="http://ipsh.gosuslugi.ru/sisp/Quittance/">
+
+    <wsdl:types>
+    <xsd:schema targetNamespace="http://ipsh.gosuslugi.ru/sisp/Quittance/">
+      <xsd:include schemaLocation="QuittanceService.xsd">
+      </xsd:include>
+    </xsd:schema>
+    </wsdl:types>
+  <!-- getBill -->
+  <wsdl:message name="getBillSyncRequest">
+    <wsdl:part element="q:getBillSyncRequest" name="getBillSyncRequest"/>
+  </wsdl:message>
+  <wsdl:message name="getBillSyncResponse">
+    <wsdl:part element="q:getBillSyncResponse" name="getBillSyncResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getBillAsyncInitRequest">
+    <wsdl:part element="q:getBillAsyncInitRequest" name="getBillAsyncInitRequest"/>
+  </wsdl:message>
+  <wsdl:message name="getBillAsyncInitResponse">
+    <wsdl:part element="q:getBillAsyncInitResponse" name="getBillAsyncInitResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getBillAsyncResultRequest">
+    <wsdl:part element="q:getBillAsyncResultRequest" name="getBillAsyncResultRequest"/>
+  </wsdl:message>
+  <wsdl:message name="getBillAsyncResultResponse">
+    <wsdl:part element="q:getBillAsyncResultResponse" name="getBillAsyncResultResponse"/>
+  </wsdl:message>
+
+  <!-- loadBill -->
+  <wsdl:message name="loadBillSyncRequest">
+    <wsdl:part element="q:loadBillSyncRequest" name="loadBillSyncRequest"/>
+  </wsdl:message>
+  <wsdl:message name="loadBillSyncResponse">
+    <wsdl:part element="q:loadBillSyncResponse" name="loadBillSyncResponse"/>
+  </wsdl:message>
+
+  <wsdl:message name="loadBillAsyncInitRequest">
+    <wsdl:part element="q:loadBillAsyncInitRequest" name="loadBillAsyncInitRequest"/>
+  </wsdl:message>
+  <wsdl:message name="loadBillAsyncInitResponse">
+    <wsdl:part element="q:loadBillAsyncInitResponse" name="loadBillAsyncInitResponse"/>
+  </wsdl:message>
+  <wsdl:message name="loadBillAsyncResultRequest">
+    <wsdl:part element="q:loadBillAsyncResultRequest" name="loadBillAsyncResultRequest"/>
+  </wsdl:message>
+  <wsdl:message name="loadBillAsyncResultResponse">
+    <wsdl:part element="q:loadBillAsyncResultResponse" name="loadBillAsyncResultResponse"/>
+  </wsdl:message>
+
+  <!-- getPayment -->
+  <wsdl:message name="getPaymentSyncRequest">
+    <wsdl:part element="q:getPaymentSyncRequest" name="getPaymentSyncRequest"/>
+  </wsdl:message>
+  <wsdl:message name="getPaymentSyncResponse">
+    <wsdl:part element="q:getPaymentSyncResponse" name="getPaymentSyncResponse"/>
+  </wsdl:message>
+
+  <wsdl:message name="getPaymentAsyncInitRequest">
+    <wsdl:part element="q:getPaymentAsyncInitRequest" name="getPaymentAsyncInitRequest"/>
+  </wsdl:message>
+  <wsdl:message name="getPaymentAsyncInitResponse">
+    <wsdl:part element="q:getPaymentAsyncInitResponse" name="getPaymentAsyncInitResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getPaymentAsyncResultRequest">
+    <wsdl:part element="q:getPaymentAsyncResultRequest" name="getPaymentAsyncResultRequest"/>
+  </wsdl:message>
+  <wsdl:message name="getPaymentAsyncResultResponse">
+    <wsdl:part element="q:getPaymentAsyncResultResponse" name="getPaymentAsyncResultResponse"/>
+  </wsdl:message>
+
+  <!-- loadPayment -->
+  <wsdl:message name="loadPaymentSyncRequest">
+    <wsdl:part element="q:loadPaymentSyncRequest" name="loadPaymentSyncRequest"/>
+  </wsdl:message>
+  <wsdl:message name="loadPaymentSyncResponse">
+    <wsdl:part element="q:loadPaymentSyncResponse" name="loadPaymentSyncResponse"/>
+  </wsdl:message>
+
+  <wsdl:message name="loadPaymentAsyncInitRequest">
+    <wsdl:part element="q:loadPaymentAsyncInitRequest" name="loadPaymentAsyncInitRequest"/>
+  </wsdl:message>
+  <wsdl:message name="loadPaymentAsyncInitResponse">
+    <wsdl:part element="q:loadPaymentAsyncInitResponse" name="loadPaymentAsyncInitResponse"/>
+  </wsdl:message>
+  <wsdl:message name="loadPaymentAsyncResultRequest">
+    <wsdl:part element="q:loadPaymentAsyncResultRequest" name="loadPaymentAsyncResultRequest"/>
+  </wsdl:message>
+  <wsdl:message name="loadPaymentAsyncResultResponse">
+    <wsdl:part element="q:loadPaymentAsyncResultResponse" name="loadPaymentAsyncResultResponse"/>
+  </wsdl:message>
+
+  <!-- getIncome -->
+  <wsdl:message name="getIncomeSyncRequest">
+    <wsdl:part element="q:getIncomeSyncRequest" name="getIncomeSyncRequest"/>
+  </wsdl:message>
+  <wsdl:message name="getIncomeSyncResponse">
+    <wsdl:part element="q:getIncomeSyncResponse" name="getIncomeSyncResponse"/>
+  </wsdl:message>
+
+  <wsdl:message name="getIncomeAsyncInitRequest">
+    <wsdl:part element="q:getIncomeAsyncInitRequest" name="getIncomeAsyncInitRequest"/>
+  </wsdl:message>
+  <wsdl:message name="getIncomeAsyncInitResponse">
+    <wsdl:part element="q:getIncomeAsyncInitResponse" name="getIncomeAsyncInitResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getIncomeAsyncResultRequest">
+    <wsdl:part element="q:getIncomeAsyncResultRequest" name="getIncomeAsyncResultRequest"/>
+  </wsdl:message>
+  <wsdl:message name="getIncomeAsyncResultResponse">
+    <wsdl:part element="q:getIncomeAsyncResultResponse" name="getIncomeAsyncResultResponse"/>
+  </wsdl:message>
+
+  <!-- loadIncome -->
+  <wsdl:message name="loadIncomeSyncRequest">
+    <wsdl:part element="q:loadIncomeSyncRequest" name="loadIncomeSyncRequest"/>
+  </wsdl:message>
+  <wsdl:message name="loadIncomeSyncResponse">
+    <wsdl:part element="q:loadIncomeSyncResponse" name="loadIncomeSyncResponse"/>
+  </wsdl:message>
+
+  <wsdl:message name="loadIncomeAsyncInitRequest">
+    <wsdl:part element="q:loadIncomeAsyncInitRequest" name="loadIncomeAsyncInitRequest"/>
+  </wsdl:message>
+  <wsdl:message name="loadIncomeAsyncInitResponse">
+    <wsdl:part element="q:loadIncomeAsyncInitResponse" name="loadIncomeAsyncInitResponse"/>
+  </wsdl:message>
+  <wsdl:message name="loadIncomeAsyncResultRequest">
+    <wsdl:part element="q:loadIncomeAsyncResultRequest" name="loadIncomeAsyncResultRequest"/>
+  </wsdl:message>
+  <wsdl:message name="loadIncomeAsyncResultResponse">
+    <wsdl:part element="q:loadIncomeAsyncResultResponse" name="loadIncomeAsyncResultResponse"/>
+  </wsdl:message>
+
+  <!-- getQuittance -->
+  <wsdl:message name="getQuittanceSyncRequest">
+    <wsdl:part element="q:getQuittanceSyncRequest" name="getQuittanceSyncRequest"/>
+  </wsdl:message>
+  <wsdl:message name="getQuittanceSyncResponse">
+    <wsdl:part element="q:getQuittanceSyncResponse" name="getQuittanceSyncResponse"/>
+  </wsdl:message>
+
+  <wsdl:message name="getQuittanceAsyncInitRequest">
+    <wsdl:part element="q:getQuittanceAsyncInitRequest" name="getQuittanceAsyncInitRequest"/>
+  </wsdl:message>
+  <wsdl:message name="getQuittanceAsyncInitResponse">
+    <wsdl:part element="q:getQuittanceAsyncInitResponse" name="getQuittanceAsyncInitResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getQuittanceAsyncResultRequest">
+    <wsdl:part element="q:getQuittanceAsyncResultRequest" name="getQuittanceAsyncResultRequest"/>
+  </wsdl:message>
+  <wsdl:message name="getQuittanceAsyncResultResponse">
+    <wsdl:part element="q:getQuittanceAsyncResultResponse" name="getQuittanceAsyncResultResponse"/>
+  </wsdl:message>
+
+  <wsdl:portType name="QuittanceFKServicePortType">
+    <wsdl:operation name="getBillSync">
+      <wsdl:input message="q:getBillSyncRequest"/>
+      <wsdl:output message="q:getBillSyncResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getBillAsyncInit">
+      <wsdl:input message="q:getBillAsyncInitRequest"/>
+      <wsdl:output message="q:getBillAsyncInitResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getBillAsyncResult">
+      <wsdl:input message="q:getBillAsyncResultRequest"/>
+      <wsdl:output message="q:getBillAsyncResultResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="loadBillSync">
+      <wsdl:input message="q:loadBillSyncRequest"/>
+      <wsdl:output message="q:loadBillSyncResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="loadBillAsyncInit">
+      <wsdl:input message="q:loadBillAsyncInitRequest"/>
+      <wsdl:output message="q:loadBillAsyncInitResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="loadBillAsyncResult">
+      <wsdl:input message="q:loadBillAsyncResultRequest"/>
+      <wsdl:output message="q:loadBillAsyncResultResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getPaymentSync">
+      <wsdl:input message="q:getPaymentSyncRequest"/>
+      <wsdl:output message="q:getPaymentSyncResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getPaymentAsyncInit">
+      <wsdl:input message="q:getPaymentAsyncInitRequest"/>
+      <wsdl:output message="q:getPaymentAsyncInitResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getPaymentAsyncResult">
+      <wsdl:input message="q:getPaymentAsyncResultRequest"/>
+      <wsdl:output message="q:getPaymentAsyncResultResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="loadPaymentSync">
+      <wsdl:input message="q:loadPaymentSyncRequest"/>
+      <wsdl:output message="q:loadPaymentSyncResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="loadPaymentAsyncInit">
+      <wsdl:input message="q:loadPaymentAsyncInitRequest"/>
+      <wsdl:output message="q:loadPaymentAsyncInitResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="loadPaymentAsyncResult">
+      <wsdl:input message="q:loadPaymentAsyncResultRequest"/>
+      <wsdl:output message="q:loadPaymentAsyncResultResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getIncomeSync">
+      <wsdl:input message="q:getIncomeSyncRequest"/>
+      <wsdl:output message="q:getIncomeSyncResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getIncomeAsyncInit">
+      <wsdl:input message="q:getIncomeAsyncInitRequest"/>
+      <wsdl:output message="q:getIncomeAsyncInitResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getIncomeAsyncResult">
+      <wsdl:input message="q:getIncomeAsyncResultRequest"/>
+      <wsdl:output message="q:getIncomeAsyncResultResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="loadIncomeSync">
+      <wsdl:input message="q:loadIncomeSyncRequest"/>
+      <wsdl:output message="q:loadIncomeSyncResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="loadIncomeAsyncInit">
+      <wsdl:input message="q:loadIncomeAsyncInitRequest"/>
+      <wsdl:output message="q:loadIncomeAsyncInitResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="loadIncomeAsyncResult">
+      <wsdl:input message="q:loadIncomeAsyncResultRequest"/>
+      <wsdl:output message="q:loadIncomeAsyncResultResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getQuittanceSync">
+      <wsdl:input message="q:getQuittanceSyncRequest"/>
+      <wsdl:output message="q:getQuittanceSyncResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getQuittanceAsyncInit">
+      <wsdl:input message="q:getQuittanceAsyncInitRequest"/>
+      <wsdl:output message="q:getQuittanceAsyncInitResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getQuittanceAsyncResult">
+      <wsdl:input message="q:getQuittanceAsyncResultRequest"/>
+      <wsdl:output message="q:getQuittanceAsyncResultResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+
+  <wsdl:binding name="QuittanceFKServiceBinding" type="q:QuittanceFKServicePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getBillSync">
+      <soap:operation soapAction="getBillSync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBillAsyncInit">
+      <soap:operation soapAction="getBillAsyncInit" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBillAsyncResult">
+      <soap:operation soapAction="getBillAsyncResult" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="loadBillSync">
+      <soap:operation soapAction="loadBillSync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="loadBillAsyncInit">
+      <soap:operation soapAction="loadBillAsyncInit" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="loadBillAsyncResult">
+      <soap:operation soapAction="loadBillAsyncResult" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPaymentSync">
+      <soap:operation soapAction="getPaymentSync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPaymentAsyncInit">
+      <soap:operation soapAction="getPaymentAsyncInit" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPaymentAsyncResult">
+      <soap:operation soapAction="getPaymentAsyncResult" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="loadPaymentSync">
+      <soap:operation soapAction="loadPaymentSync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="loadPaymentAsyncInit">
+      <soap:operation soapAction="loadPaymentAsyncInit" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="loadPaymentAsyncResult">
+      <soap:operation soapAction="loadPaymentAsyncResult" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getIncomeSync">
+      <soap:operation soapAction="getIncomeSync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getIncomeAsyncInit">
+      <soap:operation soapAction="getIncomeAsyncInit" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getIncomeAsyncResult">
+      <soap:operation soapAction="getIncomeAsyncResult" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="loadIncomeSync">
+      <soap:operation soapAction="loadIncomeSync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="loadIncomeAsyncInit">
+      <soap:operation soapAction="loadIncomeAsyncInit" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="loadIncomeAsyncResult">
+      <soap:operation soapAction="loadIncomeAsyncResult" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getQuittanceSync">
+      <soap:operation soapAction="getQuittanceSync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getQuittanceAsyncInit">
+      <soap:operation soapAction="getQuittanceAsyncInit" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getQuittanceAsyncResult">
+      <soap:operation soapAction="getQuittanceAsyncResult" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  
+  <wsdl:service name="QuittanceFKService">
+    <wsdl:port binding="q:QuittanceFKServiceBinding" name="QuittanceFKServiceSoapPort">
+	<soap:address location="http://localhost:8001/QuittanceService/FKService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

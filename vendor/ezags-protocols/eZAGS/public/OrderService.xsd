@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- edited with XMLSpy v2011 rel. 2 (http://www.altova.com) by TeaM DJiNN (TeaM DJiNN) -->
+<xs:schema xmlns:t="http://ezags.rt.ru/fzags/OrderService/type/local/" xmlns:cm="http://ezags.rt.ru/type/common/" xmlns:pgu="http://idecs.atc.ru/privateoffice/ws/changeorderinfo" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:smev="http://smev.gosuslugi.ru/rev120315" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" targetNamespace="http://smev.gosuslugi.ru/rev120315" elementFormDefault="qualified" attributeFormDefault="qualified">
+	<xs:import namespace="http://ezags.rt.ru/fzags/OrderService/type/local/" schemaLocation="../LocalOrderService.xsd"/>
+	<xs:import namespace="http://ezags.rt.ru/type/common/" schemaLocation="../../common.xsd"/>
+	<xs:import namespace="http://idecs.atc.ru/privateoffice/ws/changeorderinfo" schemaLocation="../../ePGU/order-info.xsd"/>
+	<xs:include schemaLocation="../../smev/smev.gosuslugi.ru.rev120315.xsd"/>
+	<xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="../../xmldsig-core-schema.xsd"/>
+	<xs:complexType name="GetRegistrarsRequest">
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="t:getRegistrarsRequestObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="GetRegistrarsResponse">
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="t:getRegistrarsResponseObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="GetFreeTimeRequest">  
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>  
+			<xs:element name="MessageData">  
+				<xs:complexType>  
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">  
+							<xs:complexType>  
+								<xs:sequence minOccurs="1">
+									<xs:element ref="t:getFreeTimeRequestObj"/>  
+									<xs:element ref="ds:Signature" minOccurs="0"/>  
+								</xs:sequence>  
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>  
+							</xs:complexType>  
+						</xs:element>  
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>  
+					</xs:sequence>  
+				</xs:complexType>  
+			</xs:element>  
+		</xs:sequence>  
+	</xs:complexType>  
+	<xs:complexType name="GetFreeTimeResponse">  
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>  
+			<xs:element name="MessageData">  
+				<xs:complexType>  
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">  
+							<xs:complexType>  
+								<xs:sequence minOccurs="1">
+									<xs:element ref="t:getFreeTimeResponseObj"/>  
+									<xs:element ref="ds:Signature" minOccurs="0"/>  
+								</xs:sequence>  
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>  
+							</xs:complexType>  
+						</xs:element>  
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>  
+					</xs:sequence>  
+				</xs:complexType>  
+			</xs:element>  
+		</xs:sequence>  
+	</xs:complexType>  	
+	<xs:complexType name="GetServiceStatusRequest">
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="t:getServiceStatusRequestObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="GetServiceStatusResponse">
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="t:getServiceStatusResponseObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SendServiceOfBirthRequest">
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="t:sendServiceOfBirthRequestObj" minOccurs="0"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SendServiceOfDeathRequest">
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="t:sendServiceOfDeathRequestObj" minOccurs="0"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SendServiceOfMarriageRequest">
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="t:sendServiceOfMarriageRequestObj" minOccurs="0"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SendServiceOfDivorceRequest">
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="t:sendServiceOfDivorceRequestObj" minOccurs="0"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UpdateStatusRequest">
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="t:updateStatusRequestObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+    <xs:complexType name="UpdatePaymentStatusRequest">
+   		<xs:sequence minOccurs="1">
+   			<xs:element ref="smev:Message"/>
+   			<xs:element name="MessageData">
+   				<xs:complexType>
+   					<xs:sequence minOccurs="1">
+   						<xs:element name="AppData">
+   							<xs:complexType>
+   								<xs:sequence minOccurs="1">
+   									<xs:element ref="t:updatePaymentStatusRequestObj"/>
+   									<xs:element ref="ds:Signature" minOccurs="0"/>
+   								</xs:sequence>
+   								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+   							</xs:complexType>
+   						</xs:element>
+   						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+   					</xs:sequence>
+   				</xs:complexType>
+   			</xs:element>
+   		</xs:sequence>
+   	</xs:complexType>
+	<xs:complexType name="UpdateTimeReservationStatusRequest">
+		<xs:sequence>
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="AppData">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element ref="t:updateTimeReservationStatusRequestObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UpdateTimeReservationStatusResponse">
+		<xs:sequence>
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="AppData">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element ref="t:updateTimeReservationStatusResponseObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="FaultBase">
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="cm:faultBaseObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+   							</xs:complexType>
+   						</xs:element>
+   						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+   					</xs:sequence>
+   				</xs:complexType>
+   			</xs:element>
+   		</xs:sequence>
+   	</xs:complexType>
+    <xs:complexType name="VoidResponse">
+   		<xs:sequence minOccurs="1">
+   			<xs:element ref="smev:Message"/>
+   			<xs:element name="MessageData">
+   				<xs:complexType>
+   					<xs:sequence minOccurs="1">
+   						<xs:element name="AppData">
+   							<xs:complexType>
+   								<xs:sequence minOccurs="1">
+   									<xs:element ref="cm:voidResponseObj"/>
+   									<xs:element ref="ds:Signature" minOccurs="0"/>
+   								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+   							</xs:complexType>
+   						</xs:element>
+   						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+   					</xs:sequence>
+   				</xs:complexType>
+   			</xs:element>
+   		</xs:sequence>
+    </xs:complexType>
+	<xs:complexType name="StatusResponse">
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="pgu:changeOrderInfo"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="getRegistrarsRequest" type="smev:GetRegistrarsRequest"/>
+	<xs:element name="getRegistrarsResponse" type="smev:GetRegistrarsResponse"/>
+	<xs:element name="getFreeTimeRequest" type="smev:GetFreeTimeRequest"/>
+	<xs:element name="getFreeTimeResponse" type="smev:GetFreeTimeResponse"/>
+	<xs:element name="getServiceStatusRequest" type="smev:GetServiceStatusRequest"/>
+	<xs:element name="getServiceStatusResponse" type="smev:GetServiceStatusResponse"/>
+	<xs:element name="sendServiceOfBirthRequest" type="smev:SendServiceOfBirthRequest"/>
+	<xs:element name="sendServiceOfDeathRequest" type="smev:SendServiceOfDeathRequest"/>
+	<xs:element name="sendServiceOfMarriageRequest" type="smev:SendServiceOfMarriageRequest"/>
+	<xs:element name="sendServiceOfDivorceRequest" type="smev:SendServiceOfDivorceRequest"/>
+	<xs:element name="updateStatusRequest" type="smev:UpdateStatusRequest"/>
+    <xs:element name="updatePaymentStatusRequest" type="smev:UpdatePaymentStatusRequest"/>
+	<xs:element name="updateTimeReservationStatusRequest" type="smev:UpdateTimeReservationStatusRequest"/>
+	<xs:element name="updateTimeReservationStatusResponse" type="smev:UpdateTimeReservationStatusResponse"/>
+	<xs:element name="fault" type="smev:FaultBase"/>
+	<xs:element name="voidResponse" type="smev:VoidResponse"/>
+	<xs:element name="statusResponse" type="smev:StatusResponse"/>
+</xs:schema>

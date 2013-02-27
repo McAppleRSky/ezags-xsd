@@ -1,0 +1,575 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://ipsh.gosuslugi.ru/sisp/quittance_types"
+  xmlns:qt="http://ipsh.gosuslugi.ru/sisp/quittance_types" elementFormDefault="unqualified">
+  <xsd:annotation>
+    <xsd:documentation>Общие типы данных
+    </xsd:documentation>
+  </xsd:annotation>
+
+  <xsd:simpleType name="String2Type">
+    <xsd:annotation>
+      <xsd:documentation>Общий тип для ограничения длинны строк в 2 символа
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="2" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="String6Type">
+    <xsd:annotation>
+      <xsd:documentation>Общий тип для ограничения длинны строк в 6 символов
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="6" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="String9Type">
+    <xsd:annotation>
+      <xsd:documentation>Общий тип для ограничения длинны строк в 9 символов
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="9" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="String10Type">
+    <xsd:annotation>
+      <xsd:documentation>Общий тип для ограничения длинны строк в 10 символов
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="10" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="String11Type">
+    <xsd:annotation>
+      <xsd:documentation>Общий тип для ограничения длинны строк в 11 символов
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="11" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="String12Type">
+    <xsd:annotation>
+      <xsd:documentation>Общий тип для ограничения длинны строк в 12 символов
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="12" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="String16Type">
+    <xsd:annotation>
+      <xsd:documentation>Общий тип для ограничения длинны строк в 16
+        символов
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="16" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="String20Type">
+    <xsd:annotation>
+      <xsd:documentation>Общий тип для ограничения длинны строк в 20
+        символов
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="20" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="String25Type">
+    <xsd:annotation>
+      <xsd:documentation>Общий тип для ограничения длинны строк в 25
+        символов
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="25" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="String32Type">
+    <xsd:annotation>
+      <xsd:documentation>Общий тип для ограничения длинны строк в 32
+        символов
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="32" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="String36Type">
+    <xsd:annotation>
+      <xsd:documentation>Общий тип для ограничения длинны строк в 36
+        символов
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="36" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="String40Type">
+    <xsd:annotation>
+      <xsd:documentation>Общий тип для ограничения длинны строк в 40
+        символов
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="40" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="String64Type">
+    <xsd:annotation>
+      <xsd:documentation>Общий тип для ограничения длинны строк в 64
+        символов
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="64" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="String128Type">
+    <xsd:annotation>
+      <xsd:documentation>Общий тип для ограничения длинны строк в 128
+        символов
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="128" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="String255Type">
+    <xsd:annotation>
+      <xsd:documentation>Общий тип для ограничения длинны строк в 255
+        символов
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="255" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="String100Type">
+    <xsd:annotation>
+      <xsd:documentation>Общий тип для ограничения длинны строк в 100
+        символов
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="100" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="String400Type">
+    <xsd:annotation>
+      <xsd:documentation>Общий тип для ограничения длинны строк в 400
+        символов
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="400" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="String1000Type">
+    <xsd:annotation>
+      <xsd:documentation>Общий тип для ограничения длинны строк в 1000
+        символов
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="1000" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="String2000Type">
+    <xsd:annotation>
+      <xsd:documentation>Общий тип для ограничения длинны строк в 1000
+        символов
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="2000" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="String4000Type">
+    <xsd:annotation>
+      <xsd:documentation>Общий тип для ограничения длинны строк в 4000
+        символов
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="4000" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="ExtIdType">
+    <xsd:annotation>
+      <xsd:documentation>Общий тип для всех идентификаторов внешних систем
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="qt:String64Type" />
+  </xsd:simpleType>
+  <xsd:simpleType name="CodeType">
+    <xsd:annotation>
+      <xsd:documentation>Общий тип для всех кодов, за которые отвечает система
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="qt:String16Type" />
+  </xsd:simpleType>
+  <xsd:simpleType name="AccountNumType">
+    <xsd:annotation>
+      <xsd:documentation>Номер счета.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:length value="20" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:complexType name="MapEntryType">
+    <xsd:annotation>
+      <xsd:documentation>Отдельная запись с кодом и значением
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Значение записи
+          </xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute name="code" type="xsd:string" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Код записи
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+
+  <xsd:complexType name="MapType">
+    <xsd:annotation>
+      <xsd:documentation>Массив записей вида: {код: значение}.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence minOccurs="1">
+      <xsd:element name="item" type="qt:MapEntryType" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>Отдельный элемент из множества
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:simpleType name="ErrorLevelType">
+    <xsd:annotation>
+      <xsd:documentation>Уровень ошибки. Определяет возможные уровни ошибок
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="FATAL">
+        <xsd:annotation>
+          <xsd:documentation>Фатальная ошибка, повторное выполнение операции с теми же параметрами приведет к той же
+            самой ошибке
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="ERROR">
+        <xsd:annotation>
+          <xsd:documentation>Ошибка, повторное выполнение операции с теми же параметрами может привести к исчезновению
+            ошибки
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="WARNING">
+        <xsd:annotation>
+          <xsd:documentation>Предупреждение, бизнес-операция выполнена, но с ограничением или не полностью
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="INFO">
+        <xsd:annotation>
+          <xsd:documentation>Сообщение, бизнес-операция выполнена успешно.
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="RequestStatusType">
+    <xsd:annotation>
+      <xsd:documentation>Статус выполнения асинхронного запроса.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="PROCESSING">
+        <xsd:annotation>
+          <xsd:documentation>Запрос находится в процессе обработки.
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="TIMEOUT">
+        <xsd:annotation>
+          <xsd:documentation>При обработке запроса было превышено допустимое количество попыток отправки и обработка
+            запроса была приостановлена до вмешательства администратора.
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="COMPLETE">
+        <xsd:annotation>
+          <xsd:documentation>Запрос обработан успешно. Ответ на запрос доступен.
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="EXPIRE">
+        <xsd:annotation>
+          <xsd:documentation>Время хранения результата запроса истекло, для получения данных необходимо повторить
+            запрос.
+            Запрос переводится в данный статус после того, как было выполнено успешное уведомление вызывающей стороны.
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:complexType name="CommonErrorType">
+    <xsd:annotation>
+      <xsd:documentation>Данные по ошибке</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence minOccurs="1">
+      <xsd:element name="errorCode" type="qt:CodeType">
+        <xsd:annotation>
+          <xsd:documentation>Мнемонический код ошибки</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="errorLevel" type="qt:ErrorLevelType">
+        <xsd:annotation>
+          <xsd:documentation>Уровень ошибки</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="errorName" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Краткое бизнес-наименование ошибки для отображения пользователю
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="errorTime" type="xsd:dateTime">
+        <xsd:annotation>
+          <xsd:documentation>Дата и время возникновения ошибки
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="errorDetails" type="xsd:string" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Техническая информация о произошедшей
+            ошибке.Детальное описание причины ошибки, информация
+            об
+            исключительной ситуации
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="CommonRequestType">
+    <xsd:annotation>
+      <xsd:documentation>Основной тип для всех запросов
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence minOccurs="1">
+      <xsd:element name="clientCode" type="qt:CodeType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Код клиента.
+            Если не заполняется, то используется код системы из заголовка СМЭВа.
+            Если заполняется, то переданный код клиента должен быть подчинен код организации из заголовка СМЭВа.
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="operationCode" type="qt:ExtIdType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Идентификатор операции во внешней системе.
+            Если не передается, то заполняется идентификатором сообщения из СМЭВа.
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="CommonResponseType">
+    <xsd:annotation>
+      <xsd:documentation>Основной тип для всех ответов
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence minOccurs="1">
+      <xsd:element name="error" type="qt:CommonErrorType">
+        <xsd:annotation>
+          <xsd:documentation>Код ошибки в результате обработки запроса.
+            Ошибка с уровнем INFO означает успешное выполнение операции
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="SyncRequestType">
+    <xsd:annotation>
+      <xsd:documentation>Основной тип для синхронных запросов
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="qt:CommonRequestType">
+        <xsd:sequence minOccurs="1">
+          <xsd:element name="notify" type="xsd:boolean" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Признак необходимости уведомления об изменении параметров объекта, чей идентификатор
+                передается в запросе.
+                Признак используется системой уведомлений для того, чтобы регистрировать подписку на изменение объекта.
+                Значение по умолчанию: false, если это не переопределяется на конкретной опеарции.
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <xsd:complexType name="SyncResponseType">
+    <xsd:annotation>
+      <xsd:documentation>Основной тип для синхронных ответов
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="qt:CommonResponseType">
+        <xsd:sequence minOccurs="1">
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+
+  <xsd:complexType name="AsyncInitRequestType">
+    <xsd:annotation>
+      <xsd:documentation>Основной тип для инициации асинхронных запросов
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="qt:CommonRequestType">
+        <xsd:sequence minOccurs="1">
+          <xsd:element name="notify" type="xsd:boolean" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Признак необходимости уведомления об изменении параметров объекта, чей идентификатор
+                передается в запросе.
+                Признак используется системой уведомлений для того, чтобы регистрировать подписку на изменение объекта.
+                Значение по умолчанию: false, если это не переопределяется на конкретной опеарции.
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <xsd:complexType name="AsyncInitResponseType">
+    <xsd:annotation>
+      <xsd:documentation>Основной тип для ответов на асинхронные запросы инициации
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="qt:CommonResponseType">
+        <xsd:sequence minOccurs="1">
+          <xsd:element name="requestId" type="xsd:long">
+            <xsd:annotation>
+              <xsd:documentation>Идентификатор запроса, принятого в обработку.
+                По данному идентификатору можно выполнять запрос статуса операции.
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <xsd:complexType name="AsyncResultRequestType">
+    <xsd:annotation>
+      <xsd:documentation>Основной тип для запросов статуса выполнения асинхронных запросов
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="qt:CommonRequestType">
+        <xsd:sequence minOccurs="1">
+          <xsd:element name="requestId" type="xsd:long">
+            <xsd:annotation>
+              <xsd:documentation>Идентификатор запроса, по которо запрашивается результат выполнения.
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <xsd:complexType name="AsyncResultResponseType">
+    <xsd:annotation>
+      <xsd:documentation>Основной тип для ответов за синхронных запросов
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="qt:CommonResponseType">
+        <xsd:sequence minOccurs="1">
+          <xsd:element name="status" type="qt:RequestStatusType">
+            <xsd:annotation>
+              <xsd:documentation>Код статуса запроса, по которому выполняется запрос результата.
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <xsd:complexType name="AsyncNotifyRequestType">
+    <xsd:annotation>
+      <xsd:documentation>Основной тип для запросов уведомления о выполнении операции
+      </xsd:documentation>
+    </xsd:annotation>
+      <xsd:sequence minOccurs="1">
+        <xsd:element name="requestId" type="xsd:long">
+          <xsd:annotation>
+            <xsd:documentation>Идентификатор запроса, по которо запрашивается результат выполнения.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+          <xsd:element name="status" type="qt:RequestStatusType">
+            <xsd:annotation>
+              <xsd:documentation>Код статуса запроса, по которому выполняется запрос результата.
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        <xsd:element name="objectTypeCode" type="qt:CodeType">
+          <xsd:annotation>
+            <xsd:documentation>Тип объекта, передаваемого в уведомлении
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="error" type="qt:CommonErrorType">
+          <xsd:annotation>
+            <xsd:documentation>Код ошибки в результате обработки запроса.
+              Ошибка с уровнем INFO означает успешное выполнение операции
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:any namespace="##any" processContents="lax">
+        </xsd:any>
+      </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="AsyncNotifyResponseType">
+    <xsd:annotation>
+      <xsd:documentation>Основной тип для ответов за синхронных запросов
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="qt:CommonResponseType">
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+</xsd:schema>

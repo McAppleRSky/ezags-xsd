@@ -1,0 +1,774 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://ezags.rt.ru/fzags/LocalInterDepPersonalService/" xmlns:ns="http://ezags.rt.ru/fzags/InterDepPersonalService/type/local/" xmlns:ns2="http://www.w3.org/2000/09/xmldsig#" xmlns:ns1="http://ezags.rt.ru/type/actor/" xmlns:ns3="http://ezags.rt.ru/type/common/" xmlns:ns4="http://ezags.rt.ru/type/document/" xmlns:ns5="http://ezags.rt.ru/type/externaldocuments/" targetNamespace="http://ezags.rt.ru/fzags/LocalInterDepPersonalService/">
+	<wsdl:types>
+		<xs:schema xmlns:ns="http://ezags.rt.ru/fzags/InterDepPersonalService/type/local/" targetNamespace="http://ezags.rt.ru/fzags/LocalInterDepPersonalService/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+			<xs:import namespace="http://ezags.rt.ru/fzags/InterDepPersonalService/type/local/" schemaLocation="LocalInterDepPersonalService.xsd"/>
+		</xs:schema>
+		<xs:schema>
+			<xs:import namespace="http://ezags.rt.ru/type/actor/" schemaLocation="../actor.xsd"/>
+		</xs:schema>
+		<xs:schema>
+			<xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="../xmldsig-core-schema.xsd"/>
+		</xs:schema>
+	</wsdl:types>
+	<wsdl:message name="ticketCheckExistenceOfActRecordRequest">
+		<wsdl:part name="parameter" element="ns:ticketCheckExistenceOfActRecordObj"/>
+	</wsdl:message>
+	<wsdl:message name="checkExistenceOfActRecordResponse">
+		<wsdl:part name="parameter" element="ns:checkExistenceOfActRecordResponseObj"/>
+	</wsdl:message>
+	<wsdl:message name="ticketSearchPersonalReferenceBirth24Request">
+		<wsdl:part name="parameter" element="ns:ticketSearchPersonalReferenceBirth24Obj"/>
+	</wsdl:message>
+	<wsdl:message name="ticketSearchPersonalReferenceBirth25Request">
+		<wsdl:part name="parameter" element="ns:ticketSearchPersonalReferenceBirth25Obj"/>
+	</wsdl:message>
+	<wsdl:message name="ticketSearchPersonalReferenceBirth26Request">
+		<wsdl:part name="parameter" element="ns:ticketSearchPersonalReferenceBirth26Obj"/>
+	</wsdl:message>
+	<wsdl:message name="ticketSearchPersonalReferenceMarriage27Request">
+		<wsdl:part name="parameter" element="ns:ticketSearchPersonalReferenceMarriage27Obj"/>
+	</wsdl:message>
+	<wsdl:message name="ticketSearchPersonalReferenceMarriage28Request">
+		<wsdl:part name="parameter" element="ns:ticketSearchPersonalReferenceMarriage28Obj"/>
+	</wsdl:message>
+	<wsdl:message name="ticketSearchPersonalReferenceDivorce29Request">
+		<wsdl:part name="parameter" element="ns:ticketSearchPersonalReferenceDivorce29Obj"/>
+	</wsdl:message>
+	<wsdl:message name="ticketSearchPersonalReferenceAdoption30Request">
+		<wsdl:part name="parameter" element="ns:ticketSearchPersonalReferenceAdoption30Obj"/>
+	</wsdl:message>
+	<wsdl:message name="ticketSearchPersonalReferenceFiliation31Request">
+		<wsdl:part name="parameter" element="ns:ticketSearchPersonalReferenceFiliation31Obj"/>
+	</wsdl:message>
+	<wsdl:message name="ticketSearchPersonalReferenceNameChange32Request">
+		<wsdl:part name="parameter" element="ns:ticketSearchPersonalReferenceNameChange32Obj"/>
+	</wsdl:message>
+	<wsdl:message name="ticketSearchPersonalReferenceDeath33Request">
+		<wsdl:part name="parameter" element="ns:ticketSearchPersonalReferenceDeath33Obj"/>
+	</wsdl:message>
+	<wsdl:message name="ticketSearchPersonalReferenceDeath34Request">
+		<wsdl:part name="parameter" element="ns:ticketSearchPersonalReferenceDeath34Obj"/>
+	</wsdl:message>
+	<wsdl:message name="ticketSearchPersonalCertificateBirthRequest">
+		<wsdl:part name="parameter" element="ns:ticketSearchPersonalCertificateBirthObj"/>
+	</wsdl:message>
+	<wsdl:message name="ticketSearchPersonalCertificateMarriageRequest">
+		<wsdl:part name="parameter" element="ns:ticketSearchPersonalCertificateMarriageObj"/>
+	</wsdl:message>
+	<wsdl:message name="ticketSearchPersonalCertificateDivorceRequest">
+		<wsdl:part name="parameter" element="ns:ticketSearchPersonalCertificateDivorceObj"/>
+	</wsdl:message>
+	<wsdl:message name="ticketSearchPersonalCertificateAdoptionRequest">
+		<wsdl:part name="parameter" element="ns:ticketSearchPersonalCertificateAdoptionObj"/>
+	</wsdl:message>
+	<wsdl:message name="ticketSearchPersonalCertificateFiliationRequest">
+		<wsdl:part name="parameter" element="ns:ticketSearchPersonalCertificateFiliationObj"/>
+	</wsdl:message>
+	<wsdl:message name="ticketSearchPersonalCertificateNameChangeRequest">
+		<wsdl:part name="parameter" element="ns:ticketSearchPersonalCertificateNameChangeObj"/>
+	</wsdl:message>
+	<wsdl:message name="ticketSearchPersonalCertificateDeathRequest">
+		<wsdl:part name="parameter" element="ns:ticketSearchPersonalCertificateDeathObj"/>
+	</wsdl:message>
+	<wsdl:message name="ticketSearchPersonalActRecordBirthRequest">
+		<wsdl:part name="parameter" element="ns:ticketSearchPersonalActRecordBirthObj"/>
+	</wsdl:message>
+	<wsdl:message name="ticketSearchPersonalActRecordMarriageRequest">
+		<wsdl:part name="parameter" element="ns:ticketSearchPersonalActRecordMarriageObj"/>
+	</wsdl:message>
+	<wsdl:message name="ticketSearchPersonalActRecordDivorceRequest">
+		<wsdl:part name="parameter" element="ns:ticketSearchPersonalActRecordDivorceObj"/>
+	</wsdl:message>
+	<wsdl:message name="ticketSearchPersonalActRecordAdoptionRequest">
+		<wsdl:part name="parameter" element="ns:ticketSearchPersonalActRecordAdoptionObj"/>
+	</wsdl:message>
+	<wsdl:message name="ticketSearchPersonalActRecordFiliationRequest">
+		<wsdl:part name="parameter" element="ns:ticketSearchPersonalActRecordFiliationObj"/>
+	</wsdl:message>
+	<wsdl:message name="ticketSearchPersonalActRecordNameChangeRequest">
+		<wsdl:part name="parameter" element="ns:ticketSearchPersonalActRecordNameChangeObj"/>
+	</wsdl:message>
+	<wsdl:message name="ticketSearchPersonalActRecordDeathRequest">
+		<wsdl:part name="parameter" element="ns:ticketSearchPersonalActRecordDeathObj"/>
+	</wsdl:message>
+	<wsdl:message name="ticketSearchPersonalActRecordResponse">
+		<wsdl:part name="parameter" element="ns:ticketNumberObj"/>
+	</wsdl:message>
+	<wsdl:message name="actRecordBirthFilterRequest">
+		<wsdl:part name="parameter" element="ns:actRecordBirthFilterRequestObj"/>
+	</wsdl:message>
+	<wsdl:message name="actRecordMarriageFilterRequest">
+		<wsdl:part name="parameter" element="ns:actRecordMarriageFilterRequestObj"/>
+	</wsdl:message>
+	<wsdl:message name="actRecordDivorceFilterRequest">
+		<wsdl:part name="parameter" element="ns:actRecordDivorceFilterRequestObj"/>
+	</wsdl:message>
+	<wsdl:message name="actRecordAdoptionFilterRequest">
+		<wsdl:part name="parameter" element="ns:actRecordAdoptionFilterRequestObj"/>
+	</wsdl:message>
+	<wsdl:message name="actRecordFiliationFilterRequest">
+		<wsdl:part name="parameter" element="ns:actRecordFiliationFilterRequestObj"/>
+	</wsdl:message>
+	<wsdl:message name="actRecordNameChangeFilterRequest">
+		<wsdl:part name="parameter" element="ns:actRecordNameChangeFilterRequestObj"/>
+	</wsdl:message>
+	<wsdl:message name="actRecordDeathFilterRequest">
+		<wsdl:part name="parameter" element="ns:actRecordDeathFilterRequestObj"/>
+	</wsdl:message>
+	<wsdl:message name="referenceBirth24Response">
+		<wsdl:part name="parameter" element="ns:referenceBirth24ResponseObj"/>
+	</wsdl:message>
+	<wsdl:message name="referenceBirth25Response">
+		<wsdl:part name="parameter" element="ns:referenceBirth25ResponseObj"/>
+	</wsdl:message>
+	<wsdl:message name="referenceBirth26Response">
+		<wsdl:part name="parameter" element="ns:referenceBirth26ResponseObj"/>
+	</wsdl:message>
+	<wsdl:message name="referenceMarriage27Response">
+		<wsdl:part name="parameter" element="ns:referenceMarriage27ResponseObj"/>
+	</wsdl:message>
+	<wsdl:message name="referenceMarriage28Response">
+		<wsdl:part name="parameter" element="ns:referenceMarriage28ResponseObj"/>
+	</wsdl:message>
+	<wsdl:message name="referenceDivorce29Response">
+		<wsdl:part name="parameter" element="ns:referenceDivorce29ResponseObj"/>
+	</wsdl:message>
+	<wsdl:message name="referenceAdoption30Response">
+		<wsdl:part name="parameter" element="ns:referenceAdoption30ResponseObj"/>
+	</wsdl:message>
+	<wsdl:message name="referenceFiliation31Response">
+		<wsdl:part name="parameter" element="ns:referenceFiliation31ResponseObj"/>
+	</wsdl:message>
+	<wsdl:message name="referenceNameChange32Response">
+		<wsdl:part name="parameter" element="ns:referenceNameChange32ResponseObj"/>
+	</wsdl:message>
+	<wsdl:message name="referenceDeath33Response">
+		<wsdl:part name="parameter" element="ns:referenceDeath33ResponseObj"/>
+	</wsdl:message>
+	<wsdl:message name="referenceDeath34Response">
+		<wsdl:part name="parameter" element="ns:referenceDeath34ResponseObj"/>
+	</wsdl:message>
+	<wsdl:message name="certificateBirthResponse">
+		<wsdl:part name="parameter" element="ns:certificateBirthResponseObj"/>
+	</wsdl:message>
+	<wsdl:message name="certificateMarriageResponse">
+		<wsdl:part name="parameter" element="ns:certificateMarriageResponseObj"/>
+	</wsdl:message>
+	<wsdl:message name="certificateDivorceResponse">
+		<wsdl:part name="parameter" element="ns:certificateDivorceResponseObj"/>
+	</wsdl:message>
+	<wsdl:message name="certificateAdoptionResponse">
+		<wsdl:part name="parameter" element="ns:certificateAdoptionResponseObj"/>
+	</wsdl:message>
+	<wsdl:message name="certificateFiliationResponse">
+		<wsdl:part name="parameter" element="ns:certificateFiliationResponseObj"/>
+	</wsdl:message>
+	<wsdl:message name="certificateNameChangeResponse">
+		<wsdl:part name="parameter" element="ns:certificateNameChangeResponseObj"/>
+	</wsdl:message>
+	<wsdl:message name="certificateDeathResponse">
+		<wsdl:part name="parameter" element="ns:certificateDeathResponseObj"/>
+	</wsdl:message>
+	<wsdl:message name="actRecordAdoptionResponse">
+		<wsdl:part name="parameter" element="ns:actRecordAdoptionResponseObj"/>
+	</wsdl:message>
+	<wsdl:message name="actRecordBirthResponse">
+		<wsdl:part name="parameter" element="ns:actRecordBirthResponseObj"/>
+	</wsdl:message>
+	<wsdl:message name="actRecordDeathResponse">
+		<wsdl:part name="parameter" element="ns:actRecordDeathResponseObj"/>
+	</wsdl:message>
+	<wsdl:message name="actRecordDivorceResponse">
+		<wsdl:part name="parameter" element="ns:actRecordDivorceResponseObj"/>
+	</wsdl:message>
+	<wsdl:message name="actRecordFiliationResponse">
+		<wsdl:part name="parameter" element="ns:actRecordFiliationResponseObj"/>
+	</wsdl:message>
+	<wsdl:message name="actRecordNameChangeResponse">
+		<wsdl:part name="parameter" element="ns:actRecordNameChangeResponseObj"/>
+	</wsdl:message>
+	<wsdl:message name="actRecordMarriageResponse">
+		<wsdl:part name="parameter" element="ns:actRecordMarriageResponseObj"/>
+	</wsdl:message>
+	<wsdl:message name="Fault">
+		<wsdl:part name="parameter" element="ns:baseFaultObj"/>
+	</wsdl:message>
+	<wsdl:portType name="LocalInterDepPersonalService">
+		<!-- Запрос на поиск актовой записи для получения Единичных сведений по этой записи в требуемом объеме-->
+		<wsdl:operation name="putSearchPersonalActRecordBirth">
+			<wsdl:input message="tns:actRecordBirthFilterRequest"/>
+			<wsdl:output message="tns:ticketSearchPersonalActRecordResponse"/>
+			<wsdl:fault name="Fault" message="tns:Fault"/>
+		</wsdl:operation>
+		<wsdl:operation name="putSearchPersonalActRecordMarriage">
+			<wsdl:input message="tns:actRecordMarriageFilterRequest"/>
+			<wsdl:output message="tns:ticketSearchPersonalActRecordResponse"/>
+			<wsdl:fault name="Fault" message="tns:Fault"/>
+		</wsdl:operation>
+		<wsdl:operation name="putSearchPersonalActRecordDivorce">
+			<wsdl:input message="tns:actRecordDivorceFilterRequest"/>
+			<wsdl:output message="tns:ticketSearchPersonalActRecordResponse"/>
+			<wsdl:fault name="Fault" message="tns:Fault"/>
+		</wsdl:operation>
+		<wsdl:operation name="putSearchPersonalActRecordAdoption">
+			<wsdl:input message="tns:actRecordAdoptionFilterRequest"/>
+			<wsdl:output message="tns:ticketSearchPersonalActRecordResponse"/>
+			<wsdl:fault name="Fault" message="tns:Fault"/>
+		</wsdl:operation>
+		<wsdl:operation name="putSearchPersonalActRecordFiliation">
+			<wsdl:input message="tns:actRecordFiliationFilterRequest"/>
+			<wsdl:output message="tns:ticketSearchPersonalActRecordResponse"/>
+			<wsdl:fault name="Fault" message="tns:Fault"/>
+		</wsdl:operation>
+		<wsdl:operation name="putSearchPersonalActRecordNameChange">
+			<wsdl:input message="tns:actRecordNameChangeFilterRequest"/>
+			<wsdl:output message="tns:ticketSearchPersonalActRecordResponse"/>
+			<wsdl:fault name="Fault" message="tns:Fault"/>
+		</wsdl:operation>
+		<wsdl:operation name="putSearchPersonalActRecordDeath">
+			<wsdl:input message="tns:actRecordDeathFilterRequest"/>
+			<wsdl:output message="tns:ticketSearchPersonalActRecordResponse"/>
+			<wsdl:fault name="Fault" message="tns:Fault"/>
+		</wsdl:operation>
+		<!-- Запрос результата проверки наличия актовой записи -->
+		<wsdl:operation name="getAnswerCheckExistenceOfActRecord">
+			<wsdl:input message="tns:ticketCheckExistenceOfActRecordRequest"/>
+			<wsdl:output message="tns:checkExistenceOfActRecordResponse"/>
+			<wsdl:fault name="Fault" message="tns:Fault"/>
+		</wsdl:operation>
+		<!-- Запрос на получение Единичных сведений по искомой актовой записи в требуемом объеме-->
+		<wsdl:operation name="getPersonalReferenceBirth24">
+			<wsdl:input message="tns:ticketSearchPersonalReferenceBirth24Request"/>
+			<wsdl:output message="tns:referenceBirth24Response"/>
+			<wsdl:fault name="Fault" message="tns:Fault"/>
+		</wsdl:operation>
+		<wsdl:operation name="getPersonalReferenceBirth25">
+			<wsdl:input message="tns:ticketSearchPersonalReferenceBirth25Request"/>
+			<wsdl:output message="tns:referenceBirth25Response"/>
+			<wsdl:fault name="Fault" message="tns:Fault"/>
+		</wsdl:operation>
+		<wsdl:operation name="getPersonalReferenceBirth26">
+			<wsdl:input message="tns:ticketSearchPersonalReferenceBirth26Request"/>
+			<wsdl:output message="tns:referenceBirth26Response"/>
+			<wsdl:fault name="Fault" message="tns:Fault"/>
+		</wsdl:operation>
+		<wsdl:operation name="getPersonalReferenceMarriage27">
+			<wsdl:input message="tns:ticketSearchPersonalReferenceMarriage27Request"/>
+			<wsdl:output message="tns:referenceMarriage27Response"/>
+			<wsdl:fault name="Fault" message="tns:Fault"/>
+		</wsdl:operation>
+		<wsdl:operation name="getPersonalReferenceMarriage28">
+			<wsdl:input message="tns:ticketSearchPersonalReferenceMarriage28Request"/>
+			<wsdl:output message="tns:referenceMarriage28Response"/>
+			<wsdl:fault name="Fault" message="tns:Fault"/>
+		</wsdl:operation>
+		<wsdl:operation name="getPersonalReferenceDivorce29">
+			<wsdl:input message="tns:ticketSearchPersonalReferenceDivorce29Request"/>
+			<wsdl:output message="tns:referenceDivorce29Response"/>
+			<wsdl:fault name="Fault" message="tns:Fault"/>
+		</wsdl:operation>
+		<wsdl:operation name="getPersonalReferenceAdoption30">
+			<wsdl:input message="tns:ticketSearchPersonalReferenceAdoption30Request"/>
+			<wsdl:output message="tns:referenceAdoption30Response"/>
+			<wsdl:fault name="Fault" message="tns:Fault"/>
+		</wsdl:operation>
+		<wsdl:operation name="getPersonalReferenceFiliation31">
+			<wsdl:input message="tns:ticketSearchPersonalReferenceFiliation31Request"/>
+			<wsdl:output message="tns:referenceFiliation31Response"/>
+			<wsdl:fault name="Fault" message="tns:Fault"/>
+		</wsdl:operation>
+		<wsdl:operation name="getPersonalReferenceNameChange32">
+			<wsdl:input message="tns:ticketSearchPersonalReferenceNameChange32Request"/>
+			<wsdl:output message="tns:referenceNameChange32Response"/>
+			<wsdl:fault name="Fault" message="tns:Fault"/>
+		</wsdl:operation>
+		<wsdl:operation name="getPersonalReferenceDeath33">
+			<wsdl:input message="tns:ticketSearchPersonalReferenceDeath33Request"/>
+			<wsdl:output message="tns:referenceDeath33Response"/>
+			<wsdl:fault name="Fault" message="tns:Fault"/>
+		</wsdl:operation>
+		<wsdl:operation name="getPersonalReferenceDeath34">
+			<wsdl:input message="tns:ticketSearchPersonalReferenceDeath34Request"/>
+			<wsdl:output message="tns:referenceDeath34Response"/>
+			<wsdl:fault name="Fault" message="tns:Fault"/>
+		</wsdl:operation>
+		<wsdl:operation name="getPersonalCertificateBirth">
+			<wsdl:input message="tns:ticketSearchPersonalCertificateBirthRequest"/>
+			<wsdl:output message="tns:certificateBirthResponse"/>
+			<wsdl:fault name="Fault" message="tns:Fault"/>
+		</wsdl:operation>
+		<wsdl:operation name="getPersonalCertificateMarriage">
+			<wsdl:input message="tns:ticketSearchPersonalCertificateMarriageRequest"/>
+			<wsdl:output message="tns:certificateMarriageResponse"/>
+			<wsdl:fault name="Fault" message="tns:Fault"/>
+		</wsdl:operation>
+		<wsdl:operation name="getPersonalCertificateDivorce">
+			<wsdl:input message="tns:ticketSearchPersonalCertificateDivorceRequest"/>
+			<wsdl:output message="tns:certificateDivorceResponse"/>
+			<wsdl:fault name="Fault" message="tns:Fault"/>
+		</wsdl:operation>
+		<wsdl:operation name="getPersonalCertificateAdoption">
+			<wsdl:input message="tns:ticketSearchPersonalCertificateAdoptionRequest"/>
+			<wsdl:output message="tns:certificateAdoptionResponse"/>
+			<wsdl:fault name="Fault" message="tns:Fault"/>
+		</wsdl:operation>
+		<wsdl:operation name="getPersonalCertificateFiliation">
+			<wsdl:input message="tns:ticketSearchPersonalCertificateFiliationRequest"/>
+			<wsdl:output message="tns:certificateFiliationResponse"/>
+			<wsdl:fault name="Fault" message="tns:Fault"/>
+		</wsdl:operation>
+		<wsdl:operation name="getPersonalCertificateNameChange">
+			<wsdl:input message="tns:ticketSearchPersonalCertificateNameChangeRequest"/>
+			<wsdl:output message="tns:certificateNameChangeResponse"/>
+			<wsdl:fault name="Fault" message="tns:Fault"/>
+		</wsdl:operation>
+		<wsdl:operation name="getPersonalCertificateDeath">
+			<wsdl:input message="tns:ticketSearchPersonalCertificateDeathRequest"/>
+			<wsdl:output message="tns:certificateDeathResponse"/>
+			<wsdl:fault name="Fault" message="tns:Fault"/>
+		</wsdl:operation>
+		<wsdl:operation name="getPersonalActRecordAdoption">
+			<wsdl:input message="tns:ticketSearchPersonalActRecordAdoptionRequest"/>
+			<wsdl:output message="tns:actRecordAdoptionResponse"/>
+			<wsdl:fault name="Fault" message="tns:Fault"/>
+		</wsdl:operation>
+		<wsdl:operation name="getPersonalActRecordBirth">
+			<wsdl:input message="tns:ticketSearchPersonalActRecordBirthRequest"/>
+			<wsdl:output message="tns:actRecordBirthResponse"/>
+			<wsdl:fault name="Fault" message="tns:Fault"/>
+		</wsdl:operation>
+		<wsdl:operation name="getPersonalActRecordDeath">
+			<wsdl:input message="tns:ticketSearchPersonalActRecordDeathRequest"/>
+			<wsdl:output message="tns:actRecordDeathResponse"/>
+			<wsdl:fault name="Fault" message="tns:Fault"/>
+		</wsdl:operation>
+		<wsdl:operation name="getPersonalActRecordDivorce">
+			<wsdl:input message="tns:ticketSearchPersonalActRecordDivorceRequest"/>
+			<wsdl:output message="tns:actRecordDivorceResponse"/>
+			<wsdl:fault name="Fault" message="tns:Fault"/>
+		</wsdl:operation>
+		<wsdl:operation name="getPersonalActRecordFiliation">
+			<wsdl:input message="tns:ticketSearchPersonalActRecordFiliationRequest"/>
+			<wsdl:output message="tns:actRecordFiliationResponse"/>
+			<wsdl:fault name="Fault" message="tns:Fault"/>
+		</wsdl:operation>
+		<wsdl:operation name="getPersonalActRecordNameChange">
+			<wsdl:input message="tns:ticketSearchPersonalActRecordNameChangeRequest"/>
+			<wsdl:output message="tns:actRecordNameChangeResponse"/>
+			<wsdl:fault name="Fault" message="tns:Fault"/>
+		</wsdl:operation>
+		<wsdl:operation name="getPersonalActRecordMarriage">
+			<wsdl:input message="tns:ticketSearchPersonalActRecordMarriageRequest"/>
+			<wsdl:output message="tns:actRecordMarriageResponse"/>
+			<wsdl:fault name="Fault" message="tns:Fault"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="LocalInterDepPersonalService" type="tns:LocalInterDepPersonalService">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<!-- Запрос на поиск актовой записи для получения Единичных сведений по этой записи в требуемом объеме-->
+		<wsdl:operation name="putSearchPersonalActRecordBirth">
+			<soap:operation soapAction=""/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="Fault">
+				<soap:fault name="Fault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="putSearchPersonalActRecordMarriage">
+			<soap:operation soapAction=""/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="Fault">
+				<soap:fault name="Fault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="putSearchPersonalActRecordDivorce">
+			<soap:operation soapAction=""/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="Fault">
+				<soap:fault name="Fault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="putSearchPersonalActRecordAdoption">
+			<soap:operation soapAction=""/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="Fault">
+				<soap:fault name="Fault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="putSearchPersonalActRecordFiliation">
+			<soap:operation soapAction=""/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="Fault">
+				<soap:fault name="Fault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="putSearchPersonalActRecordNameChange">
+			<soap:operation soapAction=""/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="Fault">
+				<soap:fault name="Fault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="putSearchPersonalActRecordDeath">
+			<soap:operation soapAction=""/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="Fault">
+				<soap:fault name="Fault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<!-- Запрос результата проверки наличия актовой записи -->
+		<wsdl:operation name="getAnswerCheckExistenceOfActRecord">
+			<soap:operation soapAction=""/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="Fault">
+				<soap:fault name="Fault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<!-- Запрос на получение Единичных сведений по искомой актовой записи в требуемом объеме-->
+		<wsdl:operation name="getPersonalReferenceBirth24">
+			<soap:operation soapAction=""/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="Fault">
+				<soap:fault name="Fault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getPersonalReferenceBirth25">
+			<soap:operation soapAction=""/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="Fault">
+				<soap:fault name="Fault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getPersonalReferenceBirth26">
+			<soap:operation soapAction=""/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="Fault">
+				<soap:fault name="Fault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getPersonalReferenceMarriage27">
+			<soap:operation soapAction=""/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="Fault">
+				<soap:fault name="Fault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getPersonalReferenceMarriage28">
+			<soap:operation soapAction=""/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="Fault">
+				<soap:fault name="Fault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getPersonalReferenceDivorce29">
+			<soap:operation soapAction=""/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="Fault">
+				<soap:fault name="Fault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getPersonalReferenceAdoption30">
+			<soap:operation soapAction=""/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="Fault">
+				<soap:fault name="Fault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getPersonalReferenceFiliation31">
+			<soap:operation soapAction=""/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="Fault">
+				<soap:fault name="Fault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getPersonalReferenceNameChange32">
+			<soap:operation soapAction=""/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="Fault">
+				<soap:fault name="Fault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getPersonalReferenceDeath33">
+			<soap:operation soapAction=""/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="Fault">
+				<soap:fault name="Fault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getPersonalReferenceDeath34">
+			<soap:operation soapAction=""/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="Fault">
+				<soap:fault name="Fault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getPersonalCertificateBirth">
+			<soap:operation soapAction=""/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="Fault">
+				<soap:fault name="Fault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getPersonalCertificateMarriage">
+			<soap:operation soapAction=""/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="Fault">
+				<soap:fault name="Fault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getPersonalCertificateDivorce">
+			<soap:operation soapAction=""/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="Fault">
+				<soap:fault name="Fault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getPersonalCertificateAdoption">
+			<soap:operation soapAction=""/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="Fault">
+				<soap:fault name="Fault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getPersonalCertificateFiliation">
+			<soap:operation soapAction=""/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="Fault">
+				<soap:fault name="Fault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getPersonalCertificateNameChange">
+			<soap:operation soapAction=""/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="Fault">
+				<soap:fault name="Fault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getPersonalCertificateDeath">
+			<soap:operation soapAction=""/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="Fault">
+				<soap:fault name="Fault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getPersonalActRecordAdoption">
+			<soap:operation soapAction=""/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="Fault">
+				<soap:fault name="Fault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getPersonalActRecordBirth">
+			<soap:operation soapAction=""/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="Fault">
+				<soap:fault name="Fault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getPersonalActRecordDeath">
+			<soap:operation soapAction=""/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="Fault">
+				<soap:fault name="Fault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getPersonalActRecordDivorce">
+			<soap:operation soapAction=""/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="Fault">
+				<soap:fault name="Fault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getPersonalActRecordFiliation">
+			<soap:operation soapAction=""/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="Fault">
+				<soap:fault name="Fault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getPersonalActRecordNameChange">
+			<soap:operation soapAction=""/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="Fault">
+				<soap:fault name="Fault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getPersonalActRecordMarriage">
+			<soap:operation soapAction=""/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="Fault">
+				<soap:fault name="Fault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="LocalInterDepPersonalService">
+		<wsdl:port name="LocalInterDepPersonalServicePort" binding="tns:LocalInterDepPersonalService">
+			<soap:address location="No Target Adress"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

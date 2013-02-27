@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:smev="http://smev.gosuslugi.ru/rev120315"
+           xmlns:ns2="http://ezags.rt.ru/fzags/ReservationService/type/local/"
+           xmlns:cm="http://ezags.rt.ru/type/common/"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+           targetNamespace="http://smev.gosuslugi.ru/rev120315" 
+           elementFormDefault="qualified">
+    <xs:import namespace="http://ezags.rt.ru/fzags/ReservationService/type/local/" schemaLocation="../LocalReservationService.xsd"/>
+    <xs:import namespace="http://ezags.rt.ru/type/common/" schemaLocation="../../common.xsd"/>
+	<xs:include schemaLocation="../../smev/smev.gosuslugi.ru.rev120315.xsd"/>
+    <xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="../../xmldsig-core-schema.xsd"/>
+    <xs:element name="fault" type="smev:FaultBase"/>
+    <xs:element name="voidResponse" type="smev:VoidResponse"/>
+    <xs:element name="getFreeDaysOfReceiptRequest" type="smev:GetFreeDaysOfReceiptRequest"/>
+    <xs:element name="getFreeDaysOfReceiptResponse" type="smev:GetFreeDaysOfReceiptResponse"/>
+    <xs:element name="getFreeTimesOfReceiptRequest" type="smev:GetFreeTimesOfReceiptRequest"/>
+    <xs:element name="getFreeTimesOfReceiptResponse" type="smev:GetFreeTimesOfReceiptResponse"/>
+    <xs:element name="sendTimeOfReceiptRequest" type="smev:SendTimeOfReceiptRequest"/>
+	<xs:complexType name="GetFreeDaysOfReceiptRequest">
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:getFreeDaysOfReceiptRequestObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="GetFreeDaysOfReceiptResponse">
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:getFreeDaysOfReceiptResponseObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="GetFreeTimesOfReceiptRequest">
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:getFreeTimesOfReceiptRequestObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="GetFreeTimesOfReceiptResponse">
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:getFreeTimesOfReceiptResponseObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SendTimeOfReceiptRequest">
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:sendTimeOfReceiptRequestObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+    <xs:complexType name="FaultBase">
+   		<xs:sequence minOccurs="1">
+   			<xs:element ref="smev:Message"/>
+   			<xs:element name="MessageData">
+   				<xs:complexType>
+   					<xs:sequence minOccurs="1">
+   						<xs:element name="AppData">
+   							<xs:complexType>
+   								<xs:sequence minOccurs="1">
+   									<xs:element ref="cm:faultBaseObj"/>
+   									<xs:element ref="ds:Signature" minOccurs="0"/>
+   								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+   							</xs:complexType>
+   						</xs:element>
+   						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+   					</xs:sequence>
+   				</xs:complexType>
+   			</xs:element>
+   		</xs:sequence>
+   	</xs:complexType>
+    <xs:complexType name="VoidResponse">
+   		<xs:sequence minOccurs="1">
+   			<xs:element ref="smev:Message"/>
+   			<xs:element name="MessageData">
+   				<xs:complexType>
+   					<xs:sequence minOccurs="1">
+   						<xs:element name="AppData">
+   							<xs:complexType>
+   								<xs:sequence minOccurs="1">
+   									<xs:element ref="cm:voidResponseObj"/>
+   									<xs:element ref="ds:Signature" minOccurs="0"/>
+   								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+   							</xs:complexType>
+   						</xs:element>
+   						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+   					</xs:sequence>
+   				</xs:complexType>
+   			</xs:element>
+   		</xs:sequence>
+   	</xs:complexType>
+</xs:schema>

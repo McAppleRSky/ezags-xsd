@@ -1,0 +1,46 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:geps="https://geps.gosuslugi.ru"
+           xmlns:smev="http://smev.gosuslugi.ru/rev120315"
+           targetNamespace="https://geps.gosuslugi.ru">
+
+    <xs:import namespace="http://smev.gosuslugi.ru/rev120315" schemaLocation="smev.xsd"/>
+
+    <xs:element name="gepsUserId" type="xs:long"/>
+    <xs:element name="messageId" type="xs:long"/>
+    <xs:element name="params" type="geps:Sm2Params"/>
+    <xs:element name="sm2Message" type="smev:Sm2Message"/>
+    <xs:element name="snils" type="xs:string"/>
+    <xs:element name="type" type="xs:string"/>
+    <xs:complexType name="Sm2Params">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="param" type="geps:Sm2Parameter"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Sm2Parameter">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="name" type="xs:string" use="required"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="arrayList">
+        <xs:complexContent>
+            <xs:extension base="geps:abstractList">
+                <xs:sequence/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType abstract="true" name="abstractList">
+        <xs:complexContent>
+            <xs:extension base="geps:abstractCollection">
+                <xs:sequence/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType abstract="true" name="abstractCollection">
+        <xs:sequence/>
+    </xs:complexType>
+    <xs:element name="sendMessage2" nillable="true" type="smev:Sm2Message"/>
+    <xs:element name="sendMessage2Response" nillable="true" type="smev:Message"/>
+</xs:schema>

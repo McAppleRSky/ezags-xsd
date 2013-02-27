@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions
+        name="ReservationServiceService"
+        xmlns="http://schemas.xmlsoap.org/wsdl/"
+        targetNamespace="http://ezags.rt.ru/fzags/LocalReservationService/"
+        xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+        xmlns:tns="http://ezags.rt.ru/fzags/LocalReservationService/"
+        xmlns:ns="http://ezags.rt.ru/fzags/ReservationService/type/local/"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <types>
+        <xs:schema>
+            <xs:import namespace="http://ezags.rt.ru/fzags/ReservationService/type/local/"
+                       schemaLocation="LocalReservationService.xsd"/>
+        </xs:schema>
+        <xs:schema>
+            <xs:import namespace="http://ezags.rt.ru/type/common/" schemaLocation="../common.xsd"/>
+        </xs:schema>
+        <xs:schema>
+            <xs:import namespace="http://ezags.rt.ru/type/actor/" schemaLocation="../actor.xsd"/>
+        </xs:schema>
+        <xs:schema>
+            <xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="../xmldsig-core-schema.xsd"/>
+        </xs:schema>
+    </types>
+    <message name="getFreeDaysOfReceipt">
+        <part name="parameters" element="ns:getFreeDaysOfReceiptRequestObj"/>
+    </message>
+    <message name="getFreeDaysOfReceiptResponse">
+        <part name="parameters" element="ns:getFreeDaysOfReceiptResponseObj"/>
+    </message>
+    <message name="getFreeTimesOfReceipt">
+        <part name="parameters" element="ns:getFreeTimesOfReceiptRequestObj"/>
+    </message>
+    <message name="getFreeTimesOfReceiptResponse">
+        <part name="parameters" element="ns:getFreeTimesOfReceiptResponseObj"/>
+    </message>
+    <message name="Fault">
+        <part name="parameters" element="ns:baseFaultObj"/>
+    </message>
+    <message name="sendTimeOfReceiptRequest">
+        <part name="parameters" element="ns:sendTimeOfReceiptRequestObj"/>
+    </message>
+    <message name="sendTimeOfReceiptResponse">
+        <part name="parameters" element="ns:voidResponseObj"/>
+    </message>
+    <portType name="LocalReservationService">
+        
+        <operation name="getFreeDaysOfReceipt">
+            <input message="tns:getFreeDaysOfReceipt"/>
+            <output message="tns:getFreeDaysOfReceiptResponse"/>
+            <fault name="Fault" message="tns:Fault"/>
+        </operation>
+        <operation name="getFreeTimesOfReceipt">
+            <input message="tns:getFreeTimesOfReceipt"/>
+            <output message="tns:getFreeTimesOfReceiptResponse"/>
+            <fault name="Fault" message="tns:Fault"/>
+        </operation>
+        <operation name="sendTimeOfReceipt">
+            <input message="tns:sendTimeOfReceiptRequest"/>
+            <output message="tns:sendTimeOfReceiptResponse"/>
+            <fault name="Fault" message="tns:Fault"/>
+        </operation>
+    </portType>
+    <binding name="LocalReservationServicePortBinding" type="tns:LocalReservationService">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="getFreeDaysOfReceipt">
+            <soap:operation soapAction=""/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+            <fault name="Fault">
+                <soap:fault name="Fault" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="getFreeTimesOfReceipt">
+            <soap:operation soapAction=""/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+            <fault name="Fault">
+                <soap:fault name="Fault" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="sendTimeOfReceipt">
+            <soap:operation soapAction=""/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+            <fault name="Fault">
+                <soap:fault name="Fault" use="literal"/>
+            </fault>
+        </operation>
+    </binding>
+    <service name="LocalReservationService">
+        <port name="LocalReservationServicePort" binding="tns:LocalReservationServicePortBinding">
+            <soap:address location="No Target Adress"/>
+        </port>
+    </service>
+</definitions>

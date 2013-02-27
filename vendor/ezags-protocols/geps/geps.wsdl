@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions
+                  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/'
+                  xmlns:tns='https://geps.gosuslugi.ru'
+                  name="SendMessageService" targetNamespace="https://geps.gosuslugi.ru">
+    <wsdl:types>
+        <xs:schema>
+            <xs:import namespace="https://geps.gosuslugi.ru" schemaLocation="geps.xsd"/>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="sendMessage2">
+        <wsdl:part element="tns:sendMessage2" name="sendMessage2">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="sendMessage2Response">
+        <wsdl:part element="tns:sendMessage2Response" name="sendMessage2Response">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="SendMessageService">
+        <wsdl:operation name="sendMessage2">
+            <wsdl:input message="tns:sendMessage2" name="sendMessage2">
+            </wsdl:input>
+            <wsdl:output message="tns:sendMessage2Response" name="sendMessage2Response">
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="SendMessageServiceSoapBinding" type="tns:SendMessageService">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="sendMessage2">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="sendMessage2">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="sendMessage2Response">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="SendMessageService">
+        <wsdl:port binding="tns:SendMessageServiceSoapBinding" name="SendMessageServicePort">
+            <soap:address location="http://gepsdemo.gosuslugi.ru/soap/SendMessage2"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

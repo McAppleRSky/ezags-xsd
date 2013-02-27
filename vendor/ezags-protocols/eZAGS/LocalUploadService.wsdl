@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:tns="http://ezags.rt.ru/fzags/LocalUploadService/"
+             xmlns:ns="http://ezags.rt.ru/fzags/UploadService/type/local/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             targetNamespace="http://ezags.rt.ru/fzags/LocalUploadService/">
+	<types>
+		<xsd:schema>
+			<xsd:import namespace="http://ezags.rt.ru/fzags/UploadService/type/local/" schemaLocation="LocalUploadService.xsd"/>
+		</xsd:schema>
+        <xsd:schema>
+            <xsd:import namespace="http://ezags.rt.ru/type/common/" schemaLocation="../common.xsd"/>
+        </xsd:schema>
+        <xsd:schema>
+            <xsd:import namespace="http://ezags.rt.ru/type/actor/" schemaLocation="../actor.xsd"/>
+        </xsd:schema>
+        <xsd:schema>
+            <xsd:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="../xmldsig-core-schema.xsd"/>
+        </xsd:schema>
+	</types>
+	<message name="uploadRegistrars">
+		<part name="parameter" element="ns:uploadRegistrarsObj"/>
+	</message>
+	<message name="uploadRegistrarsResponse">
+		<part name="parameter" element="ns:uploadRegistrarsResponseObj"/>
+	</message>
+    <!-- Актовые записи -->
+    <message name="uploadBirthActs">
+		<part name="parameter" element="ns:uploadBirthActsObj"/>
+	</message>
+	<message name="uploadBirthActsResponse">
+		<part name="parameter" element="ns:uploadBirthActsResponseObj"/>
+	</message>
+	<message name="uploadMarriageActs">
+		<part name="parameter" element="ns:uploadMarriageActsObj"/>
+	</message>
+	<message name="uploadMarriageActsResponse">
+		<part name="parameter" element="ns:uploadMarriageActsResponseObj"/>
+	</message>
+	<message name="uploadDivorceActs">
+		<part name="parameter" element="ns:uploadDivorceActsObj"/>
+	</message>
+	<message name="uploadDivorceActsResponse">
+		<part name="parameter" element="ns:uploadDivorceActsResponseObj"/>
+	</message>
+	<message name="uploadFiliationActs">
+		<part name="parameter" element="ns:uploadFiliationActsObj"/>
+	</message>
+	<message name="uploadFiliationActsResponse">
+		<part name="parameter" element="ns:uploadFiliationActsResponseObj"/>
+	</message>
+	<message name="uploadAdoptionActs">
+		<part name="parameter" element="ns:uploadAdoptionActsObj"/>
+	</message>
+	<message name="uploadAdoptionActsResponse">
+		<part name="parameter" element="ns:uploadAdoptionActsResponseObj"/>
+	</message>
+	<message name="uploadNameChangeActs">
+		<part name="parameter" element="ns:uploadNameChangeActsObj"/>
+	</message>
+	<message name="uploadNameChangeActsResponse">
+		<part name="parameter" element="ns:uploadNameChangeActsResponseObj"/>
+	</message>
+	<message name="uploadDeathActs">
+		<part name="parameter" element="ns:uploadDeathActsObj"/>
+	</message>
+	<message name="uploadDeathActsResponse">
+		<part name="parameter" element="ns:uploadDeathActsResponseObj"/>
+	</message>
+    <!-- Сертификаты -->
+    <message name="uploadCertificates">
+        <part name="parameter" element="ns:uploadCertificatesObj"/>
+    </message>
+    <message name="uploadCertificatesResponse">
+        <part name="parameter" element="ns:uploadCertificatesResponseObj"/>
+    </message>
+	<message name="Fault">
+		<part name="parameter" element="ns:baseFaultObj"/>
+	</message>
+	<portType name="LocalUploadService">
+		<operation name="uploadRegistrars">
+			<input message="tns:uploadRegistrars"/>
+			<output message="tns:uploadRegistrarsResponse"/>
+			<fault name="Fault" message="tns:Fault"/>
+		</operation>
+		<operation name="uploadBirthActs">
+			<input message="tns:uploadBirthActs"/>
+			<output message="tns:uploadBirthActsResponse"/>
+			<fault name="Fault" message="tns:Fault"/>
+		</operation>
+		<operation name="uploadMarriageActs">
+			<input message="tns:uploadMarriageActs"/>
+			<output message="tns:uploadMarriageActsResponse"/>
+			<fault name="Fault" message="tns:Fault"/>
+		</operation>
+		<operation name="uploadDivorceActs">
+			<input message="tns:uploadDivorceActs"/>
+			<output message="tns:uploadDivorceActsResponse"/>
+			<fault name="Fault" message="tns:Fault"/>
+		</operation>
+		<operation name="uploadFiliationActs">
+			<input message="tns:uploadFiliationActs"/>
+			<output message="tns:uploadFiliationActsResponse"/>
+			<fault name="Fault" message="tns:Fault"/>
+		</operation>
+		<operation name="uploadAdoptionActs">
+			<input message="tns:uploadAdoptionActs"/>
+			<output message="tns:uploadAdoptionActsResponse"/>
+			<fault name="Fault" message="tns:Fault"/>
+		</operation>
+		<operation name="uploadNameChangeActs">
+			<input message="tns:uploadNameChangeActs"/>
+			<output message="tns:uploadNameChangeActsResponse"/>
+			<fault name="Fault" message="tns:Fault"/>
+		</operation>
+		<operation name="uploadDeathActs">
+			<input message="tns:uploadDeathActs"/>
+			<output message="tns:uploadDeathActsResponse"/>
+			<fault name="Fault" message="tns:Fault"/>
+		</operation>
+
+        <operation name="uploadCertificates">
+			<input message="tns:uploadCertificates"/>
+			<output message="tns:uploadCertificatesResponse"/>
+			<fault name="Fault" message="tns:Fault"/>
+		</operation>
+	</portType>
+	<binding name="LocalUploadServicePortBinding" type="tns:LocalUploadService">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="uploadRegistrars">
+			<soap:operation soapAction=""/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="Fault">
+				<soap:fault name="Fault" use="literal"/>
+			</fault>
+		</operation>
+
+		<operation name="uploadBirthActs">
+			<soap:operation soapAction=""/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="Fault">
+				<soap:fault name="Fault" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="uploadMarriageActs">
+			<soap:operation soapAction=""/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="Fault">
+				<soap:fault name="Fault" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="uploadDeathActs">
+			<soap:operation soapAction=""/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="Fault">
+				<soap:fault name="Fault" use="literal"/>
+			</fault>
+		</operation>
+        <operation name="uploadDivorceActs">
+			<soap:operation soapAction=""/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="Fault">
+				<soap:fault name="Fault" use="literal"/>
+			</fault>
+		</operation>
+        <operation name="uploadFiliationActs">
+			<soap:operation soapAction=""/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="Fault">
+				<soap:fault name="Fault" use="literal"/>
+			</fault>
+		</operation>
+        <operation name="uploadAdoptionActs">
+			<soap:operation soapAction=""/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="Fault">
+				<soap:fault name="Fault" use="literal"/>
+			</fault>
+		</operation>
+        <operation name="uploadNameChangeActs">
+			<soap:operation soapAction=""/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="Fault">
+				<soap:fault name="Fault" use="literal"/>
+			</fault>
+		</operation>
+
+        <operation name="uploadCertificates">
+			<soap:operation soapAction=""/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="Fault">
+				<soap:fault name="Fault" use="literal"/>
+			</fault>
+		</operation>
+	</binding>
+	<service name="LocalUploadService">
+		<port name="LocalUploadServicePort" binding="tns:LocalUploadServicePortBinding">
+			<soap:address location="REPLACE_WITH_ACTUAL_URL"/>
+		</port>
+	</service>
+</definitions>

@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://idecs.atc.ru/privateoffice/ws/common/UpdateTimeReservationStatus/xsd"
+        xmlns:trs="http://idecs.atc.ru/privateoffice/ws/common/UpdateTimeReservationStatus/xsd">
+    <complexType name="UpdateReservationStatusRequestObj">
+        <sequence>
+            <element ref="trs:pguId"/>
+            <element ref="trs:registrarId"/>
+            <element name="reservationStatus" type="trs:TIME_RESERVATION_STATUS">
+                <annotation>
+                    <documentation>Статусы процесса резервации времени посещения по услуге</documentation>
+                </annotation>
+            </element>
+            <element ref="trs:timeSlot" minOccurs="0"/>
+            <element minOccurs="0" ref="trs:comment">
+                <annotation>
+                    <documentation>Сообщение сотрудника рЗАГС о событии регистрации времени</documentation>
+                </annotation>
+            </element>
+        </sequence>
+    </complexType>
+    <complexType name="TimeSlot">
+        <annotation>
+            <documentation>Простое описание временного блока, который регистрируется для посещения в УЭО</documentation>
+        </annotation>
+        <sequence>
+            <element name="selectedDate" type="date">
+                <annotation>
+                    <documentation>Выбранная дата
+                    </documentation>
+                </annotation>
+            </element>
+            <element name="selectedTime" type="time">
+                <annotation>
+                    <documentation>Выбранное время</documentation>
+                </annotation>
+            </element>
+        </sequence>
+    </complexType>
+    <element name="timeSlot" type="trs:TimeSlot"/>
+    <element name="pguId" type="trs:UID">
+        <annotation>
+            <documentation>Идентификатор услуги в ЕПГУ</documentation>
+        </annotation>
+    </element>
+    <element name="registrarId" type="trs:registrarUID">
+        <annotation>
+            <documentation>Код органа ЗАГС, составившего документ (из внешнего справочника на ЕНСИ)</documentation>
+        </annotation>
+    </element>
+    <simpleType name="UID">
+        <restriction base="trs:NOT_EMPTY_STRING">
+            <pattern value="\d+"/>
+        </restriction>
+    </simpleType>
+    <simpleType name="registrarUID">
+        <restriction base="trs:NOT_EMPTY_STRING">
+            <pattern value="\d{6}"/>
+        </restriction>
+    </simpleType>
+    <simpleType name="TIME_RESERVATION_STATUS">
+        <annotation>
+            <documentation>Статусы процесса резервации времени посещения по услуге</documentation>
+        </annotation>
+        <restriction base="trs:NOT_EMPTY_STRING">
+            <enumeration value="timeReservationNeeded">
+                <annotation>
+                    <documentation>По услуге требуется регистрация времени (либо предыдущая регистрация отменена)
+                    </documentation>
+                </annotation>
+            </enumeration>
+            <enumeration value="timeReserved">
+                <annotation>
+                    <documentation>По услуге зарезервировано время приема</documentation>
+                </annotation>
+            </enumeration>
+        </restriction>
+    </simpleType>
+    <element name="comment" type="trs:NOT_EMPTY_STRING"/>
+    <simpleType name="NOT_EMPTY_STRING">
+        <restriction base="string">
+            <minLength value="1"/>
+        </restriction>
+    </simpleType>
+</schema>

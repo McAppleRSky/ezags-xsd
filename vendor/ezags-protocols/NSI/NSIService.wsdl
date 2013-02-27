@@ -1,0 +1,36 @@
+<definitions name='standardBankService' targetNamespace='http://nsi.gosuslugi.ru/rev111111' xmlns='http://schemas.xmlsoap.org/wsdl/' xmlns:smev='http://smev.gosuslugi.ru/rev111111' xmlns:ns2='http://www.w3.org/2004/08/xop/include' xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/' xmlns:nsi='http://nsi.gosuslugi.ru/rev111111' xmlns:xsd='http://www.w3.org/2001/XMLSchema'>
+ <types>
+  <xsd:schema>
+   <xsd:import namespace="http://smev.gosuslugi.ru/rev111111" schemaLocation="NSIService.xsd"/>
+  </xsd:schema>
+ </types>
+ <message name='standardBankService_requestResponse'>
+  <part element='smev:Response' name='Response'></part>
+ </message>
+ <message name='standardBankService_request'>
+  <part element='smev:Request' name='Request'></part>
+ </message>
+ <portType name='standardBankService'>
+  <operation name='request' parameterOrder='Request'>
+   <input message='nsi:standardBankService_request'></input>
+   <output message='nsi:standardBankService_requestResponse'></output>
+  </operation>
+ </portType>
+ <binding name='standardBankServiceBinding' type='nsi:standardBankService'>
+  <soap:binding style='document' transport='http://schemas.xmlsoap.org/soap/http'/>
+  <operation name='request'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+ </binding>
+ <service name='standardBankService'>
+  <port binding='nsi:standardBankServiceBinding' name='standardBankServicePort'>
+   <soap:address location='http://u00nsiapp02-0.00.egov.local:3020/standard-bank/service'/>
+  </port>
+ </service>
+</definitions>

@@ -1,0 +1,1524 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2011 rel. 2 (http://www.altova.com) by TeaM DJiNN (TeaM DJiNN) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cm="http://ezags.rt.ru/type/common/" targetNamespace="http://ezags.rt.ru/type/common/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<!--Общие типы-->
+	<xs:complexType name="CauseOfDeath">
+		<xs:annotation>
+			<xs:documentation>Причина смерти</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="codeInICD10" type="cm:NOT_EMPTY_STRING">
+				<xs:annotation>
+					<xs:documentation>код причины смерти по классификатору МКБ-10</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="value" type="cm:NOT_EMPTY_STRING">
+				<xs:annotation>
+					<xs:documentation>текст причины смерти (для значений не из МКБ-10)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="DateAgile">
+		<xs:annotation>
+			<xs:documentation>Дата (выбор из точного и неточного значения)</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="preciseDate" type="xs:date">
+				<xs:annotation>
+					<xs:documentation>Дата</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="impreciseDate" type="cm:DateRecord">
+				<xs:annotation>
+					<xs:documentation>Приблизительная дата</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="DatePeriod">
+		<xs:annotation>
+			<xs:documentation>Период из двух приблизительных дат</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element name="startDate" type="xs:date">
+				<xs:annotation>
+					<xs:documentation>Начало периода</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="endDate" type="xs:date">
+				<xs:annotation>
+					<xs:documentation>Окончание периода</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DateRecord">
+		<xs:annotation>
+			<xs:documentation>Значение даты: используется для реквизитов, которые могут содержать неполную дату
+            </xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element name="day" type="xs:int" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>число даты</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="month" type="xs:int" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>месяц даты</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="year" type="xs:int">
+				<xs:annotation>
+					<xs:documentation>год даты</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="FaultBaseObj">
+		<xs:annotation>
+			<xs:documentation>Базовый класс для описания сообщений об ошибке</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element name="faultType" type="cm:FAULT">
+				<xs:annotation>
+					<xs:documentation>Тип ошибки</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="message" type="cm:NOT_EMPTY_STRING">
+				<xs:annotation>
+					<xs:documentation>Текст сообщения  об ошибке</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="details" type="cm:NOT_EMPTY_STRING" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Дополнительные характеристики ошибки</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="FullAddress">
+		<xs:annotation>
+			<xs:documentation>Сведения об адресе с точностью до квартиры</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="cm:ShortAddress">
+				<xs:sequence minOccurs="1">
+					<xs:element ref="cm:street" minOccurs="0"/>
+					<xs:element ref="cm:house" minOccurs="0"/>
+					<xs:element ref="cm:building" minOccurs="0"/>
+					<xs:element ref="cm:appartment" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="GroupOfCausesOfDeath">
+		<xs:annotation>
+			<xs:documentation>Возможные причины смерти (по медицинскому свидетельству о смерти или о перинатальной смерти)</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element name="a" type="cm:CauseOfDeath" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Причина смерти согласно графе «а» медицинского свидетельства о смерти или о перинатальной смерти</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="b" type="cm:CauseOfDeath" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Причина смерти согласно графе «б» медицинского свидетельства о смерти или о перинатальной смерти</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="c" type="cm:CauseOfDeath" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Причина смерти согласно графе «в» медицинского свидетельства о смерти или о перинатальной смерти</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="d" type="cm:CauseOfDeath" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Причина смерти согласно графе «г» медицинского свидетельства о смерти или о перинатальной смерти</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="e" type="cm:CauseOfDeath" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Причина смерти согласно графе «д» медицинского свидетельства о перинатальной смерти</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ii" type="cm:CauseOfDeath" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Причина смерти согласно графе «II» медицинского свидетельства о смерти</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="otherDeathReason" type="cm:CauseOfDeath" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="IdentityDocument">
+		<xs:annotation>
+			<xs:documentation>Документ, удостоверяющий личность человека</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="cm:documentType"/>
+			<xs:element ref="cm:documentSeries" minOccurs="0"/>
+			<xs:element ref="cm:documentNumber"/>
+			<xs:element ref="cm:organizationName"/>
+			<xs:element ref="cm:documentDate"/>
+			<xs:element ref="cm:divisionCode" minOccurs="0"/>
+			<xs:element ref="cm:verificationStatus" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ListOfCausesOfDeath">
+		<xs:annotation>
+			<xs:documentation>Список причин смерти в АЗ</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element name="item" type="cm:CauseOfDeath" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ListOfServiceTypes">
+		<xs:annotation>
+			<xs:documentation>Список услуг, оказываемых органом ЗАГС в электронном виде</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element name="item" type="xs:int" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NSICommonReference">
+		<xs:annotation>
+			<xs:documentation>Сведения о справочниках в стандартном общем представлении</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element name="id" type="xs:int">
+				<xs:annotation>
+					<xs:documentation>Идентификатор</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="value" type="cm:NOT_EMPTY_STRING">
+				<xs:annotation>
+					<xs:documentation>Значение</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NSIRegistrar">
+		<xs:annotation>
+			<xs:documentation>Сведения о месте государственной регистрации</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="cm:registrarId" minOccurs="0"/>
+			<xs:element ref="cm:regionCode"/>
+			<xs:element ref="cm:regionZagsID"/>
+			<xs:element ref="cm:fullName"/>
+			<xs:element ref="cm:shortName" minOccurs="0"/>
+			<xs:element ref="cm:rawAddressString" minOccurs="0"/>
+			<xs:element ref="cm:oktmo"/>
+			<xs:element ref="cm:dateBegin"/>
+			<xs:element ref="cm:dateClose" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+    <xs:complexType name="PowerOfAttorneyLegal">
+        <xs:annotation>
+            <xs:documentation>Доверенность ЮЛ</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="1">
+            <xs:element ref="cm:documentNumber"/>
+            <xs:element ref="cm:documentDate"/>
+            <xs:element ref="cm:organizationName"/>
+        </xs:sequence>
+    </xs:complexType>
+	<xs:complexType name="PowerOfAttorney">
+		<xs:annotation>
+			<xs:documentation>Доверенность ФЛ</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="cm:documentDate"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RegistrarIdentity">
+		<xs:annotation>
+			<xs:documentation>Идентификационные данные места государственной регистрации</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="cm:regionCode"/>
+			<xs:element ref="cm:regionZagsID"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ServiceIdentity">
+		<xs:sequence minOccurs="1">
+			<xs:element name="serviceId" type="cm:UID">
+				<xs:annotation>
+					<xs:documentation>Идентификатор услуги в ЕЗАГС</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ShortAddress">
+		<xs:annotation>
+			<xs:documentation>Сведения об адресе с точностью до населённого пункта</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="cm:okatoCode" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Код по классификатору ОКАТО
+			</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="cm:countryCode" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Код страны по классификатору ОКСМ</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="cm:rawAddressString">
+				<xs:annotation>
+					<xs:documentation>Адрес в первоначальном виде (как записан в документе). Только для визуальной верификации сотрудником ЗАГС.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:choice minOccurs="0">
+				<xs:element ref="cm:kladrCode">
+					<xs:annotation>
+						<xs:documentation>Код по классификатору КЛАДР</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="cm:kladeFiasCode">
+					<xs:annotation>
+						<xs:documentation>Код по классификатору ФИАС КЛАДЭ</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
+			<xs:element ref="cm:country" minOccurs="0"/>
+			<xs:element ref="cm:region" minOccurs="0"/>
+			<xs:element ref="cm:district" minOccurs="0"/>
+			<xs:element ref="cm:city" minOccurs="0"/>
+			<xs:element ref="cm:settlement" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Населенный пункт, строковое представление</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="VoidResponseObj">
+		<xs:annotation>
+			<xs:documentation>Пустой ответ</xs:documentation>
+		</xs:annotation>
+		<xs:sequence/>
+	</xs:complexType>
+	<xs:complexType name="VoidRequestObj">
+		<xs:annotation>
+			<xs:documentation>Пустой запрос</xs:documentation>
+		</xs:annotation>
+		<xs:sequence/>
+	</xs:complexType>
+	<xs:complexType name="PersonInitials">
+		<xs:annotation>
+			<xs:documentation>Инициалы человека: фамилия, имя и отчество</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="cm:surname"/>
+			<xs:element ref="cm:firstName"/>
+			<xs:element ref="cm:patronymic" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="personInitials" type="cm:PersonInitials"/>
+	<xs:element name="actRecordDate" type="cm:DateRecord">
+		<xs:annotation>
+			<xs:documentation>Дата составления документа</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="actRecordNumber" type="cm:ACT_RECORD_NUMBER">
+		<xs:annotation>
+			<xs:documentation>Номер актовой записи</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="actRecordUID" type="cm:ACT_RECORD_UID">
+		<xs:annotation>
+			<xs:documentation>Номер актовой записи в Федеральном электронном ЗАГСе</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="address" type="cm:FullAddress">
+		<xs:annotation>
+			<xs:documentation>Адрес частнопрактикующего врача</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="age" type="xs:int">
+		<xs:annotation>
+			<xs:documentation>Возраст</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="motherAge" type="xs:int">
+		<xs:annotation>
+			<xs:documentation>Возраст матери</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="alive" type="xs:boolean">
+		<xs:annotation>
+			<xs:documentation>Жив или мертв</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="appartment" type="cm:STRING20">
+		<xs:annotation>
+			<xs:documentation>квартира/помещение/офис</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="authDate" type="xs:date">
+		<xs:annotation>
+			<xs:documentation>Дата удостоверения подписи</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="benefitCategoryForHer" type="cm:NOT_EMPTY_STRING">
+		<xs:annotation>
+			<xs:documentation>Категория льготника для Него (освобождает от уплаты гос.пошлины)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="benefitCategoryForHim" type="cm:NOT_EMPTY_STRING">
+		<xs:annotation>
+			<xs:documentation>Категория льготника для Нее (освобождает от уплаты гос.пошлины)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="birthDate" type="cm:DateAgile">
+		<xs:annotation>
+			<xs:documentation>Дата рождения</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="birthPlace" type="cm:ShortAddress">
+		<xs:annotation>
+			<xs:documentation>Место рождения</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="birthStatus" type="cm:BIRTH_STATUSES">
+		<xs:annotation>
+			<xs:documentation>живорожденный или мертворожденный</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="birthTime" type="xs:time">
+		<xs:annotation>
+			<xs:documentation>Время рождения (в т.ч. ребенка, умершего на 1-ой неделе жизни)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="blank" type="cm:STATEMENT_BLANK_TYPE">
+		<xs:annotation>
+			<xs:documentation>Номер формы бумажного заявления на регистрацию смерти</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="brideAge" type="xs:int">
+		<xs:annotation>
+			<xs:documentation>Кол-во ЕЕ полных на момент заключения брака</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="building" type="cm:STRING10">
+		<xs:annotation>
+			<xs:documentation>корпус/строение/сооружение/литера</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="celebrationNeeded" type="xs:boolean">
+		<xs:annotation>
+			<xs:documentation>Признак регистрации брака в торжественной обстановке</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="certNumber" type="cm:STRING10">
+		<xs:annotation>
+			<xs:documentation>Номер свидетельства</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="certSeries" type="cm:STRING10">
+		<xs:annotation>
+			<xs:documentation>Серия свидетельства</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="certStatus" type="cm:CERTIFICATE_STATUS">
+		<xs:annotation>
+			<xs:documentation>статус свидетельства</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="citizenship" type="cm:CITIZENSHIP">
+		<xs:annotation>
+			<xs:documentation>Код гражданства по классификатору ОКСМ</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="citizenshipString" type="cm:STRING80">
+		<xs:annotation>
+			<xs:documentation>Гражданство, строковое представление (отличное от кода в ОКСМ)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="city" type="cm:STRING80">
+		<xs:annotation>
+			<xs:documentation>Город, строковое представление</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="comment" type="cm:NOT_EMPTY_STRING"/>
+	<xs:element name="connectionWithDead" type="cm:CONNECTION_WITH_DEAD">
+		<xs:annotation>
+			<xs:documentation>Отношение к умершему (справочник еЗАГС)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="correctionDate" type="xs:date">
+		<xs:annotation>
+			<xs:documentation>Дата внесения изменений в запись акта (при совершении юридически значимого действия)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="country" type="cm:STRING80">
+		<xs:annotation>
+			<xs:documentation>Страна, строковое представление</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="countryCode" type="cm:OKSM_CODE">
+		<xs:annotation>
+			<xs:documentation>код страны по ОКСМ</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="courtActMeaningType" type="xs:int">
+		<xs:annotation>
+			<xs:documentation>Суть судебного акта (справочник eZags)
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="courtName" type="cm:NOT_EMPTY_STRING">
+		<xs:annotation>
+			<xs:documentation>Наименование суда, вынесшего решение</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="courtPlace" type="cm:NOT_EMPTY_STRING">
+		<xs:annotation>
+			<xs:documentation>Место принятия судебного акта</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="dateBegin" type="xs:date">
+		<xs:annotation>
+			<xs:documentation>Дата начала работы ЗАГСа</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="dateClose" type="xs:date">
+		<xs:annotation>
+			<xs:documentation>Дата закрытия ЗАГСа</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="deathDate" type="cm:DateAgile">
+		<xs:annotation>
+			<xs:documentation>Дата смерти</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="deathPlace" type="cm:ShortAddress">
+		<xs:annotation>
+			<xs:documentation>Место смерти</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="deathReasonId" type="cm:NOT_EMPTY_STRING">
+		<xs:annotation>
+			<xs:documentation>Причина смерти субъекта заявления, когда личность не установлена (код из мкб-10)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="deathReasonString" type="cm:NOT_EMPTY_STRING">
+		<xs:annotation>
+			<xs:documentation>Причина смерти, если нет значения из мкб-10</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="deathTime" type="xs:time">
+		<xs:annotation>
+			<xs:documentation>Время смерти ребенка, умершего на 1-ой неделе жизни</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="desiredRegistratonTime" type="xs:time">
+		<xs:annotation>
+			<xs:documentation>Желаемое время регистрации брака</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="desiredRegistratonDate" type="xs:date">
+		<xs:annotation>
+			<xs:documentation>Желаемые дата регистрации брака</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="district" type="cm:STRING80">
+		<xs:annotation>
+			<xs:documentation>Район, строковое представление</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="divisionCode" type="cm:NOT_EMPTY_STRING">
+		<xs:annotation>
+			<xs:documentation>Код подразделения</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="divorceDate" type="cm:DateAgile">
+		<xs:annotation>
+			<xs:documentation>Дата прекращения брака</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="divorceTime" type="xs:time">
+		<xs:annotation>
+			<xs:documentation>Время начала процедуры прекращения брака</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="documentDate" type="xs:date">
+		<xs:annotation>
+			<xs:documentation>Дата документа</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="documentNumber" type="cm:NOT_EMPTY_STRING">
+		<xs:annotation>
+			<xs:documentation>Номер документа</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="documentSeries" type="cm:NOT_EMPTY_STRING">
+		<xs:annotation>
+			<xs:documentation>Серия документа</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="documentType" type="xs:int">
+		<xs:annotation>
+			<xs:documentation>Тип документа (согласно внутреннему справочнику Федерального Электронного ЗАГСа)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="documentTypeName" type="cm:NOT_EMPTY_STRING">
+		<xs:annotation>
+			<xs:documentation>Наименование типа документа</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="documentUID" type="cm:UID">
+		<xs:annotation>
+			<xs:documentation>Номер документа в Федеральном электронном ЗАГСе</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="duplicate" type="xs:boolean">
+		<xs:annotation>
+			<xs:documentation>Признак "дубликат"</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ezagsId" type="cm:UID">
+		<xs:annotation>
+			<xs:documentation>Идентификатор услуги в еЗАГС</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="faultBaseObj" type="cm:FaultBaseObj">
+		<xs:annotation>
+			<xs:documentation>Параметры сообщения об ошибке</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="findingCircumstances" type="cm:NOT_EMPTY_STRING">
+		<xs:annotation>
+			<xs:documentation>Обстоятельства обнаружения ребенка</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="findingDate" type="xs:date">
+		<xs:annotation>
+			<xs:documentation>Дата обнаружения ребенка</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="findingPlace" type="cm:NOT_EMPTY_STRING">
+		<xs:annotation>
+			<xs:documentation>Место обнаружения ребенка</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="findingTime" type="cm:TIME">
+		<xs:annotation>
+			<xs:documentation>Время обнаружения ребенка</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="firstName" type="cm:STRING60">
+		<xs:annotation>
+			<xs:documentation>Имя</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="fullName" type="cm:STRING250">
+		<xs:annotation>
+			<xs:documentation>Полное наименование</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="gender" type="cm:GENDERS">
+		<xs:annotation>
+			<xs:documentation>Пол</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="groomAge" type="xs:int">
+		<xs:annotation>
+			<xs:documentation>Кол-во ЕГО полных лет на момент заключения брака</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="groupOfCausesOfDeath" type="cm:GroupOfCausesOfDeath">
+		<xs:annotation>
+			<xs:documentation>Возможные причины смерти (по медицинскому свидетельству о смерти или о перинатальной смерти)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="hasCommonChildrenUnderAge" type="xs:boolean">
+		<xs:annotation>
+			<xs:documentation>Признак отсутствия у супругов, расторгающих брак, общих несовершеннолетних детей</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="hasSurrogateMother" type="xs:boolean">
+		<xs:annotation>
+			<xs:documentation>Признак "Родители воспользовались услугами суррогатной матери"</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="house" type="cm:STRING20">
+		<xs:annotation>
+			<xs:documentation>дом/владение/домовладение/участок</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="identityDocument" type="cm:IdentityDocument">
+		<xs:annotation>
+			<xs:documentation>Докумен, удостоверяющий личность</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="isAdoptiveParents" type="xs:boolean">
+		<xs:annotation>
+			<xs:documentation>Признак того, что усыновители (усыновитель) записаны родителями (родителем) ребенка</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="isAdoptiveParentsEqualsParents" type="xs:boolean">
+		<xs:annotation>
+			<xs:documentation>Записаны ли усыновители родителями ребенка?</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="isApplicant" type="xs:boolean">
+		<xs:annotation>
+			<xs:documentation>Признак "Является ли Заявителем"</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="isPrivateOfficeOwner" type="xs:boolean">
+		<xs:annotation>
+			<xs:documentation>Признак "Является ли инициатор отправки заявления владельцем личного кабинета"</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="isCeremonialNeed" type="xs:boolean">
+		<xs:annotation>
+			<xs:documentation>Нужна церемония бракосочетания</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="isChildAdopted" type="xs:boolean">
+		<xs:annotation>
+			<xs:documentation>Ребенка усыновили?</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="isChildFound" type="xs:boolean">
+		<xs:annotation>
+			<xs:documentation>Ребенка нашли?</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="isChildRefusal" type="xs:boolean">
+		<xs:annotation>
+			<xs:documentation>От ребенка отказались?</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="isDiedInWeek" type="xs:boolean">
+		<xs:annotation>
+			<xs:documentation>Признак "ребенок умер на первой неделе жизни"</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="isFatherAlive" type="xs:boolean">
+		<xs:annotation>
+			<xs:documentation>Отец жив?</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="isParietalDeath" type="xs:boolean">
+		<xs:annotation>
+			<xs:documentation>Признак перинатальной смерти субъекта заявления</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="isRecovered" type="xs:boolean">
+		<xs:annotation>
+			<xs:documentation>Признак восстановленной актовой записи</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="kladrCode" type="cm:KLADR_CODE">
+		<xs:annotation>
+			<xs:documentation>Код адреса по классификатору КЛАДР до уровня населенного пункта</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="kladeFiasCode" type="cm:KLADE_FIAS_CODE">
+		<xs:annotation>
+			<xs:documentation>Код по классификатору ФИАС КЛАДЭ</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="legalAddress" type="cm:FullAddress">
+		<xs:annotation>
+			<xs:documentation>Юридический адрес</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="licenseNumber" type="cm:NOT_EMPTY_STRING">
+		<xs:annotation>
+			<xs:documentation>Номер лицензии на медицинскую деятельность частнопрактикующего врача
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="lonelyMotherStatementDate" type="xs:date">
+		<xs:annotation>
+			<xs:documentation>Дата заявления одинокой матери</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="maritalStatus" type="xs:int">
+		<xs:annotation>
+			<xs:documentation>Семейное положение</xs:documentation>
+		</xs:annotation>
+		<!-- Enum? -->
+	</xs:element>
+	<xs:element name="medCertOfDeathType" type="xs:int">
+		<xs:annotation>
+			<xs:documentation>Вид отметки на выданном документе (справочник MedCertOfDeathType)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="medicalCertificateOfDeathTypeId" type="xs:int">
+		<xs:annotation>
+			<xs:documentation>Тип заключения о смерти, отметка на мед.свидетельстве о смерти, о перинатальной смерти</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="nationality" type="cm:OKIN_CODE">
+		<xs:annotation>
+			<xs:documentation>Код национальности по классификатору OkinNationality</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="nationalityString" type="cm:STRING40">
+		<xs:annotation>
+			<xs:documentation>Национальность, строковое представление (отличное от кода в OkinNationality)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="needChangeActRecord" type="xs:boolean">
+		<xs:annotation>
+			<xs:documentation>Признак того, что требуется внести изменения в ранее зарегистрированный акт о рождении ребенка (на основании изменения места рождения ребенка при его усыновлении)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="newLastNameOfHusb" type="cm:STRING60">
+		<xs:annotation>
+			<xs:documentation>Фамилия мужа (после регистрации акта: брака или развода)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="newLastNameOfWife" type="cm:STRING60">
+		<xs:annotation>
+			<xs:documentation>Фамилия жены (после после регистрации акта: брака или развода)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="nsiCommonReference" type="cm:NSICommonReference">
+		<xs:annotation>
+			<xs:documentation>Сведения о справочниках в стандартном общем представлении</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="nsiRegistrar" type="cm:NSIRegistrar">
+		<xs:annotation>
+			<xs:documentation>Сведения о месте государственной регистрации</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="numberChildInBirth" type="xs:int">
+		<xs:annotation>
+			<xs:documentation>Который по счету родился</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="numberChildInFamily" type="xs:int">
+		<xs:annotation>
+			<xs:documentation>Порядковый номер ребенка в семье</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="numberOfBirths" type="xs:int">
+		<xs:annotation>
+			<xs:documentation>Количество родившихся детей</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="okatoCode" type="cm:OKATO_CODE">
+		<xs:annotation>
+			<xs:documentation>код по классификатору ОКАТО
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="okogu" type="xs:int">
+		<xs:annotation>
+			<xs:documentation>Код ОКОГУ</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="oktmo" type="cm:NOT_EMPTY_STRING">
+		<xs:annotation>
+			<xs:documentation>Код ОКТМО</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="okpo" type="cm:NOT_EMPTY_STRING">
+		<xs:annotation>
+			<xs:documentation>Код по ОКПО медицинской организации, выдавшей документ</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="organizationAddress" type="cm:FullAddress">
+		<xs:annotation>
+			<xs:documentation>Адрес организации, выдавшей документ</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="organizationName" type="cm:NOT_EMPTY_STRING">
+		<xs:annotation>
+			<xs:documentation>Наименование организации</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="otherInformationAndOfficialAnnotationsItem" type="cm:NOT_EMPTY_STRING"/>
+	<xs:element name="patronymic" type="cm:STRING60">
+		<xs:annotation>
+			<xs:documentation>Отчество</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="fio" type="cm:STRING250">
+		<xs:annotation>
+			<xs:documentation>ФИО</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="period" type="xs:decimal">
+		<xs:annotation>
+			<xs:documentation>Срок лишения свободы</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="pguId" type="cm:UID">
+		<xs:annotation>
+			<xs:documentation>Идентификатор услуги в ЕПГУ</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="phoneNumber" type="cm:PHONE">
+		<xs:annotation>
+			<xs:documentation>Контактный телефон</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="position" type="cm:NOT_EMPTY_STRING">
+		<xs:annotation>
+			<xs:documentation>Должность</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="postalAddress" type="cm:FullAddress">
+		<xs:annotation>
+			<xs:documentation>Почтовый адрес</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="powerOfAttorney" type="cm:PowerOfAttorney">
+		<xs:annotation>
+			<xs:documentation>Доверенность ФЛ</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="powerOfAttorneyLegal" type="cm:PowerOfAttorneyLegal">
+		<xs:annotation>
+			<xs:documentation>Доверенность ЮЛ</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="proceedMethod" type="cm:NOT_EMPTY_STRING">
+		<xs:annotation>
+			<xs:documentation>Способ поступления заявления</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="rawAddressString" type="cm:NOT_EMPTY_STRING">
+		<xs:annotation>
+			<xs:documentation>адрес в первоначальном виде (как записан в документе). Только для визуальной верификации сотрудником ЗАГС!</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="reasonOfMotherAbsence" type="cm:NOT_EMPTY_STRING">
+		<xs:annotation>
+			<xs:documentation>Причина, по которой при установлении отцовства мать ребенка отсутствует, если не из справочника</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="reasonOfMotherAbsenceId" type="xs:int">
+		<xs:annotation>
+			<xs:documentation>Код причины, по которой при установлении отцовства мать ребенка отсутствует (в соответствии с решением суда или справкой из ОВД) </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="reasonOfSendStatment" type="cm:NOT_EMPTY_STRING">
+		<xs:annotation>
+			<xs:documentation>Причина обращения за исполнением услуги (причина перемены имени со слов заявителя, в связи с чем истребуется документ)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="refusalDate" type="xs:date">
+		<xs:annotation>
+			<xs:documentation>Дата оставления ребенка</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="region" type="cm:STRING80">
+		<xs:annotation>
+			<xs:documentation>Субъект РФ, строковое представление</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="regionCode" type="cm:REGION_CODE">
+		<xs:annotation>
+			<xs:documentation>Код региона</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="regionZagsID" type="cm:REGION_REGISTRAR_ID">
+		<xs:annotation>
+			<xs:documentation>Идентификатор ЗАГС в сети региона</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="registrarId" type="cm:registrarUID">
+		<xs:annotation>
+			<xs:documentation>Код органа ЗАГС, составившего документ (из внешнего справочника на ЕНСИ)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="residencePlace" type="cm:FullAddress">
+		<xs:annotation>
+			<xs:documentation>Место жительства</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="serviceTypes" type="cm:ListOfServiceTypes">
+		<xs:annotation>
+			<xs:documentation>Список видов заявлений, принимаемых органом ЗАГС в электронном виде
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="settlement" type="cm:STRING80">
+		<xs:annotation>
+			<xs:documentation>Населенный пункт, строковое представленеи </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="shortName" type="cm:NOT_EMPTY_STRING">
+		<xs:annotation>
+			<xs:documentation>Краткое наименование</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="singleMotherStatementDate" type="xs:date">
+		<xs:annotation>
+			<xs:documentation>Дата заявления одинокой матери</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="snils" type="cm:SNILS"/>
+	<xs:element name="specifyNationalityOfFather" type="xs:boolean">
+		<xs:annotation>
+			<xs:documentation>Указывать ли в акте национальность отца</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="specifyNationalityOfMother" type="xs:boolean">
+		<xs:annotation>
+			<xs:documentation>Указывать ли в акте национальность матери</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="statementDate" type="xs:date">
+		<xs:annotation>
+			<xs:documentation>Дата заявления</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="statementNumber" type="xs:int">
+		<xs:annotation>
+			<xs:documentation>Номер заявления</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="street" type="cm:STRING80">
+		<xs:annotation>
+			<xs:documentation>Улица</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="surname" type="cm:STRING60">
+		<xs:annotation>
+			<xs:documentation>Фамилия</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="surnameMotherInMarriage" type="cm:NOT_EMPTY_STRING">
+		<xs:annotation>
+			<xs:documentation>Фамилия матери в браке.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="isSecondCopy" type="xs:boolean">
+		<xs:annotation>
+			<xs:documentation>Это второй экземпляр актовой записи?</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="verificationStatus" type="cm:VERIFICATION_STATUS">
+		<xs:annotation>
+			<xs:documentation>Статус проверки сведений в данном документе (справочник DocumentVerifStatus)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="voidResponseObj" type="cm:VoidResponseObj">
+		<xs:annotation>
+			<xs:documentation>Пустой ответ</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="voidRequestObj" type="cm:VoidRequestObj">
+		<xs:annotation>
+			<xs:documentation>Пустой запрос</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="wasDeadPersonEstablished" type="xs:boolean" default="1">
+		<xs:annotation>
+			<xs:documentation>Установленна ли личность умершего?</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="wasFiliationEstablished" type="xs:boolean">
+		<xs:annotation>
+			<xs:documentation>Отцовство установленно?</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="workPhoneNumber" type="cm:PHONE">
+		<xs:annotation>
+			<xs:documentation>Рабочий номер телефона</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="isFirstMarriageForHer" type="xs:int">
+		<xs:annotation>
+			<xs:documentation>Признак того, что невеста вступает в брак впервые</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="isFirstMarriageForHim" type="xs:int">
+		<xs:annotation>
+			<xs:documentation>Признак того, что жених вступает в брак впервые</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="version" type="cm:TIME_STAMP_VERSION">
+		<xs:annotation>
+			<xs:documentation>Временная метка, в виде time stamp, используемая в качестве версии</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="childWeight" type="xs:int">
+		<xs:annotation>
+			<xs:documentation>Масса тела ребенка при рождении.
+                Заполняется из медицинского свидетельства о рождении - пункт 16, при мертворождении -
+                пункт 17 медицинского свидетельства о перинатальной смерти, указывается в граммах.
+            </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="numberOfJuvenileChildren" type="xs:int">
+		<xs:annotation>
+			<xs:documentation>Число общих детей до 18 лет. Заполняется цифрами.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="education" type="xs:int">
+		<xs:annotation>
+			<xs:documentation>Код Образования по классификатору Росстата</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="educationString" type="cm:STRING250">
+		<xs:annotation>
+			<xs:documentation>Образование - строковое представление</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="occupation" type="xs:int">
+		<xs:annotation>
+			<xs:documentation>Код Занятость по классификатору Росстата</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="deathPlacedAt" type="xs:int">
+		<xs:annotation>
+			<xs:documentation>Код Смерть наступила по классификатору Росстата</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="causeOfDeath" type="xs:int">
+		<xs:annotation>
+			<xs:documentation>Код Смерть произошла по классификатору Росстата</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="causeOfDeathString" type="cm:STRING250">
+		<xs:annotation>
+			<xs:documentation>Смерть произошла - строковое представление</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="deathPeriodRoadAccident" type="xs:int">
+		<xs:annotation>
+			<xs:documentation>Код Смерть в результате ДТП по классификатору Росстата</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="whoRegisteredDeath" type="xs:int">
+		<xs:annotation>
+			<xs:documentation>Код Причина смерти установлена по классификатору Росстата</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:simpleType name="KLADE_FIAS_CODE">
+		<xs:restriction base="cm:NOT_EMPTY_STRING">
+			<xs:length value="36"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TIME_STAMP_VERSION">
+		<xs:annotation>
+			<xs:documentation>Временной интервал ограничен датами с 1 января 1910 года по 1 января 2020 года</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:integer">
+			<xs:minInclusive value="58064749200000"/>
+			<xs:maxInclusive value="61535955600000"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ACT_RECORD_NUMBER">
+		<xs:restriction base="cm:NOT_EMPTY_STRING">
+			<xs:pattern value="\d{1,5}[\d\w]?"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ACT_RECORD_UID">
+		<xs:restriction base="cm:NOT_EMPTY_STRING">
+			<xs:pattern value="\w{21}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="BIRTH_STATUSES">
+		<xs:annotation>
+			<xs:documentation>Перечисляемый тип: "живорожденный / мертворожденный" ребенок</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="cm:NOT_EMPTY_STRING">
+			<xs:enumeration value="undefined">
+				<xs:annotation>
+					<xs:documentation>значение не определено</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="liveborn">
+				<xs:annotation>
+					<xs:documentation>живорожденный</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="deadborn">
+				<xs:annotation>
+					<xs:documentation>мертворожденный</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CERTIFICATE_STATUS">
+		<xs:annotation>
+			<xs:documentation>Статус свидетельства</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="cm:NOT_EMPTY_STRING">
+			<xs:enumeration value="primary">
+				<xs:annotation>
+					<xs:documentation>первичное</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="repeated">
+				<xs:annotation>
+					<xs:documentation>повторное</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="damaged">
+				<xs:annotation>
+					<xs:documentation>испорченное</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="based_on_changes">
+				<xs:annotation>
+					<xs:documentation>выдано в связи с изменениями</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CITIZENSHIP">
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="1"/>
+			<xs:maxInclusive value="999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CONNECTION_WITH_DEAD">
+		<xs:restriction base="cm:NOT_EMPTY_STRING">
+			<xs:enumeration value="RELATIVE"/>
+			<xs:enumeration value="MOTHER_OF_CHILD_DEAD_IN_ONE_WEEK"/>
+			<xs:enumeration value="FATHER_OF_CHILD_DEAD_IN_ONE_WEEK"/>
+			<xs:enumeration value="OTHER_PERSON"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="FAULT">
+		<xs:annotation>
+			<xs:documentation>Список типов сообщения об ошибке</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="cm:NOT_EMPTY_STRING">
+			<xs:enumeration value="verification"/>
+			<xs:enumeration value="execution"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="GENDERS">
+		<xs:annotation>
+			<xs:documentation>Пол</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="cm:NOT_EMPTY_STRING">
+			<xs:enumeration value="undefined">
+				<xs:annotation>
+					<xs:documentation>Значение не определено</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="male">
+				<xs:annotation>
+					<xs:documentation>Мужской</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="female">
+				<xs:annotation>
+					<xs:documentation>Женский</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="KLADR_CODE">
+		<xs:restriction base="cm:NOT_EMPTY_STRING">
+			<xs:pattern value="\d{11,17}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="OKATO_CODE">
+		<xs:restriction base="cm:NOT_EMPTY_STRING">
+			<xs:pattern value="\d{11}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="OKIN_CODE">
+		<xs:restriction base="xs:int">
+			<xs:totalDigits value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="OKSM_CODE">
+		<xs:restriction base="xs:int">
+			<xs:totalDigits value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PHONE">
+		<xs:annotation>
+			<xs:documentation>Номер телефона</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="cm:NOT_EMPTY_STRING">
+			<xs:maxLength value="20"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="REGION_CODE">
+		<xs:restriction base="xs:int">
+			<xs:totalDigits value="2"/>
+			<xs:minInclusive value="1"/>
+			<xs:maxInclusive value="99"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="REGION_REGISTRAR_ID">
+		<xs:restriction base="xs:int">
+			<xs:totalDigits value="4"/>
+			<xs:minInclusive value="1"/>
+			<xs:maxInclusive value="9999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="registrarUID">
+		<xs:restriction base="cm:NOT_EMPTY_STRING">
+			<xs:pattern value="\d{6}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SERIES7">
+		<xs:annotation>
+			<xs:documentation>Серия документа. Начинается с семи цифр</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="cm:NOT_EMPTY_STRING">
+			<xs:pattern value="[0-9]{7}.*"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SNILS">
+		<xs:annotation>
+			<xs:documentation>СНИЛС</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="cm:NOT_EMPTY_STRING">
+			<xs:pattern value="[0-9]{3}-[0-9]{3}-[0-9]{3} [0-9]{2}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="STATEMENT_BLANK_TYPE">
+		<xs:annotation>
+			<xs:documentation>Форма заявления на предоставление услуги</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="cm:NOT_EMPTY_STRING">
+			<xs:enumeration value="BIRTH_1">
+				<xs:annotation>
+					<xs:documentation>Заявление о рождении. Форма №1</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BIRTH_2">
+				<xs:annotation>
+					<xs:documentation>Заявление о рождении ребенка у матери, не состоящей в браке. Форма №2</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BIRTH_3">
+				<xs:annotation>
+					<xs:documentation>Заявление о внесении сведений об отце ребенка в запись акта о рождении. Форма №3</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BIRTH_4">
+				<xs:annotation>
+					<xs:documentation>Заявление о рождении найденного ребенка. Форма №4</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BIRTH_5">
+				<xs:annotation>
+					<xs:documentation>Заявление о рождении гражданина, государственная регистрация рождения которого ранее не производилась. Форма №5</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BIRTH_6">
+				<xs:annotation>
+					<xs:documentation>Заявление о рождении, подтверждающее факт рождения ребенка вне медицинской организации. Форма №6</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="MARRIAGE_7">
+				<xs:annotation>
+					<xs:documentation>Заявление о заключении брака. Форма №7</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DIVORCE_8">
+				<xs:annotation>
+					<xs:documentation>Заявление о расторжении брака (по взаимному согласию супругов). Форма №8</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DIVORCE_9">
+				<xs:annotation>
+					<xs:documentation>Заявление о расторжении брака (поданное одним из супругов). Форма №9</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DIVORCE_10">
+				<xs:annotation>
+					<xs:documentation>Заявление о расторжении брака (на основании решения суда о расторжении брака). Форма №10</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DEATH_16">
+				<xs:annotation>
+					<xs:documentation>Заявление о смерти. Форма №16</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="STRING10">
+		<xs:restriction base="cm:NOT_EMPTY_STRING">
+			<xs:maxLength value="10"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="STRING20">
+		<xs:restriction base="cm:NOT_EMPTY_STRING">
+			<xs:maxLength value="20"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="STRING250">
+		<xs:restriction base="cm:NOT_EMPTY_STRING">
+			<xs:maxLength value="250"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="STRING40">
+		<xs:restriction base="cm:NOT_EMPTY_STRING">
+			<xs:maxLength value="40"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="STRING60">
+		<xs:restriction base="cm:NOT_EMPTY_STRING">
+			<xs:maxLength value="60"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="STRING80">
+		<xs:restriction base="cm:NOT_EMPTY_STRING">
+			<xs:maxLength value="80"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TIME">
+		<xs:annotation>
+			<xs:documentation>Время</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="cm:NOT_EMPTY_STRING">
+			<xs:pattern value="[012]\d:[0-6]\d"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="UID">
+		<xs:restriction base="cm:NOT_EMPTY_STRING">
+			<xs:pattern value="\d+"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PAYMENT_STATUS">
+		<xs:restriction base="cm:NOT_EMPTY_STRING">
+			<xs:enumeration value="UNDEFINED">
+				<xs:annotation>
+					<xs:documentation>Не известен</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="NOT_PAID">
+				<xs:annotation>
+					<xs:documentation>Не оплачен</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PART_PAID">
+				<xs:annotation>
+					<xs:documentation>Оплачен частично</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PAID">
+				<xs:annotation>
+					<xs:documentation>Оплачено</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TIME_RESERVATION_STATUS">
+		<xs:annotation>
+			<xs:documentation>Статусы процесса резервации времени посещения по услуге</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="cm:NOT_EMPTY_STRING">
+			<xs:enumeration value="timeReservationNeeded">
+				<xs:annotation>
+					<xs:documentation>По услуге требуется регистрация времени (либо предыдущая регистрация отменена)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="timeReserved">
+				<xs:annotation>
+					<xs:documentation>По услуге зарезервировано время приема</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="referenceCode" type="cm:REFERENCE_TYPE">
+		<xs:annotation>
+			<xs:documentation>Код справочника еЗАГС</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+  <xs:element name="reserveNumberUid" type="xs:string">
+      <xs:annotation>
+          <xs:documentation>Номер брони даты и времени приема гражданина в РЗАГС</xs:documentation>
+      </xs:annotation>
+  </xs:element>
+  <xs:element name="reserveDateTime" type="xs:string">
+      <xs:annotation>
+          <xs:documentation>Забронированное время приема гражданина в РЗАГС</xs:documentation>
+      </xs:annotation>
+  </xs:element>
+	<xs:simpleType name="REFERENCE_TYPE">
+		<xs:annotation>
+			<xs:documentation>Перечисляемый тип: "справочники"</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="cm:NOT_EMPTY_STRING">
+			<xs:enumeration value="service_statuses">
+				<xs:annotation>
+					<xs:documentation>Статусы исполнения государственной услуги</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="document_verif_statuses">
+				<xs:annotation>
+					<xs:documentation>Статусы проверки документа</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="address_types">
+				<xs:annotation>
+					<xs:documentation>Типы адресов</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="service_types">
+				<xs:annotation>
+					<xs:documentation>Виды УСЛУГ, принимаемых органом ЗАГС в электронном виде</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="med_cert_of_death_types">
+				<xs:annotation>
+					<xs:documentation>Типы заключения о смерти</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="VERIFICATION_STATUS">
+		<xs:annotation>
+			<xs:documentation>Статус проверки входящих документов</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="cm:NOT_EMPTY_STRING">
+			<xs:enumeration value="undefined">
+				<xs:annotation>
+					<xs:documentation>Значение не определено</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="not_verified">
+				<xs:annotation>
+					<xs:documentation>Документ не проверен</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="verified_valid">
+				<xs:annotation>
+					<xs:documentation>Документ проверен и действителен</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="verified_invalid">
+				<xs:annotation>
+					<xs:documentation>Документ проверен и недействителен</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="NOT_EMPTY_STRING">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="OPERATION_RESULT">
+		<xs:annotation>
+			<xs:documentation>Результат выполнения процедуры</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="cm:NOT_EMPTY_STRING">
+			<xs:enumeration value="succes">
+				<xs:annotation>
+					<xs:documentation>Процедура прошла успешно</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="fail">
+				<xs:annotation>
+					<xs:documentation>Процедура завершилась ошибкой</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

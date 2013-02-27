@@ -1,0 +1,47 @@
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:tns="http://ezags.rt.ru/fzags/LocalNSIService/"
+    xmlns:nsi="http://nsi.gosuslugi.ru/rev111111"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    name="LocalNSIServiceService"
+    targetNamespace="http://ezags.rt.ru/fzags/LocalNSIService/">
+    <types>
+        <xsd:schema>
+            <xsd:import namespace="http://nsi.gosuslugi.ru/rev111111" schemaLocation="LocalGetLastUpdatesService.xsd"/>
+        </xsd:schema>
+    </types>
+
+    <message name="getLastUpdatesServiceResponse">
+        <part element="nsi:response" name="Response"/>
+    </message>
+
+    <message name="getLastUpdatesServiceRequest">
+        <part element="nsi:getLastUpdates" name="Request"/>
+    </message>
+
+    <portType name="LocalNSIService">
+        <operation name="request" parameterOrder="Request">
+            <input message="tns:getLastUpdatesServiceRequest"/>
+            <output message="tns:getLastUpdatesServiceResponse"/>
+        </operation>
+    </portType>
+
+    <binding name="LocalNSIServiceImplPortBinding" type="tns:LocalNSIService">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="request">
+            <soap:operation soapAction=""/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+
+    <service name="LocalNSIService">
+        <port name="LocalNSIServiceImplPort" binding="tns:LocalNSIServiceImplPortBinding">
+            <soap:address location="http://localhost:8001/LocalNSServiceImpl/LocalNSIService"/>
+        </port>
+    </service>
+</definitions>

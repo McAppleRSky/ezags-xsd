@@ -1,0 +1,110 @@
+<xs:schema attributeFormDefault="unqualified"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:smev="http://smev.gosuslugi.ru/rev120315"
+           xmlns:ns1="https://geps.gosuslugi.ru"
+           xmlns:ns2="http://www.w3.org/2004/08/xop/include"
+
+           elementFormDefault="qualified"
+           targetNamespace="http://smev.gosuslugi.ru/rev120315">
+
+    <xs:import namespace="https://geps.gosuslugi.ru" schemaLocation="geps.xsd"/>
+    <xs:import namespace="http://www.w3.org/2004/08/xop/include" schemaLocation="xop-include.xsd"/>
+
+    <xs:complexType name="Sm2Message">
+        <xs:sequence>
+            <xs:element name="Message" type="smev:MessageType"/>
+            <xs:element name="MessageData" type="smev:Sm2RequestMessageData"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="MessageType">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="Sender" type="smev:orgExternalType"/>
+            <xs:element minOccurs="0" name="Recipient"  type="smev:orgExternalType"/>
+            <xs:element minOccurs="0" name="Originator" type="smev:orgExternalType"/>
+            <xs:element minOccurs="0" name="ServiceName" type="xs:string"/>
+            <xs:element minOccurs="0" name="TypeCode"  type="smev:TypeCodeType"/>
+            <xs:element minOccurs="0" name="Status"  type="smev:StatusType"/>
+            <xs:element minOccurs="0" name="Date" type="xs:dateTime"/>
+            <xs:element minOccurs="0" name="ExchangeType"  type="xs:string"/>
+            <xs:element minOccurs="0" name="RequestIdRef" type="xs:string"/>
+            <xs:element minOccurs="0" name="OriginRequestIdRef" type="xs:string"/>
+            <xs:element minOccurs="0" name="ServiceCode" type="xs:string"/>
+            <xs:element minOccurs="0" name="CaseNumber" type="xs:string"/>
+            <xs:element minOccurs="0" name="TestMsg" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="orgExternalType">
+        <xs:sequence>
+            <xs:element name="Code" type="xs:string"/>
+            <xs:element name="Name" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Sm2RequestMessageData">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="AppData" type="smev:Sm2RequestAppData"/>
+            <xs:element minOccurs="0" name="AppDocument" type="smev:AppDocumentType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Sm2RequestAppData">
+        <xs:sequence>
+            <xs:element minOccurs="0" ref="ns1:snils"/>
+            <xs:element minOccurs="0" ref="ns1:gepsUserId"/>
+            <xs:element minOccurs="0" ref="ns1:type"/>
+            <xs:element minOccurs="0" ref="ns1:params"/>
+        </xs:sequence>
+        <xs:attribute name="Id" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="AppDocumentType">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="RequestCode" type="xs:string"/>
+            <xs:element minOccurs="0" name="BinaryData" type="xs:base64Binary"/>
+            <xs:element minOccurs="0" name="Reference" type="smev:ReferenceType"/>
+            <xs:element minOccurs="0" name="DigestValue" type="xs:base64Binary"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ReferenceType">
+        <xs:sequence>
+            <xs:element ref="ns2:Include"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Message">
+        <xs:sequence>
+            <xs:element name="Message" type="smev:MessageType"/>
+            <xs:element name="MessageData" type="smev:Sm2ResponseMessageData"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Sm2ResponseMessageData">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="AppData" type="smev:Sm2ResponseAppData"/>
+            <xs:element minOccurs="0" name="AppDocument" type="smev:AppDocumentType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Sm2ResponseAppData">
+        <xs:sequence>
+            <xs:element minOccurs="0" ref="ns1:messageId"/>
+        </xs:sequence>
+        <xs:attribute ref="smev:Id"/>
+    </xs:complexType>
+    <xs:simpleType name="TypeCodeType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="GSRV"/>
+            <xs:enumeration value="GFNC"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StatusType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="REQUEST"/>
+            <xs:enumeration value="RESULT"/>
+            <xs:enumeration value="REJECT"/>
+            <xs:enumeration value="INVALID"/>
+            <xs:enumeration value="ACCEPT"/>
+            <xs:enumeration value="PING"/>
+            <xs:enumeration value="PROCESS"/>
+            <xs:enumeration value="NOTIFY"/>
+            <xs:enumeration value="FAILURE"/>
+            <xs:enumeration value="CANCEL"/>
+            <xs:enumeration value="STATE"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:attribute name="Id" type="xs:string"/>
+</xs:schema>

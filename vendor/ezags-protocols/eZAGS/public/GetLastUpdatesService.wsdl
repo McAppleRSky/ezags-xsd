@@ -1,0 +1,47 @@
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:smev="http://smev.gosuslugi.ru/rev111111"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    name="standardBankService"
+    xmlns:nsi="http://nsi.gosuslugi.ru/rev111111"
+    targetNamespace="http://nsi.gosuslugi.ru/rev111111">
+    <types>
+        <xsd:schema>
+            <xsd:import namespace="http://smev.gosuslugi.ru/rev111111" schemaLocation="getLastUpdatesService.xsd"/>
+        </xsd:schema>
+    </types>
+
+    <message name="getLastUpdatesService_requestResponse">
+        <part element="smev:Response" name="Response"/>
+    </message>
+
+    <message name="getLastUpdatesService_request">
+        <part element="smev:Request" name="Request"/>
+    </message>
+
+    <portType name="getLastUpdatesService">
+        <operation name="request" parameterOrder="Request">
+            <input message="nsi:getLastUpdatesService_request"/>
+            <output message="nsi:getLastUpdatesService_requestResponse"/>
+        </operation>
+    </portType>
+
+    <binding name="getLastUpdatesServiceBinding" type="nsi:getLastUpdatesService">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="request">
+            <soap:operation soapAction=""/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+
+    <service name="getLastUpdatesService">
+        <port binding="nsi:getLastUpdatesServiceBinding" name="GetLastUpdatesServiceImplPort">
+            <soap:address location="http://localhost:8001/getLastUpdatesService"/>
+        </port>
+    </service>
+</definitions>

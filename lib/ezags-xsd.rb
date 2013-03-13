@@ -12,9 +12,11 @@ module Ezags
       Pathname.new(File.expand_path('../../vendor/ezags-protocols', __FILE__))
     end
 
-    class Protocols < Rails::Engine
-      initializer "ezags.xsd.protocols.add_middleware" do |app|
-        app.middleware.use Ezags::Xsd::Middleware
+    if defined?(Rails) && defined?(Rails::Engine)
+      class Protocols < Rails::Engine
+        initializer "ezags.xsd.protocols.add_middleware" do |app|
+          app.middleware.use Ezags::Xsd::Middleware
+        end
       end
     end
   end

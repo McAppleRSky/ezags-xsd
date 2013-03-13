@@ -1,9 +1,10 @@
 require 'spec_helper'
 require "xml_schema_mapper/test_builder"
 
+  # @attr taskId [string]
 
 
-describe ReferenceTypeMapper do
+describe GetActRecordsRequestObjMapper do
 
   include XmlSchemaMapper::TestBuilder::Helper
 

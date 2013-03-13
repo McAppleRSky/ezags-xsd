@@ -17,6 +17,7 @@ class CLI < Thor
 
   desc 'update_all', 'update ezags xsd mappers'
   def update_all
+    update_retro
     update_order
     update_upload
     update_order_info
@@ -29,6 +30,10 @@ class CLI < Thor
       Dir[path].each do |f|
         gsub_file f, %r(schema '(vendor/ezags-protocols/.*.xsd)'$), 'schema File.expand_path(\'../../\1\', File.dirname(__FILE__))'
       end
+    end
+
+    def update_retro
+      @script.generate(xsd_path 'retro/public/GetResultsService.xsd')
     end
 
     def update_upload

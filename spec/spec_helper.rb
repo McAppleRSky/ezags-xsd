@@ -1,4 +1,5 @@
 require 'rspec'
+require 'ezags-xsd'
 
 
 RSpec.configure do |config|

@@ -1,9 +1,9 @@
 # encoding: utf-8
 
-class GetActRecordsResponseObjMapper
+class GetActRecordsResponseMapper
   include XmlSchemaMapper
   schema File.expand_path('../../vendor/ezags-protocols/retro/GetResultsService.xsd', File.dirname(__FILE__))
-  type 'GetActRecordsResponseObj'
+  type 'GetActRecordsResponse'
 
   # Запись акта о рождении с ЭП
   # @return [SignedActRecordBirthMapper]

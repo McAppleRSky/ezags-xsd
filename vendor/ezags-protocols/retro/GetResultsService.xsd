@@ -10,13 +10,13 @@
   <xs:import namespace="http://ezags.rt.ru/type/externaldocuments/" schemaLocation="../externaldocuments.xsd"/>
   <xs:import namespace="http://ezags.rt.ru/type/actor/" schemaLocation="../actor.xsd"/>
   <xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="../xmldsig-core-schema.xsd"/>
-  <xs:complexType name="GetActRecordsRequestObj">
+  <xs:complexType name="GetActRecordsRequest">
     <xs:sequence minOccurs="1">
       <xs:element name="taskId" type="xs:string" minOccurs="1"/>
       <xs:element ref="ds:Signature"/>
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="GetActRecordsResponseObj">
+  <xs:complexType name="GetActRecordsResponse">
     <xs:choice minOccurs="1">
       <xs:element ref="doc:signedActRecordBirth" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element ref="doc:signedActRecordMarriage" minOccurs="0" maxOccurs="unbounded"/>
@@ -28,6 +28,6 @@
       <xs:element name="faultMessage" type="xs:string" minOccurs="0"/>
     </xs:choice>
   </xs:complexType>
-  <xs:element name="getActRecordsRequestObj" type="tns:GetActRecordsRequestObj"/>
-  <xs:element name="getActRecordsResponseObj" type="tns:GetActRecordsResponseObj"/>
+  <xs:element name="getActRecordsRequest" type="tns:GetActRecordsRequest"/>
+  <xs:element name="getActRecordsResponse" type="tns:GetActRecordsResponse"/>
 </xs:schema>

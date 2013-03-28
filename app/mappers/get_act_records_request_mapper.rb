@@ -1,9 +1,9 @@
 # encoding: utf-8
 
-class GetActRecordsRequestObjMapper
+class GetActRecordsRequestMapper
   include XmlSchemaMapper
   schema File.expand_path('../../vendor/ezags-protocols/retro/GetResultsService.xsd', File.dirname(__FILE__))
-  type 'GetActRecordsRequestObj'
+  type 'GetActRecordsRequest'
 
   # @return [String]
   # minOccurs: 1, maxOccurs: 1

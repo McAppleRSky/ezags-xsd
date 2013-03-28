@@ -11,7 +11,7 @@ require "xml_schema_mapper/test_builder"
   # @attr faultMessage [string]
 
 
-describe GetActRecordsResponseObjMapper do
+describe GetActRecordsResponseMapper do
 
   include XmlSchemaMapper::TestBuilder::Helper
 

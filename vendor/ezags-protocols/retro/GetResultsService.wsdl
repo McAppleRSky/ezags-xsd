@@ -23,10 +23,10 @@
     </xsd:schema>
   </types>
   <message name="GetActRecordsRequest">
-    <part name="body" element="tns:getActRecordsRequestObj"/>
+    <part name="body" element="tns:getActRecordsRequest"/>
   </message>
   <message name="GetActRecordsResponse">
-    <part name="body" element="tns:getActRecordsResponseObj"/>
+    <part name="body" element="tns:getActRecordsResponse"/>
   </message>
   <portType name="GetResultsPortType">
     <operation name="getActRecords">

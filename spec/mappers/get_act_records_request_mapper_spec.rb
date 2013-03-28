@@ -5,7 +5,7 @@ require "xml_schema_mapper/test_builder"
   # @attr Signature [SignatureType]
 
 
-describe GetActRecordsRequestObjMapper do
+describe GetActRecordsRequestMapper do
 
   include XmlSchemaMapper::TestBuilder::Helper
 

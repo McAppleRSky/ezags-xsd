@@ -2,6 +2,7 @@ require 'spec_helper'
 require "xml_schema_mapper/test_builder"
 
   # @attr taskId [string]
+  # @attr Signature [SignatureType]
 
 
 describe GetActRecordsRequestObjMapper do

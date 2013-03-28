@@ -33,7 +33,7 @@ class CLI < Thor
     end
 
     def update_retro
-      @script.generate(xsd_path 'retro/public/GetResultsService.xsd')
+      @script.generate(xsd_path 'retro/GetResultsService.xsd')
     end
 
     def update_upload

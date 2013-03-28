@@ -1,29 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://ezags.rt.ru/fzags/GetResultsService/type/local/"
-    xmlns:cm="http://ezags.rt.ru/type/common/" xmlns:ac="http://ezags.rt.ru/type/actor/"
+<xs:schema targetNamespace="http://ezags.rt.ru/fzags/GetResultsService/"
+    xmlns:tns="http://ezags.rt.ru/fzags/GetResultsService/"
     xmlns:doc="http://ezags.rt.ru/type/document/"
-    xmlns:exdoc="http://ezags.rt.ru/type/externaldocuments/"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    targetNamespace="http://ezags.rt.ru/fzags/GetResultsService/type/local/"
+    xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
     elementFormDefault="qualified" attributeFormDefault="unqualified">
     <xs:import namespace="http://ezags.rt.ru/type/common/" schemaLocation="../common.xsd"/>
     <xs:import namespace="http://ezags.rt.ru/type/document/" schemaLocation="../documents.xsd"/>
     <xs:import namespace="http://ezags.rt.ru/type/externaldocuments/" schemaLocation="../externaldocuments.xsd"/>
     <xs:import namespace="http://ezags.rt.ru/type/actor/" schemaLocation="../actor.xsd"/>
+    <xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="../xmldsig-core-schema.xsd"/>
     <xs:complexType name="GetActRecordsRequestObj">
         <xs:sequence minOccurs="1">
             <xs:element name="taskId" type="xs:string" minOccurs="1"/>
+            <xs:element ref="ds:Signature"/>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="GetActRecordsResponseObj">
       <xs:choice minOccurs="1">
-        <xs:element name="signedActRecordBirth" type="doc:SignedActRecordBirth" minOccurs="0" maxOccurs="unbounded"/>
-        <xs:element name="signedActRecordMarriage" type="doc:SignedActRecordMarriage" minOccurs="0" maxOccurs="unbounded"/>
-        <xs:element name="signedActRecordDivorce" type="doc:SignedActRecordDivorce" minOccurs="0" maxOccurs="unbounded"/>
-        <xs:element name="signedActRecordAdoption" type="doc:SignedActRecordAdoption" minOccurs="0" maxOccurs="unbounded"/>
-        <xs:element name="signedActRecordFiliation" type="doc:SignedActRecordFiliation" minOccurs="0" maxOccurs="unbounded"/>
-        <xs:element name="signedActRecordNameChange" type="doc:SignedActRecordNameChange" minOccurs="0" maxOccurs="unbounded"/>
-        <xs:element name="signedActRecordDeath" type="doc:SignedActRecordDeath" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="doc:signedActRecordBirth" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="doc:signedActRecordMarriage" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="doc:signedActRecordDivorce" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="doc:signedActRecordAdoption" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="doc:signedActRecordFiliation" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="doc:signedActRecordNameChange" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="doc:signedActRecordDeath" minOccurs="0" maxOccurs="unbounded"/>
         <xs:element name="faultMessage" type="xs:string" minOccurs="0"/>
       </xs:choice>
     </xs:complexType>

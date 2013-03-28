@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://ezags.rt.ru/fzags/LocalGetResultsService/" xmlns:t="http://ezags.rt.ru/fzags/GetResultsService/type/local/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="LocalGetResultsServiceService" targetNamespace="http://ezags.rt.ru/fzags/LocalGetResultsService/">
+<definitions name="GetResultsService"
+	targetNamespace="http://ezags.rt.ru/fzags/GetResultsService/"
+	xmlns="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://ezags.rt.ru/fzags/GetResultsService/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	<types>
 		<xsd:schema>
 			<xsd:import namespace="http://ezags.rt.ru/type/common/" schemaLocation="../common.xsd"/>
@@ -14,22 +19,22 @@
 			<xsd:import namespace="http://ezags.rt.ru/type/externaldocuments/" schemaLocation="../externaldocuments.xsd"/>
 		</xsd:schema>
 		<xsd:schema>
-			<xsd:import namespace="http://ezags.rt.ru/fzags/GetResultsService/type/local/" schemaLocation="LocalGetResultsService.xsd"/>
+			<xsd:import namespace="http://ezags.rt.ru/fzags/GetResultsService/" schemaLocation="GetResultsService.xsd"/>
 		</xsd:schema>
 	</types>
-	<message name="GetActRecords">
-		<part name="parameters" element="t:getActRecordsRequestObj"/>
+	<message name="GetActRecordsRequest">
+		<part name="body" element="tns:getActRecordsRequestObj"/>
 	</message>
 	<message name="GetActRecordsResponse">
-		<part name="parameters" element="t:getActRecordsResponseObj"/>
+		<part name="body" element="tns:getActRecordsResponseObj"/>
 	</message>
-	<portType name="LocalGetResultsService">
+	<portType name="GetResultsPortType">
 		<operation name="getActRecords">
-			<input message="tns:GetActRecords"/>
+			<input message="tns:GetActRecordsRequest"/>
 			<output message="tns:GetActRecordsResponse"/>
 		</operation>
 	</portType>
-	<binding name="LocalGetResultsServicePortBinding" type="tns:LocalGetResultsService">
+	<binding name="GetResultsBinding" type="tns:GetResultsPortType">
 		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
 		<operation name="getActRecords">
 			<soap:operation soapAction=""/>
@@ -41,8 +46,8 @@
 			</output>
 		</operation>
 	</binding>
-	<service name="LocalGetResultsService">
-		<port name="LocalGetResultsServicePort" binding="tns:LocalGetResultsServicePortBinding">
+	<service name="GetResultsService">
+		<port name="GetResultsServicePort" binding="tns:GetResultsBinding">
 			<soap:address location="REPLACE_WITH_ACTUAL_URL"/>
 		</port>
 	</service>

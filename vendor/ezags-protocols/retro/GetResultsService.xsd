@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema targetNamespace="http://ezags.rt.ru/fzags/GetResultsService/"
-    xmlns:tns="http://ezags.rt.ru/fzags/GetResultsService/"
-    xmlns:doc="http://ezags.rt.ru/type/document/"
-    xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
-    elementFormDefault="qualified" attributeFormDefault="unqualified">
-    <xs:import namespace="http://ezags.rt.ru/type/common/" schemaLocation="../common.xsd"/>
-    <xs:import namespace="http://ezags.rt.ru/type/document/" schemaLocation="../documents.xsd"/>
-    <xs:import namespace="http://ezags.rt.ru/type/externaldocuments/" schemaLocation="../externaldocuments.xsd"/>
-    <xs:import namespace="http://ezags.rt.ru/type/actor/" schemaLocation="../actor.xsd"/>
-    <xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="../xmldsig-core-schema.xsd"/>
-    <xs:complexType name="GetActRecordsRequestObj">
-        <xs:sequence minOccurs="1">
-            <xs:element name="taskId" type="xs:string" minOccurs="1"/>
-            <xs:element ref="ds:Signature"/>
-        </xs:sequence>
-    </xs:complexType>
-    <xs:complexType name="GetActRecordsResponseObj">
-      <xs:choice minOccurs="1">
-        <xs:element ref="doc:signedActRecordBirth" minOccurs="0" maxOccurs="unbounded"/>
-        <xs:element ref="doc:signedActRecordMarriage" minOccurs="0" maxOccurs="unbounded"/>
-        <xs:element ref="doc:signedActRecordDivorce" minOccurs="0" maxOccurs="unbounded"/>
-        <xs:element ref="doc:signedActRecordAdoption" minOccurs="0" maxOccurs="unbounded"/>
-        <xs:element ref="doc:signedActRecordFiliation" minOccurs="0" maxOccurs="unbounded"/>
-        <xs:element ref="doc:signedActRecordNameChange" minOccurs="0" maxOccurs="unbounded"/>
-        <xs:element ref="doc:signedActRecordDeath" minOccurs="0" maxOccurs="unbounded"/>
-        <xs:element name="faultMessage" type="xs:string" minOccurs="0"/>
-      </xs:choice>
-    </xs:complexType>
-    <xs:element name="getActRecordsRequestObj" type="tns:GetActRecordsRequestObj"/>
-    <xs:element name="getActRecordsResponseObj" type="tns:GetActRecordsResponseObj"/>
+  xmlns:tns="http://ezags.rt.ru/fzags/GetResultsService/"
+  xmlns:doc="http://ezags.rt.ru/type/document/"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+  elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:import namespace="http://ezags.rt.ru/type/common/" schemaLocation="../common.xsd"/>
+  <xs:import namespace="http://ezags.rt.ru/type/document/" schemaLocation="../documents.xsd"/>
+  <xs:import namespace="http://ezags.rt.ru/type/externaldocuments/" schemaLocation="../externaldocuments.xsd"/>
+  <xs:import namespace="http://ezags.rt.ru/type/actor/" schemaLocation="../actor.xsd"/>
+  <xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="../xmldsig-core-schema.xsd"/>
+  <xs:complexType name="GetActRecordsRequestObj">
+    <xs:sequence minOccurs="1">
+      <xs:element name="taskId" type="xs:string" minOccurs="1"/>
+      <xs:element ref="ds:Signature"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GetActRecordsResponseObj">
+    <xs:choice minOccurs="1">
+      <xs:element ref="doc:signedActRecordBirth" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element ref="doc:signedActRecordMarriage" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element ref="doc:signedActRecordDivorce" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element ref="doc:signedActRecordAdoption" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element ref="doc:signedActRecordFiliation" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element ref="doc:signedActRecordNameChange" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element ref="doc:signedActRecordDeath" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="faultMessage" type="xs:string" minOccurs="0"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:element name="getActRecordsRequestObj" type="tns:GetActRecordsRequestObj"/>
+  <xs:element name="getActRecordsResponseObj" type="tns:GetActRecordsResponseObj"/>
 </xs:schema>

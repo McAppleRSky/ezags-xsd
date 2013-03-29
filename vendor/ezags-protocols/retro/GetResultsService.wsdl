@@ -7,18 +7,6 @@
   xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <types>
     <xsd:schema>
-      <xsd:import namespace="http://ezags.rt.ru/type/common/" schemaLocation="../common.xsd"/>
-    </xsd:schema>
-    <xsd:schema>
-      <xsd:import namespace="http://ezags.rt.ru/type/actor/" schemaLocation="../actor.xsd"/>
-    </xsd:schema>
-    <xsd:schema>
-      <xsd:import namespace="http://ezags.rt.ru/type/document/" schemaLocation="../documents.xsd"/>
-    </xsd:schema>
-    <xsd:schema>
-      <xsd:import namespace="http://ezags.rt.ru/type/externaldocuments/" schemaLocation="../externaldocuments.xsd"/>
-    </xsd:schema>
-    <xsd:schema>
       <xsd:import namespace="http://ezags.rt.ru/fzags/GetResultsService/" schemaLocation="GetResultsService.xsd"/>
     </xsd:schema>
   </types>

@@ -5,10 +5,7 @@
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
   elementFormDefault="qualified" attributeFormDefault="unqualified">
-  <xs:import namespace="http://ezags.rt.ru/type/common/" schemaLocation="../common.xsd"/>
   <xs:import namespace="http://ezags.rt.ru/type/document/" schemaLocation="../documents.xsd"/>
-  <xs:import namespace="http://ezags.rt.ru/type/externaldocuments/" schemaLocation="../externaldocuments.xsd"/>
-  <xs:import namespace="http://ezags.rt.ru/type/actor/" schemaLocation="../actor.xsd"/>
   <xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="../xmldsig-core-schema.xsd"/>
   <xs:complexType name="GetActRecordsRequest">
     <xs:sequence minOccurs="1">

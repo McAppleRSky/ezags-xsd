@@ -32,7 +32,7 @@
     <operation name="getActRecords">
       <soap:operation soapAction=""/>
       <input>
-        <soap:header use="literal" message="tns:GetActRecordsRequestMessage" part="header" namespace="http://schemas.xmlsoap.org/ws/2002/04/secext"/>
+        <soap:header use="literal" message="tns:GetActRecordsRequestMessage" part="header"/>
         <soap:body use="literal" parts="body"/>
       </input>
       <output>

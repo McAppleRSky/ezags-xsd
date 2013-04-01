@@ -3,7 +3,6 @@
   xmlns:tns="http://schemas.xmlsoap.org/ws/2002/04/secext"
   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
   xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
-  <xsd:import namespace="http://schemas.xmlsoap.org/ws/2002/04/secext" schemaLocation="../secext.xsd"/>
   <xsd:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="../xmldsig-core-schema.xsd"/>
   <xsd:complexType name="SecurityWithSignature">
     <xsd:sequence>

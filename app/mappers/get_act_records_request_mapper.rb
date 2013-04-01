@@ -8,8 +8,5 @@ class GetActRecordsRequestMapper
   # @return [String]
   # minOccurs: 1, maxOccurs: 1
   attr_accessor :task_id
-  # @return [SignatureTypeMapper]
-  # minOccurs: 1, maxOccurs: 1
-  attr_accessor :signature
 
 end

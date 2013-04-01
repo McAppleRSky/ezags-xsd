@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://schemas.xmlsoap.org/ws/2002/04/secext"
+  xmlns:tns="http://schemas.xmlsoap.org/ws/2002/04/secext"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+  <xsd:import namespace="http://schemas.xmlsoap.org/ws/2002/04/secext" schemaLocation="http://schemas.xmlsoap.org/ws/2002/04/secext/secext.xsd"/>
+  <xsd:complexType name="SecurityWithSignature">
+    <xsd:sequence>
+      <xsd:element ref="ds:Signature"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="Security" type="tns:SecurityWithSignature"/>
+</xsd:schema>

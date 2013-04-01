@@ -3,14 +3,11 @@
   xmlns:tns="http://ezags.rt.ru/fzags/GetResultsService/"
   xmlns:doc="http://ezags.rt.ru/type/document/"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
-  xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
   elementFormDefault="qualified" attributeFormDefault="unqualified">
   <xs:import namespace="http://ezags.rt.ru/type/document/" schemaLocation="../documents.xsd"/>
-  <xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="../xmldsig-core-schema.xsd"/>
   <xs:complexType name="GetActRecordsRequest">
     <xs:sequence minOccurs="1">
       <xs:element name="taskId" type="xs:string" minOccurs="1"/>
-      <xs:element ref="ds:Signature"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="GetActRecordsResponse">

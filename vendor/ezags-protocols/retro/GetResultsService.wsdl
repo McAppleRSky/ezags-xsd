@@ -4,22 +4,27 @@
   xmlns="http://schemas.xmlsoap.org/wsdl/"
   xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
   xmlns:tns="http://ezags.rt.ru/fzags/GetResultsService/"
+  xmlns:wsse="http://schemas.xmlsoap.org/ws/2002/04/secext"
   xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <types>
     <xsd:schema>
       <xsd:import namespace="http://ezags.rt.ru/fzags/GetResultsService/" schemaLocation="GetResultsService.xsd"/>
     </xsd:schema>
+    <xsd:schema>
+      <xsd:import namespace="http://schemas.xmlsoap.org/ws/2002/04/secext" schemaLocation="SecurityWithSignature.xsd"/>
+    </xsd:schema>
   </types>
-  <message name="GetActRecordsRequest">
+  <message name="GetActRecordsRequestMessage">
+    <part name="header" element="wsse:Security"/>
     <part name="body" element="tns:getActRecordsRequest"/>
   </message>
-  <message name="GetActRecordsResponse">
+  <message name="GetActRecordsResponseMessage">
     <part name="body" element="tns:getActRecordsResponse"/>
   </message>
   <portType name="GetResultsPortType">
     <operation name="getActRecords">
-      <input message="tns:GetActRecordsRequest"/>
-      <output message="tns:GetActRecordsResponse"/>
+      <input message="tns:GetActRecordsRequestMessage"/>
+      <output message="tns:GetActRecordsResponseMessage"/>
     </operation>
   </portType>
   <binding name="GetResultsBinding" type="tns:GetResultsPortType">
@@ -27,10 +32,11 @@
     <operation name="getActRecords">
       <soap:operation soapAction=""/>
       <input>
-        <soap:body use="literal"/>
+        <soap:header use="literal" message="tns:GetActRecordsRequestMessage" part="header" namespace="http://schemas.xmlsoap.org/ws/2002/04/secext"/>
+        <soap:body use="literal" parts="body"/>
       </input>
       <output>
-        <soap:body use="literal"/>
+        <soap:body use="literal" parts="body"/>
       </output>
     </operation>
   </binding>

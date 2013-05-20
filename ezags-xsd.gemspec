@@ -17,7 +17,7 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = %w(lib app/mappers)
 
-  gem.add_dependency('xml_schema_mapper', '>= 0.0.6')
+  gem.add_dependency('xml_schema_mapper', '>= 0.0.8')
   gem.add_dependency('libxml-ruby', '>= 2.6.0')
 
   gem.add_development_dependency('rspec')

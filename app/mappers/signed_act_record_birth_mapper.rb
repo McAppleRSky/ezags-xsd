@@ -6,7 +6,7 @@ class SignedActRecordBirthMapper
   schema File.expand_path('../../vendor/ezags-protocols/eZAGS/public/UploadService.xsd', File.dirname(__FILE__))
   type 'SignedActRecordBirth'
 
-  # Запись АГС
+  # Актовая запись о рождении
   # @return [ActRecordBirthMapper]
   # minOccurs: 1, maxOccurs: 1
   attr_accessor :act_record

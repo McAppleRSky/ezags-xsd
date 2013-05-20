@@ -6,14 +6,6 @@ class StatementContentOfMarriageMapper
   schema File.expand_path('../../vendor/ezags-protocols/eZAGS/public/UploadService.xsd', File.dirname(__FILE__))
   type 'StatementContentOfMarriage'
 
-  # Желаемое время регистрации брака
-  # @return [Time]
-  # minOccurs: 0, maxOccurs: 1
-  attr_accessor :desired_registraton_time
-  # Желаемые дата регистрации брака
-  # @return [Date]
-  # minOccurs: 0, maxOccurs: 1
-  attr_accessor :desired_registraton_date
   # Признак регистрации брака в торжественной обстановке
   # @return [Boolean]
   # minOccurs: 0, maxOccurs: 1
@@ -26,11 +18,11 @@ class StatementContentOfMarriageMapper
   # @return [NOTEmptyString]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :benefit_category_for_him
-  # Фамилия мужа (после регистрации акта: брака или развода)
+  # ЕГО фамилия после регистрации АГС (заключения брака или расторжения брака)
   # @return [STRING60]
   # minOccurs: 1, maxOccurs: 1
   attr_accessor :new_last_name_of_husb
-  # Фамилия жены (после после регистрации акта: брака или развода)
+  # ЕЕ фамилия после регистрации АГС (заключения брака или расторжения брака)
   # @return [STRING60]
   # minOccurs: 1, maxOccurs: 1
   attr_accessor :new_last_name_of_wife

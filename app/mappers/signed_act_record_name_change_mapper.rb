@@ -6,7 +6,7 @@ class SignedActRecordNameChangeMapper
   schema File.expand_path('../../vendor/ezags-protocols/eZAGS/public/UploadService.xsd', File.dirname(__FILE__))
   type 'SignedActRecordNameChange'
 
-  # Запись АГС
+  # Актовая запись о перемене имени
   # @return [ActRecordNameChangeMapper]
   # minOccurs: 1, maxOccurs: 1
   attr_accessor :act_record

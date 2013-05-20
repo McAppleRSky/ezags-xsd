@@ -58,7 +58,7 @@ class ActRecordMarriageMapper
   # @return [TIMEStampVersion]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :version
-  # Дополнительный контент в АЗ 
+  # Дополнительный контент
   # @return [ActRecordContentOfMarriageMapper]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :content
@@ -66,11 +66,11 @@ class ActRecordMarriageMapper
   # @return [ParticipantsForMarriageMapper]
   # minOccurs: 1, maxOccurs: 1
   attr_accessor :participants
-  # Документ, подтверждающий прекращение ЕГО предыдущего брака (развод или смерть супруги в предыдущем браке)
+  # Документ, подтверждающий прекращение предыдущего брака для НЕГО
   # @return [DocumentsConfirmingMarriageMapper]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :document_confirming_groom
-  # Документ, подтверждающий прекращение ЕЕ предыдущего брака (развод или смерть супруга в предыдущем браке)
+  # Документ, подтверждающий прекращение предыдущего брака для НЕЕ
   # @return [DocumentsConfirmingMarriageMapper]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :document_confirming_bride

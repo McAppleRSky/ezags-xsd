@@ -13,9 +13,8 @@ class SubMessageTypeMapper
   # @return [StatusType]
   # minOccurs: 1, maxOccurs: 1
   attr_accessor :status
-  # Данные о системе, инициировавашейинициировавшей цепочку из
-  # 				нескольких запросов-ответов, объединенных единым процессом в рамках
-  # 				взаимодействия
+  # Данные о системе, инициировавашей цепочку из нескольких запросов-ответов, объединенных
+  #                 единым процессом в рамках взаимодействия
   # @return [OrgExternalTypeMapper]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :originator
@@ -23,14 +22,12 @@ class SubMessageTypeMapper
   # @return [DateTime]
   # minOccurs: 1, maxOccurs: 1
   attr_accessor :date
-  # Идентификатор сообщения-запроса, инициировавшего
-  # 				взаимодействие
+  # Идентификатор сообщения-запроса, инициировавшего взаимодействие
   # @return [IdType]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :request_id_ref
-  # Идентификатор сообщения-запроса, инициировавшего
-  # 				цепочку из нескольких запросов-ответов, объединенных единым
-  # 				процессом в рамках взаимодействия
+  # Идентификатор сообщения-запроса, инициировавшего цепочку из нескольких запросов-ответов,
+  #                 объединенных единым процессом в рамках взаимодействия
   # @return [IdType]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :origin_request_id_ref

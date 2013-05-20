@@ -1,5 +1,5 @@
 # encoding: utf-8
-# @note Временной интервал ограничен датами с 1 января 1910 года по 1 января 2020 года
+# @note Временной интервал ограничен минимальной датой - 1 января 1900 года
 
 class TimeStampVersionMapper
   include XmlSchemaMapper

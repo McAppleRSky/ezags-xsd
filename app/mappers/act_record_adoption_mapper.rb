@@ -58,11 +58,11 @@ class ActRecordAdoptionMapper
   # @return [TIMEStampVersion]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :version
-  # Дополнительный контент в АЗ
+  # Дополнительный контент
   # @return [ActRecordContentOfAdoptionMapper]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :content
-  # Субъекты АЗ об усыновлении
+  # Субъекты актовой записи об усыновлении (удочерении)
   # @return [ActRecordParticipantsForAdoptionMapper]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :participants
@@ -70,15 +70,15 @@ class ActRecordAdoptionMapper
   # @return [DocumentsConfirmingMarriageForAdoptionMapper]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :documents_confirming_marriage_for_adoption
-  # Документ - основание для регистрации усыновления
+  # Документ – основание для регистрации усыновления (удочерения)
   # @return [DocumentsConfirmingAdoptionMapper]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :documents_confirming_adoption
-  # Иные АЗ, в которые были внесеня изменения в связи с регистрацией данной АЗ
+  # Актовая запись о рождении ребенка, изменяемая в связи с усыновлением (отменой усыновления)
   # @return [RelatedModifiedDocumentsForAdoptionMapper]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :related_modified_documents
-  # Сведения о прочих лицах, заявивших об усыновлении ребенка
+  # Сведения о прочих лицах (НЕ усыновителях), заявивших об усыновлении (удочерении) ребенка
   # @return [OtherApplicantsForAdoptionMapper]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :other_applicants

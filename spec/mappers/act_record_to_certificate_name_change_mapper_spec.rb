@@ -6,6 +6,7 @@ require "xml_schema_mapper/test_builder"
   # @attr actRecordNumber [ACT_RECORD_NUMBER]
   # @attr actRecordDate [DateRecord]
   # @attr isRecovered [boolean]
+  # @attr content [ActRecordContentOfNameChange]
   # @attr participants [ActRecordParticipantsForNameChange]
 
 

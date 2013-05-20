@@ -18,10 +18,10 @@ class StatementOfDivorceMapper
   # @return [ParticipantsForDivorceMapper]
   # minOccurs: 1, maxOccurs: 1
   attr_accessor :participants
-  # Документ, подтверждающий заключение брака между супругами
+  # Реквизиты АЗ и Свидетельства о браке
   # @return [ActRecAndCertMarriageRequisitesMapper]
   # minOccurs: 1, maxOccurs: 1
-  attr_accessor :documents_confirming_marriage
+  attr_accessor :act_rec_and_cert_marriage_requisites
   # Приговор суда (при регистрации расторжения брака)
   # @return [CourtActVerdictMapper]
   # minOccurs: 0, maxOccurs: 1

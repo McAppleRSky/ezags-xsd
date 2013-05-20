@@ -6,11 +6,11 @@ class DocumentsConfirmingMarriageMapper
   schema File.expand_path('../../vendor/ezags-protocols/eZAGS/public/UploadService.xsd', File.dirname(__FILE__))
   type 'DocumentsConfirmingMarriage'
 
-  # Реквизиты АЗ о расторжении предыдущего брака
+  # Актовая запись и свидетельство о расторжении брака
   # @return [ActRecAndCertDivorceRequisitesMapper]
   # minOccurs: 1, maxOccurs: 1
   attr_accessor :divorce_act_record_requisites
-  # Реквизиты АЗ о смерти предыдущего супруга
+  # Актовая запись и свидетельство о смерти
   # @return [ActRecAndCertDeathRequisitesMapper]
   # minOccurs: 1, maxOccurs: 1
   attr_accessor :death_act_record_requisites

@@ -1,6 +1,5 @@
 # encoding: utf-8
 # @note Сведения об информационной системе
-# 			
 
 class OrgExternalTypeMapper
   include XmlSchemaMapper
@@ -8,7 +7,7 @@ class OrgExternalTypeMapper
   type 'orgExternalType'
 
   # Идентификатор системы
-  # @return [String]
+  # @return [MnemonicType]
   # minOccurs: 1, maxOccurs: 1
   attr_accessor :code
   # Наименование системы

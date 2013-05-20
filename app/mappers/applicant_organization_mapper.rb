@@ -22,6 +22,7 @@ class ApplicantOrganizationMapper
   # @return [FullAddressMapper]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :postal_address
+  # Персональные данные представителя ЮЛ
   # @return [JuridicalAuthorisedRepresentativeMapper]
   # minOccurs: 1, maxOccurs: 1
   attr_accessor :juridical_authorised_representative

@@ -83,6 +83,7 @@ class FullCitizenMapper
   # @return [Int]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :marital_status
+  # СНИЛС
   # @return [SNILS]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :snils

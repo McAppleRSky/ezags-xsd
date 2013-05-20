@@ -18,11 +18,11 @@ class ShortAddressMapper
   # @return [NOTEmptyString]
   # minOccurs: 1, maxOccurs: 1
   attr_accessor :raw_address_string
-  # Код адреса по классификатору КЛАДР до уровня населенного пункта
+  # Код адреса по классификатору КЛАДР до уровня улицы включительно
   # @return [KLADRCode]
   # minOccurs: 1, maxOccurs: 1
   attr_accessor :kladr_code
-  # Код по классификатору ФИАС КЛАДЭ
+  # Код адреса по классификатору ФИАС КЛАДЭ
   # @return [KLADEFiasCode]
   # minOccurs: 1, maxOccurs: 1
   attr_accessor :klade_fias_code

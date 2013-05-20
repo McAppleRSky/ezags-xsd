@@ -6,7 +6,7 @@ class DocumentsConfirmingAdoptionMapper
   schema File.expand_path('../../vendor/ezags-protocols/eZAGS/public/UploadService.xsd', File.dirname(__FILE__))
   type 'DocumentsConfirmingAdoption'
 
-  # Решение суда
+  # Решение суда об установлении факта усыновления (удочерения)
   # @return [CourtActDecisionMapper]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :court_decision

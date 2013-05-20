@@ -60,13 +60,13 @@ class ActRecordNameChangeMapper
   attr_accessor :version
   # Дополнительный контент
   # @return [ActRecordContentOfNameChangeMapper]
-  # minOccurs: 0, maxOccurs: 1
+  # minOccurs: 1, maxOccurs: 1
   attr_accessor :content
-  # Субъекты АЗ о перемене имени
+  # Субъект актовой записи о перемене имени
   # @return [ActRecordParticipantsForNameChangeMapper]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :participants
-  # Документ, подтверждающий рождение лица, меняющего имя
+  # Актовая запись и свидетельство о рождении лица, желающего переменить имя
   # @return [DocumentsConfirmingNameChangeMapper]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :documents_confirming_name_change

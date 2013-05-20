@@ -1,15 +1,11 @@
 require 'spec_helper'
 require "xml_schema_mapper/test_builder"
 
-  # @attr serviceInfo []
-  # @attr orderId []
-  # @attr statusCode []
-  # @attr comment [string]
-  # @attr cancelAllowed [boolean]
-  # @attr authToken [string]
+  # @attr Mnemonic [string]
+  # @attr Version [VersionType]
 
 
-describe ChangeOrderInfoMapper do
+describe ServiceTypeMapper do
 
   include XmlSchemaMapper::TestBuilder::Helper
 

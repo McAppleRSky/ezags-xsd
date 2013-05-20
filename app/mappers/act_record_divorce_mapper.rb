@@ -58,15 +58,15 @@ class ActRecordDivorceMapper
   # @return [TIMEStampVersion]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :version
-  # Дополнительный контент в АЗ
+  # Дополнительный контент
   # @return [ActRecordContentOfDivorceMapper]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :content
-  # Субъекты АЗ о расторжении брака
+  # Субъекты актовой записи о расторжении брака
   # @return [ActRecordParticipantsForDivorceMapper]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :participants
-  # Реквизиты АЗ о заключении брака между супругами
+  # Актовая запись и свидетельство о заключении брака супругов, расторгающих брак
   # @return [DocumentsConfirmingMarriageForDivorceMapper]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :documents_confirming_marriage
@@ -74,7 +74,7 @@ class ActRecordDivorceMapper
   # @return [OtherApplicantsForDivorceMapper]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :other_applicants
-  # Документы - основания для регистрации расторжения брака
+  # Документ – основание для регистрации расторжения брака
   # @return [DocumentsConfirmingDivorceMapper]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :document_confirming_divorce

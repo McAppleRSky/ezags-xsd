@@ -1,8 +1,6 @@
 require 'spec_helper'
 require "xml_schema_mapper/test_builder"
 
-  # @attr desiredRegistratonTime [time]
-  # @attr desiredRegistratonDate [date]
   # @attr celebrationNeeded [boolean]
   # @attr benefitCategoryForHer [NOT_EMPTY_STRING]
   # @attr benefitCategoryForHim [NOT_EMPTY_STRING]

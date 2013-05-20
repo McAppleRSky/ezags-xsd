@@ -5,19 +5,18 @@ class MessageTypeMapper
   schema File.expand_path('../../vendor/ezags-protocols/eZAGS/public/UploadService.xsd', File.dirname(__FILE__))
   type 'MessageType'
 
-  # Данные о системе-инициаторе взаимодействия
-  # 				(Потребителе) (валидируется СМЭВ на соответствие сертификату)
+  # Данные о системе-инициаторе взаимодействия (Потребителе) (валидируется СМЭВ на
+  #                 соответствие сертификату)
   # @return [OrgExternalTypeMapper]
   # minOccurs: 1, maxOccurs: 1
   attr_accessor :sender
-  # Данные о системе-получателе сообщения (Поставщике)
-  # 				(валидируется СМЭВ реструреестру поставщиков)
+  # Данные о системе-получателе сообщения (Поставщике) (валидируется СМЭВ по реестру
+  #                 поставщиков)
   # @return [OrgExternalTypeMapper]
   # minOccurs: 1, maxOccurs: 1
   attr_accessor :recipient
-  # Данные о системе, инициировавашейинициировавшей цепочку из
-  # 				нескольких запросов-ответов, объединенных единым процессом в рамках
-  # 				взаимодействия
+  # Данные о системе, инициировавашей цепочку из нескольких запросов-ответов, объединенных
+  #                 единым процессом в рамках взаимодействия
   # @return [OrgExternalTypeMapper]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :originator
@@ -25,6 +24,10 @@ class MessageTypeMapper
   # @return [String]
   # minOccurs: 1, maxOccurs: 1
   attr_accessor :service_name
+  # Целевой сервис
+  # @return [ServiceTypeMapper]
+  # minOccurs: 1, maxOccurs: 1
+  attr_accessor :service
   # Тип сообщения
   # @return [TypeCodeType]
   # minOccurs: 1, maxOccurs: 1
@@ -41,14 +44,12 @@ class MessageTypeMapper
   # @return [String]
   # minOccurs: 1, maxOccurs: 1
   attr_accessor :exchange_type
-  # Идентификатор сообщения-запроса, инициировавшего
-  # 				взаимодействие
+  # Идентификатор сообщения-запроса, инициировавшего взаимодействие
   # @return [IdType]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :request_id_ref
-  # Идентификатор сообщения-запроса, инициировавшего
-  # 				цепочку из нескольких запросов-ответов, объединенных единым
-  # 				процессом в рамках взаимодействия
+  # Идентификатор сообщения-запроса, инициировавшего цепочку из нескольких запросов-ответов,
+  #                 объединенных единым процессом в рамках взаимодействия
   # @return [IdType]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :origin_request_id_ref
@@ -68,5 +69,9 @@ class MessageTypeMapper
   # @return [String]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :test_msg
+  # Код OKTMO
+  # @return [String]
+  # minOccurs: 0, maxOccurs: 1
+  attr_accessor :oktmo
 
 end

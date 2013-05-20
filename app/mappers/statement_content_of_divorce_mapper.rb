@@ -26,11 +26,11 @@ class StatementContentOfDivorceMapper
   # @return [Boolean]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :has_common_children_under_age
-  # Фамилия мужа (после регистрации акта: брака или развода)
+  # ЕГО фамилия после регистрации АГС (заключения брака или расторжения брака)
   # @return [STRING60]
   # minOccurs: 1, maxOccurs: 1
   attr_accessor :new_last_name_of_husb
-  # Фамилия жены (после после регистрации акта: брака или развода)
+  # ЕЕ фамилия после регистрации АГС (заключения брака или расторжения брака)
   # @return [STRING60]
   # minOccurs: 1, maxOccurs: 1
   attr_accessor :new_last_name_of_wife

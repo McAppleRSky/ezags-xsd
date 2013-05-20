@@ -6,7 +6,7 @@ class SignedActRecordMarriageMapper
   schema File.expand_path('../../vendor/ezags-protocols/eZAGS/public/UploadService.xsd', File.dirname(__FILE__))
   type 'SignedActRecordMarriage'
 
-  # Запись АГС
+  # Актовая запись о заключении брака
   # @return [ActRecordMarriageMapper]
   # minOccurs: 1, maxOccurs: 1
   attr_accessor :act_record

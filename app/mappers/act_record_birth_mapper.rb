@@ -66,7 +66,7 @@ class ActRecordBirthMapper
   # @return [ActRecordParticipantsForBirthMapper]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :participants
-  # Документ, подтверждающий факт рождения ребенка
+  # Документ – основание для регистрации рождения ребенка
   # @return [DocumentsConfirmingBirthMapper]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :document_confirming_birth

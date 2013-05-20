@@ -26,6 +26,10 @@ class ActRecordToReferenceNameChange32Mapper
   # @return [Boolean]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :is_recovered
+  # Дополнительный контент
+  # @return [ActRecordContentOfNameChangeMapper]
+  # minOccurs: 1, maxOccurs: 1
+  attr_accessor :content
   # Субъекты актовой записи об изменении имени
   # @return [ActRecordParticipantsForNameChangeMapper]
   # minOccurs: 0, maxOccurs: 1

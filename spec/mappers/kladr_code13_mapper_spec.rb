@@ -1,10 +1,9 @@
 require 'spec_helper'
 require "xml_schema_mapper/test_builder"
 
-  # @attr Include [string]
 
 
-describe ReferenceTypeMapper do
+describe KladrCode13Mapper do
 
   include XmlSchemaMapper::TestBuilder::Helper
 

@@ -62,7 +62,7 @@ class ActRecordFiliationMapper
   # @return [ActRecordContentOfFiliationMapper]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :content
-  # Субъекты АЗ об установлении отцовства
+  # Субъекты актовой записи об установлении отцовства
   # @return [ActRecordParticipantsForFiliationMapper]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :participants
@@ -70,7 +70,7 @@ class ActRecordFiliationMapper
   # @return [ActRecAndCertBirthRequisitesMapper]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :act_rec_and_cert_birth_requisites
-  # Документы - основания для регистрации установления отцовства
+  # Документ – основание для регистрации установления отцовства
   # @return [DocumentsConfirmingFiliationMapper]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :documents_confirming_filiation

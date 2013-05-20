@@ -65,6 +65,7 @@ class CitizenWithoutIdentDocMapper
   # @return [FullAddressMapper]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :residence_place
+  # СНИЛС
   # @return [SNILS]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :snils

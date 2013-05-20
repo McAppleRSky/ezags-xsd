@@ -6,7 +6,7 @@ class SignedActRecordFiliationMapper
   schema File.expand_path('../../vendor/ezags-protocols/eZAGS/public/UploadService.xsd', File.dirname(__FILE__))
   type 'SignedActRecordFiliation'
 
-  # Запись АГС
+  # Актовая запись об установлении отцовства
   # @return [ActRecordFiliationMapper]
   # minOccurs: 1, maxOccurs: 1
   attr_accessor :act_record

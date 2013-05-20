@@ -18,11 +18,11 @@ class DocumentsConfirmingDeathMapper
   # @return [CourtActDecisionMapper]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :court_decision_of_death
-  # Документ о перинатальной смерти, выданный мед. организацией
+  # Документ установленной формы о перинатальной смерти, выданный медицинской организацией
   # @return [MedicalCertificateOfDeathByOrganizationMapper]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :medical_certificate_of_perinatal_death_by_organization
-  # Документ о перинатальной смерти, выданный частнопрактикующим врачем
+  # Документ установленной формы о перинатальной смерти, выданный частнопрактикующим врачом
   # @return [MedicalCertificateOfDeathByPrivatePractitionerMapper]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :medical_certificate_of_perinatal_death_by_private_practitioner

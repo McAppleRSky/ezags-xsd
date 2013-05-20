@@ -58,6 +58,7 @@ class ApplicantPersonMapper
   # @return [FullAddressMapper]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :postal_address
+  # СНИЛС
   # @return [SNILS]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :snils

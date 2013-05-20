@@ -5,6 +5,7 @@ require "xml_schema_mapper/test_builder"
   # @attr Recipient [orgExternalType]
   # @attr Originator [orgExternalType]
   # @attr ServiceName [string]
+  # @attr Service [ServiceType]
   # @attr TypeCode [TypeCodeType]
   # @attr Status [StatusType]
   # @attr Date [dateTime]
@@ -15,6 +16,7 @@ require "xml_schema_mapper/test_builder"
   # @attr CaseNumber [string]
   # @attr SubMessages [SubMessagesType]
   # @attr TestMsg [string]
+  # @attr OKTMO [string]
 
 
 describe MessageTypeMapper do

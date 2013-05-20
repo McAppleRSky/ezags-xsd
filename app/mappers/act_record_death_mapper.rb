@@ -62,15 +62,15 @@ class ActRecordDeathMapper
   # @return [ActRecordContentOfDeathMapper]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :content
-  # Субъект АЗ о смерти
+  # Субъект актовой записи о смерти
   # @return [ParticipantsForDeathMapper]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :participants
-  # Документ, подтверждающий факт смерти
+  # Документ – основание для регистрации смерти
   # @return [DocumentsConfirmingDeathMapper]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :documents_confirming_death
-  # Сведения о лицах, сделавших заявление о смерти
+  # Сведения о лицах, заявивших о смерти иного лица
   # @return [OtherApplicantsMapper]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :other_applicants

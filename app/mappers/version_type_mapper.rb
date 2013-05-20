@@ -1,12 +1,10 @@
 # encoding: utf-8
+# @note Формат версии
 
-class ReferenceTypeMapper
+class VersionTypeMapper
   include XmlSchemaMapper
   schema File.expand_path('../../vendor/ezags-protocols/eZAGS/public/UploadService.xsd', File.dirname(__FILE__))
-  type 'ReferenceType'
+  type 'VersionType'
 
-  # @return [String]
-  # minOccurs: 0, maxOccurs: 1
-  attr_accessor :include
 
 end

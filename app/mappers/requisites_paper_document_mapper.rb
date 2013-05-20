@@ -23,7 +23,7 @@ class RequisitesPaperDocumentMapper
   attr_accessor :organization_name
   # Адрес организации, выдавшей документ
   # @return [FullAddressMapper]
-  # minOccurs: 1, maxOccurs: 1
+  # minOccurs: 0, maxOccurs: 1
   attr_accessor :organization_address
 
 end

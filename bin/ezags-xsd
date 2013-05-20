@@ -24,6 +24,19 @@ class CLI < Thor
     replace_paths
   end
 
+  desc 'update_protocols', 'update ezags protocols'
+  method_option :path,   aliases: '-p', desc: 'temporary path', type: :string, default: 'tmp'
+  method_option :branch, aliases: '-b', desc: 'actual branch',  type: :string, default: '2.2/develop'
+  def update_protocols
+    `git clone gitolite@git.egov.at-consulting.ru:ezags-protocols.git #{options[:path]}`
+    Dir.chdir options[:path]
+    `git checkout #{options[:branch]}`
+    Dir.chdir '../'
+    `cp -rf #{options[:path]}/* vendor/ezags-protocols`
+  ensure
+    FileUtils.rm_rf options[:path]
+  end
+
   no_tasks do
     def replace_paths
       path = File.join File.expand_path('../../app/mappers', __FILE__), '*'

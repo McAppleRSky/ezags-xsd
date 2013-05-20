@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- edited with XMLSpy v2011 rel. 2 (http://www.altova.com) by TeaM DJiNN (TeaM DJiNN) -->
+<!-- edited with XMLSpy v2011 rel. 2 (http://www.altova.com) by free (free) -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cm="http://ezags.rt.ru/type/common/" targetNamespace="http://ezags.rt.ru/type/common/" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<!--Общие типы-->
 	<xs:complexType name="CauseOfDeath">
@@ -214,16 +214,16 @@
 			<xs:element ref="cm:dateClose" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
-    <xs:complexType name="PowerOfAttorneyLegal">
-        <xs:annotation>
-            <xs:documentation>Доверенность ЮЛ</xs:documentation>
-        </xs:annotation>
-        <xs:sequence minOccurs="1">
-            <xs:element ref="cm:documentNumber"/>
-            <xs:element ref="cm:documentDate"/>
-            <xs:element ref="cm:organizationName"/>
-        </xs:sequence>
-    </xs:complexType>
+	<xs:complexType name="PowerOfAttorneyLegal">
+		<xs:annotation>
+			<xs:documentation>Доверенность ЮЛ</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="cm:documentNumber"/>
+			<xs:element ref="cm:documentDate"/>
+			<xs:element ref="cm:organizationName"/>
+		</xs:sequence>
+	</xs:complexType>
 	<xs:complexType name="PowerOfAttorney">
 		<xs:annotation>
 			<xs:documentation>Доверенность ФЛ</xs:documentation>
@@ -310,7 +310,7 @@
 		<xs:annotation>
 			<xs:documentation>Инициалы человека: фамилия, имя и отчество</xs:documentation>
 		</xs:annotation>
-		<xs:sequence>
+		<xs:sequence minOccurs="1">
 			<xs:element ref="cm:surname"/>
 			<xs:element ref="cm:firstName"/>
 			<xs:element ref="cm:patronymic" minOccurs="0"/>
@@ -716,12 +716,17 @@
 	</xs:element>
 	<xs:element name="kladrCode" type="cm:KLADR_CODE">
 		<xs:annotation>
-			<xs:documentation>Код адреса по классификатору КЛАДР до уровня населенного пункта</xs:documentation>
+			<xs:documentation>Код адреса по классификатору КЛАДР до уровня улицы включительно</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="kladrCode13" type="cm:KLADR_CODE13">
+		<xs:annotation>
+			<xs:documentation>Код адреса по классификатору КЛАДР до уровня населенного пункта включительно</xs:documentation>
 		</xs:annotation>
 	</xs:element>
 	<xs:element name="kladeFiasCode" type="cm:KLADE_FIAS_CODE">
 		<xs:annotation>
-			<xs:documentation>Код по классификатору ФИАС КЛАДЭ</xs:documentation>
+			<xs:documentation>Код адреса по классификатору ФИАС КЛАДЭ</xs:documentation>
 		</xs:annotation>
 	</xs:element>
 	<xs:element name="legalAddress" type="cm:FullAddress">
@@ -773,12 +778,12 @@
 	</xs:element>
 	<xs:element name="newLastNameOfHusb" type="cm:STRING60">
 		<xs:annotation>
-			<xs:documentation>Фамилия мужа (после регистрации акта: брака или развода)</xs:documentation>
+			<xs:documentation>ЕГО фамилия после регистрации АГС (заключения брака или расторжения брака)</xs:documentation>
 		</xs:annotation>
 	</xs:element>
 	<xs:element name="newLastNameOfWife" type="cm:STRING60">
 		<xs:annotation>
-			<xs:documentation>Фамилия жены (после после регистрации акта: брака или развода)</xs:documentation>
+			<xs:documentation>ЕЕ фамилия после регистрации АГС (заключения брака или расторжения брака)</xs:documentation>
 		</xs:annotation>
 	</xs:element>
 	<xs:element name="nsiCommonReference" type="cm:NSICommonReference">
@@ -837,7 +842,11 @@
 			<xs:documentation>Наименование организации</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="otherInformationAndOfficialAnnotationsItem" type="cm:NOT_EMPTY_STRING"/>
+	<xs:element name="otherInformationAndOfficialAnnotationsItem" type="cm:NOT_EMPTY_STRING">
+		<xs:annotation>
+			<xs:documentation>Массив сведений о внесенных в АЗ исправлениях или изменениях с основаниями их внесения (с реквизитами подтверждающих документов)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
 	<xs:element name="patronymic" type="cm:STRING60">
 		<xs:annotation>
 			<xs:documentation>Отчество</xs:documentation>
@@ -959,7 +968,11 @@
 			<xs:documentation>Дата заявления одинокой матери</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="snils" type="cm:SNILS"/>
+	<xs:element name="snils" type="cm:SNILS">
+		<xs:annotation>
+			<xs:documentation>СНИЛС</xs:documentation>
+		</xs:annotation>
+	</xs:element>
 	<xs:element name="specifyNationalityOfFather" type="xs:boolean">
 		<xs:annotation>
 			<xs:documentation>Указывать ли в акте национальность отца</xs:documentation>
@@ -1105,11 +1118,10 @@
 	</xs:simpleType>
 	<xs:simpleType name="TIME_STAMP_VERSION">
 		<xs:annotation>
-			<xs:documentation>Временной интервал ограничен датами с 1 января 1910 года по 1 января 2020 года</xs:documentation>
+			<xs:documentation>Временной интервал ограничен минимальной датой - 1 января 1900 года</xs:documentation>
 		</xs:annotation>
-		<xs:restriction base="xs:integer">
-			<xs:minInclusive value="58064749200000"/>
-			<xs:maxInclusive value="61535955600000"/>
+		<xs:restriction base="xs:long">
+			<xs:minInclusive value="-2208967201"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="ACT_RECORD_NUMBER">
@@ -1190,8 +1202,16 @@
 			<xs:documentation>Список типов сообщения об ошибке</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="cm:NOT_EMPTY_STRING">
-			<xs:enumeration value="verification"/>
-			<xs:enumeration value="execution"/>
+			<xs:enumeration value="business_error">
+				<xs:annotation>
+					<xs:documentation>Ошибка уровня бизнес-логики системы</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="system_error">
+				<xs:annotation>
+					<xs:documentation>Системная ошибка</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="GENDERS">
@@ -1219,6 +1239,11 @@
 	<xs:simpleType name="KLADR_CODE">
 		<xs:restriction base="cm:NOT_EMPTY_STRING">
 			<xs:pattern value="\d{11,17}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="KLADR_CODE13">
+		<xs:restriction base="cm:NOT_EMPTY_STRING">
+			<xs:pattern value="\d{13}"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="OKATO_CODE">
@@ -1430,16 +1455,16 @@
 			<xs:documentation>Код справочника еЗАГС</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-  <xs:element name="reserveNumberUid" type="xs:string">
-      <xs:annotation>
-          <xs:documentation>Номер брони даты и времени приема гражданина в РЗАГС</xs:documentation>
-      </xs:annotation>
-  </xs:element>
-  <xs:element name="reserveDateTime" type="xs:string">
-      <xs:annotation>
-          <xs:documentation>Забронированное время приема гражданина в РЗАГС</xs:documentation>
-      </xs:annotation>
-  </xs:element>
+	<xs:element name="reserveNumberUid" type="xs:string">
+		<xs:annotation>
+			<xs:documentation>Номер брони даты и времени приема гражданина в РЗАГС</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="reserveDateTime" type="xs:string">
+		<xs:annotation>
+			<xs:documentation>Забронированное время приема гражданина в РЗАГС</xs:documentation>
+		</xs:annotation>
+	</xs:element>
 	<xs:simpleType name="REFERENCE_TYPE">
 		<xs:annotation>
 			<xs:documentation>Перечисляемый тип: "справочники"</xs:documentation>

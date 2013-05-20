@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?><schema elementFormDefault="qualified" targetNamespace="http://smev.gosuslugi.ru/rev120315" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:e="http://idecs.atc.ru/orderprocessing/ws/event/" xmlns:smev="http://smev.gosuslugi.ru/rev120315">
+﻿<?xml version='1.0' encoding='UTF-8'?><schema elementFormDefault="qualified" targetNamespace="http://smev.gosuslugi.ru/rev120315" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:e="http://idecs.atc.ru/orderprocessing/ws/event/" xmlns:smev="http://smev.gosuslugi.ru/rev120315">
 
     <import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="../xmldsig-core-schema.xsd"/>
     <import namespace="http://idecs.atc.ru/orderprocessing/ws/event/" schemaLocation="event.xsd"/>
@@ -32,7 +32,11 @@
             <extension base="e:EventObject">
                 <sequence>
                     <element ref="ds:Signature"/>
-                    <element minOccurs="1" ref="smev:error"/>
+					<!-- В связи с переходом на версию 2.5.6. протоколов СМЭВ удален атрибут error, т.к.
+						таковой боллее не фигурирует в протоколах СМЭВ.
+						На ПГУ отключена валидация, поэтому отсутствие атрибута error не приводит к ошибке отправки запроса на ПГУ
+					--> 
+                    <!-- <element minOccurs="1" ref="smev:error"/> -->
                     <any maxOccurs="unbounded" minOccurs="0" namespace="##any" processContents="lax"/>
                 </sequence>
             </extension>
@@ -49,7 +53,11 @@
     <complexType name="EventResponseAppDataType">
         <sequence>
             <element ref="ds:Signature"/>
-            <element minOccurs="1" ref="smev:error"/>
+					<!-- В связи с переходом на версию 2.5.6. протоколов СМЭВ удален атрибут error, т.к.
+						таковой боллее не фигурирует в протоколах СМЭВ.
+						На ПГУ отключена валидация, поэтому отсутствие атрибута error не приводит к ошибке отправки запроса на ПГУ
+					--> 
+            <!-- <element minOccurs="1" ref="smev:error"/> -->
             <any maxOccurs="unbounded" minOccurs="0" namespace="##any" processContents="lax"/>
         </sequence>
     </complexType>

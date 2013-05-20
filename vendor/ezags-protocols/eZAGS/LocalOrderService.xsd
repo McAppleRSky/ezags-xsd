@@ -8,7 +8,8 @@
     elementFormDefault="qualified" attributeFormDefault="unqualified">
     <xs:import namespace="http://ezags.rt.ru/type/common/" schemaLocation="../common.xsd"/>
     <xs:import namespace="http://ezags.rt.ru/type/document/" schemaLocation="../documents.xsd"/>
-    <xs:import namespace="http://ezags.rt.ru/type/externaldocuments/" schemaLocation="../externaldocuments.xsd"/>
+    <xs:import namespace="http://ezags.rt.ru/type/externaldocuments/"
+        schemaLocation="../externaldocuments.xsd"/>
     <xs:import namespace="http://ezags.rt.ru/type/actor/" schemaLocation="../actor.xsd"/>
     <xs:complexType name="GetRegistrarsRequestObj">
         <xs:sequence minOccurs="1">
@@ -58,8 +59,10 @@
             <xs:element ref="tns:statementRequisites"/>
             <xs:element name="statementContent" type="doc:StatementContentOfBirth" minOccurs="0"/>
             <xs:element name="participants" type="doc:ParticipantsForBirth"/>
-            <xs:element name="documentsConfirmingBirth" type="doc:DocumentsConfirmingBirth" minOccurs="0"/>
-            <xs:element name="documentsConfirmingParticipant" type="doc:DocumentsConfirmingFiliationForBirthStmt"/>
+            <xs:element name="documentsConfirmingBirth" type="doc:DocumentsConfirmingBirth"
+                minOccurs="0"/>
+            <xs:element name="documentsConfirmingParticipant"
+                type="doc:DocumentsConfirmingFiliationForBirthStmt"/>
             <xs:element name="otherApplicants" type="doc:OtherApplicants" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
@@ -75,9 +78,12 @@
         <xs:sequence minOccurs="1">
             <xs:element ref="tns:statementRequisites"/>
             <xs:element name="participants" type="doc:ParticipantsForDeath"/>
-            <xs:element name="statementContentOfDeath" type="doc:StatementContentOfDeath" minOccurs="0"/>
-            <xs:element name="documentsConfirmingDeath" type="doc:DocumentsConfirmingDeath" minOccurs="0"/>
-            <xs:element name="documentsConfirmingPerinatalDeath" type="doc:DocumentsConfirmingPerinatalDeath" minOccurs="0"/>
+            <xs:element name="statementContentOfDeath" type="doc:StatementContentOfDeath"
+                minOccurs="0"/>
+            <xs:element name="documentsConfirmingDeath" type="doc:DocumentsConfirmingDeath"
+                minOccurs="0"/>
+            <xs:element name="documentsConfirmingPerinatalDeath"
+                type="doc:DocumentsConfirmingPerinatalDeath" minOccurs="0"/>
             <xs:element name="otherApplicants" type="doc:OtherApplicants" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
@@ -108,14 +114,16 @@
                     <xs:documentation>Субъекты</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="documentsConfirmingGroom" type="doc:DocumentsConfirmingMarriage" minOccurs="0">
+            <xs:element name="documentsConfirmingGroom" type="doc:DocumentsConfirmingMarriage"
+                minOccurs="0">
                 <xs:annotation>
                     <xs:documentation>Документ, подтверждающий прекращение ЕГО предыдущего брака (развод или смерть
                         супруги в предыдущем браке или прекращение брака по суду)
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="documentsConfirmingBride" type="doc:DocumentsConfirmingMarriage" minOccurs="0">
+            <xs:element name="documentsConfirmingBride" type="doc:DocumentsConfirmingMarriage"
+                minOccurs="0">
                 <xs:annotation>
                     <xs:documentation>Документ, подтверждающий прекращение ЕЕ предыдущего брака (развод или смерть
                         супруга в предыдущем браке или прекращение брака по суду)
@@ -161,7 +169,7 @@
                     <xs:documentation>Субъекты</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="documentsConfirmingMarriage" type="doc:ActRecAndCertMarriageRequisites">
+            <xs:element ref="doc:actRecAndCertMarriageRequisites">
                 <xs:annotation>
                     <xs:documentation>Документ, подтверждающий заключение брака между супругами
                     </xs:documentation>
@@ -248,11 +256,11 @@
             <xs:element name="item" type="ac:Registrar" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
-    <xs:complexType name="ListOfFreeDates">
-        <xs:sequence>
-            <xs:element maxOccurs="unbounded" minOccurs="0" name="item" type="xs:time"/>
-        </xs:sequence>
-    </xs:complexType>
+	<xs:complexType name="ListOfFreeDates">  
+		<xs:sequence minOccurs="1">
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="item" type="xs:time"/>  
+		</xs:sequence>  
+ 	</xs:complexType>  
     <xs:complexType name="ServiceStatus">
         <xs:annotation>
             <xs:documentation>Сообщение об изменении статуса обработки отправленного электронного
@@ -279,7 +287,8 @@
                 </xs:annotation>
             </xs:element>
             <xs:element name="resultActRecUIDs" type="cm:UID" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element name="resultDocumentUIDs" type="cm:UID" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="resultDocumentUIDs" type="cm:UID" minOccurs="0" maxOccurs="unbounded"
+            />
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="Bill">
@@ -352,7 +361,8 @@
         <xs:sequence>
             <xs:element name="selectedDate" type="xs:date">
                 <xs:annotation>
-                    <xs:documentation>Выбранная дата</xs:documentation>
+                    <xs:documentation>Выбранная дата
+</xs:documentation>
                 </xs:annotation>
             </xs:element>
             <xs:element name="selectedTime" type="xs:time">
@@ -399,9 +409,11 @@
     <xs:element name="sendServiceOfDivorceRequestObj" type="tns:SendServiceOfDivorceRequestObj"/>
     <xs:element name="updateStatusRequestObj" type="tns:UpdateStatusRequestObj"/>
     <xs:element name="updatePaymentStatusRequestObj" type="tns:UpdatePaymentStatusRequestObj"/>
-    <xs:element name="updateTimeReservationStatusRequestObj" type="tns:UpdateTimeReservationStatusRequestObj"/>
+    <xs:element name="updateTimeReservationStatusRequestObj"
+        type="tns:UpdateTimeReservationStatusRequestObj"/>
 
-    <xs:element name="updateTimeReservationStatusResponseObj" type="tns:UpdateTimeReservationStatusResponseObj"/>
+    <xs:element name="updateTimeReservationStatusResponseObj"
+        type="tns:UpdateTimeReservationStatusResponseObj"/>
     <xs:element name="voidResponseObj" type="cm:VoidResponseObj"/>
     <xs:element name="baseFaultObj" type="cm:FaultBaseObj"/>
     <xs:simpleType name="reissuedDocType">

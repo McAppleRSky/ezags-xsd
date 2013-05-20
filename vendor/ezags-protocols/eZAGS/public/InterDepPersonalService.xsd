@@ -192,6 +192,16 @@
 			<xs:documentation>Запрос на получение сведений по актовой записи о смерти в объеме данной АЗ</xs:documentation>
 		</xs:annotation>
 	</xs:element>
+	<xs:element name="archiveCompletenessStateRequest" type="smev:ArchiveCompletenessStateRequest">
+		<xs:annotation>
+			<xs:documentation>Запрос на получение сведений о полноте электронного архива АЗ в ЗАГСЕ</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="archiveCompletenessStateResponse" type="smev:ArchiveCompletenessStateResponse">
+		<xs:annotation>
+			<xs:documentation>Ответ на запрос о полноте электронного архива АЗ в ЗАГСЕ</xs:documentation>
+		</xs:annotation>
+	</xs:element>
 	<!-- на ВЫХОД-->
 	<xs:element name="checkExistenceOfActRecordResponse" type="smev:CheckExistenceOfActRecordResponse">
 		<xs:annotation>
@@ -1350,6 +1360,70 @@
 			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
+
+	<xs:complexType name="ArchiveCompletenessStateRequest">
+		<xs:annotation>
+			<xs:documentation>Получение сведений о полноте электронного архива АЗ в ЗАГСЕ</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:annotation>
+					<xs:documentation>Служебный блок-обертка данных сообщения в СМЭВ</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:annotation>
+								<xs:documentation>Блок структурированных сведений</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:archiveCompletenessStateRequestObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ArchiveCompletenessStateResponse">
+		<xs:annotation>
+			<xs:documentation>Получение сведений о полноте электронного архива АЗ в ЗАГСЕ</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:annotation>
+					<xs:documentation>Служебный блок-обертка данных сообщения в СМЭВ</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:annotation>
+								<xs:documentation>Блок структурированных сведений</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="ns2:archiveCompletenessStateResponseObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+
+
 	<xs:complexType name="FaultBase">
 		<xs:annotation>
 			<xs:documentation>Получение итога обработки любого запроса с сообщением об ошибке</xs:documentation>

@@ -1,20 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:smev="http://smev.gosuslugi.ru/rev120315"
-           xmlns:ns2="http://ezags.rt.ru/fzags/UploadService/type/local/"
-           xmlns:cm="http://ezags.rt.ru/type/common/"
-           xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
-           targetNamespace="http://smev.gosuslugi.ru/rev120315"
-		   elementFormDefault="qualified">
-    <xs:import namespace="http://ezags.rt.ru/fzags/UploadService/type/local/" schemaLocation="../LocalUploadService.xsd"/>
-    <xs:import namespace="http://ezags.rt.ru/type/document/" schemaLocation="../../documents.xsd"/>
-    <xs:import namespace="http://ezags.rt.ru/type/externaldocuments/" schemaLocation="../../externaldocuments.xsd"/>
-    <xs:import namespace="http://ezags.rt.ru/type/actor/" schemaLocation="../../actor.xsd"/>
-    <xs:import namespace="http://ezags.rt.ru/type/common/" schemaLocation="../../common.xsd"/>
+<xs:schema xmlns:smev="http://smev.gosuslugi.ru/rev120315" xmlns:ns2="http://ezags.rt.ru/fzags/UploadService/type/local/" xmlns:cm="http://ezags.rt.ru/type/common/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:ns1="http://ezags.rt.ru/type/document/" xmlns:ns3="http://ezags.rt.ru/type/externaldocuments/" xmlns:ns4="http://ezags.rt.ru/type/actor/" targetNamespace="http://smev.gosuslugi.ru/rev120315" elementFormDefault="qualified">
+	<xs:import namespace="http://ezags.rt.ru/fzags/UploadService/type/local/" schemaLocation="../LocalUploadService.xsd"/>
+	<xs:import namespace="http://ezags.rt.ru/type/document/" schemaLocation="../../documents.xsd"/>
+	<xs:import namespace="http://ezags.rt.ru/type/externaldocuments/" schemaLocation="../../externaldocuments.xsd"/>
+	<xs:import namespace="http://ezags.rt.ru/type/actor/" schemaLocation="../../actor.xsd"/>
+	<xs:import namespace="http://ezags.rt.ru/type/common/" schemaLocation="../../common.xsd"/>
 	<xs:include schemaLocation="../../smev/smev.gosuslugi.ru.rev120315.xsd"/>
-    <xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="../../xmldsig-core-schema.xsd"/>
-    <xs:element name="fault" type="smev:FaultBase"/>
-    <xs:element name="voidResponse" type="smev:VoidResponse"/>
+	<xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="../../xmldsig-core-schema.xsd"/>
+	<xs:element name="fault" type="smev:FaultBase"/>
+	<xs:element name="voidResponse" type="smev:VoidResponse"/>
 	<xs:element name="uploadBirthActsRequest" type="smev:UploadBirthActsRequest"/>
 	<xs:element name="uploadBirthActsResponse" type="smev:UploadBirthActsResponse"/>
 	<xs:element name="uploadDeathActsRequest" type="smev:UploadDeathActsRequest"/>
@@ -438,46 +432,46 @@
 			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
-    <xs:complexType name="FaultBase">
-   		<xs:sequence minOccurs="1">
-   			<xs:element ref="smev:Message"/>
-   			<xs:element name="MessageData">
-   				<xs:complexType>
-   					<xs:sequence minOccurs="1">
-   						<xs:element name="AppData">
-   							<xs:complexType>
-   								<xs:sequence minOccurs="1">
-   									<xs:element ref="cm:faultBaseObj"/>
-   									<xs:element ref="ds:Signature" minOccurs="0"/>
-   								</xs:sequence>
+	<xs:complexType name="FaultBase">
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="cm:faultBaseObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
 								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
-   							</xs:complexType>
-   						</xs:element>
-   						<xs:element ref="smev:AppDocument" minOccurs="0"/>
-   					</xs:sequence>
-   				</xs:complexType>
-   			</xs:element>
-   		</xs:sequence>
-   	</xs:complexType>
-    <xs:complexType name="VoidResponse">
-   		<xs:sequence minOccurs="1">
-   			<xs:element ref="smev:Message"/>
-   			<xs:element name="MessageData">
-   				<xs:complexType>
-   					<xs:sequence minOccurs="1">
-   						<xs:element name="AppData">
-   							<xs:complexType>
-   								<xs:sequence minOccurs="1">
-   									<xs:element ref="cm:voidResponseObj"/>
-   									<xs:element ref="ds:Signature" minOccurs="0"/>
-   								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="VoidResponse">
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="cm:voidResponseObj"/>
+									<xs:element ref="ds:Signature" minOccurs="0"/>
+								</xs:sequence>
 								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
-   							</xs:complexType>
-   						</xs:element>
-   						<xs:element ref="smev:AppDocument" minOccurs="0"/>
-   					</xs:sequence>
-   				</xs:complexType>
-   			</xs:element>
-   		</xs:sequence>
-   	</xs:complexType>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
 </xs:schema>

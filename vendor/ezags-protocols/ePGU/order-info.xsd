@@ -1,93 +1,91 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <xsd:schema elementFormDefault="qualified"
-            xmlns:po="http://idecs.atc.ru/privateoffice/ws/changeorderinfo"
     targetNamespace="http://idecs.atc.ru/privateoffice/ws/changeorderinfo"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-
-    <xsd:element name="changeOrderInfo" type="po:ChangeOrderInfo"/>
-
-	<xsd:complexType name="ChangeOrderInfo">
-		<xsd:annotation>
-			<xsd:documentation>Информация для изменения статуса заявки в ЛК</xsd:documentation>
-		</xsd:annotation>
-		<xsd:sequence>
-			<xsd:element minOccurs="0" name="serviceInfo">
-				<xsd:annotation>
-					<xsd:documentation>Информация об услуги</xsd:documentation>
-				</xsd:annotation>
-				<xsd:complexType>
-					<xsd:sequence>
-						<xsd:element minOccurs="0" name="serviceOrgCode" type="xsd:string">
-							<xsd:annotation>
-								<xsd:documentation>Код ведомства в ПГУ</xsd:documentation>
-							</xsd:annotation>
-						</xsd:element>
-						<xsd:element minOccurs="0" name="eServiceId" type="xsd:string">
-							<xsd:annotation>
-								<xsd:documentation>Код формы услуги ПГУ</xsd:documentation>
-							</xsd:annotation>
-						</xsd:element>
-						<xsd:element minOccurs="0" name="reestrId" type="xsd:string">
-							<xsd:annotation>
-								<xsd:documentation>Код цели в СРГУ</xsd:documentation>
-							</xsd:annotation>
-						</xsd:element>
-					</xsd:sequence>
-				</xsd:complexType>
-			</xsd:element>
-			<xsd:element name="orderId">
-				<xsd:annotation>
-					<xsd:documentation>Cтатус завки</xsd:documentation>
-				</xsd:annotation>
-				<xsd:complexType>
-					<xsd:choice>
-						<xsd:element name="pguId" type="xsd:string">
-							<xsd:annotation>
-								<xsd:documentation>Id заявки на портале</xsd:documentation>
-							</xsd:annotation>
-						</xsd:element>
-						<xsd:element name="orgId" type="xsd:string">
-							<xsd:annotation>
-								<xsd:documentation>Id заявки в ведомстве</xsd:documentation>
-							</xsd:annotation>
-						</xsd:element>
-					</xsd:choice>
-				</xsd:complexType>
-			</xsd:element>
-			<xsd:element name="statusCode">
-				<xsd:annotation>
-					<xsd:documentation>Новый статус завки</xsd:documentation>
-				</xsd:annotation>
-				<xsd:complexType>
-					<xsd:choice>
-						<xsd:element name="orgCode" type="xsd:string">
-							<xsd:annotation>
-								<xsd:documentation>Код статуса в ведомстве</xsd:documentation>
-							</xsd:annotation>
-						</xsd:element>
-						<xsd:element name="techCode" type="xsd:string">
-							<xsd:annotation>
-								<xsd:documentation>Код статуса на ЕПГУ</xsd:documentation>
-							</xsd:annotation>
-						</xsd:element>
-					</xsd:choice>
-				</xsd:complexType>
-			</xsd:element>
-			<xsd:element minOccurs="0" name="comment" type="xsd:string">
-				<xsd:annotation>
-					<xsd:documentation>Комментарий</xsd:documentation>
-				</xsd:annotation>
-			</xsd:element>
-			<xsd:element minOccurs="0" name="cancelAllowed" type="xsd:boolean">
-				<xsd:annotation>
-					<xsd:documentation>Возможность отмены</xsd:documentation>
-				</xsd:annotation>
-			</xsd:element>
-			<xsd:element name="authToken" type="xsd:string">
-				<xsd:annotation>
-					<xsd:documentation>Токен безопасности</xsd:documentation>
-				</xsd:annotation>
-			</xsd:element>
-		</xsd:sequence>
-	</xsd:complexType>
+    <xsd:element name="changeOrderInfo">
+        <xsd:complexType>
+            <xsd:annotation>
+                <xsd:documentation>Информация для изменения статуса заявки в ЛК</xsd:documentation>
+            </xsd:annotation>
+            <xsd:sequence>
+                <xsd:element minOccurs="0" name="serviceInfo">
+                    <xsd:annotation>
+                        <xsd:documentation>Информация об услуги</xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element minOccurs="0" name="serviceOrgCode" type="xsd:string">
+                                <xsd:annotation>
+                                    <xsd:documentation>Код ведомства в ПГУ</xsd:documentation>
+                                </xsd:annotation>
+                            </xsd:element>
+                            <xsd:element minOccurs="0" name="eServiceId" type="xsd:string">
+                                <xsd:annotation>
+                                    <xsd:documentation>Код формы услуги ПГУ</xsd:documentation>
+                                </xsd:annotation>
+                            </xsd:element>
+                            <xsd:element minOccurs="0" name="reestrId" type="xsd:string">
+                                <xsd:annotation>
+                                    <xsd:documentation>Код цели в СРГУ</xsd:documentation>
+                                </xsd:annotation>
+                            </xsd:element>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+                <xsd:element name="orderId">
+                    <xsd:annotation>
+                        <xsd:documentation>Cтатус завки</xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:complexType>
+                        <xsd:choice>
+                            <xsd:element name="pguId" type="xsd:string">
+                                <xsd:annotation>
+                                    <xsd:documentation>Id заявки на портале</xsd:documentation>
+                                </xsd:annotation>
+                            </xsd:element>
+                            <xsd:element name="orgId" type="xsd:string">
+                                <xsd:annotation>
+                                    <xsd:documentation>Id заявки в ведомстве</xsd:documentation>
+                                </xsd:annotation>
+                            </xsd:element>
+                        </xsd:choice>
+                    </xsd:complexType>
+                </xsd:element>
+                <xsd:element name="statusCode">
+                    <xsd:annotation>
+                        <xsd:documentation>Новый статус завки</xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:complexType>
+                        <xsd:choice>
+                            <xsd:element name="orgCode" type="xsd:string">
+                                <xsd:annotation>
+                                    <xsd:documentation>Код статуса в ведомстве</xsd:documentation>
+                                </xsd:annotation>
+                            </xsd:element>
+                            <xsd:element name="techCode" type="xsd:string">
+                                <xsd:annotation>
+                                    <xsd:documentation>Код статуса на ЕПГУ</xsd:documentation>
+                                </xsd:annotation>
+                            </xsd:element>
+                        </xsd:choice>
+                    </xsd:complexType>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="comment" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>Комментарий</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="cancelAllowed" type="xsd:boolean">
+                    <xsd:annotation>
+                        <xsd:documentation>Возможность отмены</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+                <xsd:element name="authToken" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>Токен безопасности</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
 </xsd:schema>

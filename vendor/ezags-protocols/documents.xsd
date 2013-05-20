@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	xmlns:exdoc="http://ezags.rt.ru/type/externaldocuments/"
-	xmlns:doc="http://ezags.rt.ru/type/document/" xmlns:cm="http://ezags.rt.ru/type/common/"
-	xmlns:ac="http://ezags.rt.ru/type/actor/" xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
-	targetNamespace="http://ezags.rt.ru/type/document/" elementFormDefault="qualified"
-	attributeFormDefault="unqualified">
+<!-- edited with XMLSpy v2011 rel. 2 (http://www.altova.com) by free (free) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:exdoc="http://ezags.rt.ru/type/externaldocuments/" xmlns:doc="http://ezags.rt.ru/type/document/" xmlns:cm="http://ezags.rt.ru/type/common/" xmlns:ac="http://ezags.rt.ru/type/actor/" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" targetNamespace="http://ezags.rt.ru/type/document/" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xs:import namespace="http://ezags.rt.ru/type/common/" schemaLocation="common.xsd"/>
 	<xs:import namespace="http://ezags.rt.ru/type/actor/" schemaLocation="actor.xsd"/>
-	<xs:import namespace="http://ezags.rt.ru/type/externaldocuments/"
-		schemaLocation="externaldocuments.xsd"/>
-	<xs:import namespace="http://www.w3.org/2000/09/xmldsig#"
-		schemaLocation="xmldsig-core-schema.xsd"/>
+	<xs:import namespace="http://ezags.rt.ru/type/externaldocuments/" schemaLocation="externaldocuments.xsd"/>
+	<xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="xmldsig-core-schema.xsd"/>
 	<!--ZAGS Documents Start -->
 	<!-- Requisites of Paper Documents start -->
 	<xs:complexType name="RequisitesPaperReference">
@@ -65,7 +59,7 @@
 			<xs:element ref="cm:certNumber"/>
 			<xs:element ref="cm:documentDate"/>
 			<xs:element ref="cm:certSeries"/>
-            <xs:element ref="cm:verificationStatus" minOccurs="0"/>
+			<xs:element ref="cm:verificationStatus" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<!-- Requisites of Paper Documents end -->
@@ -87,7 +81,7 @@
 			<xs:element ref="exdoc:requisitesCourtDecisionActRecordCancel" minOccurs="0"/>
 			<xs:element ref="cm:correctionDate" minOccurs="0"/>
 			<xs:element ref="ac:specialist" minOccurs="0"/>
-            <xs:element ref="cm:version" minOccurs="0"/>
+			<xs:element ref="cm:version" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="ActRecordRequisites">
@@ -121,7 +115,7 @@
 			<xs:element ref="cm:actRecordUID" minOccurs="0"/>
 			<xs:element ref="cm:actRecordNumber"/>
 			<xs:element ref="cm:actRecordDate"/>
-            <xs:element ref="cm:verificationStatus" minOccurs="0"/>
+			<xs:element ref="cm:verificationStatus" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="ActRecordAdoption">
@@ -133,37 +127,32 @@
 				<xs:sequence minOccurs="1">
 					<xs:element name="content" type="doc:ActRecordContentOfAdoption" minOccurs="0">
 						<xs:annotation>
-							<xs:documentation>Дополнительный контент в АЗ</xs:documentation>
+							<xs:documentation>Дополнительный контент</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-					<xs:element name="participants" type="doc:ActRecordParticipantsForAdoption"
-						minOccurs="0">
+					<xs:element name="participants" type="doc:ActRecordParticipantsForAdoption" minOccurs="0">
 						<xs:annotation>
-							<xs:documentation>Субъекты АЗ об усыновлении</xs:documentation>
+							<xs:documentation>Субъекты актовой записи об усыновлении (удочерении)</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-					<xs:element name="documentsConfirmingMarriageForAdoption"
-						type="doc:DocumentsConfirmingMarriageForAdoption" minOccurs="0">
+					<xs:element name="documentsConfirmingMarriageForAdoption" type="doc:DocumentsConfirmingMarriageForAdoption" minOccurs="0">
 						<xs:annotation>
 							<xs:documentation>Реквизиты АЗ о заключении брака (между усыновителями ИЛИ между усыновителем и родителем)</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-					<xs:element name="documentsConfirmingAdoption"
-						type="doc:DocumentsConfirmingAdoption" minOccurs="0">
+					<xs:element name="documentsConfirmingAdoption" type="doc:DocumentsConfirmingAdoption" minOccurs="0">
 						<xs:annotation>
-							<xs:documentation>Документ - основание для регистрации усыновления</xs:documentation>
+							<xs:documentation>Документ – основание для регистрации усыновления (удочерения)</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-					<xs:element name="relatedModifiedDocuments"
-						type="doc:RelatedModifiedDocumentsForAdoption" minOccurs="0">
+					<xs:element name="relatedModifiedDocuments" type="doc:RelatedModifiedDocumentsForAdoption" minOccurs="0">
 						<xs:annotation>
-							<xs:documentation>Иные АЗ, в которые были внесеня изменения в связи с регистрацией данной АЗ</xs:documentation>
+							<xs:documentation>Актовая запись о рождении ребенка, изменяемая в связи с усыновлением (отменой усыновления)</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-					<xs:element name="otherApplicants" type="doc:OtherApplicantsForAdoption"
-						minOccurs="0">
+					<xs:element name="otherApplicants" type="doc:OtherApplicantsForAdoption" minOccurs="0">
 						<xs:annotation>
-							<xs:documentation>Сведения о прочих лицах, заявивших об усыновлении ребенка</xs:documentation>
+							<xs:documentation>Сведения о прочих лицах (НЕ усыновителях), заявивших об усыновлении (удочерении) ребенка</xs:documentation>
 						</xs:annotation>
 					</xs:element>
 				</xs:sequence>
@@ -177,7 +166,7 @@
 		<xs:sequence minOccurs="1">
 			<xs:element name="actRecord" type="doc:ActRecordAdoption">
 				<xs:annotation>
-					<xs:documentation>Запись АГС</xs:documentation>
+					<xs:documentation>Актовая запись об усыновлении (удочерении)</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element ref="doc:actRecordSignature"/>
@@ -195,20 +184,17 @@
 							<xs:documentation>Дополнительный контент</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-					<xs:element name="participants" type="doc:ActRecordParticipantsForBirth"
-						minOccurs="0">
+					<xs:element name="participants" type="doc:ActRecordParticipantsForBirth" minOccurs="0">
 						<xs:annotation>
 							<xs:documentation>Субъекты актовой записи о рождении</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-					<xs:element name="documentConfirmingBirth" type="doc:DocumentsConfirmingBirth"
-						minOccurs="0">
+					<xs:element name="documentConfirmingBirth" type="doc:DocumentsConfirmingBirth" minOccurs="0">
 						<xs:annotation>
-							<xs:documentation>Документ, подтверждающий факт рождения ребенка</xs:documentation>
+							<xs:documentation>Документ – основание для регистрации рождения ребенка</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-					<xs:element name="documentConfirmingFiliation"
-						type="doc:DocumentsConfirmingFiliationForBirth" minOccurs="0">
+					<xs:element name="documentConfirmingFiliation" type="doc:DocumentsConfirmingFiliationForBirth" minOccurs="0">
 						<xs:annotation>
 							<xs:documentation>Документ - основание внесения сведений об отце</xs:documentation>
 						</xs:annotation>
@@ -229,7 +215,7 @@
 		<xs:sequence minOccurs="1">
 			<xs:element name="actRecord" type="doc:ActRecordBirth">
 				<xs:annotation>
-					<xs:documentation>Запись АГС</xs:documentation>
+					<xs:documentation>Актовая запись о рождении</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element ref="doc:actRecordSignature"/>
@@ -249,18 +235,17 @@
 					</xs:element>
 					<xs:element name="participants" type="doc:ParticipantsForDeath" minOccurs="0">
 						<xs:annotation>
-							<xs:documentation>Субъект АЗ о смерти</xs:documentation>
+							<xs:documentation>Субъект актовой записи о смерти</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-					<xs:element name="documentsConfirmingDeath" type="doc:DocumentsConfirmingDeath"
-						minOccurs="0">
+					<xs:element name="documentsConfirmingDeath" type="doc:DocumentsConfirmingDeath" minOccurs="0">
 						<xs:annotation>
-							<xs:documentation>Документ, подтверждающий факт смерти</xs:documentation>
+							<xs:documentation>Документ – основание для регистрации смерти</xs:documentation>
 						</xs:annotation>
 					</xs:element>
 					<xs:element name="otherApplicants" type="doc:OtherApplicants" minOccurs="0">
 						<xs:annotation>
-							<xs:documentation>Сведения о лицах, сделавших заявление о смерти</xs:documentation>
+							<xs:documentation>Сведения о лицах, заявивших о смерти иного лица</xs:documentation>
 						</xs:annotation>
 					</xs:element>
 				</xs:sequence>
@@ -274,7 +259,7 @@
 		<xs:sequence minOccurs="1">
 			<xs:element name="actRecord" type="doc:ActRecordDeath">
 				<xs:annotation>
-					<xs:documentation>Запись АГС</xs:documentation>
+					<xs:documentation>Актовая запись о смерти</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element ref="doc:actRecordSignature"/>
@@ -287,33 +272,29 @@
 		<xs:complexContent>
 			<xs:extension base="doc:ActRecord">
 				<xs:sequence minOccurs="1">
-                    <xs:element name="content" type="doc:ActRecordContentOfDivorce" minOccurs="0">
+					<xs:element name="content" type="doc:ActRecordContentOfDivorce" minOccurs="0">
 						<xs:annotation>
-							<xs:documentation>Дополнительный контент в АЗ</xs:documentation>
+							<xs:documentation>Дополнительный контент</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-					<xs:element name="participants" type="doc:ActRecordParticipantsForDivorce"
-						minOccurs="0">
+					<xs:element name="participants" type="doc:ActRecordParticipantsForDivorce" minOccurs="0">
 						<xs:annotation>
-							<xs:documentation>Субъекты АЗ о расторжении брака</xs:documentation>
+							<xs:documentation>Субъекты актовой записи о расторжении брака</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-					<xs:element name="documentsConfirmingMarriage"
-						type="doc:DocumentsConfirmingMarriageForDivorce" minOccurs="0">
+					<xs:element name="documentsConfirmingMarriage" type="doc:DocumentsConfirmingMarriageForDivorce" minOccurs="0">
 						<xs:annotation>
-							<xs:documentation>Реквизиты АЗ о заключении брака между супругами</xs:documentation>
+							<xs:documentation>Актовая запись и свидетельство о заключении брака супругов, расторгающих брак</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-					<xs:element name="otherApplicants" type="doc:OtherApplicantsForDivorce"
-						minOccurs="0">
+					<xs:element name="otherApplicants" type="doc:OtherApplicantsForDivorce" minOccurs="0">
 						<xs:annotation>
 							<xs:documentation>Сведения о прочих лицах, заявивших о необходимости расторжении брака (НИ ОН, НИ ОНА)</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-					<xs:element name="documentConfirmingDivorce"
-						type="doc:DocumentsConfirmingDivorce" minOccurs="0">
+					<xs:element name="documentConfirmingDivorce" type="doc:DocumentsConfirmingDivorce" minOccurs="0">
 						<xs:annotation>
-							<xs:documentation>Документы - основания для регистрации расторжения брака</xs:documentation>
+							<xs:documentation>Документ – основание для регистрации расторжения брака</xs:documentation>
 						</xs:annotation>
 					</xs:element>
 				</xs:sequence>
@@ -327,7 +308,7 @@
 		<xs:sequence minOccurs="1">
 			<xs:element name="actRecord" type="doc:ActRecordDivorce">
 				<xs:annotation>
-					<xs:documentation>Запись АГС</xs:documentation>
+					<xs:documentation>Актовая запись о расторжении брака</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element ref="doc:actRecordSignature"/>
@@ -340,26 +321,24 @@
 		<xs:complexContent>
 			<xs:extension base="doc:ActRecord">
 				<xs:sequence minOccurs="1">
-                    <xs:element name="content" type="doc:ActRecordContentOfFiliation" minOccurs="0">
-                        <xs:annotation>
-                            <xs:documentation>Дополнительный контент</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
-					<xs:element name="participants" type="doc:ActRecordParticipantsForFiliation"
-						minOccurs="0">
+					<xs:element name="content" type="doc:ActRecordContentOfFiliation" minOccurs="0">
 						<xs:annotation>
-							<xs:documentation>Субъекты АЗ об установлении отцовства</xs:documentation>
+							<xs:documentation>Дополнительный контент</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="participants" type="doc:ActRecordParticipantsForFiliation" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Субъекты актовой записи об установлении отцовства</xs:documentation>
 						</xs:annotation>
 					</xs:element>
 					<xs:element ref="doc:actRecAndCertBirthRequisites" minOccurs="0">
 						<xs:annotation>
-							<xs:documentation>Реквизиты АЗ и Свидетельства о рождении ребёнка, в отношении которого устанавливается отцовство</xs:documentation>
+							<xs:documentation>Актовая запись и свидетельство о рождении ребенка (в отношении которого устанавливается отцовство)</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-					<xs:element name="documentsConfirmingFiliation"
-						type="doc:DocumentsConfirmingFiliation" minOccurs="0">
+					<xs:element name="documentsConfirmingFiliation" type="doc:DocumentsConfirmingFiliation" minOccurs="0">
 						<xs:annotation>
-							<xs:documentation>Документы - основания для регистрации установления отцовства</xs:documentation>
+							<xs:documentation>Документ – основание для регистрации установления отцовства</xs:documentation>
 						</xs:annotation>
 					</xs:element>
 					<xs:element name="otherApplicants" type="doc:OtherApplicants" minOccurs="0">
@@ -378,7 +357,7 @@
 		<xs:sequence minOccurs="1">
 			<xs:element name="actRecord" type="doc:ActRecordFiliation">
 				<xs:annotation>
-					<xs:documentation>Запись АГС</xs:documentation>
+					<xs:documentation>Актовая запись об установлении отцовства</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element ref="doc:actRecordSignature"/>
@@ -391,21 +370,19 @@
 		<xs:complexContent>
 			<xs:extension base="doc:ActRecord">
 				<xs:sequence minOccurs="1">
-                    <xs:element name="content" type="doc:ActRecordContentOfNameChange" minOccurs="0">
-                        <xs:annotation>
-                            <xs:documentation>Дополнительный контент</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
-					<xs:element name="participants" type="doc:ActRecordParticipantsForNameChange"
-						minOccurs="0">
+					<xs:element name="content" type="doc:ActRecordContentOfNameChange" minOccurs="1">
 						<xs:annotation>
-							<xs:documentation>Субъекты АЗ о перемене имени</xs:documentation>
+							<xs:documentation>Дополнительный контент</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-					<xs:element name="documentsConfirmingNameChange"
-						type="doc:DocumentsConfirmingNameChange" minOccurs="0">
+					<xs:element name="participants" type="doc:ActRecordParticipantsForNameChange" minOccurs="0">
 						<xs:annotation>
-							<xs:documentation>Документ, подтверждающий рождение лица, меняющего имя</xs:documentation>
+							<xs:documentation>Субъект актовой записи о перемене имени</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="documentsConfirmingNameChange" type="doc:DocumentsConfirmingNameChange" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Актовая запись и свидетельство о рождении лица, желающего переменить имя</xs:documentation>
 						</xs:annotation>
 					</xs:element>
 				</xs:sequence>
@@ -419,7 +396,7 @@
 		<xs:sequence minOccurs="1">
 			<xs:element name="actRecord" type="doc:ActRecordNameChange">
 				<xs:annotation>
-					<xs:documentation>Запись АГС</xs:documentation>
+					<xs:documentation>Актовая запись о перемене имени</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element ref="doc:actRecordSignature"/>
@@ -434,7 +411,7 @@
 				<xs:sequence minOccurs="1">
 					<xs:element name="content" type="doc:ActRecordContentOfMarriage" minOccurs="0">
 						<xs:annotation>
-							<xs:documentation>Дополнительный контент в АЗ </xs:documentation>
+							<xs:documentation>Дополнительный контент</xs:documentation>
 						</xs:annotation>
 					</xs:element>
 					<xs:element name="participants" type="doc:ParticipantsForMarriage">
@@ -442,16 +419,14 @@
 							<xs:documentation>Субъекты АЗ о заключении брака</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-					<xs:element name="documentConfirmingGroom"
-						type="doc:DocumentsConfirmingMarriage" minOccurs="0">
+					<xs:element name="documentConfirmingGroom" type="doc:DocumentsConfirmingMarriage" minOccurs="0">
 						<xs:annotation>
-							<xs:documentation>Документ, подтверждающий прекращение ЕГО предыдущего брака (развод или смерть супруги в предыдущем браке)</xs:documentation>
+							<xs:documentation>Документ, подтверждающий прекращение предыдущего брака для НЕГО</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-					<xs:element name="documentConfirmingBride"
-						type="doc:DocumentsConfirmingMarriage" minOccurs="0">
+					<xs:element name="documentConfirmingBride" type="doc:DocumentsConfirmingMarriage" minOccurs="0">
 						<xs:annotation>
-							<xs:documentation>Документ, подтверждающий прекращение ЕЕ предыдущего брака (развод или смерть супруга в предыдущем браке)</xs:documentation>
+							<xs:documentation>Документ, подтверждающий прекращение предыдущего брака для НЕЕ</xs:documentation>
 						</xs:annotation>
 					</xs:element>
 				</xs:sequence>
@@ -465,7 +440,7 @@
 		<xs:sequence minOccurs="1">
 			<xs:element name="actRecord" type="doc:ActRecordMarriage">
 				<xs:annotation>
-					<xs:documentation>Запись АГС</xs:documentation>
+					<xs:documentation>Актовая запись о заключении брака</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element ref="doc:actRecordSignature"/>
@@ -480,17 +455,16 @@
 		<xs:complexContent>
 			<xs:restriction base="doc:ActRecordBirth">
 				<xs:sequence minOccurs="1">
-                    <xs:element ref="cm:registrarId"/>
-                    <xs:element ref="cm:actRecordUID" minOccurs="0"/>
-                    <xs:element ref="cm:actRecordNumber"/>
-                    <xs:element ref="cm:actRecordDate"/>
-                    <xs:element ref="cm:isRecovered" minOccurs="0"/>
-                    <xs:element name="participants" type="doc:ActRecordParticipantsForBirth"
-                        minOccurs="0">
-                        <xs:annotation>
-                            <xs:documentation>Субъекты актовой записи о рождении</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
+					<xs:element ref="cm:registrarId"/>
+					<xs:element ref="cm:actRecordUID" minOccurs="0"/>
+					<xs:element ref="cm:actRecordNumber"/>
+					<xs:element ref="cm:actRecordDate"/>
+					<xs:element ref="cm:isRecovered" minOccurs="0"/>
+					<xs:element name="participants" type="doc:ActRecordParticipantsForBirth" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Субъекты актовой записи о рождении</xs:documentation>
+						</xs:annotation>
+					</xs:element>
 				</xs:sequence>
 			</xs:restriction>
 		</xs:complexContent>
@@ -519,17 +493,16 @@
 		<xs:complexContent>
 			<xs:restriction base="doc:ActRecordBirth">
 				<xs:sequence minOccurs="1">
-                    <xs:element ref="cm:registrarId"/>
-                    <xs:element ref="cm:actRecordUID" minOccurs="0"/>
-                    <xs:element ref="cm:actRecordNumber"/>
-                    <xs:element ref="cm:actRecordDate"/>
-                    <xs:element ref="cm:isRecovered" minOccurs="0"/>
-                    <xs:element name="participants" type="doc:ActRecordParticipantsForBirth"
-                        minOccurs="0">
-                        <xs:annotation>
-                            <xs:documentation>Субъекты актовой записи о рождении</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
+					<xs:element ref="cm:registrarId"/>
+					<xs:element ref="cm:actRecordUID" minOccurs="0"/>
+					<xs:element ref="cm:actRecordNumber"/>
+					<xs:element ref="cm:actRecordDate"/>
+					<xs:element ref="cm:isRecovered" minOccurs="0"/>
+					<xs:element name="participants" type="doc:ActRecordParticipantsForBirth" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Субъекты актовой записи о рождении</xs:documentation>
+						</xs:annotation>
+					</xs:element>
 				</xs:sequence>
 			</xs:restriction>
 		</xs:complexContent>
@@ -558,22 +531,21 @@
 		<xs:complexContent>
 			<xs:restriction base="doc:ActRecordBirth">
 				<xs:sequence minOccurs="1">
-                    <xs:element ref="cm:registrarId"/>
-                    <xs:element ref="cm:actRecordUID" minOccurs="0"/>
-                    <xs:element ref="cm:actRecordNumber"/>
-                    <xs:element ref="cm:actRecordDate"/>
-                    <xs:element ref="cm:isRecovered" minOccurs="0"/>
-                    <xs:element name="content" type="doc:ActRecordContentOfBirth" minOccurs="0">
-                        <xs:annotation>
-                            <xs:documentation>Дополнительный контент (из заявления)</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
-                    <xs:element name="participants" type="doc:ActRecordParticipantsForBirth"
-                        minOccurs="0">
-                        <xs:annotation>
-                            <xs:documentation>Субъекты актовой записи о рождении</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
+					<xs:element ref="cm:registrarId"/>
+					<xs:element ref="cm:actRecordUID" minOccurs="0"/>
+					<xs:element ref="cm:actRecordNumber"/>
+					<xs:element ref="cm:actRecordDate"/>
+					<xs:element ref="cm:isRecovered" minOccurs="0"/>
+					<xs:element name="content" type="doc:ActRecordContentOfBirth" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Дополнительный контент (из заявления)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="participants" type="doc:ActRecordParticipantsForBirth" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Субъекты актовой записи о рождении</xs:documentation>
+						</xs:annotation>
+					</xs:element>
 				</xs:sequence>
 			</xs:restriction>
 		</xs:complexContent>
@@ -602,22 +574,21 @@
 		<xs:complexContent>
 			<xs:restriction base="doc:ActRecordMarriage">
 				<xs:sequence minOccurs="1">
-                    <xs:element ref="cm:registrarId"/>
-                    <xs:element ref="cm:actRecordUID" minOccurs="0"/>
-                    <xs:element ref="cm:actRecordNumber"/>
-                    <xs:element ref="cm:actRecordDate"/>
-                    <xs:element ref="cm:isRecovered" minOccurs="0"/>
-                    <xs:element name="content" type="doc:ActRecordContentOfMarriage"
-                        minOccurs="0">
-                        <xs:annotation>
-                            <xs:documentation>Дополнительный контент</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
-                    <xs:element name="participants" type="doc:ParticipantsForMarriage">
-                        <xs:annotation>
-                            <xs:documentation>Субъекты актовой записи о заключении брака</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
+					<xs:element ref="cm:registrarId"/>
+					<xs:element ref="cm:actRecordUID" minOccurs="0"/>
+					<xs:element ref="cm:actRecordNumber"/>
+					<xs:element ref="cm:actRecordDate"/>
+					<xs:element ref="cm:isRecovered" minOccurs="0"/>
+					<xs:element name="content" type="doc:ActRecordContentOfMarriage" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Дополнительный контент</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="participants" type="doc:ParticipantsForMarriage">
+						<xs:annotation>
+							<xs:documentation>Субъекты актовой записи о заключении брака</xs:documentation>
+						</xs:annotation>
+					</xs:element>
 				</xs:sequence>
 			</xs:restriction>
 		</xs:complexContent>
@@ -646,22 +617,21 @@
 		<xs:complexContent>
 			<xs:restriction base="doc:ActRecordMarriage">
 				<xs:sequence minOccurs="1">
-                    <xs:element ref="cm:registrarId"/>
-                    <xs:element ref="cm:actRecordUID" minOccurs="0"/>
-                    <xs:element ref="cm:actRecordNumber"/>
-                    <xs:element ref="cm:actRecordDate"/>
-                    <xs:element ref="cm:isRecovered" minOccurs="0"/>
-                    <xs:element name="content" type="doc:ActRecordContentOfMarriage"
-                        minOccurs="0">
-                        <xs:annotation>
-                            <xs:documentation>Дополнительный контент</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
-                    <xs:element name="participants" type="doc:ParticipantsForMarriage">
-                        <xs:annotation>
-                            <xs:documentation>Субъекты актовой записи о заключении брака</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
+					<xs:element ref="cm:registrarId"/>
+					<xs:element ref="cm:actRecordUID" minOccurs="0"/>
+					<xs:element ref="cm:actRecordNumber"/>
+					<xs:element ref="cm:actRecordDate"/>
+					<xs:element ref="cm:isRecovered" minOccurs="0"/>
+					<xs:element name="content" type="doc:ActRecordContentOfMarriage" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Дополнительный контент</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="participants" type="doc:ParticipantsForMarriage">
+						<xs:annotation>
+							<xs:documentation>Субъекты актовой записи о заключении брака</xs:documentation>
+						</xs:annotation>
+					</xs:element>
 				</xs:sequence>
 			</xs:restriction>
 		</xs:complexContent>
@@ -690,23 +660,21 @@
 		<xs:complexContent>
 			<xs:restriction base="doc:ActRecordDivorce">
 				<xs:sequence minOccurs="1">
-                    <xs:element ref="cm:registrarId"/>
-                    <xs:element ref="cm:actRecordUID" minOccurs="0"/>
-                    <xs:element ref="cm:actRecordNumber"/>
-                    <xs:element ref="cm:actRecordDate"/>
-                    <xs:element ref="cm:isRecovered" minOccurs="0"/>
-                    <xs:element name="content" type="doc:ActRecordContentOfDivorce"
-                        minOccurs="0">
-                        <xs:annotation>
-                            <xs:documentation>Дополнительный контент</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
-                    <xs:element name="participants" type="doc:ActRecordParticipantsForDivorce"
-                        minOccurs="0">
-                        <xs:annotation>
-                            <xs:documentation>Субъект актовой записи о разводе</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
+					<xs:element ref="cm:registrarId"/>
+					<xs:element ref="cm:actRecordUID" minOccurs="0"/>
+					<xs:element ref="cm:actRecordNumber"/>
+					<xs:element ref="cm:actRecordDate"/>
+					<xs:element ref="cm:isRecovered" minOccurs="0"/>
+					<xs:element name="content" type="doc:ActRecordContentOfDivorce" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Дополнительный контент</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="participants" type="doc:ActRecordParticipantsForDivorce" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Субъект актовой записи о разводе</xs:documentation>
+						</xs:annotation>
+					</xs:element>
 				</xs:sequence>
 			</xs:restriction>
 		</xs:complexContent>
@@ -735,17 +703,16 @@
 		<xs:complexContent>
 			<xs:restriction base="doc:ActRecordAdoption">
 				<xs:sequence minOccurs="1">
-                    <xs:element ref="cm:registrarId"/>
-                    <xs:element ref="cm:actRecordUID" minOccurs="0"/>
-                    <xs:element ref="cm:actRecordNumber"/>
-                    <xs:element ref="cm:actRecordDate"/>
-                    <xs:element ref="cm:isRecovered" minOccurs="0"/>
-                    <xs:element name="participants" type="doc:ActRecordParticipantsForAdoption"
-                        minOccurs="0">
-                        <xs:annotation>
-                            <xs:documentation>Субъекты актовой записи об усыновлении</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
+					<xs:element ref="cm:registrarId"/>
+					<xs:element ref="cm:actRecordUID" minOccurs="0"/>
+					<xs:element ref="cm:actRecordNumber"/>
+					<xs:element ref="cm:actRecordDate"/>
+					<xs:element ref="cm:isRecovered" minOccurs="0"/>
+					<xs:element name="participants" type="doc:ActRecordParticipantsForAdoption" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Субъекты актовой записи об усыновлении</xs:documentation>
+						</xs:annotation>
+					</xs:element>
 				</xs:sequence>
 			</xs:restriction>
 		</xs:complexContent>
@@ -774,17 +741,16 @@
 		<xs:complexContent>
 			<xs:restriction base="doc:ActRecordFiliation">
 				<xs:sequence minOccurs="1">
-                    <xs:element ref="cm:registrarId"/>
-                    <xs:element ref="cm:actRecordUID" minOccurs="0"/>
-                    <xs:element ref="cm:actRecordNumber"/>
-                    <xs:element ref="cm:actRecordDate"/>
-                    <xs:element ref="cm:isRecovered" minOccurs="0"/>
-                    <xs:element name="participants" type="doc:ActRecordParticipantsForFiliation"
-                        minOccurs="0">
-                        <xs:annotation>
-                            <xs:documentation>Субъекты актовой записи об установлении отцовства</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
+					<xs:element ref="cm:registrarId"/>
+					<xs:element ref="cm:actRecordUID" minOccurs="0"/>
+					<xs:element ref="cm:actRecordNumber"/>
+					<xs:element ref="cm:actRecordDate"/>
+					<xs:element ref="cm:isRecovered" minOccurs="0"/>
+					<xs:element name="participants" type="doc:ActRecordParticipantsForFiliation" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Субъекты актовой записи об установлении отцовства</xs:documentation>
+						</xs:annotation>
+					</xs:element>
 				</xs:sequence>
 			</xs:restriction>
 		</xs:complexContent>
@@ -813,17 +779,21 @@
 		<xs:complexContent>
 			<xs:restriction base="doc:ActRecordNameChange">
 				<xs:sequence minOccurs="1">
-                    <xs:element ref="cm:registrarId"/>
-                    <xs:element ref="cm:actRecordUID" minOccurs="0"/>
-                    <xs:element ref="cm:actRecordNumber"/>
-                    <xs:element ref="cm:actRecordDate"/>
-                    <xs:element ref="cm:isRecovered" minOccurs="0"/>
-                    <xs:element name="participants"
-                        type="doc:ActRecordParticipantsForNameChange" minOccurs="0">
-                        <xs:annotation>
-                            <xs:documentation>Субъекты актовой записи об изменении имени</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
+					<xs:element ref="cm:registrarId"/>
+					<xs:element ref="cm:actRecordUID" minOccurs="0"/>
+					<xs:element ref="cm:actRecordNumber"/>
+					<xs:element ref="cm:actRecordDate"/>
+					<xs:element ref="cm:isRecovered" minOccurs="0"/>
+					<xs:element name="content" type="doc:ActRecordContentOfNameChange" minOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Дополнительный контент</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="participants" type="doc:ActRecordParticipantsForNameChange" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Субъекты актовой записи об изменении имени</xs:documentation>
+						</xs:annotation>
+					</xs:element>
 				</xs:sequence>
 			</xs:restriction>
 		</xs:complexContent>
@@ -852,22 +822,21 @@
 		<xs:complexContent>
 			<xs:restriction base="doc:ActRecordDeath">
 				<xs:sequence minOccurs="1">
-                    <xs:element ref="cm:registrarId"/>
-                    <xs:element ref="cm:actRecordUID" minOccurs="0"/>
-                    <xs:element ref="cm:actRecordNumber"/>
-                    <xs:element ref="cm:actRecordDate"/>
-                    <xs:element ref="cm:isRecovered" minOccurs="0"/>
-                    <xs:element name="content" type="doc:ActRecordContentOfDeath" minOccurs="0">
-                        <xs:annotation>
-                            <xs:documentation>Дополнительный контент</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
-                    <xs:element name="participants" type="doc:ParticipantsForDeath"
-                        minOccurs="0">
-                        <xs:annotation>
-                            <xs:documentation>Субъект актовой записи о смерти</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
+					<xs:element ref="cm:registrarId"/>
+					<xs:element ref="cm:actRecordUID" minOccurs="0"/>
+					<xs:element ref="cm:actRecordNumber"/>
+					<xs:element ref="cm:actRecordDate"/>
+					<xs:element ref="cm:isRecovered" minOccurs="0"/>
+					<xs:element name="content" type="doc:ActRecordContentOfDeath" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Дополнительный контент</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="participants" type="doc:ParticipantsForDeath" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Субъект актовой записи о смерти</xs:documentation>
+						</xs:annotation>
+					</xs:element>
 				</xs:sequence>
 			</xs:restriction>
 		</xs:complexContent>
@@ -896,22 +865,21 @@
 		<xs:complexContent>
 			<xs:restriction base="doc:ActRecordDeath">
 				<xs:sequence minOccurs="1">
-                    <xs:element ref="cm:registrarId"/>
-                    <xs:element ref="cm:actRecordUID" minOccurs="0"/>
-                    <xs:element ref="cm:actRecordNumber"/>
-                    <xs:element ref="cm:actRecordDate"/>
-                    <xs:element ref="cm:isRecovered" minOccurs="0"/>
-                    <xs:element name="content" type="doc:ActRecordContentOfDeath" minOccurs="0">
-                        <xs:annotation>
-                            <xs:documentation>Дополнительный контент</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
-                    <xs:element name="participants" type="doc:ParticipantsForDeath"
-                        minOccurs="0">
-                        <xs:annotation>
-                            <xs:documentation>Субъект актовой записи о смерти</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
+					<xs:element ref="cm:registrarId"/>
+					<xs:element ref="cm:actRecordUID" minOccurs="0"/>
+					<xs:element ref="cm:actRecordNumber"/>
+					<xs:element ref="cm:actRecordDate"/>
+					<xs:element ref="cm:isRecovered" minOccurs="0"/>
+					<xs:element name="content" type="doc:ActRecordContentOfDeath" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Дополнительный контент</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="participants" type="doc:ParticipantsForDeath" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Субъект актовой записи о смерти</xs:documentation>
+						</xs:annotation>
+					</xs:element>
 				</xs:sequence>
 			</xs:restriction>
 		</xs:complexContent>
@@ -942,17 +910,16 @@
 		<xs:complexContent>
 			<xs:restriction base="doc:ActRecordBirth">
 				<xs:sequence minOccurs="1">
-                    <xs:element ref="cm:registrarId"/>
-                    <xs:element ref="cm:actRecordUID" minOccurs="0"/>
-                    <xs:element ref="cm:actRecordNumber"/>
-                    <xs:element ref="cm:actRecordDate"/>
-                    <xs:element ref="cm:isRecovered" minOccurs="0"/>
-                    <xs:element name="participants" type="doc:ActRecordParticipantsForBirth"
-                        minOccurs="0">
-                        <xs:annotation>
-                            <xs:documentation>Субъекты актовой записи о рождении</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
+					<xs:element ref="cm:registrarId"/>
+					<xs:element ref="cm:actRecordUID" minOccurs="0"/>
+					<xs:element ref="cm:actRecordNumber"/>
+					<xs:element ref="cm:actRecordDate"/>
+					<xs:element ref="cm:isRecovered" minOccurs="0"/>
+					<xs:element name="participants" type="doc:ActRecordParticipantsForBirth" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Субъекты актовой записи о рождении</xs:documentation>
+						</xs:annotation>
+					</xs:element>
 				</xs:sequence>
 			</xs:restriction>
 		</xs:complexContent>
@@ -981,22 +948,21 @@
 		<xs:complexContent>
 			<xs:restriction base="doc:ActRecordMarriage">
 				<xs:sequence minOccurs="1">
-                    <xs:element ref="cm:registrarId"/>
-                    <xs:element ref="cm:actRecordUID" minOccurs="0"/>
-                    <xs:element ref="cm:actRecordNumber"/>
-                    <xs:element ref="cm:actRecordDate"/>
-                    <xs:element ref="cm:isRecovered" minOccurs="0"/>
-                    <xs:element name="content" type="doc:ActRecordContentOfMarriage"
-                        minOccurs="0">
-                        <xs:annotation>
-                            <xs:documentation>Дополнительный контент</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
-                    <xs:element name="participants" type="doc:ParticipantsForMarriage">
-                        <xs:annotation>
-                            <xs:documentation>Субъекты актовой записи о заключении брака</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
+					<xs:element ref="cm:registrarId"/>
+					<xs:element ref="cm:actRecordUID" minOccurs="0"/>
+					<xs:element ref="cm:actRecordNumber"/>
+					<xs:element ref="cm:actRecordDate"/>
+					<xs:element ref="cm:isRecovered" minOccurs="0"/>
+					<xs:element name="content" type="doc:ActRecordContentOfMarriage" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Дополнительный контент</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="participants" type="doc:ParticipantsForMarriage">
+						<xs:annotation>
+							<xs:documentation>Субъекты актовой записи о заключении брака</xs:documentation>
+						</xs:annotation>
+					</xs:element>
 				</xs:sequence>
 			</xs:restriction>
 		</xs:complexContent>
@@ -1025,29 +991,26 @@
 		<xs:complexContent>
 			<xs:restriction base="doc:ActRecordDivorce">
 				<xs:sequence minOccurs="1">
-                    <xs:element ref="cm:registrarId"/>
-                    <xs:element ref="cm:actRecordUID" minOccurs="0"/>
-                    <xs:element ref="cm:actRecordNumber"/>
-                    <xs:element ref="cm:actRecordDate"/>
-                    <xs:element ref="cm:isRecovered" minOccurs="0"/>
-                    <xs:element name="content" type="doc:ActRecordContentOfDivorce"
-                        minOccurs="0">
-                        <xs:annotation>
-                            <xs:documentation>Дополнительный контент</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
-                    <xs:element name="participants" type="doc:ActRecordParticipantsForDivorce"
-                        minOccurs="0">
-                        <xs:annotation>
-                            <xs:documentation>Субъект актовой записи о разводе</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
-                    <xs:element name="documentConfirmingDivorce"
-                        type="doc:DocumentsConfirmingDivorce" minOccurs="0">
-                        <xs:annotation>
-                            <xs:documentation>Документы обоснования для развода</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
+					<xs:element ref="cm:registrarId"/>
+					<xs:element ref="cm:actRecordUID" minOccurs="0"/>
+					<xs:element ref="cm:actRecordNumber"/>
+					<xs:element ref="cm:actRecordDate"/>
+					<xs:element ref="cm:isRecovered" minOccurs="0"/>
+					<xs:element name="content" type="doc:ActRecordContentOfDivorce" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Дополнительный контент</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="participants" type="doc:ActRecordParticipantsForDivorce" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Субъект актовой записи о разводе</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="documentConfirmingDivorce" type="doc:DocumentsConfirmingDivorce" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Документы обоснования для развода</xs:documentation>
+						</xs:annotation>
+					</xs:element>
 				</xs:sequence>
 			</xs:restriction>
 		</xs:complexContent>
@@ -1076,17 +1039,16 @@
 		<xs:complexContent>
 			<xs:restriction base="doc:ActRecordAdoption">
 				<xs:sequence minOccurs="1">
-                    <xs:element ref="cm:registrarId"/>
-                    <xs:element ref="cm:actRecordUID" minOccurs="0"/>
-                    <xs:element ref="cm:actRecordNumber"/>
-                    <xs:element ref="cm:actRecordDate"/>
-                    <xs:element ref="cm:isRecovered" minOccurs="0"/>
-                    <xs:element name="participants" type="doc:ActRecordParticipantsForAdoption"
-                        minOccurs="0">
-                        <xs:annotation>
-                            <xs:documentation>Субъекты актовой записи об усыновлении</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
+					<xs:element ref="cm:registrarId"/>
+					<xs:element ref="cm:actRecordUID" minOccurs="0"/>
+					<xs:element ref="cm:actRecordNumber"/>
+					<xs:element ref="cm:actRecordDate"/>
+					<xs:element ref="cm:isRecovered" minOccurs="0"/>
+					<xs:element name="participants" type="doc:ActRecordParticipantsForAdoption" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Субъекты актовой записи об усыновлении</xs:documentation>
+						</xs:annotation>
+					</xs:element>
 				</xs:sequence>
 			</xs:restriction>
 		</xs:complexContent>
@@ -1115,21 +1077,20 @@
 		<xs:complexContent>
 			<xs:restriction base="doc:ActRecordFiliation">
 				<xs:sequence minOccurs="1">
-                    <xs:element ref="cm:registrarId"/>
-                    <xs:element ref="cm:actRecordUID" minOccurs="0"/>
-                    <xs:element ref="cm:actRecordNumber"/>
-                    <xs:element ref="cm:actRecordDate"/>
-                    <xs:element ref="cm:isRecovered" minOccurs="0">
-                        <xs:annotation>
-                            <xs:documentation>Признак восстановленной актовой записи</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
-                    <xs:element name="participants" type="doc:ActRecordParticipantsForFiliation"
-                        minOccurs="0">
-                        <xs:annotation>
-                            <xs:documentation>Субъекты актовой записи об установлении отцовства</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
+					<xs:element ref="cm:registrarId"/>
+					<xs:element ref="cm:actRecordUID" minOccurs="0"/>
+					<xs:element ref="cm:actRecordNumber"/>
+					<xs:element ref="cm:actRecordDate"/>
+					<xs:element ref="cm:isRecovered" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Признак восстановленной актовой записи</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="participants" type="doc:ActRecordParticipantsForFiliation" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Субъекты актовой записи об установлении отцовства</xs:documentation>
+						</xs:annotation>
+					</xs:element>
 				</xs:sequence>
 			</xs:restriction>
 		</xs:complexContent>
@@ -1158,21 +1119,25 @@
 		<xs:complexContent>
 			<xs:restriction base="doc:ActRecordNameChange">
 				<xs:sequence minOccurs="1">
-                    <xs:element ref="cm:registrarId"/>
-                    <xs:element ref="cm:actRecordUID" minOccurs="0"/>
-                    <xs:element ref="cm:actRecordNumber"/>
-                    <xs:element ref="cm:actRecordDate"/>
-                    <xs:element ref="cm:isRecovered" minOccurs="0">
-                        <xs:annotation>
-                            <xs:documentation>Признак восстановленной актовой записи</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
-                    <xs:element name="participants"
-                        type="doc:ActRecordParticipantsForNameChange" minOccurs="0">
-                        <xs:annotation>
-                            <xs:documentation>Субъекты актовой записи об изменении имени</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
+					<xs:element ref="cm:registrarId"/>
+					<xs:element ref="cm:actRecordUID" minOccurs="0"/>
+					<xs:element ref="cm:actRecordNumber"/>
+					<xs:element ref="cm:actRecordDate"/>
+					<xs:element ref="cm:isRecovered" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Признак восстановленной актовой записи</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="content" type="doc:ActRecordContentOfNameChange" minOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Дополнительный контент</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="participants" type="doc:ActRecordParticipantsForNameChange" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Субъекты актовой записи об изменении имени</xs:documentation>
+						</xs:annotation>
+					</xs:element>
 				</xs:sequence>
 			</xs:restriction>
 		</xs:complexContent>
@@ -1201,21 +1166,20 @@
 		<xs:complexContent>
 			<xs:restriction base="doc:ActRecordDeath">
 				<xs:sequence minOccurs="1">
-                    <xs:element ref="cm:registrarId"/>
-                    <xs:element ref="cm:actRecordUID" minOccurs="0"/>
-                    <xs:element ref="cm:actRecordNumber"/>
-                    <xs:element ref="cm:actRecordDate"/>
-                    <xs:element ref="cm:isRecovered" minOccurs="0">
-                        <xs:annotation>
-                            <xs:documentation>Признак восстановленной актовой записи</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
-                    <xs:element name="participants" type="doc:ParticipantsForDeath"
-                        minOccurs="0">
-                        <xs:annotation>
-                            <xs:documentation>Субъект актовой записи о смерти</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
+					<xs:element ref="cm:registrarId"/>
+					<xs:element ref="cm:actRecordUID" minOccurs="0"/>
+					<xs:element ref="cm:actRecordNumber"/>
+					<xs:element ref="cm:actRecordDate"/>
+					<xs:element ref="cm:isRecovered" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Признак восстановленной актовой записи</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="participants" type="doc:ParticipantsForDeath" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Субъект актовой записи о смерти</xs:documentation>
+						</xs:annotation>
+					</xs:element>
 				</xs:sequence>
 			</xs:restriction>
 		</xs:complexContent>
@@ -1477,15 +1441,14 @@
 			<xs:documentation>Заявление о разводе подаваемое в электронном виде</xs:documentation>
 		</xs:annotation>
 		<xs:sequence minOccurs="1">
- 			<xs:element ref="cm:divorceTime" minOccurs="0"/>
+			<xs:element ref="cm:divorceTime" minOccurs="0"/>
 			<xs:element ref="cm:divorceDate" minOccurs="0"/>
 			<xs:element ref="cm:benefitCategoryForHer" minOccurs="0"/>
 			<xs:element ref="cm:benefitCategoryForHim" minOccurs="0"/>
 			<xs:element ref="cm:hasCommonChildrenUnderAge" minOccurs="0"/>
 			<xs:element ref="cm:newLastNameOfHusb"/>
 			<xs:element ref="cm:newLastNameOfWife"/>
-			<xs:element name="missingPersonAssetsManager" type="ac:MissingPersonAssetsManager"
-				minOccurs="0">
+			<xs:element name="missingPersonAssetsManager" type="ac:MissingPersonAssetsManager" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Управляющий имуществом безвестно отсутствующего супруга (используется при регистрации расторжения брака по заявлению одного супруга и решению суда по другому супругу)</xs:documentation>
 				</xs:annotation>
@@ -1510,7 +1473,7 @@
 					<xs:element ref="cm:divorceDate" minOccurs="0"/>
 					<xs:element ref="cm:newLastNameOfHusb"/>
 					<xs:element ref="cm:newLastNameOfWife"/>
-                    <xs:element ref="cm:numberOfJuvenileChildren" minOccurs="0"/>
+					<xs:element ref="cm:numberOfJuvenileChildren" minOccurs="0"/>
 				</xs:sequence>
 			</xs:restriction>
 		</xs:complexContent>
@@ -1529,7 +1492,7 @@
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:restriction base="doc:StatementContentOfAdoption">
-                <xs:sequence minOccurs="1">
+				<xs:sequence minOccurs="1">
 					<xs:element ref="cm:isAdoptiveParents" minOccurs="0"/>
 				</xs:sequence>
 			</xs:restriction>
@@ -1539,7 +1502,7 @@
 		<xs:annotation>
 			<xs:documentation>Заявление о смерти, подаваемое в электронном виде</xs:documentation>
 		</xs:annotation>
-        <xs:sequence minOccurs="1">
+		<xs:sequence minOccurs="1">
 			<!-- Смерть -->
 			<xs:element ref="cm:wasDeadPersonEstablished" minOccurs="0"/>
 			<xs:element ref="cm:groupOfCausesOfDeath" minOccurs="0"/>
@@ -1569,67 +1532,67 @@
 					</xs:annotation>
 				</xs:element>
 			</xs:sequence>
-            <xs:element ref="cm:numberChildInFamily" minOccurs="0">
-                <xs:annotation>
-                    <xs:documentation>Каким по счету был ребенок у матери -
+			<xs:element ref="cm:numberChildInFamily" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Каким по счету был ребенок у матери -
                         Для детей, умерших в возрасте до 1 года.
                         Заполняется из медицинского свидетельства о рождении (форма N 103/у-08), пункт 10, при мертворождении - пункт 20 медицинского свидетельства о перинатальной смерти.</xs:documentation>
-                </xs:annotation>
-            </xs:element>
-           <xs:element ref="cm:childWeight" minOccurs="0">
-               <xs:annotation>
-                   <xs:documentation>Масса тела ребенка при рождении - Для детей, умерших в возрасте до 1 года.
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="cm:childWeight" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Масса тела ребенка при рождении - Для детей, умерших в возрасте до 1 года.
                    Заполняется из медицинского свидетельства о рождении - пункт 16, при мертворождении - пункт 17 медицинского свидетельства о перинатальной смерти, указывается в граммах.</xs:documentation>
-               </xs:annotation>
-           </xs:element>
-            <xs:element ref="cm:motherAge" minOccurs="0">
-                <xs:annotation>
-                    <xs:documentation>Возраст матери - Для детей, умерших в возрасте до 1 года.
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="cm:motherAge" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Возраст матери - Для детей, умерших в возрасте до 1 года.
                     Заполняются из медицинского свидетельства о смерти, пункта 11, подпунктов 1, 2, 4.
                     Цифрой указывается число полных лет.</xs:documentation>
-                </xs:annotation>
-            </xs:element>
-           <xs:element ref="cm:education" minOccurs="0">
-               <xs:annotation>
-                   <xs:documentation>Образование. Заполняются из медицинского свидетельства о смерти (форма N106/у-08).
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="cm:education" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Образование. Заполняются из медицинского свидетельства о смерти (форма N106/у-08).
                    Заполняются из 12 и 13 пунктов медицинского свидетельства о смерти и записываются словами с указанием соответствующих кодов.</xs:documentation>
-               </xs:annotation>
-           </xs:element>
-           <xs:element ref="cm:educationString" minOccurs="0">
-               <xs:annotation>
-                   <xs:documentation>Образование - записывается словами.</xs:documentation>
-               </xs:annotation>
-           </xs:element>
-           <xs:element ref="cm:occupation" minOccurs="0">
-               <xs:annotation>
-                   <xs:documentation>Занятость заполняется из медицинского свидетельства о смерти, пункт 14, указывается соответствующий код. Для детей, умерших в возрасте до 7 дней, указывается занятость матери на основании медицинского свидетельства о перинатальной смерти, пункт 10.</xs:documentation>
-               </xs:annotation>
-           </xs:element>
-            <xs:element ref="cm:deathPlacedAt" minOccurs="0">
-                <xs:annotation>
-                    <xs:documentation>Смерть наступила - заполняется из медицинского свидетельства о смерти, пункт 9, указывается соответствующий код.</xs:documentation>
-                </xs:annotation>
-            </xs:element>
-            <xs:element ref="cm:causeOfDeath" minOccurs="0">
-                <xs:annotation>
-                    <xs:documentation>Смерть произошла - заполняется на основании медицинского свидетельства о смерти, пункт 15, записывается словами и указывается соответствующий код.</xs:documentation>
-                </xs:annotation>
-            </xs:element>
-            <xs:element ref="cm:causeOfDeathString" minOccurs="0">
-                <xs:annotation>
-                    <xs:documentation>Смерть произошла - заполняется словами</xs:documentation>
-                </xs:annotation>
-            </xs:element>
-            <xs:element ref="cm:deathPeriodRoadAccident" minOccurs="0">
-                <xs:annotation>
-                    <xs:documentation>Смерть в результате ДТП - заполняется из медицинского свидетельства о смерти пункт 19 часть II (Прочие важные состояния). В случае смерти в результате ДТП, если смерть наступила на 8 - 30 сутки (медицинское свидетельство, пункт 20, код 1), указать код 1, если смерть наступила в течение 7 суток (медицинское свидетельство, пункт 20, код 2 или код 1 и 2), указать код 2.</xs:documentation>
-                </xs:annotation>
-            </xs:element>
-            <xs:element ref="cm:whoRegisteredDeath" minOccurs="0">
-                <xs:annotation>
-                    <xs:documentation>Причина смерти установлена - заполняется из медицинского свидетельства о смерти, пункт 17, указывается соответствующий код.</xs:documentation>
-                </xs:annotation>
-            </xs:element>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="cm:educationString" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Образование - записывается словами.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="cm:occupation" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Занятость заполняется из медицинского свидетельства о смерти, пункт 14, указывается соответствующий код. Для детей, умерших в возрасте до 7 дней, указывается занятость матери на основании медицинского свидетельства о перинатальной смерти, пункт 10.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="cm:deathPlacedAt" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Смерть наступила - заполняется из медицинского свидетельства о смерти, пункт 9, указывается соответствующий код.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="cm:causeOfDeath" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Смерть произошла - заполняется на основании медицинского свидетельства о смерти, пункт 15, записывается словами и указывается соответствующий код.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="cm:causeOfDeathString" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Смерть произошла - заполняется словами</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="cm:deathPeriodRoadAccident" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Смерть в результате ДТП - заполняется из медицинского свидетельства о смерти пункт 19 часть II (Прочие важные состояния). В случае смерти в результате ДТП, если смерть наступила на 8 - 30 сутки (медицинское свидетельство, пункт 20, код 1), указать код 1, если смерть наступила в течение 7 суток (медицинское свидетельство, пункт 20, код 2 или код 1 и 2), указать код 2.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="cm:whoRegisteredDeath" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Причина смерти установлена - заполняется из медицинского свидетельства о смерти, пункт 17, указывается соответствующий код.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="ActRecordContentOfDeath">
@@ -1640,17 +1603,17 @@
 			<xs:restriction base="doc:StatementContentOfDeath">
 				<xs:sequence minOccurs="1">
 					<xs:element ref="cm:groupOfCausesOfDeath" minOccurs="0"/>
-                    <xs:element ref="cm:numberChildInFamily" minOccurs="0"/>
-                    <xs:element ref="cm:childWeight" minOccurs="0"/>
-                    <xs:element ref="cm:motherAge" minOccurs="0"/>
-                    <xs:element ref="cm:education" minOccurs="0"/>
-                    <xs:element ref="cm:educationString" minOccurs="0"/>
-                    <xs:element ref="cm:occupation" minOccurs="0"/>
-                    <xs:element ref="cm:deathPlacedAt" minOccurs="0"/>
-                    <xs:element ref="cm:causeOfDeath" minOccurs="0"/>
-                    <xs:element ref="cm:causeOfDeathString" minOccurs="0"/>
-                    <xs:element ref="cm:deathPeriodRoadAccident" minOccurs="0"/>
-                    <xs:element ref="cm:whoRegisteredDeath" minOccurs="0"/>
+					<xs:element ref="cm:numberChildInFamily" minOccurs="0"/>
+					<xs:element ref="cm:childWeight" minOccurs="0"/>
+					<xs:element ref="cm:motherAge" minOccurs="0"/>
+					<xs:element ref="cm:education" minOccurs="0"/>
+					<xs:element ref="cm:educationString" minOccurs="0"/>
+					<xs:element ref="cm:occupation" minOccurs="0"/>
+					<xs:element ref="cm:deathPlacedAt" minOccurs="0"/>
+					<xs:element ref="cm:causeOfDeath" minOccurs="0"/>
+					<xs:element ref="cm:causeOfDeathString" minOccurs="0"/>
+					<xs:element ref="cm:deathPeriodRoadAccident" minOccurs="0"/>
+					<xs:element ref="cm:whoRegisteredDeath" minOccurs="0"/>
 				</xs:sequence>
 			</xs:restriction>
 		</xs:complexContent>
@@ -1680,22 +1643,22 @@
 			<xs:element ref="cm:findingPlace" minOccurs="0"/>
 			<xs:element ref="cm:findingCircumstances" minOccurs="0"/>
 			<xs:element ref="cm:refusalDate" minOccurs="0"/>
-            <xs:element ref="cm:childWeight" minOccurs="0"/>
-            <xs:element ref="cm:education" minOccurs="0">
-                <xs:annotation>
-                    <xs:documentation>образование матери заполняется из медицинского свидетельства о рождении, пункт 7 (при мертворождении - пункт 9), записывается словами и указывается соответствующий код.</xs:documentation>
-                </xs:annotation>
-            </xs:element>
-            <xs:element ref="cm:educationString" minOccurs="0">
-                <xs:annotation>
-                    <xs:documentation>образование матери заполняется из медицинского свидетельства о рождении, пункт 7 (при мертворождении - пункт 9), записывается словами и указывается соответствующий код.</xs:documentation>
-                </xs:annotation>
-            </xs:element>
-            <xs:element ref="cm:occupation" minOccurs="0">
-                <xs:annotation>
-                    <xs:documentation>занятость матери заполняется из медицинского свидетельства о рождении, пункт 8 (при мертворождении - пункт 10), указывается соответствующий код.</xs:documentation>
-                </xs:annotation>
-            </xs:element>
+			<xs:element ref="cm:childWeight" minOccurs="0"/>
+			<xs:element ref="cm:education" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>образование матери заполняется из медицинского свидетельства о рождении, пункт 7 (при мертворождении - пункт 9), записывается словами и указывается соответствующий код.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="cm:educationString" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>образование матери заполняется из медицинского свидетельства о рождении, пункт 7 (при мертворождении - пункт 9), записывается словами и указывается соответствующий код.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="cm:occupation" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>занятость матери заполняется из медицинского свидетельства о рождении, пункт 8 (при мертворождении - пункт 10), указывается соответствующий код.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="ActRecordContentOfBirth">
@@ -1709,10 +1672,10 @@
 					<xs:element ref="cm:isDiedInWeek" minOccurs="0"/>
 					<xs:element ref="cm:numberOfBirths" minOccurs="0"/>
 					<xs:element ref="cm:numberChildInFamily" minOccurs="0"/>
-                    <xs:element ref="cm:childWeight" minOccurs="0"/>
-                    <xs:element ref="cm:education" minOccurs="0"/>
-                    <xs:element ref="cm:educationString" minOccurs="0"/>
-                    <xs:element ref="cm:occupation" minOccurs="0"/>
+					<xs:element ref="cm:childWeight" minOccurs="0"/>
+					<xs:element ref="cm:education" minOccurs="0"/>
+					<xs:element ref="cm:educationString" minOccurs="0"/>
+					<xs:element ref="cm:occupation" minOccurs="0"/>
 				</xs:sequence>
 			</xs:restriction>
 		</xs:complexContent>
@@ -1723,8 +1686,6 @@
 		</xs:annotation>
 		<xs:sequence minOccurs="1">
 			<!-- Брак -->
-			<xs:element ref="cm:desiredRegistratonTime" minOccurs="0"/>
-            <xs:element ref="cm:desiredRegistratonDate" minOccurs="0"/>
 			<xs:element ref="cm:celebrationNeeded" minOccurs="0"/>
 			<xs:element ref="cm:benefitCategoryForHer" minOccurs="0"/>
 			<xs:element ref="cm:benefitCategoryForHim" minOccurs="0"/>
@@ -1732,16 +1693,16 @@
 			<xs:element ref="cm:newLastNameOfWife"/>
 			<xs:element ref="cm:groomAge" minOccurs="0"/>
 			<xs:element ref="cm:brideAge" minOccurs="0"/>
-			<xs:element minOccurs="0" ref="cm:isFirstMarriageForHer"/>
-			<xs:element minOccurs="0" ref="cm:isFirstMarriageForHim"/>
-            <xs:element ref="cm:numberOfJuvenileChildren" minOccurs="0">
-                <xs:annotation>
-                    <xs:documentation>Число общих детей до 18 лет у лиц, вступивших в брак. Заполняется из
+			<xs:element ref="cm:isFirstMarriageForHer" minOccurs="0"/>
+			<xs:element ref="cm:isFirstMarriageForHim" minOccurs="0"/>
+			<xs:element ref="cm:numberOfJuvenileChildren" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Число общих детей до 18 лет у лиц, вступивших в брак. Заполняется из
                         документов, удостоверяющих личность вступающих в брак. Число общих детей до 18 лет заполняется цифрами.</xs:documentation>
-                </xs:annotation>
-            </xs:element>
-            <xs:element ref="cm:reserveNumberUid" minOccurs="0" />
-            <xs:element ref="cm:reserveDateTime" minOccurs="0" />
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="cm:reserveNumberUid" minOccurs="0"/>
+			<xs:element ref="cm:reserveDateTime" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="ActRecordContentOfMarriage">
@@ -1755,57 +1716,69 @@
 					<xs:element ref="cm:newLastNameOfWife"/>
 					<xs:element ref="cm:groomAge" minOccurs="0"/>
 					<xs:element ref="cm:brideAge" minOccurs="0"/>
-                    <xs:element ref="cm:numberOfJuvenileChildren" minOccurs="0"/>
+					<xs:element ref="cm:numberOfJuvenileChildren" minOccurs="0"/>
 				</xs:sequence>
 			</xs:restriction>
 		</xs:complexContent>
 	</xs:complexType>
-    <xs:complexType name="StatementContentOfNameChange">
-   		<xs:annotation>
-   			<xs:documentation>Заявление о смене имени, подаваемое в электронном виде</xs:documentation>
-   		</xs:annotation>
-   		<xs:sequence minOccurs="1">
-            <xs:element ref="doc:changedInitials"/>
-   		</xs:sequence>
-   	</xs:complexType>
-   	<xs:complexType name="ActRecordContentOfNameChange">
-   		<xs:annotation>
-   			<xs:documentation>Актовая запись о смене имени</xs:documentation>
-   		</xs:annotation>
-   		<xs:complexContent>
-   			<xs:restriction base="doc:StatementContentOfNameChange">
-   				<xs:sequence minOccurs="1">
-                    <xs:element ref="doc:changedInitials"/>
-   				</xs:sequence>
-   			</xs:restriction>
-   		</xs:complexContent>
-   	</xs:complexType>
-    <xs:complexType name="StatementContentOfFiliation">
-   		<xs:annotation>
-   			<xs:documentation>Заявление о смене имени, подаваемое в электронном виде</xs:documentation>
-   		</xs:annotation>
-   		<xs:sequence minOccurs="1">
-            <xs:element ref="doc:childAfter" minOccurs="0"/>
-   		</xs:sequence>
-   	</xs:complexType>
-   	<xs:complexType name="ActRecordContentOfFiliation">
-   		<xs:annotation>
-   			<xs:documentation>Актовая запись о смене имени</xs:documentation>
-   		</xs:annotation>
-   		<xs:complexContent>
-   			<xs:restriction base="doc:StatementContentOfFiliation">
-   				<xs:sequence minOccurs="1">
-                    <xs:element ref="doc:childAfter" minOccurs="0"/>
-   				</xs:sequence>
-   			</xs:restriction>
-   		</xs:complexContent>
-   	</xs:complexType>
+	<xs:complexType name="StatementContentOfNameChange">
+		<xs:annotation>
+			<xs:documentation>Заявление о смене имени, подаваемое в электронном виде</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="doc:changedInitials"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ActRecordContentOfNameChange">
+		<xs:annotation>
+			<xs:documentation>Актовая запись о смене имени</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:restriction base="doc:StatementContentOfNameChange">
+				<xs:sequence minOccurs="1">
+					<xs:element ref="doc:changedInitials">
+						<xs:annotation>
+							<xs:documentation>ФИО лица после перемены имени </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="StatementContentOfFiliation">
+		<xs:annotation>
+			<xs:documentation>Заявление о смене имени, подаваемое в электронном виде</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element ref="doc:childAfter" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ActRecordContentOfFiliation">
+		<xs:annotation>
+			<xs:documentation>Актовая запись о смене имени</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:restriction base="doc:StatementContentOfFiliation">
+				<xs:sequence minOccurs="1">
+					<xs:element ref="doc:childAfter" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>ФИО ребенка после установления отцовства</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
 	<xs:complexType name="DocumentsConfirmingNameChange">
 		<xs:annotation>
 			<xs:documentation>Документ, подтверждающий рождение лица, меняющего имя</xs:documentation>
 		</xs:annotation>
 		<xs:sequence minOccurs="1">
-			<xs:element ref="doc:actRecAndCertBirthRequisites" minOccurs="0"/>
+			<xs:element ref="doc:actRecAndCertBirthRequisites" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Актовая запись и свидетельство о рождении</xs:documentation>
+				</xs:annotation>
+			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="DocumentsConfirmingBirth">
@@ -1817,8 +1790,7 @@
 			<xs:element ref="exdoc:medicalCertificateOfBirthByPrivatePractitioner" minOccurs="0"/>
 			<xs:element ref="exdoc:medicalCertificateOfSurrogateMotherAgree" minOccurs="0"/>
 			<xs:element ref="exdoc:medicalCertificateOfPerinatalDeathByOrganization" minOccurs="0"/>
-			<xs:element ref="exdoc:medicalCertificateOfPerinatalDeathByPrivatePractitioner"
-				minOccurs="0"/>
+			<xs:element ref="exdoc:medicalCertificateOfPerinatalDeathByPrivatePractitioner" minOccurs="0"/>
 			<xs:element ref="exdoc:requisitesStatementOfPersonAttentedAtBirth" minOccurs="0"/>
 			<xs:element ref="exdoc:courtDecisionOfBirth" minOccurs="0"/>
 			<xs:element ref="exdoc:documentAboutFindingChild" minOccurs="0"/>
@@ -1835,18 +1807,17 @@
 			<xs:element ref="exdoc:medicalCertificateOfDeathByPrivatePractitioner" minOccurs="0"/>
 			<xs:element ref="exdoc:courtDecisionOfDeath" minOccurs="0"/>
 			<xs:element ref="exdoc:medicalCertificateOfPerinatalDeathByOrganization" minOccurs="0"/>
-			<xs:element ref="exdoc:medicalCertificateOfPerinatalDeathByPrivatePractitioner"
-				minOccurs="0"/>
+			<xs:element ref="exdoc:medicalCertificateOfPerinatalDeathByPrivatePractitioner" minOccurs="0"/>
 			<xs:element ref="exdoc:documentDeathUnjustlyRepressed" minOccurs="0"/>
 		</xs:choice>
 	</xs:complexType>
-    <xs:complexType name="DocumentsConfirmingPerinatalDeath">
+	<xs:complexType name="DocumentsConfirmingPerinatalDeath">
 		<xs:annotation>
 			<xs:documentation>Документ установленной формы о рождении (наличие возможно при регистрации перинатальной смерти ребенка одним из родителей)</xs:documentation>
 		</xs:annotation>
-		<xs:choice >
-			<xs:element ref="exdoc:medicalCertificateOfBirthByOrganization" />
-			<xs:element ref="exdoc:medicalCertificateOfBirthByPrivatePractitioner" />
+		<xs:choice>
+			<xs:element ref="exdoc:medicalCertificateOfBirthByOrganization"/>
+			<xs:element ref="exdoc:medicalCertificateOfBirthByPrivatePractitioner"/>
 		</xs:choice>
 	</xs:complexType>
 	<xs:complexType name="DocumentsConfirmingMarriage">
@@ -1856,12 +1827,12 @@
 		<xs:choice minOccurs="1" maxOccurs="1">
 			<xs:element name="divorceActRecordRequisites" type="doc:ActRecAndCertDivorceRequisites">
 				<xs:annotation>
-					<xs:documentation>Реквизиты АЗ о расторжении предыдущего брака</xs:documentation>
+					<xs:documentation>Актовая запись и свидетельство о расторжении брака</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="deathActRecordRequisites" type="doc:ActRecAndCertDeathRequisites">
 				<xs:annotation>
-					<xs:documentation>Реквизиты АЗ о смерти предыдущего супруга</xs:documentation>
+					<xs:documentation>Актовая запись и свидетельство о смерти</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="cancelCourtDecision" type="exdoc:CourtActDecision">
@@ -1878,7 +1849,7 @@
 		<xs:sequence minOccurs="1">
 			<xs:element ref="doc:actRecAndCertMarriageRequisites">
 				<xs:annotation>
-					<xs:documentation>Реквизиты АЗ и Свидетельства о браке</xs:documentation>
+					<xs:documentation>Актовая запись и свидетельство о заключении брака</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
@@ -2220,8 +2191,16 @@
 			<xs:documentation>Реквизиты АЗ и Свидетельства об установлении отцовства</xs:documentation>
 		</xs:annotation>
 		<xs:sequence minOccurs="1">
-			<xs:element ref="doc:actRecordFiliationReqs"/>
-			<xs:element ref="doc:certificateFiliationReqs" minOccurs="0"/>
+			<xs:element ref="doc:actRecordFiliationReqs">
+				<xs:annotation>
+					<xs:documentation>Реквизиты актовой записи об установлении отцовства</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="doc:certificateFiliationReqs" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Реквизиты свидетельства об установлении отцовства, выданного по актовой записи</xs:documentation>
+				</xs:annotation>
+			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="ActRecAndCertBirthRequisites">
@@ -2231,12 +2210,12 @@
 		<xs:sequence minOccurs="1">
 			<xs:element ref="doc:actRecordBirthReqs">
 				<xs:annotation>
-					<xs:documentation>Реквизиты АЗ о рождении</xs:documentation>
+					<xs:documentation>Реквизиты актовой записи о рождении</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element ref="doc:certificateBirthReqs" minOccurs="0">
 				<xs:annotation>
-					<xs:documentation>Реквизиты бумажного свидетельства о рождении, выданного по АЗ</xs:documentation>
+					<xs:documentation>Реквизиты свидетельства о рождении, выданного по актовой записи</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
@@ -2246,8 +2225,16 @@
 			<xs:documentation>Реквизиты АЗ и Свидетельства о браке</xs:documentation>
 		</xs:annotation>
 		<xs:sequence minOccurs="1">
-			<xs:element ref="doc:actRecordMarriageReqs"/>
-			<xs:element ref="doc:certificateMarriageReqs" minOccurs="0"/>
+			<xs:element ref="doc:actRecordMarriageReqs">
+				<xs:annotation>
+					<xs:documentation>Реквизиты актовой записи о заключении брака</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="doc:certificateMarriageReqs" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Реквизиты свидетельства о заключении брака, выданного по актовой записи</xs:documentation>
+				</xs:annotation>
+			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="ActRecAndCertDivorceRequisites">
@@ -2257,12 +2244,12 @@
 		<xs:sequence minOccurs="1">
 			<xs:element ref="doc:actRecordDivorceReqs">
 				<xs:annotation>
-					<xs:documentation>Реквизиты АЗ о расторжении брака</xs:documentation>
+					<xs:documentation>Реквизиты актовой записи о расторжении брака</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element ref="doc:certificateDivorceReqs" minOccurs="0">
 				<xs:annotation>
-					<xs:documentation>Реквизиты бумажного свидетельства о расторжении брака, выданного по АЗ</xs:documentation>
+					<xs:documentation>Реквизиты свидетельства о расторжении брака, выданного по актовой записи</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
@@ -2274,12 +2261,12 @@
 		<xs:sequence minOccurs="1">
 			<xs:element ref="doc:actRecordDeathReqs">
 				<xs:annotation>
-					<xs:documentation>Реквизиты  АЗ о смерти</xs:documentation>
+					<xs:documentation>Реквизиты актовой записи о смерти</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element ref="doc:certificateDeathReqs" minOccurs="0">
 				<xs:annotation>
-					<xs:documentation>Реквизиты бумажного свидетельства о смерти, выданного по АЗ</xs:documentation>
+					<xs:documentation>Реквизиты свидетельства о смерти, выданного по актовой записи</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
@@ -2300,9 +2287,21 @@
 			<xs:documentation>Основание для внесения сведений об отце</xs:documentation>
 		</xs:annotation>
 		<xs:choice>
-			<xs:element ref="doc:actRecAndCertMarriageRequisites" minOccurs="0"/>
-			<xs:element ref="doc:actRecAndCertFiliationRequisites" minOccurs="0"/>
-			<xs:element ref="doc:requisitesForStatementBirthFromSingleMother" minOccurs="0"/>
+			<xs:element ref="doc:actRecAndCertMarriageRequisites" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Актовая запись и свидетельство о заключении брака родителей</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="doc:actRecAndCertFiliationRequisites" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Актовая запись и свидетельство об установлении отцовства</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="doc:requisitesForStatementBirthFromSingleMother" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Заявление матери ребенка, не состоящей в браке, о внесении сведений об отце ребенка (при регистрации рождения ребенка, если отцовство не установлено)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
 		</xs:choice>
 	</xs:complexType>
 	<xs:complexType name="DocumentsConfirmingFiliation">
@@ -2310,14 +2309,12 @@
 			<xs:documentation>Документы - основания для регистрации установления отцовства</xs:documentation>
 		</xs:annotation>
 		<xs:sequence minOccurs="1">
-			<xs:element name="jointStatement"
-				type="doc:RequisitesFromStatementsForServiceJointFiliation" minOccurs="0">
+			<xs:element name="jointStatement" type="doc:RequisitesFromStatementsForServiceJointFiliation" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Совместное заявление родителей, не состоящих в браке</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="fatherStatement"
-				type="doc:RequisitesFromStatementsForServiceJointFiliation" minOccurs="0">
+			<xs:element name="fatherStatement" type="doc:RequisitesFromStatementsForServiceJointFiliation" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Заявление отца ребенка</xs:documentation>
 				</xs:annotation>
@@ -2336,7 +2333,7 @@
 		<xs:choice>
 			<xs:element ref="doc:actRecAndCertMarriageRequisites" minOccurs="0">
 				<xs:annotation>
-					<xs:documentation>Реквизиты АЗ и Свидетельства о заключении брака</xs:documentation>
+					<xs:documentation>Актовая запись и свидетельство о заключении брака усыновителей</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:choice>
@@ -2348,7 +2345,7 @@
 		<xs:choice>
 			<xs:element name="courtDecision" type="exdoc:CourtActDecision" minOccurs="0">
 				<xs:annotation>
-					<xs:documentation>Решение суда</xs:documentation>
+					<xs:documentation>Решение суда об установлении факта усыновления (удочерения)</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:choice>
@@ -2358,16 +2355,14 @@
 			<xs:documentation>Связанные измененные документы в услуге усыновления</xs:documentation>
 		</xs:annotation>
 		<xs:sequence minOccurs="1">
-			<xs:element name="birthActRecordRequisitesBeforeAct" type="doc:OldActRecordRequisites"
-				minOccurs="0">
+			<xs:element name="birthActRecordRequisitesBeforeAct" type="doc:OldActRecordRequisites" minOccurs="0">
 				<xs:annotation>
-					<xs:documentation>Реквизиты АЗ о рождении ребёнка (до усыновления)</xs:documentation>
+					<xs:documentation>Реквизиты актовой записи о рождении (до усыновления)</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="birthActRecordRequisitesAfterAct" type="doc:OldActRecordRequisites"
-				minOccurs="0">
+			<xs:element name="birthActRecordRequisitesAfterAct" type="doc:OldActRecordRequisites" minOccurs="0">
 				<xs:annotation>
-					<xs:documentation>Реквизиты АЗ о рождении ребёнка (после усыновления)</xs:documentation>
+					<xs:documentation>Реквизиты актовой записи о рождении (после усыновления)</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
@@ -2414,23 +2409,22 @@
 			<xs:element ref="exdoc:courtVerdictOfDivorce"/>
 		</xs:sequence>
 	</xs:complexType>
-    <xs:element name="changedInitials" type="cm:PersonInitials">
-        <xs:annotation>
-            <xs:documentation>ФИО лица (после перемены имени)</xs:documentation>
-        </xs:annotation>
-    </xs:element>
-    <xs:element name="childAfter" type="cm:PersonInitials">
-        <xs:annotation>
-            <xs:documentation>Сведения о ребенке (после установления отцовства)</xs:documentation>
-        </xs:annotation>
-    </xs:element>
+	<xs:element name="changedInitials" type="cm:PersonInitials">
+		<xs:annotation>
+			<xs:documentation>ФИО лица (после перемены имени)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="childAfter" type="cm:PersonInitials">
+		<xs:annotation>
+			<xs:documentation>Сведения о ребенке (после установления отцовства)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
 	<xs:element name="actRecordSignature" type="doc:SignatureWithComment">
 		<xs:annotation>
 			<xs:documentation>ЭП должностного лица органа ЗАГС</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="otherInformationAndOfficialAnnotations"
-		type="doc:OtherInformationAndOfficialAnnotations">
+	<xs:element name="otherInformationAndOfficialAnnotations" type="doc:OtherInformationAndOfficialAnnotations">
 		<xs:annotation>
 			<xs:documentation>Иные сведения и служебные отметки</xs:documentation>
 		</xs:annotation>
@@ -2485,8 +2479,7 @@
 			<xs:documentation>Реквизиты бумажного свидетельства для актовой записи о смерти</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="requisitesForStatementBirthFromSingleMother"
-		type="doc:RequisitesForStatementBirthFromSingleMother">
+	<xs:element name="requisitesForStatementBirthFromSingleMother" type="doc:RequisitesForStatementBirthFromSingleMother">
 		<xs:annotation>
 			<xs:documentation>Реквизиты заявления одинокой матери</xs:documentation>
 		</xs:annotation>
@@ -2521,8 +2514,7 @@
 			<xs:documentation>Реквизиты АЗ и Свидетельства о сметри</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="actRecAndCertMarriageRequisitesForStmt"
-		type="doc:ActRecAndCertMarriageRequisitesForStmt"/>
+	<xs:element name="actRecAndCertMarriageRequisitesForStmt" type="doc:ActRecAndCertMarriageRequisitesForStmt"/>
 	<xs:element name="requisitesPaperReference" type="doc:RequisitesPaperReference"/>
 	<xs:element name="requisitesPaperCertificate" type="doc:RequisitesPaperCertificate"/>
 	<xs:element name="singleStatementOfDivorce" type="doc:RequisitesFromStatementsForServiceDivorce">
@@ -2582,111 +2574,93 @@
 		</xs:annotation>
 	</xs:element>
 	<!-- Свидетельства с ЭП -->
-	<xs:element name="signedActRecordToCertificateBirth"
-		type="doc:SignedActRecordToCertificateBirth">
+	<xs:element name="signedActRecordToCertificateBirth" type="doc:SignedActRecordToCertificateBirth">
 		<xs:annotation>
 			<xs:documentation>Актовая запись о рождении в объеме свидетельства c ЭП</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="signedActRecordToCertificateDeath"
-		type="doc:SignedActRecordToCertificateDeath">
+	<xs:element name="signedActRecordToCertificateDeath" type="doc:SignedActRecordToCertificateDeath">
 		<xs:annotation>
 			<xs:documentation>Актовая запись о смерти в объеме свидетельства c ЭП</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="signedActRecordToCertificateAdoption"
-		type="doc:SignedActRecordToCertificateAdoption">
+	<xs:element name="signedActRecordToCertificateAdoption" type="doc:SignedActRecordToCertificateAdoption">
 		<xs:annotation>
 			<xs:documentation>Актовая запись об усыновлении (удочерении) в объеме свидетельства c ЭП</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="signedActRecordToCertificateDivorce"
-		type="doc:SignedActRecordToCertificateDivorce">
+	<xs:element name="signedActRecordToCertificateDivorce" type="doc:SignedActRecordToCertificateDivorce">
 		<xs:annotation>
 			<xs:documentation>Актовая запись о расторжении брака в объеме свидетельства c ЭП</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="signedActRecordToCertificateMarriage"
-		type="doc:SignedActRecordToCertificateMarriage">
+	<xs:element name="signedActRecordToCertificateMarriage" type="doc:SignedActRecordToCertificateMarriage">
 		<xs:annotation>
 			<xs:documentation>Актовая запись о заключении брака в объеме свидетельства c ЭП</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="signedActRecordToCertificateNameChange"
-		type="doc:SignedActRecordToCertificateNameChange">
+	<xs:element name="signedActRecordToCertificateNameChange" type="doc:SignedActRecordToCertificateNameChange">
 		<xs:annotation>
 			<xs:documentation>Актовая запись о перемене имени в объеме свидетельства c ЭП</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="signedActRecordToCertificateFiliation"
-		type="doc:SignedActRecordToCertificateFiliation">
+	<xs:element name="signedActRecordToCertificateFiliation" type="doc:SignedActRecordToCertificateFiliation">
 		<xs:annotation>
 			<xs:documentation>Актовая запись об установлении отцовства в объеме свидетельства c ЭП</xs:documentation>
 		</xs:annotation>
 	</xs:element>
 	<!-- Справки с ЭП -->
-	<xs:element name="signedActRecordToReferenceBirth24"
-		type="doc:SignedActRecordToReferenceBirth24">
+	<xs:element name="signedActRecordToReferenceBirth24" type="doc:SignedActRecordToReferenceBirth24">
 		<xs:annotation>
 			<xs:documentation>Актовая запись о рождении в объеме справки формы 24 c ЭП</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="signedActRecordToReferenceBirth25"
-		type="doc:SignedActRecordToReferenceBirth25">
+	<xs:element name="signedActRecordToReferenceBirth25" type="doc:SignedActRecordToReferenceBirth25">
 		<xs:annotation>
 			<xs:documentation>Актовая запись о рождении в объеме справки формы 25 c ЭП</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="signedActRecordToReferenceBirth26"
-		type="doc:SignedActRecordToReferenceBirth26">
+	<xs:element name="signedActRecordToReferenceBirth26" type="doc:SignedActRecordToReferenceBirth26">
 		<xs:annotation>
 			<xs:documentation>Актовая запись о рождении в объеме справки формы 26 c ЭП</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="signedActRecordToReferenceMarriage27"
-		type="doc:SignedActRecordToReferenceMarriage27">
+	<xs:element name="signedActRecordToReferenceMarriage27" type="doc:SignedActRecordToReferenceMarriage27">
 		<xs:annotation>
 			<xs:documentation>Актовая запись о заключении брака в объеме справки формы 27 c ЭП</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="signedActRecordToReferenceMarriage28"
-		type="doc:SignedActRecordToReferenceMarriage28">
+	<xs:element name="signedActRecordToReferenceMarriage28" type="doc:SignedActRecordToReferenceMarriage28">
 		<xs:annotation>
 			<xs:documentation>Актовая запись о заключении брака в объеме справки формы 28 c ЭП</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="signedActRecordToReferenceDivorce29"
-		type="doc:SignedActRecordToReferenceDivorce29">
+	<xs:element name="signedActRecordToReferenceDivorce29" type="doc:SignedActRecordToReferenceDivorce29">
 		<xs:annotation>
 			<xs:documentation>Актовая запись о расторжении браке в объеме справки формы 29 c ЭП</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="signedActRecordToReferenceAdoption30"
-		type="doc:SignedActRecordToReferenceAdoption30">
+	<xs:element name="signedActRecordToReferenceAdoption30" type="doc:SignedActRecordToReferenceAdoption30">
 		<xs:annotation>
 			<xs:documentation>Актовая запись об усыновлении (удочерении) в объеме справки формы 30 c ЭП</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="signedActRecordToReferenceFiliation31"
-		type="doc:SignedActRecordToReferenceFiliation31">
+	<xs:element name="signedActRecordToReferenceFiliation31" type="doc:SignedActRecordToReferenceFiliation31">
 		<xs:annotation>
 			<xs:documentation>Актовая запись об установлении отцовства в объеме справки формы 31 c ЭП</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="signedActRecordToReferenceNameChange32"
-		type="doc:SignedActRecordToReferenceNameChange32">
+	<xs:element name="signedActRecordToReferenceNameChange32" type="doc:SignedActRecordToReferenceNameChange32">
 		<xs:annotation>
 			<xs:documentation>Актовая запись о перемене имени в объеме справки формы 32 c ЭП</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="signedActRecordToReferenceDeath33"
-		type="doc:SignedActRecordToReferenceDeath33">
+	<xs:element name="signedActRecordToReferenceDeath33" type="doc:SignedActRecordToReferenceDeath33">
 		<xs:annotation>
 			<xs:documentation>Актовая запись о смерти в объеме справки формы 33 c ЭП</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="signedActRecordToReferenceDeath34"
-		type="doc:SignedActRecordToReferenceDeath34">
+	<xs:element name="signedActRecordToReferenceDeath34" type="doc:SignedActRecordToReferenceDeath34">
 		<xs:annotation>
 			<xs:documentation>Актовая запись о смерти в объеме справки формы 34 c ЭП</xs:documentation>
 		</xs:annotation>

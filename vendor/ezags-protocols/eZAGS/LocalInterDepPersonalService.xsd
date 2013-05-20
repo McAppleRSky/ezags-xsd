@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://ezags.rt.ru/fzags/InterDepPersonalService/type/local/" xmlns:cm="http://ezags.rt.ru/type/common/" xmlns:doc="http://ezags.rt.ru/type/document/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://www.w3.org/2000/09/xmldsig#" xmlns:ns2="http://ezags.rt.ru/type/actor/" targetNamespace="http://ezags.rt.ru/fzags/InterDepPersonalService/type/local/" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="../xmldsig-core-schema.xsd"/>
+<xs:schema xmlns:tns="http://ezags.rt.ru/fzags/InterDepPersonalService/type/local/"
+	xmlns:cm="http://ezags.rt.ru/type/common/" xmlns:doc="http://ezags.rt.ru/type/document/"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://www.w3.org/2000/09/xmldsig#"
+	xmlns:ns2="http://ezags.rt.ru/type/actor/"
+	targetNamespace="http://ezags.rt.ru/fzags/InterDepPersonalService/type/local/"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.w3.org/2000/09/xmldsig#"
+		schemaLocation="../xmldsig-core-schema.xsd"/>
 	<xs:import namespace="http://ezags.rt.ru/type/common/" schemaLocation="../common.xsd"/>
 	<xs:import namespace="http://ezags.rt.ru/type/document/" schemaLocation="../documents.xsd"/>
 	<xs:import namespace="http://ezags.rt.ru/type/actor/" schemaLocation="../actor.xsd"/>
@@ -253,7 +259,8 @@
 		</xs:annotation>
 	</xs:element>
 	<!--на ВЫХОД-->
-	<xs:element name="checkExistenceOfActRecordResponseObj" type="tns:CheckExistenceOfActRecordResponseObj">
+	<xs:element name="checkExistenceOfActRecordResponseObj"
+		type="tns:CheckExistenceOfActRecordResponseObj">
 		<xs:annotation>
 			<xs:documentation>Параметры получения результата поиска актовой записи в объеме ответа о ее существовании</xs:documentation>
 		</xs:annotation>
@@ -386,12 +393,25 @@
 			<xs:documentation>Параметры получения результата поиска актовой записи о смерти и персонифицированных сведений по ней в объеме самой АЗ</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-    <xs:element name="actRecordFilter" type="tns:ActRecordFilter">
-        <xs:annotation>
-            <xs:documentation>Регистрационные данные записи АГС</xs:documentation>
-        </xs:annotation>
-    </xs:element>
+	<xs:element name="actRecordFilter" type="tns:ActRecordFilter">
+		<xs:annotation>
+			<xs:documentation>Регистрационные данные записи АГС</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="archiveCompletenessStateRequestObj"
+		type="tns:ArchiveCompletenessStateRequestObj">
+		<xs:annotation>
+			<xs:documentation>Параметры запроса полноты архива АЗ</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="archiveCompletenessStateResponseObj"
+		type="tns:ArchiveCompletenessStateResponseObj">
+		<xs:annotation>
+			<xs:documentation>Параметры ответа на запрос полноты архива АЗ</xs:documentation>
+		</xs:annotation>
+	</xs:element>
 	<!-- Классы-->
+	<xs:element name="birthAddressFilter" type="tns:AddressFilter"/>
 	<xs:complexType name="BaseFilterRequestObj">
 		<xs:annotation>
 			<xs:documentation>Базовый класс для поиска</xs:documentation>
@@ -399,6 +419,13 @@
 		<xs:choice>
 			<xs:element ref="tns:actRecordFilter"/>
 			<xs:element ref="tns:metaFilter"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="AddressFilter">
+		<xs:choice>
+			<xs:element ref="cm:kladrCode13"/>
+			<xs:element ref="cm:kladeFiasCode"/>
+			<xs:element ref="cm:rawAddressString"/>
 		</xs:choice>
 	</xs:complexType>
 	<xs:complexType name="BirthFilterRequestObj">
@@ -423,7 +450,8 @@
 							<xs:documentation>Сведения об отце ребенка</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-					<xs:element name="expectedResult" type="tns:EXPECTED_RESULT_BIRTH" default="is_exist">
+					<xs:element name="expectedResult" type="tns:EXPECTED_RESULT_BIRTH"
+						default="is_exist">
 						<xs:annotation>
 							<xs:documentation>Тип ожидаемого Получателем информации объема сведений по актовой записи о рождении</xs:documentation>
 						</xs:annotation>
@@ -449,7 +477,8 @@
 							<xs:documentation>Сведения о Ней</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-					<xs:element name="expectedResult" type="tns:EXPECTED_RESULT_MARRIAGE" default="is_exist">
+					<xs:element name="expectedResult" type="tns:EXPECTED_RESULT_MARRIAGE"
+						default="is_exist">
 						<xs:annotation>
 							<xs:documentation>Тип ожидаемого Получателем информации объема сведений по актовой записи о заключении брака</xs:documentation>
 						</xs:annotation>
@@ -465,17 +494,18 @@
 		<xs:complexContent>
 			<xs:extension base="tns:BaseFilterRequestObj">
 				<xs:sequence minOccurs="1">
-					<xs:element name="groom" type="tns:PersonFilterWithApplicant" minOccurs="0">
+					<xs:element name="groom" type="tns:PersonFilter" minOccurs="0">
 						<xs:annotation>
 							<xs:documentation>Сведения о Нем</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-					<xs:element name="bride" type="tns:PersonFilterWithApplicant" minOccurs="0">
+					<xs:element name="bride" type="tns:PersonFilter" minOccurs="0">
 						<xs:annotation>
 							<xs:documentation>Сведения о Ней</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-					<xs:element name="expectedResult" type="tns:EXPECTED_RESULT_DIVORCE" default="is_exist">
+					<xs:element name="expectedResult" type="tns:EXPECTED_RESULT_DIVORCE"
+						default="is_exist">
 						<xs:annotation>
 							<xs:documentation>Тип ожидаемого Получателем информации объема сведений по актовой записи о расторжении брака</xs:documentation>
 						</xs:annotation>
@@ -506,7 +536,8 @@
 							<xs:documentation>Сведения об усыновительнице</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-					<xs:element name="expectedResult" type="tns:EXPECTED_RESULT_ADOPTION" default="is_exist">
+					<xs:element name="expectedResult" type="tns:EXPECTED_RESULT_ADOPTION"
+						default="is_exist">
 						<xs:annotation>
 							<xs:documentation>Тип ожидаемого Получателем информации объема сведений по актовой записи об усыновлении (удочерении)</xs:documentation>
 						</xs:annotation>
@@ -537,7 +568,8 @@
 							<xs:documentation>Сведения о лице, признанном отцом ребенка</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-					<xs:element name="expectedResult" type="tns:EXPECTED_RESULT_FILIATION" default="is_exist">
+					<xs:element name="expectedResult" type="tns:EXPECTED_RESULT_FILIATION"
+						default="is_exist">
 						<xs:annotation>
 							<xs:documentation>Тип ожидаемого Получателем информации объема сведений по актовой записи об установлении отцовства</xs:documentation>
 						</xs:annotation>
@@ -558,7 +590,8 @@
 							<xs:documentation>Лицо до или после перемены имени</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-					<xs:element name="expectedResult" type="tns:EXPECTED_RESULT_NAME_CHANGE" default="is_exist">
+					<xs:element name="expectedResult" type="tns:EXPECTED_RESULT_NAME_CHANGE"
+						default="is_exist">
 						<xs:annotation>
 							<xs:documentation>Тип ожидаемого Получателем информации объема сведений по актовой записи о перемене имени</xs:documentation>
 						</xs:annotation>
@@ -579,7 +612,8 @@
 							<xs:documentation>Умерший</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-					<xs:element name="expectedResult" type="tns:EXPECTED_RESULT_DEATH" default="is_exist">
+					<xs:element name="expectedResult" type="tns:EXPECTED_RESULT_DEATH"
+						default="is_exist">
 						<xs:annotation>
 							<xs:documentation>Тип ожидаемого Получателем информации объема сведений по актовой записи о смерти</xs:documentation>
 						</xs:annotation>
@@ -857,13 +891,18 @@
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:extension base="tns:BaseResponseObj">
-				<xs:sequence minOccurs="1">
-					<xs:element name="signedActRecord" type="doc:SignedActRecordBirth" minOccurs="0">
+				<xs:choice minOccurs="1">
+					<xs:element ref="doc:signedActRecordBirth" minOccurs="0">
 						<xs:annotation>
 							<xs:documentation>Актовая запись о рождении (в собственном объеме атрибутов) с ЭП</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-				</xs:sequence>
+					<xs:element ref="cm:actRecordUID" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>UID актовой записи</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:choice>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
@@ -873,13 +912,18 @@
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:extension base="tns:BaseResponseObj">
-				<xs:sequence minOccurs="1">
-					<xs:element name="signedActRecord" type="doc:SignedActRecordMarriage" minOccurs="0">
+				<xs:choice minOccurs="1">
+					<xs:element ref="doc:signedActRecordMarriage" minOccurs="0">
 						<xs:annotation>
 							<xs:documentation>Актовая запись о заключении брака (в собственном объеме атрибутов) с ЭП</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-				</xs:sequence>
+					<xs:element ref="cm:actRecordUID" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>UID актовой записи</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:choice>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
@@ -889,13 +933,18 @@
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:extension base="tns:BaseResponseObj">
-				<xs:sequence minOccurs="1">
-					<xs:element name="signedActRecord" type="doc:SignedActRecordDivorce" minOccurs="0">
+				<xs:choice minOccurs="1">
+					<xs:element ref="doc:signedActRecordDivorce" minOccurs="0">
 						<xs:annotation>
 							<xs:documentation>Актовая запись о расторжении брака (в собственном объеме атрибутов) с ЭП</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-				</xs:sequence>
+					<xs:element ref="cm:actRecordUID" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>UID актовой записи</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:choice>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
@@ -905,13 +954,18 @@
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:extension base="tns:BaseResponseObj">
-				<xs:sequence minOccurs="1">
-					<xs:element name="signedActRecord" type="doc:SignedActRecordAdoption" minOccurs="0">
+				<xs:choice minOccurs="1">
+					<xs:element ref="doc:signedActRecordAdoption" minOccurs="0">
 						<xs:annotation>
 							<xs:documentation>Актовая запись об усыновлении (удочерениии) (в собственном объеме атрибутов) с ЭП</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-				</xs:sequence>
+					<xs:element ref="cm:actRecordUID" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>UID актовой записи</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:choice>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
@@ -921,13 +975,18 @@
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:extension base="tns:BaseResponseObj">
-				<xs:sequence minOccurs="1">
-					<xs:element name="signedActRecord" type="doc:SignedActRecordFiliation" minOccurs="0">
+				<xs:choice minOccurs="1">
+					<xs:element ref="doc:signedActRecordFiliation" minOccurs="0">
 						<xs:annotation>
 							<xs:documentation>Актовая запись об установлении отцовства (в собственном объеме атрибутов) с ЭП</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-				</xs:sequence>
+					<xs:element ref="cm:actRecordUID" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>UID актовой записи</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:choice>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
@@ -937,13 +996,18 @@
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:extension base="tns:BaseResponseObj">
-				<xs:sequence minOccurs="1">
-					<xs:element name="signedActRecord" type="doc:SignedActRecordNameChange" minOccurs="0">
+				<xs:choice minOccurs="1">
+					<xs:element ref="doc:signedActRecordNameChange" minOccurs="0">
 						<xs:annotation>
 							<xs:documentation>Актовая запись о перемене имени (в собственном объеме атрибутов) с ЭП</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-				</xs:sequence>
+					<xs:element ref="cm:actRecordUID" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>UID актовой записи</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:choice>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
@@ -953,16 +1017,58 @@
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:extension base="tns:BaseResponseObj">
-				<xs:sequence minOccurs="1">
-					<xs:element name="signedActRecord" type="doc:SignedActRecordDeath" minOccurs="0">
+				<xs:choice minOccurs="1">
+					<xs:element ref="doc:signedActRecordDeath" minOccurs="0">
 						<xs:annotation>
 							<xs:documentation>Актовая запись о смерти (в собственном объеме атрибутов) с ЭП</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-				</xs:sequence>
+					<xs:element ref="cm:actRecordUID" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>UID актовой записи</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:choice>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
+
+	<xs:complexType name="ArchiveCompletenessStateRequestObj">
+		<xs:annotation>
+			<xs:documentation>Класс для запроса состояния полноты архива рзагс</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element name="year" type="xs:int">
+				<xs:annotation>
+					<xs:documentation>год даты</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="ArchiveCompletenessStateResponseObj">
+		<xs:annotation>
+			<xs:documentation>Класс ответа на запрос состояния полноты архива рзагс</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:element name="year" type="xs:int">
+				<xs:annotation>
+					<xs:documentation>год даты</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="state" type="tns:CompletenessState" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>статус полноты архива АЗ на указанный год</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="count" type="xs:int" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>число актовых записей в электронном виде в БД ЗАГСа за указанный год</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
 	<!-- Компоненты фильтров-->
 	<xs:complexType name="ActRecordFilter">
 		<xs:annotation>
@@ -1047,7 +1153,7 @@
 				</xs:annotation>
 			</xs:element>
 			<xs:choice minOccurs="1">
-				<xs:element name="birthDate" type="cm:DateRecord" minOccurs="0">
+				<xs:element name="birthDate" type="xs:date" minOccurs="0">
 					<xs:annotation>
 						<xs:documentation>Точная дата рождения</xs:documentation>
 					</xs:annotation>
@@ -1058,23 +1164,19 @@
 					</xs:annotation>
 				</xs:element>
 			</xs:choice>
-			<xs:element name="birthPlace" type="cm:ShortAddress" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>Место рождения</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="gender" type="cm:GENDERS" minOccurs="0">
+			<xs:element minOccurs="0" ref="tns:birthAddressFilter"/>
+			<xs:element ref="cm:gender" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Пол</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="snils" type="cm:SNILS" minOccurs="0">
+			<xs:element ref="cm:snils" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>СНИЛС</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:choice minOccurs="0">
-				<xs:element name="deathDate" type="cm:DateRecord" minOccurs="0">
+				<xs:element name="deathDate" type="xs:date" minOccurs="0">
 					<xs:annotation>
 						<xs:documentation>Точная дата смерти</xs:documentation>
 					</xs:annotation>
@@ -1087,42 +1189,26 @@
 			</xs:choice>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:complexType name="PersonFilterWithApplicant">
+	<xs:complexType name="MetaFilter">
 		<xs:annotation>
-			<xs:documentation>Сведения о субъекте актовой записи с ролью "заявитель"</xs:documentation>
+			<xs:documentation>период лет "с ... по ..."</xs:documentation>
 		</xs:annotation>
-		<xs:complexContent>
-			<xs:extension base="tns:PersonFilter">
-				<xs:sequence minOccurs="1">
-					<xs:element name="isApplicant" type="xs:boolean" default="false">
-						<xs:annotation>
-							<xs:documentation>Признак "Является ли Заявителем"</xs:documentation>
-						</xs:annotation>
-					</xs:element>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
+		<xs:sequence minOccurs="1">
+			<xs:element name="yearFrom" type="tns:VALID_YEARS"/>
+			<xs:element name="yearTo" type="tns:VALID_YEARS"/>
+		</xs:sequence>
 	</xs:complexType>
-    <xs:complexType name="MetaFilter">
-        <xs:annotation>
-            <xs:documentation>период лет "с ... по ..."</xs:documentation>
-        </xs:annotation>
-        <xs:sequence minOccurs="1">
-            <xs:element name="yearFrom" type="tns:VALID_YEARS"/>
-            <xs:element name="yearTo" type="tns:VALID_YEARS"/>
-        </xs:sequence>
-    </xs:complexType>
-    <xs:element name="metaFilter" type="tns:MetaFilter"/>
+	<xs:element name="metaFilter" type="tns:MetaFilter"/>
 	<!-- Используемые простые типы данных -->
-    <xs:simpleType name="VALID_YEARS">
-        <xs:annotation>
-            <xs:documentation>Минимальный и максимальный диапазон лет для актовой записи</xs:documentation>
-        </xs:annotation>
-        <xs:restriction base="xs:int">
-            <xs:minInclusive value="1900"/>
-            <xs:maxInclusive value="2200"/>
-        </xs:restriction>
-    </xs:simpleType>
+	<xs:simpleType name="VALID_YEARS">
+		<xs:annotation>
+			<xs:documentation>Минимальный и максимальный диапазон лет для актовой записи</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="1900"/>
+			<xs:maxInclusive value="2200"/>
+		</xs:restriction>
+	</xs:simpleType>
 	<xs:simpleType name="EXPECTED_RESULT_BIRTH">
 		<xs:annotation>
 			<xs:documentation> Возможный для получения объем сведений по актовой записи о рождении</xs:documentation>
@@ -1352,9 +1438,14 @@
 					<xs:documentation>Обработано</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:enumeration value="error">
+			<xs:enumeration value="refuse">
 				<xs:annotation>
-					<xs:documentation>Обработано с ошибкой</xs:documentation>
+					<xs:documentation>Мотивированный отказ (существуют юридические ограничения на выдачу сведений)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="timeout">
+				<xs:annotation>
+					<xs:documentation>Обработано с ошибкой поиска в региональной системе</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 		</xs:restriction>
@@ -1409,6 +1500,28 @@
 			<xs:enumeration value="refine_search">
 				<xs:annotation>
 					<xs:documentation>Уточните параметры поиска, найдено более 1 актовой записи</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="refuse">
+				<xs:annotation>
+					<xs:documentation>Мотивированный отказ (существуют юридические ограничения на выдачу сведений)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CompletenessState">
+		<xs:annotation>
+			<xs:documentation>Список значений статуса полноты архива АЗ</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="cm:NOT_EMPTY_STRING">
+			<xs:enumeration value="full">
+				<xs:annotation>
+					<xs:documentation>электронный архив АЗ полон</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="no_full">
+				<xs:annotation>
+					<xs:documentation>электронный архив АЗ полон</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 		</xs:restriction>

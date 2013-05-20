@@ -86,6 +86,12 @@
 	<wsdl:message name="ticketSearchPersonalActRecordDeathRequest">
 		<wsdl:part name="parameter" element="ns:ticketSearchPersonalActRecordDeathRequest"/>
 	</wsdl:message>
+	<wsdl:message name="archiveCompletenessStateRequest">
+		<wsdl:part name="parameter" element="ns:archiveCompletenessStateRequest"/>
+	</wsdl:message>
+	<wsdl:message name="archiveCompletenessStateResponse">
+		<wsdl:part name="parameter" element="ns:archiveCompletenessStateResponse"/>
+	</wsdl:message>
 	<wsdl:message name="ticketSearchPersonalActRecordResponse">
 		<wsdl:part name="parameter" element="ns:ticketNumberResponse"/>
 	</wsdl:message>
@@ -355,6 +361,11 @@
 		<wsdl:operation name="getPersonalActRecordMarriage">
 			<wsdl:input message="tns:ticketSearchPersonalActRecordMarriageRequest"/>
 			<wsdl:output message="tns:actRecordMarriageResponse"/>
+			<wsdl:fault name="Fault" message="tns:Fault"/>
+		</wsdl:operation>
+		<wsdl:operation name="getArchiveCompletenessState">
+			<wsdl:input message="tns:archiveCompletenessStateRequest"/>
+			<wsdl:output message="tns:archiveCompletenessStateResponse"/>
 			<wsdl:fault name="Fault" message="tns:Fault"/>
 		</wsdl:operation>
 	</wsdl:portType>
@@ -748,6 +759,18 @@
 			</wsdl:fault>
 		</wsdl:operation>
 		<wsdl:operation name="getPersonalActRecordMarriage">
+			<soap:operation soapAction=""/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="Fault">
+				<soap:fault name="Fault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getArchiveCompletenessState">
 			<soap:operation soapAction=""/>
 			<wsdl:input>
 				<soap:body use="literal"/>

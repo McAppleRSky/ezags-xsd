@@ -1,9 +1,11 @@
 require 'spec_helper'
 require "xml_schema_mapper/test_builder"
 
+  # @attr Message [MessageType]
+  # @attr MessageData []
 
 
-describe ReferenceTypeMapper do
+describe StreamTaskRequestMapper do
 
   include XmlSchemaMapper::TestBuilder::Helper
 

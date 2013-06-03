@@ -40,10 +40,10 @@ class StatusResponseMapper
     attr_accessor :signature
   end
 
-  class MessageData::AppData::ChangeOrderInfo
+  class AppData::ChangeOrderInfo
     include XmlSchemaMapper
     schema File.expand_path('../../vendor/ezags-protocols/eZAGS/public/OrderService.xsd', File.dirname(__FILE__))
-    annonymus_type 'StatusResponse::MessageData::AppData::changeOrderInfo'
+    annonymus_type 'StatusResponse::AppData::changeOrderInfo'
 
     # Информация об услуги
     # @return [ServiceInfoMapper]
@@ -71,10 +71,10 @@ class StatusResponseMapper
     attr_accessor :auth_token
   end
 
-  class MessageData::AppData::ChangeOrderInfo::ServiceInfo
+  class ChangeOrderInfo::ServiceInfo
     include XmlSchemaMapper
     schema File.expand_path('../../vendor/ezags-protocols/eZAGS/public/OrderService.xsd', File.dirname(__FILE__))
-    annonymus_type 'StatusResponse::MessageData::AppData::changeOrderInfo::serviceInfo'
+    annonymus_type 'StatusResponse::changeOrderInfo::serviceInfo'
 
     # Код ведомства в ПГУ
     # @return [String]
@@ -90,10 +90,10 @@ class StatusResponseMapper
     attr_accessor :reestr_id
   end
 
-  class MessageData::AppData::ChangeOrderInfo::OrderId
+  class ChangeOrderInfo::OrderId
     include XmlSchemaMapper
     schema File.expand_path('../../vendor/ezags-protocols/eZAGS/public/OrderService.xsd', File.dirname(__FILE__))
-    annonymus_type 'StatusResponse::MessageData::AppData::changeOrderInfo::orderId'
+    annonymus_type 'StatusResponse::changeOrderInfo::orderId'
 
     # Id заявки на портале
     # @return [String]
@@ -105,10 +105,10 @@ class StatusResponseMapper
     attr_accessor :org_id
   end
 
-  class MessageData::AppData::ChangeOrderInfo::StatusCode
+  class ChangeOrderInfo::StatusCode
     include XmlSchemaMapper
     schema File.expand_path('../../vendor/ezags-protocols/eZAGS/public/OrderService.xsd', File.dirname(__FILE__))
-    annonymus_type 'StatusResponse::MessageData::AppData::changeOrderInfo::statusCode'
+    annonymus_type 'StatusResponse::changeOrderInfo::statusCode'
 
     # Код статуса в ведомстве
     # @return [String]

@@ -1,9 +1,13 @@
 require 'spec_helper'
 require "xml_schema_mapper/test_builder"
 
+  # @attr TaskName [string]
+  # @attr DocumentType [string]
+  # @attr OperatorsCount [string]
+  # @attr Images []
 
 
-describe ReferenceTypeMapper do
+describe StreamTaskRequestObjMapper do
 
   include XmlSchemaMapper::TestBuilder::Helper
 

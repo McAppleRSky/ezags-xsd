@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- edited with XMLSpy v2011 rel. 2 (http://www.altova.com) by TeaM DJiNN (TeaM DJiNN) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:smev="http://smev.gosuslugi.ru/rev120315"
+           targetNamespace="http://smev.gosuslugi.ru/rev120315"
+           elementFormDefault="qualified"
+           attributeFormDefault="qualified">
+	<xs:import namespace="http://ezags.rt.ru/type/common/" schemaLocation="../common.xsd"/>
+	<xs:import namespace="http://idecs.atc.ru/privateoffice/ws/changeorderinfo" schemaLocation="../ePGU/order-info.xsd"/>
+	<xs:include schemaLocation="../smev/smev.gosuslugi.ru.rev120315.xsd"/>
+	<xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="../xmldsig-core-schema.xsd"/>
+	<xs:complexType name="StreamTaskRequest">
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="smev:streamTaskRequestObj"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="StreamTaskResponse">
+		<xs:sequence minOccurs="1">
+			<xs:element ref="smev:Message"/>
+			<xs:element name="MessageData">
+				<xs:complexType>
+					<xs:sequence minOccurs="1">
+						<xs:element name="AppData">
+							<xs:complexType>
+								<xs:sequence minOccurs="1">
+									<xs:element ref="smev:streamTaskResponseObj"/>
+								</xs:sequence>
+								<xs:attribute name="id" type="xs:string" fixed="AppData"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="smev:AppDocument" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+  <xs:complexType name="StreamTaskRequestObj">
+ 		<xs:sequence minOccurs="1">
+      <xs:element name="TaskName" type="xs:string" minOccurs="1"/>
+      <xs:element name="DocumentType" type="xs:string" minOccurs="1"/>
+      <xs:element name="OperatorsCount" type="xs:string" minOccurs="1"/>
+      <xs:element name="Images">
+        <xs:complexType>
+          <xs:sequence minOccurs="1">
+            <xs:element name="Image" type="xs:base64Binary" minOccurs="1"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+ 		</xs:sequence>
+ 	</xs:complexType>
+  <xs:complexType name="StreamTaskResponseObj">
+ 		<xs:sequence minOccurs="1">
+      <xs:element name="TaskId" type="xs:string" minOccurs="1"/>
+ 		</xs:sequence>
+ 	</xs:complexType>
+	<xs:element name="streamTaskRequest" type="smev:StreamTaskRequest"/>
+	<xs:element name="streamTaskResponse" type="smev:StreamTaskResponse"/>
+  <xs:element name="streamTaskRequestObj" type="smev:StreamTaskRequestObj"/>
+  <xs:element name="streamTaskResponseObj" type="smev:StreamTaskResponseObj"/>
+</xs:schema>

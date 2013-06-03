@@ -48,6 +48,7 @@ class CLI < Thor
     def update_retro
       @script.generate(xsd_path 'retro/GetResultsService.xsd')
       @script.generate(xsd_path 'retro/SecurityWithSignature.xsd')
+      @script.generate(xsd_path 'retro/StreamTaskService.xsd')
     end
 
     def update_upload

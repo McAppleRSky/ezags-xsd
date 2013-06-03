@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:tns="http://ezags.rt.ru/fzags/StreamTaskService/" xmlns:t="http://smev.gosuslugi.ru/rev120315"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="StreamTaskService"
+             targetNamespace="http://ezags.rt.ru/fzags/StreamTaskService/">
+    <types>
+        <xsd:schema>
+            <xsd:import namespace="http://smev.gosuslugi.ru/rev120315" schemaLocation="StreamTaskService.xsd"/>
+        </xsd:schema>
+    </types>
+    <message name="StreamTask">
+        <part name="parameters" element="t:streamTaskRequest"/>
+    </message>
+    <message name="StreamTaskResponse">
+        <part name="parameters" element="t:streamTaskResponse"/>
+    </message>
+    <message name="StreamTaskRequestObj">
+      <part name="parameters" element="t:streamTaskRequest"/>
+    </message>
+    <message name="StreamTaskResponseObj">
+      <part name="parameters" element="t:streamTaskResponse"/>
+    </message>
+    <portType name="StreamTaskService">
+        <operation name="createStreamTask">
+            <input message="tns:StreamTask"/>
+            <output message="tns:StreamTaskResponse"/>
+            <fault name="requestFault" message="tns:requestFault"/>
+        </operation>
+    </portType>
+    <binding name="StreamTaskImplPortBinding" type="tns:StreamTaskService">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="createStreamTask">
+            <soap:operation soapAction=""/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="StreamTask">
+        <port name="StreamTaskImplPort" binding="tns:StreamTaskImplPortBinding">
+            <soap:address location="REPLACE_WITH_ACTUAL_URL"/>
+        </port>
+    </service>
+</definitions>

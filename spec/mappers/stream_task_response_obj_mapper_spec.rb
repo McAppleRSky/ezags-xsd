@@ -1,9 +1,10 @@
 require 'spec_helper'
 require "xml_schema_mapper/test_builder"
 
+  # @attr TaskId [string]
 
 
-describe ReferenceTypeMapper do
+describe StreamTaskResponseObjMapper do
 
   include XmlSchemaMapper::TestBuilder::Helper
 

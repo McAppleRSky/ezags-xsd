@@ -1,5 +1,5 @@
 module Ezags
   module Xsd
-    VERSION = '2.2.6.4'
+    VERSION = '2.2.6.5'
   end
 end

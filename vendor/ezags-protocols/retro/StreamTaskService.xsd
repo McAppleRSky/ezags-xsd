@@ -54,6 +54,8 @@
       <xs:element name="TaskName" type="xs:string" minOccurs="1"/>
       <xs:element name="DocumentType" type="xs:string" minOccurs="1"/>
       <xs:element name="OperatorsCount" type="xs:string" minOccurs="1"/>
+      <xs:element name="EnablePositioning" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="EnableOCR" type="xs:boolean" minOccurs="0"/>
       <xs:element name="Images">
         <xs:complexType>
           <xs:sequence minOccurs="1">

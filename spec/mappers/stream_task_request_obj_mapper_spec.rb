@@ -4,6 +4,8 @@ require "xml_schema_mapper/test_builder"
   # @attr TaskName [string]
   # @attr DocumentType [string]
   # @attr OperatorsCount [string]
+  # @attr EnablePositioning [boolean]
+  # @attr EnableOCR [boolean]
   # @attr Images []
 
 

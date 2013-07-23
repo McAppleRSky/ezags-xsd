@@ -28,7 +28,7 @@ class CLI < Thor
   method_option :path,   aliases: '-p', desc: 'temporary path', type: :string, default: 'tmp'
   method_option :branch, aliases: '-b', desc: 'actual branch',  type: :string, default: '2.2/develop'
   def update_protocols
-    `git clone gitolite@git.egov.at-consulting.ru:ezags-protocols.git #{options[:path]}`
+    `git clone git@github.com:ezags/ezags-protocols.git #{options[:path]}`
     Dir.chdir options[:path]
     `git checkout #{options[:branch]}`
     Dir.chdir '../'

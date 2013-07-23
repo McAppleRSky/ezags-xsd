@@ -1,6 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- edited with XMLSpy v2011 rel. 2 (http://www.altova.com) by free (free) -->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cm="http://ezags.rt.ru/type/common/" xmlns:ac="http://ezags.rt.ru/type/actor/" targetNamespace="http://ezags.rt.ru/type/actor/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<?xml version="1.0" encoding="UTF-8"?><!-- edited with XMLSpy v2011 rel. 2 (http://www.altova.com) by free (free) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cm="http://ezags.rt.ru/type/common/"
+		   xmlns:ac="http://ezags.rt.ru/type/actor/" targetNamespace="http://ezags.rt.ru/type/actor/"
+		   elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xs:import namespace="http://ezags.rt.ru/type/common/" schemaLocation="common.xsd"/>
 	<xs:complexType name="FullPerson">
 		<xs:annotation>
@@ -369,7 +370,8 @@
 	</xs:complexType>
 	<xs:element name="foreignId" type="cm:RegistrarIdentity">
 		<xs:annotation>
-			<xs:documentation>Идентификационные данные места государственной регистрации. Внешний ключ</xs:documentation>
+			<xs:documentation>Идентификационные данные места государственной регистрации. Внешний ключ
+			</xs:documentation>
 		</xs:annotation>
 	</xs:element>
 	<xs:complexType name="MissingPersonAssetsManager">
@@ -408,10 +410,11 @@
 			<xs:documentation>Персональные данные представителя ЮЛ</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="applicantOrganization" type="ac:ApplicantOrganization"/>
 	<xs:element name="employees" type="ac:ListOfRegistrarEmployees">
 		<xs:annotation>
 			<xs:documentation>Список сотрудников</xs:documentation>
 		</xs:annotation>
 	</xs:element>
+	<xs:element name="applicantPerson" type="ac:ApplicantPerson"/>
+	<xs:element name="applicantOrganization" type="ac:ApplicantOrganization"/>
 </xs:schema>

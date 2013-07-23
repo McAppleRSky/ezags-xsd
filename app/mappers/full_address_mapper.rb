@@ -6,10 +6,6 @@ class FullAddressMapper
   schema File.expand_path('../../vendor/ezags-protocols/eZAGS/public/UploadService.xsd', File.dirname(__FILE__))
   type 'FullAddress'
 
-  # код по классификатору ОКАТО
-  # @return [OKATOCode]
-  # minOccurs: 0, maxOccurs: 1
-  attr_accessor :okato_code
   # код страны по ОКСМ
   # @return [OKSMCode]
   # minOccurs: 0, maxOccurs: 1

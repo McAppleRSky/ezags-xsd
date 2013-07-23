@@ -96,5 +96,9 @@ class StatementContentOfBirthMapper
   # @return [Int]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :occupation
+  # Признак согласия отца ребенка на установление отцовства одновременно с регистрацией рождения
+  # @return [Boolean]
+  # minOccurs: 0, maxOccurs: 1
+  attr_accessor :filliation_agree_by_father
 
 end

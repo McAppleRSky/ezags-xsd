@@ -1440,7 +1440,7 @@
 			</xs:enumeration>
 			<xs:enumeration value="refuse">
 				<xs:annotation>
-					<xs:documentation>Мотивированный отказ (существуют юридические ограничения на выдачу сведений)</xs:documentation>
+					<xs:documentation>Отказ</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="timeout">

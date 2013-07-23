@@ -23,6 +23,7 @@ require "xml_schema_mapper/test_builder"
   # @attr education [int]
   # @attr educationString [STRING250]
   # @attr occupation [int]
+  # @attr filliationAgreeByFather [boolean]
 
 
 describe StatementContentOfBirthMapper do

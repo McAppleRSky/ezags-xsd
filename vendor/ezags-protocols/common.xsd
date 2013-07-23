@@ -255,12 +255,6 @@
 			<xs:documentation>Сведения об адресе с точностью до населённого пункта</xs:documentation>
 		</xs:annotation>
 		<xs:sequence minOccurs="1">
-			<xs:element ref="cm:okatoCode" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>Код по классификатору ОКАТО
-			</xs:documentation>
-				</xs:annotation>
-			</xs:element>
 			<xs:element ref="cm:countryCode" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Код страны по классификатору ОКСМ</xs:documentation>

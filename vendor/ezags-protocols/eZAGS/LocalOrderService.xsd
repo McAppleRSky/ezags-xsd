@@ -62,7 +62,7 @@
             <xs:element name="documentsConfirmingBirth" type="doc:DocumentsConfirmingBirth"
                 minOccurs="0"/>
             <xs:element name="documentsConfirmingParticipant"
-                type="doc:DocumentsConfirmingFiliationForBirthStmt"/>
+                type="doc:DocumentsConfirmingFiliationForBirthStmt" maxOccurs="1" minOccurs="0"/>
             <xs:element name="otherApplicants" type="doc:OtherApplicants" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
@@ -256,11 +256,11 @@
             <xs:element name="item" type="ac:Registrar" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
-	<xs:complexType name="ListOfFreeDates">  
-		<xs:sequence minOccurs="1">
-			<xs:element maxOccurs="unbounded" minOccurs="0" name="item" type="xs:time"/>  
-		</xs:sequence>  
- 	</xs:complexType>  
+    <xs:complexType name="ListOfFreeDates">
+        <xs:sequence minOccurs="1">
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="item" type="xs:time"/>
+        </xs:sequence>
+    </xs:complexType>
     <xs:complexType name="ServiceStatus">
         <xs:annotation>
             <xs:documentation>Сообщение об изменении статуса обработки отправленного электронного

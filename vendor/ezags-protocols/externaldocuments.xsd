@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- edited with XMLSpy v2011 rel. 2 (http://www.altova.com) by free (free) -->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:exdoc="http://ezags.rt.ru/type/externaldocuments/" xmlns:cm="http://ezags.rt.ru/type/common/" xmlns:ac="http://ezags.rt.ru/type/actor/" targetNamespace="http://ezags.rt.ru/type/externaldocuments/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:exdoc="http://ezags.rt.ru/type/externaldocuments/"
+	xmlns:cm="http://ezags.rt.ru/type/common/" xmlns:ac="http://ezags.rt.ru/type/actor/"
+	targetNamespace="http://ezags.rt.ru/type/externaldocuments/" elementFormDefault="qualified"
+	attributeFormDefault="unqualified">
 	<xs:import namespace="http://ezags.rt.ru/type/common/" schemaLocation="common.xsd"/>
 	<xs:import namespace="http://ezags.rt.ru/type/actor/" schemaLocation="actor.xsd"/>
 	<!-- Medical documents Start -->
@@ -275,37 +279,44 @@
 			<xs:element ref="cm:proceedMethod" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="medicalCertificateOfBirthByOrganization" type="exdoc:MedicalCertificateOfBirthByOrganization">
+	<xs:element name="medicalCertificateOfBirthByOrganization"
+		type="exdoc:MedicalCertificateOfBirthByOrganization">
 		<xs:annotation>
 			<xs:documentation>Документ установленной формы о рождении, выданный медицинской организацией, в которой происходили роды</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="medicalCertificateOfBirthByPrivatePractitioner" type="exdoc:MedicalCertificateOfBirthByPrivatePractitioner">
+	<xs:element name="medicalCertificateOfBirthByPrivatePractitioner"
+		type="exdoc:MedicalCertificateOfBirthByPrivatePractitioner">
 		<xs:annotation>
 			<xs:documentation>Документ установленной формы о рождении, выданный медицинской организацией, врач которой оказывал медицинскую помощь при родах или в которую обратилась мать после родов, либо частнопрактикующим врачом (при родах вне медицинской организации)</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="medicalCertificateOfSurrogateMotherAgree" type="exdoc:MedicalCertificateOfSurrogateMotherAgree">
+	<xs:element name="medicalCertificateOfSurrogateMotherAgree"
+		type="exdoc:MedicalCertificateOfSurrogateMotherAgree">
 		<xs:annotation>
 			<xs:documentation>Документ, выданный медицинской организацией и подтверждающий факт получения согласия женщины, родившей ребенка (суррогатной матери), на запись супругов, давших согласие на имплантацию эмбриона другой женщине в целях его вынашивания, родителями ребенка</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="medicalCertificateOfPerinatalDeathByOrganization" type="exdoc:MedicalCertificateOfDeathByOrganization">
+	<xs:element name="medicalCertificateOfPerinatalDeathByOrganization"
+		type="exdoc:MedicalCertificateOfDeathByOrganization">
 		<xs:annotation>
 			<xs:documentation>Документ установленной формы о перинатальной смерти, выданный медицинской организацией</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="medicalCertificateOfPerinatalDeathByPrivatePractitioner" type="exdoc:MedicalCertificateOfDeathByPrivatePractitioner">
+	<xs:element name="medicalCertificateOfPerinatalDeathByPrivatePractitioner"
+		type="exdoc:MedicalCertificateOfDeathByPrivatePractitioner">
 		<xs:annotation>
 			<xs:documentation>Документ установленной формы о перинатальной смерти, выданный частнопрактикующим врачом</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="medicalCertificateOfDeathByOrganization" type="exdoc:MedicalCertificateOfDeathByOrganization">
+	<xs:element name="medicalCertificateOfDeathByOrganization"
+		type="exdoc:MedicalCertificateOfDeathByOrganization">
 		<xs:annotation>
 			<xs:documentation>Документ установленной формы о смерти, выданный мед. организацией</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="medicalCertificateOfDeathByPrivatePractitioner" type="exdoc:MedicalCertificateOfDeathByPrivatePractitioner">
+	<xs:element name="medicalCertificateOfDeathByPrivatePractitioner"
+		type="exdoc:MedicalCertificateOfDeathByPrivatePractitioner">
 		<xs:annotation>
 			<xs:documentation>Документ установленной формы о смерти, выданный частнопрактикующим врачом</xs:documentation>
 		</xs:annotation>
@@ -360,7 +371,8 @@
 			<xs:documentation>Документ, выданный медицинской организацией и подтверждающий возраст и пол ребенка (при регистрации рождения найденного (подкинутого) ребенка)</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="requisitesStatementOfPersonAttentedAtBirth" type="exdoc:RequisitesStatementOfPersonAttentedAtBirth">
+	<xs:element name="requisitesStatementOfPersonAttentedAtBirth"
+		type="exdoc:RequisitesStatementOfPersonAttentedAtBirth">
 		<xs:annotation>
 			<xs:documentation>Заявление лица, присутствовавшего во время родов, о рождении ребенка - при родах вне медицинской организации и без оказания медицинской помощи (до исполнения ребенком одного года)</xs:documentation>
 		</xs:annotation>
@@ -375,4 +387,6 @@
 			<xs:documentation>Удостоверение льготника установленного образца для НЕГО</xs:documentation>
 		</xs:annotation>
 	</xs:element>
+	<xs:element name="courtActDecision" type="exdoc:CourtActDecision"/>
+	<xs:element name="courtActVerdict" type="exdoc:CourtActVerdict"/>
 </xs:schema>

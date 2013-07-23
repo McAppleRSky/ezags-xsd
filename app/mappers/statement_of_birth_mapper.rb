@@ -19,7 +19,7 @@ class StatementOfBirthMapper
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :documents_confirming_birth
   # @return [DocumentsConfirmingFiliationForBirthStmtMapper]
-  # minOccurs: 1, maxOccurs: 1
+  # minOccurs: 0, maxOccurs: 1
   attr_accessor :documents_confirming_participant
   # @return [OtherApplicantsMapper]
   # minOccurs: 0, maxOccurs: 1

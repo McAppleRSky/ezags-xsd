@@ -1,7 +1,6 @@
 require 'spec_helper'
 require "xml_schema_mapper/test_builder"
 
-  # @attr okatoCode [OKATO_CODE]
   # @attr countryCode [OKSM_CODE]
   # @attr rawAddressString [NOT_EMPTY_STRING]
   # @attr kladrCode [KLADR_CODE]

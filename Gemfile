@@ -4,3 +4,4 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'xml_schema_mapper'
+gem 'rake'

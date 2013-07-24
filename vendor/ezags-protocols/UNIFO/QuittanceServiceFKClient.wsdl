@@ -43,7 +43,7 @@
 
   <wsdl:service name="QuittanceFKClient">
     <wsdl:port binding="q:QuittanceFKClientBinding" name="QuittanceFKClientSoapPort">
-  <soap:address location="http://localhost:8001/QuittanceService/FKClient"/>
+  <soap:address location="REPLACE_WITH_ACTUAL_URL"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

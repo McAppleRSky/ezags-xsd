@@ -785,7 +785,7 @@
 	</wsdl:binding>
 	<wsdl:service name="InterDepPersonalService">
 		<wsdl:port name="InterDepPersonalServiceImplPort" binding="tns:InterDepPersonalServiceImplPortBinding">
-			<soap:address location="http://localhost:8001/InterDepPersonalServiceImpl/InterDepPersonalService"/>
+			<soap:address location="REPLACE_WITH_ACTUAL_URL"/>
 		</wsdl:port>
 	</wsdl:service>
 </wsdl:definitions>

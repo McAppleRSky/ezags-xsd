@@ -49,7 +49,7 @@
         <wsdl:port binding="tns:ChangeOrderStatusServiceV243Binding"
             name="ChangeOrderStatusServiceV243">
             <soap:address
-                location="http://u00nlb03:80/privateoffice/common/ChangeOrderStatusServiceV243"/>
+                location="REPLACE_WITH_ACTUAL_URL"/>
         </wsdl:port>
     </wsdl:service>
 </wsdl:definitions>

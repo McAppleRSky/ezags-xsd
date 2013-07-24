@@ -44,7 +44,7 @@
         <wsdl:port binding="tns:UpdateTimeReservationStatusServiceBinding"
             name="UpdateTimeReservationStatusService">
             <soap:address
-                location="http://localhost:8001/privateoffice/common/UpdateTimeReservationStatusService"/>
+                location="REPLACE_WITH_ACTUAL_URL"/>
         </wsdl:port>
     </wsdl:service>
 </wsdl:definitions>

@@ -43,7 +43,7 @@
   </wsdl:binding>
   <wsdl:service name="EventService">
     <wsdl:port binding="ev:EventServiceBinding" name="EventService">
-      <soap:address location="http://t00srv/orderprocessing/ws/EventServiceV25"/>
+      <soap:address location="REPLACE_WITH_ACTUAL_URL"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

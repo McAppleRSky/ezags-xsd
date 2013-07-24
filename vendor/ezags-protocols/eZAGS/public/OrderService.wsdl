@@ -232,7 +232,7 @@
     </binding>
     <service name="OrderService">
         <port name="OrderServiceImplPort" binding="tns:OrderServiceImplPortBinding">
-            <soap:address location="http://localhost:8001/OrderServiceImpl/OrderService"/>
+            <soap:address location="REPLACE_WITH_ACTUAL_URL"/>
         </port>
     </service>
 </definitions>

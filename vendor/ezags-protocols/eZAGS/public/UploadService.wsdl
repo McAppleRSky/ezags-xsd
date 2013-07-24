@@ -230,7 +230,7 @@
 	</binding>
 	<service name="UploadService">
 		<port name="UploadServiceImplPort" binding="tns:UploadServiceImplPortBinding">
-			<soap:address location="http://localhost:8001/UploadServiceImpl/UploadService"/>
+			<soap:address location="REPLACE_WITH_ACTUAL_URL"/>
 		</port>
 	</service>
 </definitions>

@@ -40,7 +40,7 @@
     </wsdl:binding>
     <wsdl:service name="SendMessageService">
         <wsdl:port binding="tns:SendMessageServiceSoapBinding" name="SendMessageServicePort">
-            <soap:address location="http://gepsdemo.gosuslugi.ru/soap/SendMessage2"/>
+            <soap:address location="REPLACE_WITH_ACTUAL_URL"/>
         </wsdl:port>
     </wsdl:service>
 </wsdl:definitions>

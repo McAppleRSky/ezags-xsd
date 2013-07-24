@@ -41,7 +41,7 @@
 
     <service name="LocalNSIService">
         <port name="LocalNSIServiceImplPort" binding="tns:LocalNSIServiceImplPortBinding">
-            <soap:address location="http://localhost:8001/LocalNSServiceImpl/LocalNSIService"/>
+            <soap:address location="REPLACE_WITH_ACTUAL_URL"/>
         </port>
     </service>
 </definitions>

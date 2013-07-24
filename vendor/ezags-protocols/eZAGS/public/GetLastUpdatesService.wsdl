@@ -41,7 +41,7 @@
 
     <service name="getLastUpdatesService">
         <port binding="nsi:getLastUpdatesServiceBinding" name="GetLastUpdatesServiceImplPort">
-            <soap:address location="http://localhost:8001/getLastUpdatesService"/>
+            <soap:address location="REPLACE_WITH_ACTUAL_URL"/>
         </port>
     </service>
 </definitions>

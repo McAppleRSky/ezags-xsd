@@ -60,7 +60,7 @@
 
       <wsdl:port binding="impl:ServicePFRSoapBinding" name="ServicePFR">
 
-         <wsdlsoap:address location="http://d00smevapp21.00.egov.local:7777/gateway/services/SID0003072"/>
+         <wsdlsoap:address location="REPLACE_WITH_ACTUAL_URL"/>
 
       </wsdl:port>
 

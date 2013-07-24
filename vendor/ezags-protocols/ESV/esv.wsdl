@@ -1498,10 +1498,10 @@
     </wsdl:binding>
     <wsdl:service name="SignatureTool">
         <wsdl:port name="SignatureToolSoap" binding="tns:SignatureToolSoap">
-            <soap:address location="http://195.245.214.33:7777/esv/SignatureTool.asmx"/>
+            <soap:address location="REPLACE_WITH_ACTUAL_URL"/>
         </wsdl:port>
         <wsdl:port name="SignatureToolSoap12" binding="tns:SignatureToolSoap12">
-            <soap12:address location="http://195.245.214.33:7777/esv/SignatureTool.asmx"/>
+            <soap12:address location="REPLACE_WITH_ACTUAL_URL"/>
         </wsdl:port>
     </wsdl:service>
 </wsdl:definitions>

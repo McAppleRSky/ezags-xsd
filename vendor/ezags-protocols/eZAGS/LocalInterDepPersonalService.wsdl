@@ -768,7 +768,7 @@
 	</wsdl:binding>
 	<wsdl:service name="LocalInterDepPersonalService">
 		<wsdl:port name="LocalInterDepPersonalServicePort" binding="tns:LocalInterDepPersonalService">
-			<soap:address location="No Target Adress"/>
+			<soap:address location="REPLACE_WITH_ACTUAL_URL"/>
 		</wsdl:port>
 	</wsdl:service>
 </wsdl:definitions>

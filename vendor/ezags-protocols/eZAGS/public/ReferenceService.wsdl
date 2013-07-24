@@ -42,7 +42,7 @@
     </binding>
     <service name="ReferenceService">
         <port name="ReferenceServiceImplPort" binding="tns:ReferenceServiceImplPortBinding">
-            <soap:address location="http://localhost:8001/ReferenceServiceImpl/ReferenceService"/>
+            <soap:address location="REPLACE_WITH_ACTUAL_URL"/>
         </port>
     </service>
 </definitions>

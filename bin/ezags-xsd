@@ -15,6 +15,12 @@ class CLI < Thor
     @script = XsdMappers::CLI.new
   end
 
+  desc 'update', 'update ezags xsd, replace location in wsdl to "REPLACE_WITH_ACTUAL_URL" and generate mappers'
+  def update
+    update_protocols
+    update_all
+  end
+
   desc 'update_all', 'update ezags xsd mappers'
   def update_all
     update_retro

@@ -47,7 +47,7 @@ class StatementContentOfBirthMapper
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :specify_nationality_of_mother
   # Время рождения (в т.ч. ребенка, умершего на 1-ой неделе жизни)
-  # @return [Time]
+  # @return [TIME]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :birth_time
   # Отцовство установленно?

@@ -23,11 +23,11 @@ class StatementContentOfDeathMapper
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :connection_with_dead
   # Время рождения (в т.ч. ребенка, умершего на 1-ой неделе жизни)
-  # @return [Time]
+  # @return [TIME]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :birth_time
   # Время смерти ребенка, умершего на 1-ой неделе жизни
-  # @return [Time]
+  # @return [TIME]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :death_time
   # Реквизиты АЗ о рождении умершего ребенка (до 14 лет), заполняется при наличии у ребенка свидетельства о рождении

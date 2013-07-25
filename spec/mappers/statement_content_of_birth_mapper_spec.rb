@@ -11,7 +11,7 @@ require "xml_schema_mapper/test_builder"
   # @attr isChildRefusal [boolean]
   # @attr specifyNationalityOfFather [boolean]
   # @attr specifyNationalityOfMother [boolean]
-  # @attr birthTime [time]
+  # @attr birthTime [TIME]
   # @attr wasFiliationEstablished [boolean]
   # @attr lonelyMotherStatementDate [date]
   # @attr findingDate [date]

@@ -7,7 +7,7 @@ class StatementContentOfDivorceMapper
   type 'StatementContentOfDivorce'
 
   # Время начала процедуры прекращения брака
-  # @return [Time]
+  # @return [TIME]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :divorce_time
   # Дата прекращения брака

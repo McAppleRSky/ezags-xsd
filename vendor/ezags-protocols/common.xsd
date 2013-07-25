@@ -381,7 +381,7 @@
 			<xs:documentation>живорожденный или мертворожденный</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="birthTime" type="xs:time">
+	<xs:element name="birthTime" type="cm:TIME">
 		<xs:annotation>
 			<xs:documentation>Время рождения (в т.ч. ребенка, умершего на 1-ой неделе жизни)</xs:documentation>
 		</xs:annotation>
@@ -503,12 +503,12 @@
 			<xs:documentation>Причина смерти, если нет значения из мкб-10</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="deathTime" type="xs:time">
+	<xs:element name="deathTime" type="cm:TIME">
 		<xs:annotation>
 			<xs:documentation>Время смерти ребенка, умершего на 1-ой неделе жизни</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="desiredRegistratonTime" type="xs:time">
+	<xs:element name="desiredRegistratonTime" type="cm:TIME">
 		<xs:annotation>
 			<xs:documentation>Желаемое время регистрации брака</xs:documentation>
 		</xs:annotation>
@@ -533,7 +533,7 @@
 			<xs:documentation>Дата прекращения брака</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="divorceTime" type="xs:time">
+	<xs:element name="divorceTime" type="cm:TIME">
 		<xs:annotation>
 			<xs:documentation>Время начала процедуры прекращения брака</xs:documentation>
 		</xs:annotation>
@@ -658,7 +658,7 @@
 			<xs:documentation>Записаны ли усыновители родителями ребенка?</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="isApplicant" type="xs:boolean">
+	<xs:element name="applicant" type="xs:boolean">
 		<xs:annotation>
 			<xs:documentation>Признак "Является ли Заявителем"</xs:documentation>
 		</xs:annotation>
@@ -1395,7 +1395,7 @@
 			<xs:documentation>Время</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="cm:NOT_EMPTY_STRING">
-			<xs:pattern value="[012]\d:[0-6]\d"/>
+			<xs:pattern value="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="UID">

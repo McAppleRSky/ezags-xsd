@@ -11,7 +11,7 @@ class TimeSlotMapper
   # minOccurs: 1, maxOccurs: 1
   attr_accessor :selected_date
   # Выбранное время
-  # @return [Time]
+  # @return [TIME]
   # minOccurs: 1, maxOccurs: 1
   attr_accessor :selected_time
 

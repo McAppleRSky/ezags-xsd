@@ -2,7 +2,7 @@ require 'spec_helper'
 require "xml_schema_mapper/test_builder"
 
   # @attr isPrivateOfficeOwner [boolean]
-  # @attr isApplicant [boolean]
+  # @attr applicant [boolean]
   # @attr surname [STRING60]
   # @attr firstName [STRING60]
   # @attr patronymic [STRING60]

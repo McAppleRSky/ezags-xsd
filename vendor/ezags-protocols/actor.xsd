@@ -9,7 +9,7 @@
 		</xs:annotation>
 		<xs:sequence minOccurs="1">
 			<xs:element ref="cm:isPrivateOfficeOwner" minOccurs="0"/>
-			<xs:element ref="cm:isApplicant" minOccurs="0"/>
+			<xs:element ref="cm:applicant" minOccurs="0"/>
 			<xs:element ref="cm:surname" minOccurs="0"/>
 			<xs:element ref="cm:firstName" minOccurs="0"/>
 			<xs:element ref="cm:patronymic" minOccurs="0"/>
@@ -80,7 +80,7 @@
 			<xs:restriction base="ac:FullPerson">
 				<xs:sequence minOccurs="1">
 					<xs:element ref="cm:isPrivateOfficeOwner" minOccurs="0"/>
-					<xs:element ref="cm:isApplicant" minOccurs="0"/>
+					<xs:element ref="cm:applicant" minOccurs="0"/>
 					<xs:element ref="cm:surname"/>
 					<xs:element ref="cm:firstName"/>
 					<xs:element ref="cm:patronymic" minOccurs="0"/>
@@ -116,7 +116,7 @@
 			<xs:restriction base="ac:FullCitizen">
 				<xs:sequence minOccurs="1">
 					<xs:element ref="cm:isPrivateOfficeOwner" minOccurs="0"/>
-					<xs:element ref="cm:isApplicant" minOccurs="0"/>
+					<xs:element ref="cm:applicant" minOccurs="0"/>
 					<xs:element ref="cm:surname"/>
 					<xs:element ref="cm:firstName"/>
 					<xs:element ref="cm:patronymic" minOccurs="0"/>
@@ -151,7 +151,7 @@
 			<xs:restriction base="ac:CitizenWithoutIdentDoc">
 				<xs:sequence minOccurs="1">
 					<xs:element ref="cm:isPrivateOfficeOwner" minOccurs="0"/>
-					<xs:element ref="cm:isApplicant" minOccurs="0"/>
+					<xs:element ref="cm:applicant" minOccurs="0"/>
 					<xs:element ref="cm:surname"/>
 					<xs:element ref="cm:firstName"/>
 					<xs:element ref="cm:patronymic" minOccurs="0"/>
@@ -189,7 +189,7 @@
 			<xs:restriction base="ac:FullPerson">
 				<xs:sequence minOccurs="1">
 					<xs:element ref="cm:isPrivateOfficeOwner" minOccurs="0"/>
-					<xs:element ref="cm:isApplicant"/>
+					<xs:element ref="cm:applicant"/>
 					<xs:element ref="cm:surname"/>
 					<xs:element ref="cm:firstName"/>
 					<xs:element ref="cm:patronymic" minOccurs="0"/>
@@ -223,7 +223,7 @@
 			<xs:restriction base="ac:FullPerson">
 				<xs:sequence minOccurs="1">
 					<xs:element ref="cm:isPrivateOfficeOwner" minOccurs="0"/>
-					<xs:element ref="cm:isApplicant" minOccurs="0"/>
+					<xs:element ref="cm:applicant" minOccurs="0"/>
 					<xs:element ref="cm:surname"/>
 					<xs:element ref="cm:firstName"/>
 					<xs:element ref="cm:patronymic" minOccurs="0"/>
@@ -304,7 +304,7 @@
 			<xs:restriction base="ac:FullPerson">
 				<xs:sequence minOccurs="1">
 					<xs:element ref="cm:isPrivateOfficeOwner" minOccurs="0"/>
-					<xs:element ref="cm:isApplicant" minOccurs="0"/>
+					<xs:element ref="cm:applicant" minOccurs="0"/>
 					<xs:element ref="cm:surname"/>
 					<xs:element ref="cm:firstName" minOccurs="0"/>
 					<xs:element ref="cm:patronymic" minOccurs="0"/>

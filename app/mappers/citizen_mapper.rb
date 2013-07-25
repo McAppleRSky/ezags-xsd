@@ -23,7 +23,7 @@ class CitizenMapper
   # Признак "Является ли Заявителем"
   # @return [Boolean]
   # minOccurs: 0, maxOccurs: 1
-  attr_accessor :is_applicant
+  attr_accessor :applicant
   # Фамилия
   # @return [STRING60]
   # minOccurs: 1, maxOccurs: 1

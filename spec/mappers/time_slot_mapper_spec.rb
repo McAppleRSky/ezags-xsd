@@ -2,7 +2,7 @@ require 'spec_helper'
 require "xml_schema_mapper/test_builder"
 
   # @attr selectedDate [date]
-  # @attr selectedTime [time]
+  # @attr selectedTime [TIME]
 
 
 describe TimeSlotMapper do

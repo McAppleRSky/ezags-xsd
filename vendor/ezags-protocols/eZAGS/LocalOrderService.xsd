@@ -258,7 +258,7 @@
     </xs:complexType>
     <xs:complexType name="ListOfFreeDates">
         <xs:sequence minOccurs="1">
-            <xs:element maxOccurs="unbounded" minOccurs="0" name="item" type="xs:time"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="item" type="cm:TIME"/>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="ServiceStatus">
@@ -365,7 +365,7 @@
 </xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="selectedTime" type="xs:time">
+            <xs:element name="selectedTime" type="cm:TIME">
                 <xs:annotation>
                     <xs:documentation>Выбранное время</xs:documentation>
                 </xs:annotation>

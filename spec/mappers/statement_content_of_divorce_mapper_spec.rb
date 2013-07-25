@@ -1,7 +1,7 @@
 require 'spec_helper'
 require "xml_schema_mapper/test_builder"
 
-  # @attr divorceTime [time]
+  # @attr divorceTime [TIME]
   # @attr divorceDate [DateAgile]
   # @attr benefitCategoryForHer [NOT_EMPTY_STRING]
   # @attr benefitCategoryForHim [NOT_EMPTY_STRING]

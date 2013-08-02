@@ -10,7 +10,8 @@ class ShortAddressMapper
   # @return [OKSMCode]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :country_code
-  # адрес в первоначальном виде (как записан в документе). Только для визуальной верификации сотрудником ЗАГС!
+  # адрес в первоначальном виде (как записан в документе). Только для визуальной верификации
+  # 				сотрудником ЗАГС!
   # @return [NOTEmptyString]
   # minOccurs: 1, maxOccurs: 1
   attr_accessor :raw_address_string
@@ -38,7 +39,7 @@ class ShortAddressMapper
   # @return [STRING80]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :city
-  # Населенный пункт, строковое представленеи 
+  # Населенный пункт, строковое представленеи
   # @return [STRING80]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :settlement

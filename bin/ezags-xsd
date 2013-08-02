@@ -16,9 +16,11 @@ class CLI < Thor
   end
 
   desc 'update', 'update ezags xsd, replace location in wsdl to "REPLACE_WITH_ACTUAL_URL" and generate mappers'
+  method_option :path,   aliases: '-p', desc: 'temporary path', type: :string, default: 'tmp'
+  method_option :branch, aliases: '-b', desc: 'actual branch',  type: :string, default: '2.2/develop'
   def update
-    update_protocols
-    update_all
+    invoke :update_protocols
+    invoke :update_all
   end
 
   desc 'update_all', 'update ezags xsd mappers'

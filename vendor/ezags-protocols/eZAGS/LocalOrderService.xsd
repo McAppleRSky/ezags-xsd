@@ -14,7 +14,7 @@
     <xs:complexType name="GetRegistrarsRequestObj">
         <xs:sequence minOccurs="1">
             <xs:element ref="cm:regionCode" minOccurs="0"/>
-            <xs:element name="serviceType" type="xs:int" minOccurs="0"/>
+            <xs:element name="serviceType" type="cm:SERVICE_TYPE" minOccurs="0"/>
             <xs:sequence minOccurs="0" maxOccurs="unbounded">
                 <xs:element name="subjectAddress" type="tns:SubjectAddress"/>
             </xs:sequence>
@@ -269,7 +269,7 @@
         </xs:annotation>
         <xs:sequence minOccurs="1">
             <xs:element ref="cm:ezagsId"/>
-            <xs:element name="status" type="xs:int" minOccurs="0">
+            <xs:element name="status" type="tns:SERVICE_STATE" minOccurs="0">
                 <xs:annotation>
                     <xs:documentation>Статус обработки заявления (справочник
                         ServiceStatus)
@@ -375,7 +375,7 @@
     <xs:complexType name="SubjectAddress">
         <xs:sequence minOccurs="1">
             <xs:element name="address" type="cm:FullAddress"/>
-            <xs:element name="addressType" type="xs:int"/>
+            <xs:element name="addressType" type="tns:ADDRESS_TYPE"/>
             <!-- справочник AdressType -->
             <xs:element name="subjectType" type="xs:int"/>
             <!-- справочник SubjectRole -->
@@ -434,6 +434,95 @@
             <xs:enumeration value="reference">
                 <xs:annotation>
                     <xs:documentation>Справка</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="SERVICE_STATE">
+        <xs:annotation>
+            <xs:documentation>статус исполнения услуги</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="cm:NOT_EMPTY_STRING">
+            <xs:enumeration value="unknown">
+                <xs:annotation>
+                    <xs:documentation>Состояние услуги неопределено</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="accepted">
+                <xs:annotation>
+                    <xs:documentation>Услуга принята на исполнение системой электронный ЗАГС</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="sent_to_rzags">
+                <xs:annotation>
+                    <xs:documentation>Документы переданы в региональный ЗАГС</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="finished">
+                <xs:annotation>
+                    <xs:documentation>Услуга успешно завершена</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="rejected">
+                <xs:annotation>
+                    <xs:documentation>В исполнении услуги отказано</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="error">
+                <xs:annotation>
+                    <xs:documentation>Ошибка исполнения услуги</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="canceled">
+                <xs:annotation>
+                    <xs:documentation>Исполнение услуги отменено</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="registered">
+                <xs:annotation>
+                    <xs:documentation>Заявление зарегистрировано сотрудником органа ЗАГС</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="ADDRESS_TYPE">
+        <xs:annotation>
+            <xs:documentation>Тип адреса</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="cm:NOT_EMPTY_STRING">
+            <xs:enumeration value="birth_place">
+                <xs:annotation>
+                    <xs:documentation>Место рождения</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="resident_place">
+                <xs:annotation>
+                    <xs:documentation>Место жительства</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="legal_address">
+                <xs:annotation>
+                    <xs:documentation>Юридический адрес</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="actual_address">
+                <xs:annotation>
+                    <xs:documentation>Фактический адрес</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="postal_address">
+                <xs:annotation>
+                    <xs:documentation>Почтовый адрес</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="undefined">
+                <xs:annotation>
+                    <xs:documentation>Значение не определено</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="death_place">
+                <xs:annotation>
+                    <xs:documentation>Место смерти</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
         </xs:restriction>

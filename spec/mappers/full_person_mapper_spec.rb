@@ -15,7 +15,7 @@ require "xml_schema_mapper/test_builder"
   # @attr nationalityString [STRING40]
   # @attr residencePlace [FullAddress]
   # @attr postalAddress [FullAddress]
-  # @attr maritalStatus [int]
+  # @attr maritalStatus [MARITAL_STATUS]
   # @attr snils [SNILS]
   # @attr alive [boolean]
   # @attr deathDate [DateAgile]

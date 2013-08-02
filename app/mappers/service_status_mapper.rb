@@ -14,7 +14,7 @@ class ServiceStatusMapper
   attr_accessor :ezags_id
   # Статус обработки заявления (справочник
   #                         ServiceStatus)
-  # @return [Int]
+  # @return [SERVICEState]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :status
   # Текст статуса обработки заявления

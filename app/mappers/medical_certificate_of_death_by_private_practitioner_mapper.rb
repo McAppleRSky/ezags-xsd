@@ -39,8 +39,8 @@ class MedicalCertificateOfDeathByPrivatePractitionerMapper
   # @return [VERIFICATIONStatus]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :verification_status
-  # Вид отметки на выданном документе (справочник MedCertOfDeathType)
-  # @return [Int]
+  # Вид отметки на выданном документе
+  # @return [MEDCertOfDeathType]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :med_cert_of_death_type
 

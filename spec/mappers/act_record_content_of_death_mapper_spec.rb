@@ -8,11 +8,11 @@ require "xml_schema_mapper/test_builder"
   # @attr education [int]
   # @attr educationString [STRING250]
   # @attr occupation [int]
-  # @attr deathPlacedAt [int]
+  # @attr deathPlacedAt [DEATH_PLACE]
   # @attr causeOfDeath [int]
   # @attr causeOfDeathString [STRING250]
-  # @attr deathPeriodRoadAccident [int]
-  # @attr whoRegisteredDeath [int]
+  # @attr deathPeriodRoadAccident [DEATH_PERIOD_ROAD_ACCIDENT]
+  # @attr whoRegisteredDeath [WHO_REGISTERED_DEATH]
 
 
 describe ActRecordContentOfDeathMapper do

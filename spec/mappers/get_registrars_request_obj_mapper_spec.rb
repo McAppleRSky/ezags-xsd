@@ -2,7 +2,7 @@ require 'spec_helper'
 require "xml_schema_mapper/test_builder"
 
   # @attr regionCode [REGION_CODE]
-  # @attr serviceType [int]
+  # @attr serviceType [SERVICE_TYPE]
   # @attr subjectAddress [SubjectAddress]
 
 

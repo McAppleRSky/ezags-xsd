@@ -259,7 +259,7 @@
 		</xs:annotation>
 		<xs:sequence minOccurs="1">
 			<xs:element ref="cm:statementDate" minOccurs="0"/>
-			<xs:element name="personAttentedAtBirth" type="ac:ApplicantPerson">
+			<xs:element name="personAttentedAtBirth" type="ac:PersonAttendedAtBirth">
 				<xs:annotation>
 					<xs:documentation>Сведения о лице, присутствовавшем во время родов</xs:documentation>
 				</xs:annotation>

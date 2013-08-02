@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:tns="http://ezags.rt.ru/settings/WebSettingsService/"
+             xmlns:ns="http://ezags.rt.ru/settings/WebSettingsService/type/local/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             name="WebSettingsService"
+             targetNamespace="http://ezags.rt.ru/settings/WebSettingsService/">
+	<types>
+		<xsd:schema>
+			<xsd:import namespace="http://ezags.rt.ru/settings/WebSettingsService/type/local/" schemaLocation="WebSettingsService.xsd"/>
+		</xsd:schema>
+	</types>
+	<message name="refreshRouter">
+		<part name="parameter" element="ns:refreshRouterObj"/>
+	</message>
+	<message name="refreshRouterResponse">
+		<part name="parameter" element="ns:refreshRouterResponseObj"/>
+	</message>
+
+	<portType name="WebSettingsService">
+		<operation name="refreshRouter">
+			<input message="tns:refreshRouter"/>
+			<output message="tns:refreshRouterResponse"/>
+		</operation>
+	</portType>
+
+	<binding name="WebSettingsServicePortBinding" type="tns:WebSettingsService">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="refreshRouter">
+			<soap:operation soapAction=""/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+	</binding>
+
+	<service name="WebSettingsService">
+		<port name="WebSettingsServiceImplPort" binding="tns:WebSettingsServicePortBinding">
+			<soap:address location="REPLACE_WITH_ACTUAL_URL"/>
+		</port>
+	</service>
+</definitions>

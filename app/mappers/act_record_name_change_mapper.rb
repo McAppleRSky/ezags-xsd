@@ -22,10 +22,10 @@ class ActRecordNameChangeMapper
   # @return [DateRecordMapper]
   # minOccurs: 1, maxOccurs: 1
   attr_accessor :act_record_date
-  # Руководитель органа ЗАГС, удостоверяющий своей подписью сведения
-  # @return [RegistrarEmployeeMapper]
+  # ФИО руководителя органа ЗАГС
+  # @return [STRING250]
   # minOccurs: 0, maxOccurs: 1
-  attr_accessor :head_of_zags
+  attr_accessor :head_of_zags_fio
   # Это второй экземпляр актовой записи?
   # @return [Boolean]
   # minOccurs: 0, maxOccurs: 1
@@ -50,10 +50,10 @@ class ActRecordNameChangeMapper
   # @return [Date]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :correction_date
-  # Сотрудник органа ЗАГС, зарегистрировавший акт
-  # @return [RegistrarEmployeeMapper]
+  # ФИО сотрудника органа ЗАГС
+  # @return [STRING250]
   # minOccurs: 0, maxOccurs: 1
-  attr_accessor :specialist
+  attr_accessor :specialist_fio
   # Временная метка, в виде time stamp, используемая в качестве версии
   # @return [TIMEStampVersion]
   # minOccurs: 0, maxOccurs: 1

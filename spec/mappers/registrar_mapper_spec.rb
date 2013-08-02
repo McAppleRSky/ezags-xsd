@@ -6,13 +6,15 @@ require "xml_schema_mapper/test_builder"
   # @attr fullName [STRING250]
   # @attr shortName [NOT_EMPTY_STRING]
   # @attr legalAddress [FullAddress]
-  # @attr employees [ListOfRegistrarEmployees]
-  # @attr headOfZAGS [RegistrarEmployee]
+  # @attr employeeCount [int]
+  # @attr headOfZagsFio [STRING250]
+  # @attr headOfZagsPosition [STRING500]
   # @attr oktmo [NOT_EMPTY_STRING]
   # @attr dateBegin [date]
-  # @attr dateClose [date]
   # @attr registrarArchUID [registrarUID]
   # @attr serviceTypes [ListOfServiceTypes]
+  # @attr phoneNumber [STRING200]
+  # @attr workingTime [STRING500]
   # @attr version [TIME_STAMP_VERSION]
 
 

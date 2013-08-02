@@ -2,7 +2,7 @@ require 'spec_helper'
 require "xml_schema_mapper/test_builder"
 
   # @attr ezagsId [UID]
-  # @attr status [int]
+  # @attr status [SERVICE_STATE]
   # @attr statusText [NOT_EMPTY_STRING]
   # @attr statusDate [date]
   # @attr resultActRecUIDs [UID]

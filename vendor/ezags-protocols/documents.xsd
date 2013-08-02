@@ -23,7 +23,8 @@
 			<xs:element ref="cm:documentUID" minOccurs="0"/>
 			<xs:element ref="cm:documentNumber"/>
 			<xs:element ref="cm:documentDate"/>
-			<xs:element ref="ac:headOfZAGS" minOccurs="0"/>
+            <xs:element ref="ac:headOfZagsFio"  minOccurs="0"/>
+            <xs:element ref="ac:headOfZagsPosition"  minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="RequisitesPaperCertificate">
@@ -80,14 +81,14 @@
 			<xs:element ref="cm:actRecordUID" minOccurs="0"/>
 			<xs:element ref="cm:actRecordNumber"/>
 			<xs:element ref="cm:actRecordDate"/>
-			<xs:element ref="ac:headOfZAGS" minOccurs="0"/>
+			<xs:element ref="ac:headOfZagsFio" minOccurs="0"/>
 			<xs:element ref="cm:isSecondCopy" minOccurs="0"/>
 			<xs:element ref="cm:isRecovered" minOccurs="0"/>
 			<xs:element ref="exdoc:requisitesCourtDecisionActRecordRecovered" minOccurs="0"/>
 			<xs:element ref="doc:otherInformationAndOfficialAnnotations" minOccurs="0"/>
 			<xs:element ref="exdoc:requisitesCourtDecisionActRecordCancel" minOccurs="0"/>
 			<xs:element ref="cm:correctionDate" minOccurs="0"/>
-			<xs:element ref="ac:specialist" minOccurs="0"/>
+			<xs:element ref="ac:specialistFio" minOccurs="0"/>
 			<xs:element ref="cm:version" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
@@ -1625,7 +1626,7 @@
 			</xs:element>
 			<xs:element ref="cm:deathPeriodRoadAccident" minOccurs="0">
 				<xs:annotation>
-					<xs:documentation>Смерть в результате ДТП - заполняется из медицинского свидетельства о смерти пункт 19 часть II (Прочие важные состояния). В случае смерти в результате ДТП, если смерть наступила на 8 - 30 сутки (медицинское свидетельство, пункт 20, код 1), указать код 1, если смерть наступила в течение 7 суток (медицинское свидетельство, пункт 20, код 2 или код 1 и 2), указать код 2.</xs:documentation>
+					<xs:documentation>Смерть в результате ДТП - заполняется из медицинского свидетельства о смерти пункт 19 часть II (Прочие важные состояния)</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element ref="cm:whoRegisteredDeath" minOccurs="0">

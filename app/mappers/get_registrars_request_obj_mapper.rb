@@ -9,7 +9,7 @@ class GetRegistrarsRequestObjMapper
   # @return [REGIONCode]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :region_code
-  # @return [Int]
+  # @return [SERVICEType]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :service_type
   # @return [SubjectAddressMapper]

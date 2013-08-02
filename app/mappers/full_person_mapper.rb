@@ -63,7 +63,7 @@ class FullPersonMapper
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :postal_address
   # Семейное положение
-  # @return [Int]
+  # @return [MARITALStatus]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :marital_status
   # СНИЛС

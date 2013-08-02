@@ -1,6 +1,6 @@
 # encoding: utf-8
 # @note Значение даты: используется для реквизитов, которые могут содержать неполную дату
-#             
+# 			
 
 class DateRecordMapper
   include XmlSchemaMapper

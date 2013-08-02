@@ -22,10 +22,14 @@ class RequisitesPaperCertificateWithActRecUidMapper
   # @return [Date]
   # minOccurs: 1, maxOccurs: 1
   attr_accessor :document_date
-  # Руководитель органа ЗАГС, удостоверяющий своей подписью сведения
-  # @return [RegistrarEmployeeMapper]
+  # ФИО руководителя органа ЗАГС
+  # @return [STRING250]
   # minOccurs: 0, maxOccurs: 1
-  attr_accessor :head_of_zags
+  attr_accessor :head_of_zags_fio
+  # Должность руководителя органа ЗАГС
+  # @return [STRING500]
+  # minOccurs: 0, maxOccurs: 1
+  attr_accessor :head_of_zags_position
   # Серия свидетельства
   # @return [STRING10]
   # minOccurs: 1, maxOccurs: 1

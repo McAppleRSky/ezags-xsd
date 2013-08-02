@@ -1,7 +1,7 @@
 require 'spec_helper'
 require "xml_schema_mapper/test_builder"
 
-  # @attr item [int]
+  # @attr item [SERVICE_TYPE]
 
 
 describe ListOfServiceTypesMapper do

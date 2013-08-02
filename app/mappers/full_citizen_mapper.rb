@@ -80,7 +80,7 @@ class FullCitizenMapper
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :residence_place
   # Семейное положение
-  # @return [Int]
+  # @return [MARITALStatus]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :marital_status
   # СНИЛС

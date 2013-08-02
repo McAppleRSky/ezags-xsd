@@ -26,26 +26,26 @@ class RegistrarMapper
   # @return [FullAddressMapper]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :legal_address
-  # Список сотрудников
-  # @return [ListOfRegistrarEmployeesMapper]
+  # Количество сотрудников органа ЗАГС
+  # @return [Int]
   # minOccurs: 0, maxOccurs: 1
-  attr_accessor :employees
-  # Руководитель органа ЗАГС, удостоверяющий своей подписью сведения
-  # @return [RegistrarEmployeeMapper]
+  attr_accessor :employee_count
+  # ФИО руководителя органа ЗАГС
+  # @return [STRING250]
   # minOccurs: 0, maxOccurs: 1
-  attr_accessor :head_of_zags
+  attr_accessor :head_of_zags_fio
+  # Должность руководителя органа ЗАГС
+  # @return [STRING500]
+  # minOccurs: 0, maxOccurs: 1
+  attr_accessor :head_of_zags_position
   # Код ОКТМО
   # @return [NOTEmptyString]
   # minOccurs: 1, maxOccurs: 1
   attr_accessor :oktmo
-  # Дата начала работы ЗАГСа
+  # Дата начала действия версии сведений оЗАСГ
   # @return [Date]
   # minOccurs: 1, maxOccurs: 1
   attr_accessor :date_begin
-  # Дата закрытия ЗАГСа
-  # @return [Date]
-  # minOccurs: 0, maxOccurs: 1
-  attr_accessor :date_close
   # Место хранения актовых аписей после закрытия ЗАГСа
   # @return [RegistrarUID]
   # minOccurs: 0, maxOccurs: 1
@@ -54,6 +54,14 @@ class RegistrarMapper
   # @return [ListOfServiceTypesMapper]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :service_types
+  # Номер телефона ЗАГСа
+  # @return [STRING200]
+  # minOccurs: 0, maxOccurs: 1
+  attr_accessor :phone_number
+  # Режим работы ЗАГСа
+  # @return [STRING500]
+  # minOccurs: 0, maxOccurs: 1
+  attr_accessor :working_time
   # Временная метка, в виде time stamp, используемая в качестве версии
   # @return [TIMEStampVersion]
   # minOccurs: 1, maxOccurs: 1

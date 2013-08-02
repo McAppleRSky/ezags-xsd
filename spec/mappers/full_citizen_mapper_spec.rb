@@ -14,7 +14,7 @@ require "xml_schema_mapper/test_builder"
   # @attr nationality [OKIN_CODE]
   # @attr nationalityString [STRING40]
   # @attr residencePlace [FullAddress]
-  # @attr maritalStatus [int]
+  # @attr maritalStatus [MARITAL_STATUS]
   # @attr snils [SNILS]
   # @attr phoneNumber [PHONE]
   # @attr workPhoneNumber [PHONE]

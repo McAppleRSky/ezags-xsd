@@ -9,7 +9,6 @@ require "xml_schema_mapper/test_builder"
   # @attr rawAddressString [NOT_EMPTY_STRING]
   # @attr oktmo [NOT_EMPTY_STRING]
   # @attr dateBegin [date]
-  # @attr dateClose [date]
 
 
 describe NsiRegistrarMapper do

@@ -8,7 +8,7 @@ class SubjectAddressMapper
   # @return [FullAddressMapper]
   # minOccurs: 1, maxOccurs: 1
   attr_accessor :address
-  # @return [Int]
+  # @return [ADDRESSType]
   # minOccurs: 1, maxOccurs: 1
   attr_accessor :address_type
   # @return [Int]

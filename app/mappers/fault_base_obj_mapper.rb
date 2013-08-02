@@ -10,7 +10,7 @@ class FaultBaseObjMapper
   # @return [FAULT]
   # minOccurs: 1, maxOccurs: 1
   attr_accessor :fault_type
-  # Текст сообщения  об ошибке
+  # Текст сообщения об ошибке
   # @return [NOTEmptyString]
   # minOccurs: 1, maxOccurs: 1
   attr_accessor :message

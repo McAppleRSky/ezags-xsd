@@ -26,7 +26,8 @@ class NsiRegistrarMapper
   # @return [NOTEmptyString]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :short_name
-  # адрес в первоначальном виде (как записан в документе). Только для визуальной верификации сотрудником ЗАГС!
+  # адрес в первоначальном виде (как записан в документе). Только для визуальной верификации
+  # 				сотрудником ЗАГС!
   # @return [NOTEmptyString]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :raw_address_string
@@ -34,13 +35,9 @@ class NsiRegistrarMapper
   # @return [NOTEmptyString]
   # minOccurs: 1, maxOccurs: 1
   attr_accessor :oktmo
-  # Дата начала работы ЗАГСа
+  # Дата начала действия версии сведений оЗАСГ
   # @return [Date]
   # minOccurs: 1, maxOccurs: 1
   attr_accessor :date_begin
-  # Дата закрытия ЗАГСа
-  # @return [Date]
-  # minOccurs: 0, maxOccurs: 1
-  attr_accessor :date_close
 
 end

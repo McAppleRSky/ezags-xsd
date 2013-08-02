@@ -16,7 +16,7 @@ require "xml_schema_mapper/test_builder"
   # @attr licenseNumber [NOT_EMPTY_STRING]
   # @attr duplicate [boolean]
   # @attr verificationStatus [VERIFICATION_STATUS]
-  # @attr medCertOfDeathType [int]
+  # @attr medCertOfDeathType [MED_CERT_OF_DEATH_TYPE]
 
 
 describe MedicalCertificateBaseMapper do

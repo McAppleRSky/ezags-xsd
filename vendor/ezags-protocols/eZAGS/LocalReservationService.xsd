@@ -18,7 +18,7 @@
     <xs:complexType name="GetFreeDaysOfReceiptRequestObj">
         <xs:sequence minOccurs="1">
             <xs:element name="registrarId" type="xs:int"/>
-            <xs:element name="serviceType" type="xs:int" minOccurs="0"/>
+            <xs:element name="serviceType" type="cm:SERVICE_TYPE" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="GetFreeDaysOfReceiptResponseObj">
@@ -30,7 +30,7 @@
         <xs:sequence minOccurs="1">
             <xs:element name="registrarId" type="xs:int"/>
             <xs:element name="dateOn" type="xs:date" minOccurs="0"/>
-            <xs:element name="serviceType" type="xs:int" minOccurs="0"/>
+            <xs:element name="serviceType" type="cm:SERVICE_TYPE" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="GetFreeTimesOfReceiptResponseObj">
@@ -67,7 +67,7 @@
             <xs:documentation>Сведения о времени приёма по записи через Интернет</xs:documentation>
         </xs:annotation>
         <xs:sequence minOccurs="1">
-            <xs:element name="serviceType" type="xs:int">
+            <xs:element name="serviceType" type="cm:SERVICE_TYPE">
                 <xs:annotation>
                     <xs:documentation>Вид оказываемой услуги (справочник ServiceType)</xs:documentation>
                 </xs:annotation>

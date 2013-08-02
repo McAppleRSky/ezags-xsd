@@ -12,7 +12,7 @@ class RequisitesStatementOfPersonAttentedAtBirthMapper
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :statement_date
   # Сведения о лице, присутствовавшем во время родов
-  # @return [ApplicantPersonMapper]
+  # @return [PersonAttendedAtBirthMapper]
   # minOccurs: 1, maxOccurs: 1
   attr_accessor :person_attented_at_birth
   # Наименование организации

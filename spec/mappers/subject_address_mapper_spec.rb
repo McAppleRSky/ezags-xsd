@@ -2,7 +2,7 @@ require 'spec_helper'
 require "xml_schema_mapper/test_builder"
 
   # @attr address [FullAddress]
-  # @attr addressType [int]
+  # @attr addressType [ADDRESS_TYPE]
   # @attr subjectType [int]
 
 

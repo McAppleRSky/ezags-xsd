@@ -1,10 +1,12 @@
 # encoding: utf-8
-# @note Перечисляемый тип: "справочники"
 
 class ReferenceTypeMapper
   include XmlSchemaMapper
   schema File.expand_path('../../vendor/ezags-protocols/eZAGS/public/UploadService.xsd', File.dirname(__FILE__))
-  type 'REFERENCE_TYPE'
+  type 'ReferenceType'
 
+  # @return [String]
+  # minOccurs: 0, maxOccurs: 1
+  attr_accessor :include
 
 end

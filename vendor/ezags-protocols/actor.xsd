@@ -36,21 +36,6 @@
 			</xs:choice>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:complexType name="Employee">
-		<xs:annotation>
-			<xs:documentation>Сотрудник</xs:documentation>
-		</xs:annotation>
-		<xs:complexContent>
-			<xs:restriction base="ac:FullPerson">
-				<xs:sequence minOccurs="1">
-					<xs:element ref="cm:surname"/>
-					<xs:element ref="cm:firstName"/>
-					<xs:element ref="cm:patronymic" minOccurs="0"/>
-					<xs:element ref="cm:workPhoneNumber" minOccurs="0"/>
-				</xs:sequence>
-			</xs:restriction>
-		</xs:complexContent>
-	</xs:complexType>
 	<xs:complexType name="FullCitizen">
 		<xs:annotation>
 			<xs:documentation>Сведения о человеке в объеме "Гражданин с датой, местом рождения и местом жительства"
@@ -243,7 +228,30 @@
 			</xs:restriction>
 		</xs:complexContent>
 	</xs:complexType>
-	<xs:complexType name="DeadPersonUnknown">
+
+    <xs:complexType name="PersonAttendedAtBirth">
+    <xs:annotation>
+        <xs:documentation>Сведения о человеке в объеме "Лицо, присутствовавшее во время родов"</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+        <xs:restriction base="ac:FullPerson">
+            <xs:sequence minOccurs="1">
+                <xs:element ref="cm:isPrivateOfficeOwner" minOccurs="0"/>
+                <xs:element ref="cm:surname" minOccurs="0"/>
+                <xs:element ref="cm:firstName" minOccurs="0"/>
+                <xs:element ref="cm:patronymic" minOccurs="0"/>
+                <xs:element ref="cm:gender" minOccurs="0"/>
+                <xs:element ref="cm:birthDate" minOccurs="0"/>
+                <xs:element ref="cm:residencePlace" minOccurs="0"/>
+                <xs:element ref="cm:snils" minOccurs="0"/>
+                <xs:element ref="cm:phoneNumber" minOccurs="0"/>
+                <xs:element ref="cm:identityDocument" minOccurs="0"/>
+            </xs:sequence>
+        </xs:restriction>
+    </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="DeadPersonUnknown">
 		<xs:annotation>
 			<xs:documentation>Сведения о неизвестном умершем
 				Сведения о человеке (№ - услуга, * - роль в услуге):
@@ -327,23 +335,6 @@
 			<xs:element ref="ac:juridicalAuthorisedRepresentative"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:complexType name="RegistrarEmployee">
-		<xs:annotation>
-			<xs:documentation>Сведения о сотруднике органа ЗАГС</xs:documentation>
-		</xs:annotation>
-		<xs:sequence minOccurs="1">
-			<xs:element ref="ac:employee"/>
-			<xs:element ref="cm:position"/>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="ListOfRegistrarEmployees">
-		<xs:annotation>
-			<xs:documentation>Список сотрудников органа ЗАГС</xs:documentation>
-		</xs:annotation>
-		<xs:sequence minOccurs="1">
-			<xs:element name="item" type="ac:RegistrarEmployee" minOccurs="0" maxOccurs="unbounded"/>
-		</xs:sequence>
-	</xs:complexType>
 	<xs:complexType name="Registrar">
 		<xs:annotation>
 			<xs:documentation>Сведения о месте государственной регистрации</xs:documentation>
@@ -354,20 +345,37 @@
 			<xs:element ref="cm:fullName"/>
 			<xs:element ref="cm:shortName" minOccurs="0"/>
 			<xs:element ref="cm:legalAddress" minOccurs="0"/>
-			<xs:element ref="ac:employees" minOccurs="0"/>
-			<xs:element ref="ac:headOfZAGS" minOccurs="0"/>
+			<xs:element ref="ac:employeeCount" minOccurs="0"/>
+			<xs:element ref="ac:headOfZagsFio" minOccurs="0"/>
+			<xs:element ref="ac:headOfZagsPosition" minOccurs="0"/>
 			<xs:element ref="cm:oktmo"/>
 			<xs:element ref="cm:dateBegin"/>
-			<xs:element ref="cm:dateClose" minOccurs="0"/>
 			<xs:element name="registrarArchUID" type="cm:registrarUID" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Место хранения актовых аписей после закрытия ЗАГСа</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element ref="cm:serviceTypes" minOccurs="0"/>
+			<xs:element ref="ac:phoneNumber" minOccurs="0"/>
+			<xs:element ref="ac:workingTime" minOccurs="0"/>
 			<xs:element ref="cm:version"/>
 		</xs:sequence>
 	</xs:complexType>
+	<xs:element name="phoneNumber" type="cm:STRING200">
+		<xs:annotation>
+			<xs:documentation>Номер телефона ЗАГСа</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="workingTime" type="cm:STRING500">
+		<xs:annotation>
+			<xs:documentation>Режим работы ЗАГСа</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="employeeCount" type="xs:int">
+		<xs:annotation>
+			<xs:documentation>Количество сотрудников органа ЗАГС</xs:documentation>
+		</xs:annotation>
+	</xs:element>
 	<xs:element name="foreignId" type="cm:RegistrarIdentity">
 		<xs:annotation>
 			<xs:documentation>Идентификационные данные места государственной регистрации. Внешний ключ
@@ -390,29 +398,29 @@
 			</xs:restriction>
 		</xs:complexContent>
 	</xs:complexType>
-	<xs:element name="headOfZAGS" type="ac:RegistrarEmployee">
+	<xs:element name="headOfZagsFio" type="cm:STRING250">
 		<xs:annotation>
-			<xs:documentation>Руководитель органа ЗАГС, удостоверяющий своей подписью сведения</xs:documentation>
+			<xs:documentation>ФИО руководителя органа ЗАГС</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="specialist" type="ac:RegistrarEmployee">
+	<xs:element name="headOfZagsPosition" type="cm:STRING500">
 		<xs:annotation>
-			<xs:documentation>Сотрудник органа ЗАГС, зарегистрировавший акт</xs:documentation>
+			<xs:documentation>Должность руководителя органа ЗАГС</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="employee" type="ac:Employee">
+	<xs:element name="specialistFio" type="cm:STRING250">
 		<xs:annotation>
-			<xs:documentation>Персональные данные сотрудника</xs:documentation>
+			<xs:documentation>ФИО сотрудника органа ЗАГС</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="specialistPosition" type="cm:NOT_EMPTY_STRING">
+		<xs:annotation>
+			<xs:documentation>Должность сотрудника органа ЗАГС</xs:documentation>
 		</xs:annotation>
 	</xs:element>
 	<xs:element name="juridicalAuthorisedRepresentative" type="ac:JuridicalAuthorisedRepresentative">
 		<xs:annotation>
 			<xs:documentation>Персональные данные представителя ЮЛ</xs:documentation>
-		</xs:annotation>
-	</xs:element>
-	<xs:element name="employees" type="ac:ListOfRegistrarEmployees">
-		<xs:annotation>
-			<xs:documentation>Список сотрудников</xs:documentation>
 		</xs:annotation>
 	</xs:element>
 	<xs:element name="applicantPerson" type="ac:ApplicantPerson"/>

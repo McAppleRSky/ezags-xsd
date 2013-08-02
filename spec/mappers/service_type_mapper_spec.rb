@@ -1,8 +1,6 @@
 require 'spec_helper'
 require "xml_schema_mapper/test_builder"
 
-  # @attr Mnemonic [string]
-  # @attr Version [VersionType]
 
 
 describe ServiceTypeMapper do

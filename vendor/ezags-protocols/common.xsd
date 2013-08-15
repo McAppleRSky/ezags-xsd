@@ -39,7 +39,7 @@
 	</xs:complexType>
 	<xs:complexType name="DatePeriod">
 		<xs:annotation>
-			<xs:documentation>Период из двух приблизительных дат</xs:documentation>
+			<xs:documentation>Период из двух дат</xs:documentation>
 		</xs:annotation>
 		<xs:sequence minOccurs="1">
 			<xs:element name="startDate" type="xs:date">
@@ -555,6 +555,11 @@
 			<xs:documentation>Дата документа</xs:documentation>
 		</xs:annotation>
 	</xs:element>
+	<xs:element name="date_ddmmyyyy" type="cm:DATE_DD_MM_YYYY">
+		<xs:annotation>
+			<xs:documentation>Дата документа в формате дд.мм.гггг</xs:documentation>
+		</xs:annotation>
+	</xs:element>
 	<xs:element name="documentNumber" type="cm:NOT_EMPTY_STRING">
 		<xs:annotation>
 			<xs:documentation>Номер документа</xs:documentation>
@@ -845,9 +850,14 @@
 			<xs:documentation>Код ОКТМО</xs:documentation>
 		</xs:annotation>
 	</xs:element>
+	<xs:element name="oktmoName" type="cm:NOT_EMPTY_STRING">
+		<xs:annotation>
+			<xs:documentation>Наименование территории муниципального образования (согласно коду ОКТМО)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
 	<xs:element name="okpo" type="cm:NOT_EMPTY_STRING">
 		<xs:annotation>
-			<xs:documentation>Код по ОКПО медицинской организации, выдавшей документ</xs:documentation>
+			<xs:documentation>Код организации по ОКПО</xs:documentation>
 		</xs:annotation>
 	</xs:element>
 	<xs:element name="organizationAddress" type="cm:FullAddress">
@@ -890,6 +900,11 @@
 	<xs:element name="phoneNumber" type="cm:PHONE">
 		<xs:annotation>
 			<xs:documentation>Контактный телефон</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="postalCode" type="cm:POSTAL_CODE">
+		<xs:annotation>
+			<xs:documentation>Почтовый индекс</xs:documentation>
 		</xs:annotation>
 	</xs:element>
 	<xs:element name="position" type="cm:NOT_EMPTY_STRING">
@@ -1154,6 +1169,15 @@
 			<xs:minInclusive value="-2208967201"/>
 		</xs:restriction>
 	</xs:simpleType>
+	<xs:simpleType name="POSTAL_CODE">
+		<xs:annotation>
+			<xs:documentation>Почтовый код</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="cm:NOT_EMPTY_STRING">
+			<xs:pattern value="\d{6}"/>
+		</xs:restriction>
+	</xs:simpleType>
+
 	<xs:simpleType name="ACT_RECORD_NUMBER">
 		<xs:restriction base="cm:NOT_EMPTY_STRING">
 			<xs:pattern value="\d{1,5}[\d\w]?"/>
@@ -1536,6 +1560,11 @@
 					<xs:documentation>Документ проверен и недействителен</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DATE_DD_MM_YYYY">
+		<xs:restriction base="cm:NOT_EMPTY_STRING">
+			<xs:pattern value="^(0[1-9]|[12][0-9]|3[01])/.(0[1-9]|1[012])/.(19|20)\d\d$"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="NOT_EMPTY_STRING">

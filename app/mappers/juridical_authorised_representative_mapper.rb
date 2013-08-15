@@ -29,7 +29,7 @@ class JuridicalAuthorisedRepresentativeMapper
   attr_accessor :is_private_office_owner
   # Признак "Является ли Заявителем"
   # @return [Boolean]
-  # minOccurs: 1, maxOccurs: 1
+  # minOccurs: 0, maxOccurs: 1
   attr_accessor :applicant
   # Фамилия
   # @return [STRING60]
@@ -45,11 +45,11 @@ class JuridicalAuthorisedRepresentativeMapper
   attr_accessor :patronymic
   # Докумен, удостоверяющий личность
   # @return [IdentityDocumentMapper]
-  # minOccurs: 1, maxOccurs: 1
+  # minOccurs: 0, maxOccurs: 1
   attr_accessor :identity_document
   # Доверенность ЮЛ
   # @return [PowerOfAttorneyLegalMapper]
-  # minOccurs: 1, maxOccurs: 1
+  # minOccurs: 0, maxOccurs: 1
   attr_accessor :power_of_attorney_legal
 
 end

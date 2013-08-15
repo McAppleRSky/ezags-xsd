@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:tns="http://ezags.rt.ru/fzags/StandardReportService/" xmlns:t="http://smev.gosuslugi.ru/rev120315"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="StandardReportServiceService"
+             targetNamespace="http://ezags.rt.ru/fzags/StandardReportService/">
+    <types>
+        <xsd:schema>
+            <xsd:import namespace="http://smev.gosuslugi.ru/rev120315" schemaLocation="StandardReportService.xsd"/>
+        </xsd:schema>
+    </types>
+
+    <message name="getMarriageCountReport">
+        <part name="parameters" element="t:getMarriageCountReportRequest"/>
+    </message>
+    <message name="getMarriageCountReportResponse">
+        <part name="parameters" element="t:getMarriageCountReportResponse"/>
+    </message>
+
+    <message name="requestFault">
+        <part name="parameters" element="t:fault"/>
+    </message>
+
+    <portType name="StandardReportService">
+        <operation name="getMarriageCountReport">
+            <input message="tns:getMarriageCountReport"/>
+            <output message="tns:getMarriageCountReportResponse"/>
+            <fault name="requestFault" message="tns:requestFault"/>
+        </operation>
+    </portType>
+
+    <binding name="StandardReportServiceImplPortBinding" type="tns:StandardReportService">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="getMarriageCountReport">
+            <soap:operation soapAction=""/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+            <fault name="requestFault">
+                <soap:fault name="requestFault" use="literal"/>
+            </fault>
+        </operation>
+    </binding>
+
+    <service name="StandardReportService">
+        <port name="StandardReportServiceImplPort" binding="tns:StandardReportServiceImplPortBinding">
+            <soap:address location="REPLACE_WITH_ACTUAL_URL"/>
+        </port>
+    </service>
+</definitions>

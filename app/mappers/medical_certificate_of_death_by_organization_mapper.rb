@@ -26,7 +26,7 @@ class MedicalCertificateOfDeathByOrganizationMapper
   # @return [FullAddressMapper]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :organization_address
-  # Код по ОКПО медицинской организации, выдавшей документ
+  # Код организации по ОКПО
   # @return [NOTEmptyString]
   # minOccurs: 0, maxOccurs: 1
   attr_accessor :okpo

@@ -100,7 +100,7 @@ class FullPersonMapper
   attr_accessor :power_of_attorney
   # Доверенность ЮЛ
   # @return [PowerOfAttorneyLegalMapper]
-  # minOccurs: 1, maxOccurs: 1
+  # minOccurs: 0, maxOccurs: 1
   attr_accessor :power_of_attorney_legal
 
 end

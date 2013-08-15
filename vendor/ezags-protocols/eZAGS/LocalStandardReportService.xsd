@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema
+        xmlns:tns="http://ezags.rt.ru/fzags/StandardReportService/type/local/"
+        xmlns:cm="http://ezags.rt.ru/type/common/"
+        xmlns:ac="http://ezags.rt.ru/type/actor/"
+        xmlns:doc="http://ezags.rt.ru/type/document/"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://ezags.rt.ru/fzags/StandardReportService/type/local/"
+        elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+    <xs:import namespace="http://ezags.rt.ru/type/common/" schemaLocation="../common.xsd"/>
+    <xs:import namespace="http://ezags.rt.ru/type/actor/" schemaLocation="../actor.xsd"/>
+    <xs:import namespace="http://ezags.rt.ru/type/document/" schemaLocation="../documents.xsd"/>
+
+    <xs:complexType name="GetMarriageCountReportRequestObj">
+        <xs:sequence minOccurs="1">
+            <xs:element name="getMarriageCountReportFilter" type="tns:MarriageCountReportFilter"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:complexType name="MarriageCountReportFilter">
+        <xs:sequence minOccurs="1">
+            <xs:element name="datePeriod" type="cm:DatePeriod"/>
+            <xs:element ref="cm:oktmo"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:complexType name="GetMarriageCountReportResponseObj">
+        <xs:sequence minOccurs="1">
+            <xs:element name="count" type="xs:long"/>
+            <xs:element ref="cm:oktmo"/>
+            <xs:element ref="cm:oktmoName"/>
+
+            <xs:element name="registrarWithActRecords" type="tns:ListOfRegistrarWithActRecords"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ListOfRegistrarWithActRecords">
+        <xs:sequence minOccurs="1">
+            <xs:element name="item" type="tns:RegistrarWithActRecordsForReport" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="RegistrarWithActRecordsForReport">
+        <xs:annotation>
+            <xs:documentation>Сведения по оЗАГС для отчетов РОССТАТу</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="1">
+            <xs:element ref="cm:registrarId" minOccurs="0"/>
+            <xs:element ref="cm:fullName"/>
+            <xs:element ref="cm:shortName" minOccurs="0"/>
+            <xs:element ref="cm:legalAddress" minOccurs="0"/>
+            <xs:element ref="ac:headOfZagsFio" minOccurs="0"/>
+            <xs:element ref="ac:headOfZagsPosition" minOccurs="0"/>
+            <xs:element ref="cm:oktmo"/>
+            <xs:element ref="ac:phoneNumber" minOccurs="0"/>
+            <xs:element ref="cm:version"/>
+            <xs:element ref="cm:postalCode" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>почтовый индекс</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element ref="cm:okpo" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>код ОКПО</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="actRecords" type="tns:ListOfActRecordMarriageForReport"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:complexType name="ListOfActRecordMarriageForReport">
+        <xs:sequence minOccurs="1">
+            <xs:element name="item" type="tns:ActRecordMarriageForReport" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ActRecordForReport">
+        <xs:annotation>
+            <xs:documentation>Сведения по номеру АЗ, зарегистрированной конкретным оЗАГС</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:restriction base="doc:ActRecord">
+                <xs:sequence minOccurs="1">
+                    <xs:element ref="cm:registrarId"/>
+                    <xs:element ref="cm:actRecordUID"/>
+                    <xs:element ref="cm:actRecordNumber"/>
+                    <xs:element ref="cm:actRecordDate"/>
+                    <xs:element ref="cm:version" minOccurs="0"/>
+                </xs:sequence>
+            </xs:restriction>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="ActRecordMarriageForReport">
+        <xs:annotation>
+            <xs:documentation>Актовая запись о заключении брака для РОССТАТа</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="tns:ActRecordForReport">
+                <xs:sequence minOccurs="1">
+                    <xs:element name="content" type="tns:ActRecordContentOfMarriageForReport" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation>Дополнительный контент</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="groom" type="tns:CitizenForReport">
+                        <xs:annotation>
+                            <xs:documentation>Сведения о НЕМ</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="bride" type="tns:CitizenForReport">
+                        <xs:annotation>
+                            <xs:documentation>Сведения о НЕЙ</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="CitizenForReport">
+        <xs:sequence minOccurs="1">
+            <xs:element ref="cm:birthDate" minOccurs="0"/>
+            <xs:element ref="cm:birthPlace" minOccurs="0"/>
+            <xs:element ref="cm:citizenship" minOccurs="0"/>
+            <xs:element ref="cm:citizenshipString" minOccurs="0"/>
+            <xs:element ref="cm:residencePlace" minOccurs="0"/>
+            <xs:element ref="cm:maritalStatus" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:complexType name="ActRecordContentOfMarriageForReport">
+        <xs:annotation>
+            <xs:documentation>Дополнительное содержимое акта о браке</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="1">
+            <xs:element ref="cm:groomAge" minOccurs="0"/>
+            <xs:element ref="cm:brideAge" minOccurs="0"/>
+            <xs:element ref="cm:numberOfJuvenileChildren" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="getMarriageCountReportRequestObj" type="tns:GetMarriageCountReportRequestObj"/>
+    <xs:element name="getMarriageCountReportResponseObj" type="tns:GetMarriageCountReportResponseObj"/>
+
+    <xs:element name="baseFaultObj" type="cm:FaultBaseObj"/>
+</xs:schema>

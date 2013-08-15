@@ -1,5 +1,5 @@
 # encoding: utf-8
-# @note Период из двух приблизительных дат
+# @note Период из двух дат
 
 class DatePeriodMapper
   include XmlSchemaMapper

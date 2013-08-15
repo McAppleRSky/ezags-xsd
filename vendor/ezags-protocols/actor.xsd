@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><!-- edited with XMLSpy v2011 rel. 2 (http://www.altova.com) by free (free) -->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cm="http://ezags.rt.ru/type/common/"
-		   xmlns:ac="http://ezags.rt.ru/type/actor/" targetNamespace="http://ezags.rt.ru/type/actor/"
-		   elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cm="http://ezags.rt.ru/type/common/" xmlns:ac="http://ezags.rt.ru/type/actor/" targetNamespace="http://ezags.rt.ru/type/actor/" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xs:import namespace="http://ezags.rt.ru/type/common/" schemaLocation="common.xsd"/>
 	<xs:complexType name="FullPerson">
 		<xs:annotation>
@@ -32,7 +30,7 @@
 			<xs:element ref="cm:identityDocument" minOccurs="0"/>
 			<xs:choice minOccurs="0">
 				<xs:element ref="cm:powerOfAttorney"/>
-				<xs:element ref="cm:powerOfAttorneyLegal"/>
+				<xs:element ref="cm:powerOfAttorneyLegal" minOccurs="0"/>
 			</xs:choice>
 		</xs:sequence>
 	</xs:complexType>
@@ -174,12 +172,12 @@
 			<xs:restriction base="ac:FullPerson">
 				<xs:sequence minOccurs="1">
 					<xs:element ref="cm:isPrivateOfficeOwner" minOccurs="0"/>
-					<xs:element ref="cm:applicant"/>
+					<xs:element ref="cm:applicant" minOccurs="0"/>
 					<xs:element ref="cm:surname"/>
 					<xs:element ref="cm:firstName"/>
 					<xs:element ref="cm:patronymic" minOccurs="0"/>
-					<xs:element ref="cm:identityDocument"/>
-					<xs:element ref="cm:powerOfAttorneyLegal"/>
+					<xs:element ref="cm:identityDocument" minOccurs="0"/>
+					<xs:element ref="cm:powerOfAttorneyLegal" minOccurs="0"/>
 				</xs:sequence>
 			</xs:restriction>
 		</xs:complexContent>
@@ -229,29 +227,29 @@
 		</xs:complexContent>
 	</xs:complexType>
 
-    <xs:complexType name="PersonAttendedAtBirth">
-    <xs:annotation>
-        <xs:documentation>Сведения о человеке в объеме "Лицо, присутствовавшее во время родов"</xs:documentation>
-    </xs:annotation>
-    <xs:complexContent>
-        <xs:restriction base="ac:FullPerson">
-            <xs:sequence minOccurs="1">
-                <xs:element ref="cm:isPrivateOfficeOwner" minOccurs="0"/>
-                <xs:element ref="cm:surname" minOccurs="0"/>
-                <xs:element ref="cm:firstName" minOccurs="0"/>
-                <xs:element ref="cm:patronymic" minOccurs="0"/>
-                <xs:element ref="cm:gender" minOccurs="0"/>
-                <xs:element ref="cm:birthDate" minOccurs="0"/>
-                <xs:element ref="cm:residencePlace" minOccurs="0"/>
-                <xs:element ref="cm:snils" minOccurs="0"/>
-                <xs:element ref="cm:phoneNumber" minOccurs="0"/>
-                <xs:element ref="cm:identityDocument" minOccurs="0"/>
-            </xs:sequence>
-        </xs:restriction>
-    </xs:complexContent>
-    </xs:complexType>
+	<xs:complexType name="PersonAttendedAtBirth">
+		<xs:annotation>
+			<xs:documentation>Сведения о человеке в объеме "Лицо, присутствовавшее во время родов"</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:restriction base="ac:FullPerson">
+				<xs:sequence minOccurs="1">
+					<xs:element ref="cm:isPrivateOfficeOwner" minOccurs="0"/>
+					<xs:element ref="cm:surname" minOccurs="0"/>
+					<xs:element ref="cm:firstName" minOccurs="0"/>
+					<xs:element ref="cm:patronymic" minOccurs="0"/>
+					<xs:element ref="cm:gender" minOccurs="0"/>
+					<xs:element ref="cm:birthDate" minOccurs="0"/>
+					<xs:element ref="cm:residencePlace" minOccurs="0"/>
+					<xs:element ref="cm:snils" minOccurs="0"/>
+					<xs:element ref="cm:phoneNumber" minOccurs="0"/>
+					<xs:element ref="cm:identityDocument" minOccurs="0"/>
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
 
-    <xs:complexType name="DeadPersonUnknown">
+	<xs:complexType name="DeadPersonUnknown">
 		<xs:annotation>
 			<xs:documentation>Сведения о неизвестном умершем
 				Сведения о человеке (№ - услуга, * - роль в услуге):
@@ -330,9 +328,9 @@
 		<xs:sequence minOccurs="1">
 			<xs:element ref="cm:organizationName"/>
 			<xs:element ref="cm:legalAddress"/>
-			<xs:element ref="cm:position"/>
+			<xs:element ref="cm:position" minOccurs="0"/>
 			<xs:element ref="cm:postalAddress" minOccurs="0"/>
-			<xs:element ref="ac:juridicalAuthorisedRepresentative"/>
+			<xs:element ref="ac:juridicalAuthorisedRepresentative" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Registrar">
